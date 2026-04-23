@@ -42,6 +42,7 @@
 #include <new.h>
 #else
 #include <new>
+#include <cstring>
 #endif
 #include	"data.h"
 
@@ -204,7 +205,7 @@ typedef struct SRecord {
  *=============================================================================================*/
 char const * Fetch_String(int id)
 {
-#ifdef _UNIX
+#if !defined(_WIN32)
 	return("");
 #else
 	static SRecord _buffers[64];
@@ -264,7 +265,7 @@ char const * Fetch_String(int id)
 
 void const * Fetch_Resource(LPCSTR resname, LPCSTR restype)
 {
-#ifdef _UNIX
+#if !defined(_WIN32)
 	return(NULL);
 #else
 	/*

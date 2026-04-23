@@ -39,6 +39,9 @@
 #include "wwmemlog.h"
 #include "mutex.h"
 #include <stdio.h>
+#if !defined(_WIN32)
+#include <stdlib.h>
+#endif
 
 
 ///////////////////////////////////////////////////////////////////
@@ -319,6 +322,7 @@ bool StringClass::Copy_Wide (const WCHAR *source)
 {
 	if (source != NULL) {
 
+#if defined(_WIN32)
 		int  length;
 		BOOL unmapped;
 			
@@ -334,6 +338,14 @@ bool StringClass::Copy_Wide (const WCHAR *source)
 
 		// Were all characters successfully mapped?
 		return (!unmapped);
+#else
+		int length = wcstombs(NULL, source, 0);
+		if (length >= 0) {
+			wcstombs(Get_Buffer(length + 1), source, length + 1);
+			Store_Length(length);
+			return true;
+		}
+#endif
 	}
 
 	// Failure.

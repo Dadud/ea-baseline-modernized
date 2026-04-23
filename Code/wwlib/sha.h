@@ -44,7 +44,11 @@
 **	definition.
 */
 #include	"bool.h"
+#if defined(_MSC_VER)
 #include	<new.h>
+#else
+#include	<new>
+#endif
 #include	<stdio.h>
 #include	<stdlib.h>
 #include	<string.h>

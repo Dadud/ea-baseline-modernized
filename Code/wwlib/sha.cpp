@@ -39,7 +39,9 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include	"sha.h"
+#if defined(_MSC_VER)
 #include	<iostream.h>
+#endif
 #include	<stdlib.h>
 
 

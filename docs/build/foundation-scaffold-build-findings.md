@@ -133,6 +133,40 @@ See:
 - `docs/build/foundation-portability-batch-003.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 004: `wwlib` non-Windows source classification
+
+Batch 004 keeps original `wwlib.dsp` source membership visible but removes platform/display-adjacent sources from the non-Windows bootstrap target instead of masking them with fake SDK stubs.
+
+The full foundation/support scaffold now builds on Linux:
+
+```bash
+cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
+cmake --build build/cmake-scaffold -j4
+```
+
+Current result:
+
+```text
+[100%] Built target wwlib
+```
+
+Targets covered:
+
+- `wwdebug`
+- `wwmath`
+- `wwbitpack`
+- `wwsaveload`
+- `wwtranslatedb`
+- `wwutil`
+- `wwlib`
+
+The `wwlib` result is compile-scaffold progress, not final portability. The deferred non-Windows source list marks future `platform`, `renderer`, input, registry/version, and string-conversion work that should be split deliberately.
+
+See:
+
+- `docs/build/foundation-portability-batch-004.md`
+- `docs/architecture/foundation-target-map.md`
+
 ## Modernization rule for these blockers
 
 Do not paper over these by globally renaming files or adding broad platform shims yet.

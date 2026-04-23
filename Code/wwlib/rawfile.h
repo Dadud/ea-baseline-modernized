@@ -48,9 +48,8 @@
 
 // #include	"win.h"
 
-#ifdef _UNIX
+#if defined(_UNIX) || !defined(_WIN32)
 #include <stdio.h>
-#include "osdep.h"
   #define	NULL_HANDLE	 	NULL	
   #define	HANDLE_TYPE		FILE*	
 #else

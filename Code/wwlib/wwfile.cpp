@@ -37,6 +37,9 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <memory.h>
+#if !defined(_MSC_VER)
+#define _vsnprintf vsnprintf
+#endif
 #include "wwfile.h"
 
 #pragma warning(disable : 4514)

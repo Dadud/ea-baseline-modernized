@@ -19,10 +19,12 @@
 #define _WIN32_WINNT 0x0400
 
 #include "thread.h"
-#include "except.h"
+#include "Except.h"
 #include "wwdebug.h"
+#if defined(_WIN32)
 #include <process.h>
 #include <windows.h>
+#endif
 #pragma warning ( push )
 #pragma warning ( disable : 4201 )
 #include "systimer.h"
@@ -50,7 +52,11 @@ void __cdecl ThreadClass::Internal_Thread_Function(void* params)
 {
 	ThreadClass* tc=reinterpret_cast<ThreadClass*>(params);
 	tc->running=true;
+#if defined(_WIN32)
 	tc->ThreadID = GetCurrentThreadId();
+#else
+	tc->ThreadID = 0;
+#endif
 
 #ifdef _WIN32
 	Register_Thread_ID(tc->ThreadID, tc->ThreadName);
@@ -77,7 +83,7 @@ void __cdecl ThreadClass::Internal_Thread_Function(void* params)
 void ThreadClass::Execute()
 {
 	WWASSERT(!handle);	// Only one thread at a time!
-	#ifdef _UNIX
+	#if !defined(_WIN32)
 		// assert(0);
 		return;
 	#else
@@ -89,7 +95,7 @@ void ThreadClass::Execute()
 
 void ThreadClass::Set_Priority(int priority)
 {
-	#ifdef _UNIX
+	#if !defined(_WIN32)
 		// assert(0);
 		return;
 	#else
@@ -100,7 +106,7 @@ void ThreadClass::Set_Priority(int priority)
 
 void ThreadClass::Stop(unsigned ms)
 {
-	#ifdef _UNIX
+	#if !defined(_WIN32)
 		// assert(0);
 		return;
 	#else
@@ -119,16 +125,20 @@ void ThreadClass::Stop(unsigned ms)
 
 void ThreadClass::Sleep_Ms(unsigned ms)
 {
+#if defined(_WIN32)
 	Sleep(ms);
+#else
+	(void)ms;
+#endif
 }
 
-#ifndef _UNIX
+#ifdef _WIN32
 HANDLE test_event = ::CreateEvent (NULL, FALSE, FALSE, "");
 #endif
 
 void ThreadClass::Switch_Thread()
 {
-	#ifdef _UNIX
+	#if !defined(_WIN32)
 		return;
 	#else
 		//	::SwitchToThread ();
@@ -140,7 +150,7 @@ void ThreadClass::Switch_Thread()
 // Return calling thread's unique thread id
 unsigned ThreadClass::_Get_Current_Thread_ID()
 {
-	#ifdef _UNIX
+	#if !defined(_WIN32)
 		return 0;
 	#else
 		return GetCurrentThreadId();

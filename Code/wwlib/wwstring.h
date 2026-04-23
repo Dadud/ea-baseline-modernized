@@ -54,6 +54,7 @@ typedef char TCHAR;
 typedef wchar_t WCHAR;
 #define _tcslen strlen
 #define _tcsclen strlen
+#define _tcscpy strcpy
 #define _tcscmp strcmp
 #define _tcsicmp strcasecmp
 #define _wcsicmp wcscasecmp

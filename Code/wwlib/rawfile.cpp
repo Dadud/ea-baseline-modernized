@@ -54,7 +54,9 @@
 
 #include	"always.h"
 #include	"rawfile.h"
+#if defined(_WIN32)
 #include	<direct.h>
+#endif
 //#include	<share.h>
 #include	<stddef.h>
 #include	<stdio.h>
@@ -63,7 +65,7 @@
 #include "win.h"
 #include	<limits.h>
 #include	<errno.h>
-#ifdef _UNIX
+#if defined(_UNIX) || !defined(_WIN32)
 #include <sys/types.h>
 #include <sys/stat.h>
 #endif
@@ -319,7 +321,7 @@ char const * RawFileClass::Set_Name(char const * filename)
 	/*
 	** If this is a UNIX build, fix the filename from the DOS-like name passed in
 	*/
-	#ifdef _UNIX
+	#if defined(_UNIX) || !defined(_WIN32)
 		for (int i=0; i<Filename.Length(); i++)
 		{
 			if (Filename[i]=='\\')
@@ -415,7 +417,7 @@ int RawFileClass::Open(int rights)
 				break;
 
 			case READ:
-				#ifdef _UNIX
+				#if defined(_UNIX) || !defined(_WIN32)
 					Handle = fopen(Filename, "r");
 				#else
 					Handle = CreateFileA(Filename, GENERIC_READ, FILE_SHARE_READ,
@@ -424,7 +426,7 @@ int RawFileClass::Open(int rights)
 				break;
 
 			case WRITE:
-				#ifdef _UNIX
+				#if defined(_UNIX) || !defined(_WIN32)
 					Handle = fopen(Filename, "w");
 				#else
 					Handle = CreateFileA(Filename, GENERIC_WRITE, 0,
@@ -433,7 +435,7 @@ int RawFileClass::Open(int rights)
 				break;
 
 			case READ|WRITE:
-				#ifdef _UNIX
+				#if defined(_UNIX) || !defined(_WIN32)
 					Handle = fopen(Filename, "w");
 				#else
 					// SKB 5/13/99 use OPEN_ALWAYS instead of CREATE_ALWAYS so that files
@@ -513,7 +515,7 @@ bool RawFileClass::Is_Available(int forced)
 	*/
 	for (;;) {
 
-		#ifdef _UNIX
+		#if defined(_UNIX) || !defined(_WIN32)
 			Handle=fopen(Filename,"r");
 		#else
 			Handle = CreateFileA(Filename, GENERIC_READ, FILE_SHARE_READ,
@@ -530,7 +532,7 @@ bool RawFileClass::Is_Available(int forced)
 	**	Since the file could be opened, then close it and return that the file exists.
 	*/
 	int closeok;
-	#ifdef _UNIX
+	#if defined(_UNIX) || !defined(_WIN32)
 		closeok=((fclose(Handle)==0)?TRUE:FALSE);
 	#else
 		closeok=CloseHandle(Handle);
@@ -571,7 +573,7 @@ void RawFileClass::Close(void)
 		**	call the error routine.
 		*/
 		int closeok;
-		#ifdef _UNIX
+		#if defined(_UNIX) || !defined(_WIN32)
 			closeok=(fclose(Handle)==0)?TRUE:FALSE;	
 		#else
 			closeok=CloseHandle(Handle);
@@ -646,7 +648,7 @@ int RawFileClass::Read(void * buffer, int size)
 
 		int readok=TRUE;
 
-		#ifdef _UNIX
+		#if defined(_UNIX) || !defined(_WIN32)
 			readok=TRUE;
 			bytesread=fread(buffer,1,size,Handle);
 			if ((bytesread == 0)&&( ! feof(Handle)))
@@ -713,7 +715,7 @@ int RawFileClass::Write(void const * buffer, int size)
 	}
 
    int writeok=TRUE;
-   #ifdef _UNIX
+   #if defined(_UNIX) || !defined(_WIN32)
 		byteswritten = fwrite(buffer, 1, size, Handle);
 		if (byteswritten != size)
 			writeok = FALSE;
@@ -855,7 +857,7 @@ int RawFileClass::Size(void)
 	*/
 	if (Is_Open()) {
 
-      #ifdef _UNIX
+      #if defined(_UNIX) || !defined(_WIN32)
 			fpos_t curpos,startpos,endpos;
 			fgetpos(Handle,&curpos);	
 
@@ -986,7 +988,7 @@ int RawFileClass::Delete(void)
 		}
 
 		int deleteok;
-		#ifdef _UNIX
+		#if defined(_UNIX) || !defined(_WIN32)
 			deleteok=(unlink(Filename)==0)?TRUE:FALSE;
 		#else
 			deleteok=DeleteFile(Filename);
@@ -1024,7 +1026,7 @@ int RawFileClass::Delete(void)
  *=============================================================================================*/
 unsigned long RawFileClass::Get_Date_Time(void)
 {
-#ifdef _UNIX
+#if defined(_UNIX) || !defined(_WIN32)
 	struct stat statbuf;
 	lstat(Filename, &statbuf);
 	return(statbuf.st_mtime);
@@ -1059,7 +1061,7 @@ unsigned long RawFileClass::Get_Date_Time(void)
  *=============================================================================================*/
 bool RawFileClass::Set_Date_Time(unsigned long datetime)
 {
-#ifdef _UNIX
+#if defined(_UNIX) || !defined(_WIN32)
 	assert(0);
 	return(false);
 #else
@@ -1151,7 +1153,7 @@ int RawFileClass::Raw_Seek(int pos, int dir)
 		Error(EBADF, false, Filename);
 	}
 
-   #ifdef _UNIX
+   #if defined(_UNIX) || !defined(_WIN32)
       pos=fseek(Handle, pos, dir);
    #else
 		switch (dir) {
@@ -1206,7 +1208,7 @@ void RawFileClass::Attach (void *handle, int rights)
 	Date = 0;
 	Time = 0;
 
-	#ifdef _UNIX
+	#if defined(_UNIX) || !defined(_WIN32)
 	  Handle = (FILE *)handle;
 	#else
 	  Handle = handle;

@@ -52,7 +52,9 @@
 typedef signed long long __int64;
 typedef signed long long _int64;
 #define stricmp strcasecmp
+#define strcmpi strcasecmp
 #define strnicmp strncasecmp
+#define _vsnprintf vsnprintf
 inline char *strlwr(char *string)
 {
 	char *cursor = string;
@@ -77,6 +79,12 @@ inline char *strupr(char *string)
 #ifndef _strupr
 #define _strupr strupr
 #endif
+inline unsigned long _lrotl(unsigned long value, int shift)
+{
+	unsigned int width = sizeof(value) * 8;
+	shift &= (width - 1);
+	return (value << shift) | (value >> ((width - shift) & (width - 1)));
+}
 #endif
 
 // Disable warning about exception handling not being enabled. It's used as part of STL - in a part of STL we don't use.

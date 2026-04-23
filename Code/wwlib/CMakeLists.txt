@@ -1,5 +1,4 @@
-ea_vc6_static_library(wwlib
-  SOURCES
+set(WWLIB_SOURCES
     ./BSEARCH.H
     ./BUFF.H
     ./CRC.H
@@ -205,6 +204,44 @@ ea_vc6_static_library(wwlib
     ./xstraw.cpp
     ./xsurface.cpp
     ./xsurface.h
+)
+
+# The original wwlib.dsp mixes low-level utility code with display/surface code.
+# Keep the manifest membership visible above, but do not compile DirectDraw and
+# XSurface sources in the non-Windows bootstrap scaffold. This is a logical
+# source-boundary marker, not a physical reorganization.
+if(NOT WIN32)
+  list(REMOVE_ITEM WWLIB_SOURCES
+    ./blit.cpp
+    ./convert.cpp
+    ./cpudetect.cpp
+    ./ddraw.cpp
+    ./dsurface.cpp
+    ./ini.cpp
+    ./jshell.cpp
+    ./keyboard.cpp
+    ./mixfile.cpp
+    ./mono.cpp
+    ./msgloop.cpp
+    ./mpu.cpp
+    ./mutex.cpp
+    ./rawfile.cpp
+    ./rcfile.cpp
+    ./refcount.cpp
+    ./regexpr.cpp
+    ./registry.cpp
+    ./strtok_r.cpp
+    ./srandom.cpp
+    ./verchk.cpp
+    ./widestring.cpp
+    ./win.cpp
+    ./xsurface.cpp
+  )
+endif()
+
+ea_vc6_static_library(wwlib
+  SOURCES
+    ${WWLIB_SOURCES}
   INCLUDE_DIRS
     .
     ../wwdebug

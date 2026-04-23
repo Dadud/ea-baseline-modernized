@@ -68,6 +68,7 @@
 #ifndef __cdecl
 #define __cdecl
 #endif
+typedef const char * LPCSTR;
 #endif
 //#include <mmsystem.h>
 //#include	<windowsx.h>
