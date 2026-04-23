@@ -9,8 +9,8 @@ This summary distinguishes three different states that were previously easy to b
 ## Current snapshot
 
 - Total original VC6 projects in manifest: `61`
-- Modeled in some form: `11`
-- Not modeled yet: `50`
+- Modeled in some form: `12`
+- Not modeled yet: `49`
 
 ### By project type
 
@@ -19,7 +19,7 @@ This summary distinguishes three different states that were previously easy to b
 | Application | 25 | 0 | 25 |
 | Console Application | 10 | 0 | 10 |
 | Dynamic-Link Library | 10 | 0 | 10 |
-| Static Library | 16 | 11 | 5 |
+| Static Library | 16 | 12 | 4 |
 
 ## Default green scaffold targets
 
@@ -52,6 +52,7 @@ These are intentionally documented/mapped but not included in the default green 
 | `WWAudio` | Opt-in seam map exists | Stops at proprietary Miles/DirectSound backend boundary; configured via `RENEGADE_BUILD_AUDIO_SEAMS=ON` |
 | `wwphys` | Opt-in seam map exists | Reaches mixed runtime/renderer/platform leakage; configured via `RENEGADE_BUILD_PHYS_SEAMS=ON` |
 | `wwui` | Opt-in seam map exists | Reaches mixed UI/input/platform/renderer leakage; configured via `RENEGADE_BUILD_UI_SEAMS=ON` |
+| `ww3d2` | Opt-in seam map exists | Reaches mixed renderer/platform/asset-content leakage; configured via `RENEGADE_BUILD_RENDERER_SEAMS=ON` |
 
 ## Current parity evidence state
 
@@ -76,7 +77,7 @@ parity complete for current phase
 | Scope | Current highest evidence |
 |---|---|
 | `wwdebug`, `wwmath`, `wwbitpack`, `wwsaveload`, `wwtranslatedb`, `wwlib`, `wwutil`, `wwnet`, `BinkMovie`, `SControl` | portable island builds / compile-checkable scaffold evidence |
-| `WWAudio` | sources classified / backend blocker documented |
+| `WWAudio`, `wwphys`, `wwui`, `ww3d2` | sources classified / blocker documented |
 | client / FDS / tools / scripts | not yet parity-proven |
 
 ## Important reporting rule

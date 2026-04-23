@@ -1,0 +1,287 @@
+# Conservative scaffold for the original EA VC6 ww3d2 static library.
+#
+# This target keeps the original project name and physical layout. The source
+# groups below make asset/content loading, scene/render-object runtime, 2D/UI
+# presentation, texture/material management, and DX8 backend glue explicit
+# before final renderer architecture work.
+
+set(WW3D2_ASSET_CONTENT_SOURCES
+  ./aabtree.cpp
+  ./aabtree.h
+  ./aabtreebuilder.cpp
+  ./aabtreebuilder.h
+  ./assetmgr.cpp
+  ./assetmgr.h
+  ./assetstatus.cpp
+  ./assetstatus.h
+  ./collect.cpp
+  ./collect.h
+  ./hanim.cpp
+  ./hanim.h
+  ./hanimmgr.cpp
+  ./hanimmgr.h
+  ./hcanim.cpp
+  ./hcanim.h
+  ./hmdldef.cpp
+  ./hmorphanim.cpp
+  ./hmorphanim.h
+  ./hrawanim.cpp
+  ./hrawanim.h
+  ./htree.cpp
+  ./htree.h
+  ./htreemgr.cpp
+  ./htreemgr.h
+  ./meshmdlio.cpp
+  ./motchan.cpp
+  ./motchan.h
+  ./proto.cpp
+  ./proto.h
+  ./w3d_dep.cpp
+  ./w3d_dep.h
+  ./w3d_file.h
+  ./w3d_obsolete.h
+  ./w3d_util.cpp
+  ./w3d_util.h
+  ./w3derr.h
+  ./ww3dformat.cpp
+  ./ww3dformat.h
+  ./ww3dids.h
+  ./ww3dtrig.h
+)
+
+set(WW3D2_RENDER_RUNTIME_SOURCES
+  ./agg_def.cpp
+  ./agg_def.h
+  ./animobj.cpp
+  ./animobj.h
+  ./boxrobj.cpp
+  ./boxrobj.h
+  ./camera.cpp
+  ./camera.h
+  ./coltest.cpp
+  ./coltest.h
+  ./coltype.h
+  ./composite.cpp
+  ./composite.h
+  ./decalmsh.cpp
+  ./decalmsh.h
+  ./decalsys.cpp
+  ./decalsys.h
+  ./distlod.cpp
+  ./distlod.h
+  ./dllist.h
+  ./dynamesh.cpp
+  ./dynamesh.h
+  ./hlod.cpp
+  ./hlod.h
+  ./intersec.cpp
+  ./intersec.h
+  ./intersec.inl
+  ./inttest.h
+  ./layer.cpp
+  ./layer.h
+  ./light.cpp
+  ./light.h
+  ./lightenvironment.cpp
+  ./lightenvironment.h
+  ./line3d.cpp
+  ./line3d.h
+  ./linegrp.cpp
+  ./linegrp.h
+  ./mapper.cpp
+  ./mapper.h
+  ./matinfo.cpp
+  ./matinfo.h
+  ./matpass.cpp
+  ./matpass.h
+  ./matrixmapper.cpp
+  ./matrixmapper.h
+  ./mesh.cpp
+  ./mesh.h
+  ./meshbuild.cpp
+  ./meshbuild.h
+  ./meshdam.cpp
+  ./meshdam.h
+  ./meshgeometry.cpp
+  ./meshgeometry.h
+  ./meshmatdesc.cpp
+  ./meshmatdesc.h
+  ./meshmdl.cpp
+  ./meshmdl.h
+  ./nullrobj.cpp
+  ./nullrobj.h
+  ./part_buf.cpp
+  ./part_buf.h
+  ./part_emt.cpp
+  ./part_emt.h
+  ./part_ldr.cpp
+  ./part_ldr.h
+  ./pivot.cpp
+  ./pivot.h
+  ./pointgr.cpp
+  ./pointgr.h
+  ./polyinfo.cpp
+  ./polyinfo.h
+  ./predlod.cpp
+  ./predlod.h
+  ./prim_anim.cpp
+  ./prim_anim.h
+  ./projector.cpp
+  ./projector.h
+  ./proxy.h
+  ./rddesc.h
+  ./renderobjectrecycler.cpp
+  ./renderobjectrecycler.h
+  ./rendobj.cpp
+  ./rendobj.h
+  ./rinfo.cpp
+  ./rinfo.h
+  ./ringobj.cpp
+  ./ringobj.h
+  ./robjlist.h
+  ./scene.cpp
+  ./scene.h
+  ./segline.cpp
+  ./segline.h
+  ./seglinerenderer.cpp
+  ./seglinerenderer.h
+  ./shattersystem.cpp
+  ./shattersystem.h
+  ./soundrobj.cpp
+  ./soundrobj.h
+  ./sphereobj.cpp
+  ./sphereobj.h
+  ./statistics.cpp
+  ./statistics.h
+  ./stripoptimizer.cpp
+  ./stripoptimizer.h
+  ./surfaceclass.cpp
+  ./surfaceclass.h
+  ./vertmaterial.cpp
+  ./vertmaterial.h
+  ./visrasterizer.cpp
+  ./visrasterizer.h
+  ./ww3d.cpp
+  ./ww3d.h
+)
+
+set(WW3D2_PRESENTATION_SOURCES
+  ./animatedsoundmgr.cpp
+  ./animatedsoundmgr.h
+  ./bitmaphandler.cpp
+  ./bitmaphandler.h
+  ./bmp2d.cpp
+  ./bmp2d.h
+  ./bwrender.cpp
+  ./bwrender.h
+  ./dazzle.cpp
+  ./dazzle.h
+  ./font3d.cpp
+  ./font3d.h
+  ./missingtexture.cpp
+  ./missingtexture.h
+  ./render2d.cpp
+  ./render2d.h
+  ./render2dsentence.cpp
+  ./render2dsentence.h
+  ./txt.cpp
+  ./txt.h
+)
+
+set(WW3D2_TEXTURE_MATERIAL_SOURCES
+  ./colorspace.h
+  ./ddsfile.cpp
+  ./ddsfile.h
+  ./dx8list.h
+  ./formconv.cpp
+  ./formconv.h
+  ./metalmap.cpp
+  ./metalmap.h
+  ./shader.cpp
+  ./shader.h
+  ./texfcach.cpp
+  ./texfcach.h
+  ./texproject.cpp
+  ./texproject.h
+  ./texture.cpp
+  ./texture.h
+  ./textureloader.cpp
+  ./textureloader.h
+  ./texturethumbnail.cpp
+  ./texturethumbnail.h
+)
+
+set(WW3D2_DX8_BACKEND_SOURCES
+  ./FramGrab.cpp
+  ./dx8caps.cpp
+  ./dx8caps.h
+  ./dx8fvf.cpp
+  ./dx8fvf.h
+  ./dx8indexbuffer.cpp
+  ./dx8indexbuffer.h
+  ./dx8polygonrenderer.cpp
+  ./dx8polygonrenderer.h
+  ./dx8renderer.cpp
+  ./dx8renderer.h
+  ./dx8rendererdebugger.cpp
+  ./dx8rendererdebugger.h
+  ./dx8texman.cpp
+  ./dx8texman.h
+  ./dx8vertexbuffer.cpp
+  ./dx8vertexbuffer.h
+  ./dx8wrapper.cpp
+  ./dx8wrapper.h
+  ./framgrab.h
+  ./sortingrenderer.cpp
+  ./sortingrenderer.h
+)
+
+set(WW3D2_SOURCES
+  ${WW3D2_ASSET_CONTENT_SOURCES}
+  ${WW3D2_RENDER_RUNTIME_SOURCES}
+  ${WW3D2_PRESENTATION_SOURCES}
+  ${WW3D2_TEXTURE_MATERIAL_SOURCES}
+  ${WW3D2_DX8_BACKEND_SOURCES}
+)
+
+if(NOT WIN32)
+  # ww3d2 is the core renderer seam. Keep the original source inventory visible,
+  # but defer the explicit DX8 backend implementation while probing how much of
+  # the higher-level renderer still leaks Direct3D/Win32 assumptions through
+  # shared headers and asset/runtime interfaces.
+  list(REMOVE_ITEM WW3D2_SOURCES
+    ${WW3D2_DX8_BACKEND_SOURCES}
+  )
+endif()
+
+ea_vc6_static_library(ww3d2
+  SOURCES
+    ${WW3D2_SOURCES}
+  INCLUDE_DIRS
+    ../DirectX/Inc
+    ../DirectX/include
+    ../miles6/include
+    ../srsdk1x/include
+    ../WWAudio
+    ../wwcpuid
+    ../wwdebug
+    ../wwlib
+    ../WWMath
+    ../wwsaveload
+  DEFINES
+    NDEBUG
+    PARAM_EDITING_ON
+    VIEW_COMPRESSED
+    WIN32
+    WIN32_LEAN_AND_MEAN
+    WINVER=0x400
+    WWDEBUG
+    _DEBUG
+    _USE_INTEL_COMPILER
+    _WINDOWS
+  LINK_LIBRARIES
+    wwdebug
+    wwlib
+    wwmath
+    wwsaveload
+)

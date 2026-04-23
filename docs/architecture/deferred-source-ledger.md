@@ -59,6 +59,9 @@ A scaffold target can build while still having deferred source debt. This table 
 | `wwui` | `WWUI_INPUT_CURSOR_SOURCES` | input/cursor | Win32 window/message loop | Mouse/input bridge still depends on Win32 message/input surfaces and should remain outside portable UI core for now. | yes | maybe | maybe | platform window/input boundary | deferred |
 | `wwui` | `WWUI_IME_SOURCES` | IME integration | Win32 IME / string-encoding | IME manager/candidate code depends on `<imm.h>`, HWND, and Windows IME APIs. | yes | no | maybe | platform IME/text input boundary | deferred |
 | `wwui` | `WWUI_DIALOG_CONTROL_SOURCES` | dialog/control | renderer backend | Even dialog/control code still reaches renderer presentation headers such as `Render2D.h` and Win32 callback/handle assumptions through shared UI surfaces. | yes | maybe | yes | UI presentation / platform UI split | deferred |
+| `ww3d2` | `WW3D2_DX8_BACKEND_SOURCES` | explicit DX8 backend | DirectDraw/Direct3D | DX8 wrapper/device/state implementation is explicit renderer backend code and remains outside the non-Windows seam probe. | yes | no | yes | renderer backend/device abstraction | deferred |
+| `ww3d2` | `WW3D2_ASSET_CONTENT_SOURCES` | asset/content loading | renderer backend | Even asset/content management still reaches `dx8wrapper.h` and `d3d8.h`, so the renderer asset pipeline is not yet cleanly separated from backend implementation. | yes | maybe | yes | renderer asset/runtime split | deferred |
+| `ww3d2` | `WW3D2_RENDER_RUNTIME_SOURCES` | scene/render runtime | Win32 window/message loop | Shared renderer/runtime code still leaks through `wwlib/win.h` (`HINSTANCE`, `HWND`) and other Win32-heavy surfaces. | yes | maybe | yes | renderer runtime / platform surface split | deferred |
 
 ## Notes
 

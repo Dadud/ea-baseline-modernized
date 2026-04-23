@@ -247,6 +247,28 @@ See:
 - `docs/build/foundation-portability-batch-007.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 013: `ww3d2` renderer seam
+
+Batch 013 models the original `Code/ww3d2/ww3d2.dsp` target as an opt-in renderer seam behind `RENEGADE_BUILD_RENDERER_SEAMS`. The CMake inventory now names:
+
+```text
+WW3D2_ASSET_CONTENT_SOURCES
+WW3D2_RENDER_RUNTIME_SOURCES
+WW3D2_PRESENTATION_SOURCES
+WW3D2_TEXTURE_MATERIAL_SOURCES
+WW3D2_DX8_BACKEND_SOURCES
+```
+
+The explicit DX8 backend island is deferred on non-Windows seam probes, but the current probe still stops in higher-level renderer code at:
+
+```text
+Code/wwlib/win.h:83:8: error: ‘HINSTANCE’ does not name a type
+Code/wwlib/win.h:84:8: error: ‘HWND’ does not name a type
+Code/ww3d2/dx8wrapper.h:48:10: fatal error: d3d8.h: No such file or directory
+```
+
+This is treated as useful architecture evidence, not a signal to add fake D3D8 or Win32 handle stubs.
+
 ## Batch 009: `SControl` server-control/network seam
 
 Batch 009 models the original `Code/SControl/SControl.dsp` target. The CMake inventory now names protocol and socket transport source islands:

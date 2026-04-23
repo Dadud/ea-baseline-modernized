@@ -98,7 +98,6 @@ No artifact parity has been proven yet. The current scaffold is compile-checkabl
 Important buckets still need scaffold modeling and boundary review:
 
 - `Combat`
-- `ww3d2`
 - `Scripts`
 - `Commando`
 - tool projects under `Code/Tools`
@@ -126,7 +125,11 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 012 — map `wwui`
+### Latest batch completed: Batch 013 — map `ww3d2`
+
+Batch 013 adds an opt-in scaffold for the original `ww3d2` target and classifies it into asset/content, render runtime, presentation, texture/material, and DX8 backend source islands. It intentionally documents mixed renderer/platform/asset-content leakage instead of pushing fake D3D8, D3DX, or Win32 handle shims.
+
+### Previous batch completed: Batch 012 — map `wwui`
 
 Batch 012 adds an opt-in scaffold for the original `wwui` target and classifies it into dialog/control, input/cursor, and IME source islands. It intentionally documents mixed UI/input/platform/renderer leakage instead of pushing fake IME, Win32, or renderer shims.
 
@@ -192,23 +195,24 @@ Original target names and physical file locations remain unchanged.
 
 ### Following batch candidates
 
-After Batch 010, choose one bounded expansion:
+After Batch 013, choose one bounded expansion:
 
-1. Continue status/inventory cleanup
-   - update the 61-project matrix as each target is modeled;
-   - refine current source-island docs before adding higher-coupling projects;
-   - use `.hermes/plans/2026-04-23_102700-batch-forecast-roadmap.md` as the working forecast for remaining waves.
+1. `Combat` inventory/modeling pass
+   - classify gameplay/runtime vs presentation/input seams before attempting broader product work;
+   - expect deeper coupling to `wwphys`, `wwui`, `ww3d2`, and online systems.
+2. `Scripts` DLL ingestion improvements
+   - improve DLL/shared-library scaffold support;
+   - account for missing manifest source `Code/Scripts/slnode.h` before claiming meaningful progress.
+3. targeted renderer-boundary prep
+   - document how `ww3d2` should eventually split into backend/device, asset/content, runtime scene graph, and presentation layers.
 
-Avoid immediately jumping to:
+Avoid immediately jumping to full products:
 
 - `Commando`
-- `Combat`
-- `ww3d2`
-- `wwphys`
-- `wwui`
 - full tools workspace
+- parity claims for client/FDS/tools
 
-Those are high-coupling buckets and should wait until more boundary mapping exists.
+Those remain high-coupling buckets and should wait until more subsystem boundaries are mapped.
 
 ## Longer roadmap
 
@@ -222,7 +226,7 @@ Those are high-coupling buckets and should wait until more boundary mapping exis
 
 ## Open questions
 
-- Should the next batch focus on generated status/report cleanup before moving to `Combat`, `ww3d2`, `wwphys`, or `wwui`?
+- Should the next batch focus on `Combat` inventory/modeling or on improving DLL/shared-library ingestion for `Scripts`?
 - How much of `wwlib` should remain under `foundation` once platform/content/display pieces are split?
 - Should socket abstraction be introduced before or after `Combat` modeling?
 - What is the minimum useful artifact parity check for the first product build attempt?

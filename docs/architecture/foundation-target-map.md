@@ -21,6 +21,7 @@ The current rule is **logical mapping first, physical moves later**. Original pr
 | `Code/WWAudio/WWAudio.dsp` | `WWAudio` | Opt-in scaffold; Miles/backend blocker documented | Audio subsystem seam. Current CMake classifies events, save/load, scene metadata, threading, utilities, and Miles backend sources. Not in the default green scaffold yet. |
 | `Code/wwphys/wwphys.dsp` | `wwphys` | Opt-in scaffold; mixed runtime/renderer/platform blocker documented | Physics subsystem seam. Current CMake classifies path/visibility, runtime simulation, math/serialization, scene/render glue, and terrain/render sources. Not in the default green scaffold yet. |
 | `Code/wwui/wwui.dsp` | `wwui` | Opt-in scaffold; mixed UI/input/platform/renderer blocker documented | UI/input subsystem seam. Current CMake classifies dialog/control, input/cursor, and IME islands. Not in the default green scaffold yet. |
+| `Code/ww3d2/ww3d2.dsp` | `ww3d2` | Opt-in scaffold; mixed renderer/platform/asset-content blocker documented | Core renderer subsystem seam. Current CMake classifies asset/content, render runtime, presentation, texture/material, and DX8 backend islands. Not in the default green scaffold yet. |
 
 ## `wwlib` sub-bucket observations
 
@@ -158,6 +159,20 @@ WWUI_IME_SOURCES
 ```
 
 The first raw probe exposed local include-case mismatches, which were fixed so the target could reach more meaningful blockers. The current documented seam is mixed UI/input/platform/renderer leakage through dialog/control headers, IME integration, and ww3d2 presentation dependencies. The next meaningful blockers include `Render2D.h`, `<imm.h>`, and Win32 callback/handle expectations surfacing through `dialogbase.h`, `IMEManager.h`, and `wwlib/win.h`.
+
+### `ww3d2`
+
+Batch 013 adds `ww3d2` behind the opt-in `RENEGADE_BUILD_RENDERER_SEAMS` switch. Its CMake source inventory is split into:
+
+```text
+WW3D2_ASSET_CONTENT_SOURCES
+WW3D2_RENDER_RUNTIME_SOURCES
+WW3D2_PRESENTATION_SOURCES
+WW3D2_TEXTURE_MATERIAL_SOURCES
+WW3D2_DX8_BACKEND_SOURCES
+```
+
+The explicit Direct3D 8 backend island is deferred on non-Windows seam probes, but the next meaningful blockers still come from shared Win32-heavy and DX8-heavy interfaces leaking through higher-level renderer code. The probe stops at `wwlib/win.h` (`HINSTANCE`, `HWND`) and `dx8wrapper.h` (`d3d8.h`), which is useful evidence that `ww3d2` is not yet separable into a portable renderer core without further boundary work.
 
 ## Near-term recommendation
 

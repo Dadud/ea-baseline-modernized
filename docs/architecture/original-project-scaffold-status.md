@@ -64,4 +64,5 @@ This matrix summarizes the generated VC6 project manifest after Batch 005. It is
 | `wwsaveload` | `Static Library` | `Code/wwsaveload/wwsaveload.dsp` | modeled/builds in default green scaffold | foundation |
 | `wwtranslatedb` | `Static Library` | `Code/wwtranslatedb/wwtranslatedb.dsp` | modeled/builds in default green scaffold | foundation |
 | `wwui` | `Static Library` | `Code/wwui/wwui.dsp` | modeled as opt-in UI/input seam; mixed UI/input/platform/renderer blocker documented | products/client/input_and_control/renderer/platform seam |
+| `ww3d2` | `Static Library` | `Code/ww3d2/ww3d2.dsp` | modeled as opt-in renderer seam; mixed renderer/platform/asset-content blocker documented | renderer/engine_asset_content/platform seam |
 | `wwutil` | `Static Library` | `Code/wwutil/wwutil.dsp` | modeled/builds in default green scaffold | foundation |
