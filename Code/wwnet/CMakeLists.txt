@@ -2,12 +2,10 @@
 #
 # wwnet is the first low-level networking target in the scaffold. It is
 # intentionally modeled with the original VC6 target name before any future
-# platform/network bucket split.
-set(WWNET_SOURCES
-    ./BWBalance.cpp
-    ./BWBalance.h
-    ./connect.cpp
-    ./connect.h
+# platform/network bucket split. The source variables below classify the old
+# bucket logically; they do not move files or rename the target.
+
+set(WWNET_PACKET_OBJECT_SOURCES
     ./fromaddress.h
     ./msgstat.cpp
     ./msgstat.h
@@ -17,8 +15,6 @@ set(WWNET_SOURCES
     ./msgstatlistgroup.h
     ./netstats.cpp
     ./netstats.h
-    ./netutil.cpp
-    ./netutil.h
     ./networkobject.cpp
     ./networkobject.h
     ./networkobjectfactory.cpp
@@ -27,29 +23,54 @@ set(WWNET_SOURCES
     ./networkobjectfactorymgr.h
     ./networkobjectmgr.cpp
     ./networkobjectmgr.h
-    ./packetmgr.cpp
-    ./packetmgr.h
     ./packettype.h
-    ./rhost.cpp
-    ./rhost.h
-    ./singlepl.cpp
-    ./singlepl.h
     ./wwpacket.cpp
     ./wwpacket.h
 )
 
+set(WWNET_LIVE_SOCKET_SESSION_SOURCES
+    ./connect.cpp
+    ./connect.h
+    ./netutil.cpp
+    ./netutil.h
+    ./packetmgr.cpp
+    ./packetmgr.h
+    ./singlepl.cpp
+    ./singlepl.h
+)
+
+set(WWNET_BANDWIDTH_REMOTE_HOST_SOURCES
+    ./BWBalance.cpp
+    ./BWBalance.h
+    ./rhost.cpp
+    ./rhost.h
+)
+
+set(WWNET_SOCKET_TYPE_BRIDGE_SOURCES
+    ./socket_compat.h
+)
+
+set(WWNET_SOURCES
+    ${WWNET_PACKET_OBJECT_SOURCES}
+    ${WWNET_LIVE_SOCKET_SESSION_SOURCES}
+    ${WWNET_BANDWIDTH_REMOTE_HOST_SOURCES}
+    ${WWNET_SOCKET_TYPE_BRIDGE_SOURCES}
+)
+
 # The original wwnet target includes both packet/object serialization helpers
 # and the live WinSock connection/session layer. Keep the source inventory
-# visible, but defer the live socket/session sources from the non-Windows
-# bootstrap until a deliberate platform networking layer exists.
+# visible, but defer the live socket/session policy sources from the
+# non-Windows bootstrap until a deliberate platform networking layer exists.
 if(NOT WIN32)
-  list(REMOVE_ITEM WWNET_SOURCES
-    ./BWBalance.cpp
-    ./connect.cpp
-    ./netutil.cpp
-    ./packetmgr.cpp
-    ./rhost.cpp
-    ./singlepl.cpp
+  set(WWNET_SOURCES
+    ${WWNET_PACKET_OBJECT_SOURCES}
+    ${WWNET_SOCKET_TYPE_BRIDGE_SOURCES}
+    ./connect.h
+    ./netutil.h
+    ./packetmgr.h
+    ./rhost.h
+    ./singlepl.h
+    ./BWBalance.h
   )
 endif()
 

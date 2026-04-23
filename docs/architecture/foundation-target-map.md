@@ -67,6 +67,29 @@ strtok_r.cpp, srandom.cpp, verchk.cpp, widestring.cpp, win.cpp, xsurface.cpp
 
 This makes `wwlib` compile-checkable as part of the Linux foundation scaffold while documenting that the original bucket needs future logical splits.
 
+Batch 006 makes those logical splits explicit in CMake source variables instead of leaving them as one opaque list plus removals. Current islands are:
+
+```text
+WWLIB_FOUNDATION_SOURCES
+WWLIB_PLATFORM_SOURCES
+WWLIB_DISPLAY_SURFACE_SOURCES
+WWLIB_INPUT_MESSAGE_SOURCES
+WWLIB_REGISTRY_VERSION_SOURCES
+WWLIB_ENCODING_STRING_SOURCES
+WWLIB_CONTENT_ARCHIVE_SOURCES
+WWLIB_WINDOWS_INTEGRATION_SOURCES
+WWLIB_DIAGNOSTIC_CONSOLE_SOURCES
+```
+
+`wwnet` is likewise split into:
+
+```text
+WWNET_PACKET_OBJECT_SOURCES
+WWNET_LIVE_SOCKET_SESSION_SOURCES
+WWNET_BANDWIDTH_REMOTE_HOST_SOURCES
+WWNET_SOCKET_TYPE_BRIDGE_SOURCES
+```
+
 ## Near-term recommendation
 
 Before jumping to `Commando`, continue using this target map to classify original projects:

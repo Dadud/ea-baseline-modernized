@@ -201,6 +201,30 @@ See:
 - `docs/build/foundation-portability-batch-005.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 006: source-island clarification
+
+Batch 006 does not add a new target. It refactors the `wwlib` and `wwnet` CMake source inventory into named logical source islands while preserving original target names and file locations.
+
+For `wwlib`, the scaffold now names foundation, platform, display/surface, input/message-loop, registry/version, string/encoding, content/archive, Windows integration, and diagnostic/mono-console islands.
+
+For `wwnet`, the scaffold now names packet/object helpers, live socket/session sources, bandwidth/remote-host/session policy sources, and the narrow socket type bridge.
+
+The expected build result is unchanged:
+
+```bash
+cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
+cmake --build build/cmake-scaffold -j4
+```
+
+```text
+[100%] Built target wwnet
+```
+
+See:
+
+- `docs/build/foundation-portability-batch-006.md`
+- `docs/architecture/foundation-target-map.md`
+
 ## Modernization rule for these blockers
 
 Do not paper over these by globally renaming files or adding broad platform shims yet.

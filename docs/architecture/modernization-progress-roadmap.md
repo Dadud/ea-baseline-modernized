@@ -16,11 +16,13 @@ Current branch and remote target:
 ea-baseline-modernized -> ea-modernized/main
 ```
 
-Current latest reviewed commit:
+Current latest reviewed commit before Batch 006:
 
 ```text
 ba7d928 build: model wwnet support target
 ```
+
+Batch 006 then consolidates the current scaffold by turning `wwlib` and `wwnet` source filters into named logical source islands.
 
 ## What is now solid
 
@@ -119,31 +121,30 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Next batch: Batch 006 — consolidate and clarify the scaffold
+### Next batch completed: Batch 006 — consolidate and clarify the scaffold
 
-Recommended before adding more big targets:
+Batch 006 turns the current `wwlib` and `wwnet` source filters into named logical source islands.
 
-1. Add or refine the project status matrix.
-2. Split `wwlib` CMake sources into named logical source groups:
-   - foundation-like sources
-   - platform sources
-   - display/surface sources
-   - input/message-loop sources
-   - registry/version sources
-   - string/encoding sources
-3. Split `wwnet` CMake sources into named logical source groups:
-   - packet/stat/object helpers
-   - live socket/session sources
-   - bandwidth/remote-host/session policy sources
-4. Keep original target names unchanged.
-5. Do not move files physically.
-6. Verify the full scaffold still builds.
+For `wwlib`, CMake now identifies:
 
-Why this is the best next step:
+- foundation-like sources;
+- platform sources;
+- display/surface sources;
+- input/message-loop sources;
+- registry/version sources;
+- string/encoding sources;
+- content/archive sources;
+- Windows integration sources;
+- diagnostic/mono-console sources.
 
-- It directly supports the long-term goal of reorganizing every code bucket into something easier to understand.
-- It prevents the scaffold from becoming a pile of unexplained source filters.
-- It prepares for a deliberate platform layer instead of scattered compatibility shims.
+For `wwnet`, CMake now identifies:
+
+- packet/stat/object helpers;
+- live socket/session sources;
+- bandwidth/remote-host/session policy sources;
+- socket type bridge headers.
+
+Original target names and physical file locations remain unchanged.
 
 ### Following batch candidates
 

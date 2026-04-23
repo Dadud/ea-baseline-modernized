@@ -1,55 +1,42 @@
-set(WWLIB_SOURCES
+# Manifest-derived from Code/wwlib/wwlib.dsp.
+#
+# The variables below classify the historical wwlib bucket into logical
+# islands while preserving the original target name and physical layout.
+# Header files remain listed with their closest current island so the VC6
+# source inventory stays visible during the baseline-first phase.
+
+set(WWLIB_FOUNDATION_SOURCES
     ./BSEARCH.H
     ./BUFF.H
     ./CRC.H
     ./CallbackHook.h
-    ./Convert.h
-    ./Except.cpp
     ./FONT.H
     ./FastAllocator.cpp
     ./FastAllocator.h
     ./HASHLIST.H
     ./IFF.H
     ./INDEX.H
-    ./INI.H
     ./INT.H
     ./LCW.H
     ./LISTNODE.H
-    ./LaunchWeb.cpp
-    ./LaunchWeb.h
-    ./MONO.H
-    ./MONODRVR.H
     ./MPMATH.H
-    ./MPU.H
     ./Notify.h
-    ./PALETTE.H
     ./PIPE.H
     ./PK.H
     ./Point.h
     ./RAMFILE.H
     ./RANDOM.H
-    ./RAWFILE.H
-    ./RGB.H
     ./RLE.H
     ./RNDSTRAW.H
     ./SLIST.H
     ./SLNODE.H
     ./STRAW.H
     ./Signaler.h
-    ./Surface.h
-    ./TARGA.CPP
-    ./TARGA.H
     ./TagBlock.h
     ./Vector.H
-    ./WATCOM.H
-    ./WWCOMUtil.cpp
-    ./WWCOMUtil.h
     ./WWFILE.H
     ./XPIPE.H
     ./XSTRAW.H
-    ./_convert.cpp
-    ./_mono.cpp
-    ./_mono.h
     ./always.h
     ./argv.cpp
     ./argv.h
@@ -61,49 +48,28 @@ set(WWLIB_SOURCES
     ./base64.h
     ./binheap.h
     ./bittype.h
-    ./blit.cpp
-    ./blit.h
-    ./blitter.h
     ./blowfish.cpp
     ./bool.h
-    ./borlandc.h
     ./bound.h
-    ./bsurface.h
     ./buff.cpp
     ./bufffile.cpp
     ./bufffile.h
     ./chunkio.cpp
     ./chunkio.h
-    ./convert.cpp
-    ./cpudetect.cpp
-    ./cpudetect.h
     ./crc.cpp
     ./cstraw.cpp
     ./cstraw.h
-    ./data.cpp
-    ./data.h
-    ./ddraw.cpp
-    ./dsurface.cpp
-    ./dsurface.h
     ./ffactory.cpp
     ./ffactory.h
     ./gcd_lcm.cpp
     ./gcd_lcm.h
-    ./gnu_regex.c
-    ./gnu_regex.h
     ./growmix.h
     ./hash.cpp
     ./hash.h
     ./hashcalc.h
     ./hashtemplate.h
-    ./hsv.cpp
-    ./ini.cpp
-    ./inisup.h
     ./int.cpp
     ./iostruct.h
-    ./jshell.cpp
-    ./keyboard.cpp
-    ./keyboard.h
     ./lcw.cpp
     ./load.cpp
     ./lzo.cpp
@@ -115,44 +81,21 @@ set(WWLIB_SOURCES
     ./lzoconf.h
     ./md5.cpp
     ./mempool.h
-    ./mixfile.cpp
-    ./mixfile.h
-    ./mono.cpp
     ./mpmath.cpp
-    ./mpu.cpp
-    ./msgloop.cpp
-    ./msgloop.h
     ./multilist.cpp
     ./multilist.h
-    ./mutex.cpp
-    ./mutex.h
-    ./nstrdup.cpp
-    ./nstrdup.h
     ./ntree.h
-    ./palette.cpp
-    ./pcx.H
-    ./pcx.cpp
     ./pipe.cpp
     ./pk.cpp
     ./ramfile.cpp
     ./random.cpp
-    ./rawfile.cpp
     ./rc4.cpp
     ./rc4.h
-    ./rcfile.cpp
-    ./rcfile.h
     ./readline.cpp
     ./readline.h
     ./realcrc.cpp
     ./realcrc.h
     ./ref_ptr.h
-    ./refcount.cpp
-    ./refcount.h
-    ./regexpr.cpp
-    ./regexpr.h
-    ./registry.cpp
-    ./registry.h
-    ./rgb.cpp
     ./rle.cpp
     ./rndstrng.cpp
     ./rndstrng.h
@@ -162,56 +105,204 @@ set(WWLIB_SOURCES
     ./sampler.h
     ./sha.cpp
     ./sha.h
-    ./shapeset.h
     ./sharebuf.h
     ./simplevec.h
     ./slnode.cpp
-    ./srandom.cpp
-    ./srandom.h
     ./stimer.cpp
     ./stl.h
     ./straw.cpp
-    ./strtok_r.cpp
-    ./strtok_r.h
-    ./surfrect.h
-    ./systimer.cpp
-    ./systimer.h
     ./tagblock.cpp
     ./textfile.cpp
     ./textfile.h
+    ./uarray.h
+    ./vector.cpp
+    ./wwfile.cpp
+    ./wwfont.cpp
+    ./xpipe.cpp
+    ./xstraw.cpp
+)
+
+set(WWLIB_PLATFORM_SOURCES
+    ./MPU.H
+    ./RAWFILE.H
+    ./WATCOM.H
+    ./borlandc.h
+    ./cpudetect.cpp
+    ./cpudetect.h
+    ./mpu.cpp
+    ./mutex.cpp
+    ./mutex.h
+    ./rawfile.cpp
+    ./rcfile.cpp
+    ./rcfile.h
+    ./srandom.cpp
+    ./srandom.h
+    ./systimer.cpp
+    ./systimer.h
     ./thread.cpp
     ./thread.h
     ./timer.h
-    ./trackwin.h
-    ./trect.h
-    ./trim.cpp
-    ./trim.h
-    ./uarray.h
-    ./vector.cpp
-    ./verchk.cpp
-    ./verchk.h
     ./visualc.h
-    ./widestring.cpp
-    ./widestring.h
     ./win.cpp
     ./win.h
-    ./wwfile.cpp
-    ./wwfont.cpp
-    ./wwstring.cpp
-    ./wwstring.h
-    ./xmouse.h
-    ./xpipe.cpp
-    ./xstraw.cpp
-    ./xsurface.cpp
-    ./xsurface.h
+    ./cpudetect.cpp
+    ./mpu.cpp
+    ./mutex.cpp
+    ./rawfile.cpp
+    ./rcfile.cpp
+    ./srandom.cpp
+    ./win.cpp
 )
 
-# The original wwlib.dsp mixes low-level utility code with display/surface code.
-# Keep the manifest membership visible above, but do not compile DirectDraw and
-# XSurface sources in the non-Windows bootstrap scaffold. This is a logical
-# source-boundary marker, not a physical reorganization.
+set(WWLIB_DISPLAY_SURFACE_SOURCES
+    ./Convert.h
+    ./Surface.h
+    ./blit.cpp
+    ./blit.h
+    ./blitter.h
+    ./bsurface.h
+    ./convert.cpp
+    ./ddraw.cpp
+    ./dsurface.cpp
+    ./dsurface.h
+    ./surfrect.h
+    ./trackwin.h
+    ./trect.h
+    ./xsurface.cpp
+    ./xsurface.h
+    ./blit.cpp
+    ./convert.cpp
+    ./ddraw.cpp
+    ./dsurface.cpp
+    ./xsurface.cpp
+)
+
+set(WWLIB_INPUT_MESSAGE_SOURCES
+    ./jshell.cpp
+    ./keyboard.cpp
+    ./keyboard.h
+    ./msgloop.cpp
+    ./msgloop.h
+    ./xmouse.h
+    ./jshell.cpp
+    ./keyboard.cpp
+    ./msgloop.cpp
+)
+
+set(WWLIB_REGISTRY_VERSION_SOURCES
+    ./registry.cpp
+    ./registry.h
+    ./verchk.cpp
+    ./verchk.h
+    ./registry.cpp
+    ./verchk.cpp
+)
+
+set(WWLIB_ENCODING_STRING_SOURCES
+    ./_convert.cpp
+    ./data.cpp
+    ./data.h
+    ./nstrdup.cpp
+    ./nstrdup.h
+    ./strtok_r.cpp
+    ./strtok_r.h
+    ./trim.cpp
+    ./trim.h
+    ./widestring.cpp
+    ./widestring.h
+    ./wwstring.cpp
+    ./wwstring.h
+    ./strtok_r.cpp
+    ./widestring.cpp
+)
+
+set(WWLIB_CONTENT_ARCHIVE_SOURCES
+    ./INI.H
+    ./PALETTE.H
+    ./RGB.H
+    ./TARGA.CPP
+    ./TARGA.H
+    ./gnu_regex.c
+    ./gnu_regex.h
+    ./hsv.cpp
+    ./ini.cpp
+    ./inisup.h
+    ./mixfile.cpp
+    ./mixfile.h
+    ./palette.cpp
+    ./pcx.H
+    ./pcx.cpp
+    ./refcount.cpp
+    ./refcount.h
+    ./regexpr.cpp
+    ./regexpr.h
+    ./rgb.cpp
+    ./shapeset.h
+    ./ini.cpp
+    ./mixfile.cpp
+    ./refcount.cpp
+    ./regexpr.cpp
+)
+
+set(WWLIB_WINDOWS_INTEGRATION_SOURCES
+    ./LaunchWeb.cpp
+    ./LaunchWeb.h
+    ./WWCOMUtil.cpp
+    ./WWCOMUtil.h
+)
+
+set(WWLIB_DIAGNOSTIC_CONSOLE_SOURCES
+    ./Except.cpp
+    ./MONO.H
+    ./MONODRVR.H
+    ./_mono.cpp
+    ./_mono.h
+    ./mono.cpp
+    ./mono.cpp
+)
+
+set(WWLIB_SOURCES
+    ${WWLIB_FOUNDATION_SOURCES}
+    ${WWLIB_PLATFORM_SOURCES}
+    ${WWLIB_DISPLAY_SURFACE_SOURCES}
+    ${WWLIB_INPUT_MESSAGE_SOURCES}
+    ${WWLIB_REGISTRY_VERSION_SOURCES}
+    ${WWLIB_ENCODING_STRING_SOURCES}
+    ${WWLIB_CONTENT_ARCHIVE_SOURCES}
+    ${WWLIB_WINDOWS_INTEGRATION_SOURCES}
+    ${WWLIB_DIAGNOSTIC_CONSOLE_SOURCES}
+)
+
+# Non-Windows bootstrap: compile the currently proven portable subset while
+# keeping the full logical source inventory above. Deferred sources are seams
+# for future platform, renderer/display, input/message, registry/version,
+# archive/content, and string/encoding work -- not missing-header accidents.
 if(NOT WIN32)
   list(REMOVE_ITEM WWLIB_SOURCES
+    ./blit.cpp
+    ./convert.cpp
+    ./cpudetect.cpp
+    ./ddraw.cpp
+    ./dsurface.cpp
+    ./ini.cpp
+    ./jshell.cpp
+    ./keyboard.cpp
+    ./mixfile.cpp
+    ./mono.cpp
+    ./mpu.cpp
+    ./msgloop.cpp
+    ./mutex.cpp
+    ./rawfile.cpp
+    ./rcfile.cpp
+    ./refcount.cpp
+    ./regexpr.cpp
+    ./registry.cpp
+    ./srandom.cpp
+    ./strtok_r.cpp
+    ./verchk.cpp
+    ./widestring.cpp
+    ./win.cpp
+    ./xsurface.cpp
     ./blit.cpp
     ./convert.cpp
     ./cpudetect.cpp
