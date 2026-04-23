@@ -1,116 +1,110 @@
+# Command & Conquer Renegade — EA Baseline Modernization
 
-# Command & Conquer Renegade
+This is the **EA baseline modernization branch** of the original Electronic Arts C&C Renegade source. The goal is to preserve the original source layout, document its architecture, and build a reproducible modern scaffold before replaying OpenW3D fork changes.
 
-This repository includes source code for Command & Conquer Renegade. This release provides support to the [Steam Workshop](https://steamcommunity.com/workshop/browse/?appid=2229890) for the game.
+## What is this?
 
+This repo starts from the [original EA Renegade source](https://github.com/electronicarts/CnC_Renegade) (`ea/main @ 3e00c3a`). It grows a CMake scaffold incrementally from the original VC6 project metadata. The scaffold is organized around **9 architectural buckets**. No fake stubs. No behavior changes. Platform-specific code is classified and deferred.
 
-## Modernization branch status
+> **Status (Batch 022):** 11 of 61 original VC6 projects are compiled in the default scaffold. 6 more are blocked by resolvable issues (missing SDKs, header tangle). The rest are entirely Win32/MFC-coupled.
 
-This fork is being modernized with an **EA-baseline-first** workflow: preserve and document the original Electronic Arts Renegade source layout first, build a conservative modern scaffold from the original Visual Studio 6 project metadata, and only later replay OpenW3D/fork changes onto a cleaner foundation.
-
-## Current modernization docs of interest:
-
-- [`docs/architecture/modernization-strategy-v2.md`](docs/architecture/modernization-strategy-v2.md) — current strategy and workflow.
-- [`docs/architecture/modernization-progress-roadmap.md`](docs/architecture/modernization-progress-roadmap.md) — progress and remaining work.
-- [`docs/architecture/original-project-scaffold-status.md`](docs/architecture/original-project-scaffold-status.md) — original VC6 project status matrix.
-- [`docs/architecture/deferred-source-ledger.md`](docs/architecture/deferred-source-ledger.md) — intentionally deferred source islands and why they remain deferred.
-- [`docs/architecture/commando-dependency-prep.md`](docs/architecture/commando-dependency-prep.md) — product-shell prep notes before the first `commando` ingestion batch.
-- [`docs/parity/target-status.md`](docs/parity/target-status.md) — distinguishes modeled targets, default green scaffold targets, and parity evidence state.
-- [`docs/build/project-ingestion-and-probe-workflow.md`](docs/build/project-ingestion-and-probe-workflow.md) — repeatable target ingestion/probe workflow.
-
-
-The current Linux bootstrap CMake scaffold builds selected low-level/media-adjacent source islands, not the final client/FDS/tools products yet:
+## Quick build
 
 ```bash
-cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
+# Default scaffold — foundation + engine seams (11 targets)
+cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_ENGINE_SEAMS=ON
 cmake --build build/cmake-scaffold -j4
 ```
 
-Currently modeled scaffold targets include:
+## Status matrix
 
-```text
-wwdebug
-wwmath
-wwbitpack
-wwsaveload
-wwtranslatedb
-wwlib
-wwutil
-wwnet
-BinkMovie
-SControl
+| Category | Count | Details |
+|----------|-------|---------|
+| ✅ Built | 11 | `wwdebug`, `WWMath`, `wwbitpack`, `wwsaveload`, `wwtranslatedb`, `wwlib`, `wwutil`, `wwnet`, `BinkMovie`, `SControl`, `Scripts` |
+| ❌ Blocked (SDK) | 2 | `ww3d2` (d3d8.h missing), `WWAudio` (Mss.h missing) |
+| ❌ Blocked (header tangle) | 2 | `Combat` (needs ww3d2 math types), `wwphys` (same) |
+| ❌ Blocked (Win32) | 1 | `wwui` (158 WCHAR hits, Win32 msg loop) |
+| ❌ Blocked (all seams) | 1 | `Commando` (requires all above) |
+| ❌ Deferred | 44 | tools, tests, installers — entirely Win32/MFC/assembly |
+
+See: [`docs/architecture/project-scaffold-status.md`](docs/architecture/project-scaffold-status.md)
+
+## Architecture
+
+The codebase maps to 9 long-term buckets:
+
+```
+foundation       → wwdebug, WWMath, wwbitpack, wwsaveload, wwtranslatedb
+platform         → wwlib (filtered), wwnet (filtered)
+engine_runtime   → Scripts (filtered), Combat (blocked)
+engine_asset_content → BinkMovie (filtered)
+audio            → WWAudio (blocked — Miles SDK)
+renderer         → ww3d2 (blocked — DX8 SDK)
+physics          → wwphys (blocked — header tangle)
+input_and_control → SControl (built), wwui (blocked)
+products         → Commando (blocked), tools (deferred)
 ```
 
-Scaffold success is tracked separately from full parity. Some original sources are intentionally deferred where they cross unresolved DirectDraw, WinSock, RAD/Bink, audio, UI, online-service, platform, or product-shell boundaries.
+The **central architectural problem** is that `ww3d2/` contains both portable game-logic math types (Vector3, Sphere, OBBox) and DirectX 8 renderer code in the same physical directory. Until these are separated, any target needing math types (Combat, wwphys) cannot build on non-Windows.
 
-Additional subsystem seam probes may be configured separately. For example, the current `WWAudio` scaffold is opt-in because it intentionally stops at the proprietary Miles/DirectSound backend boundary, `wwphys` is opt-in because it currently exposes mixed runtime/renderer/platform leakage, `wwui` is opt-in because it currently exposes mixed UI/input/platform/renderer leakage, `ww3d2` is opt-in because it currently exposes mixed renderer/platform/asset-content leakage even after the explicit DX8 backend island is deferred, `Combat` is opt-in because it currently exposes mixed gameplay/runtime, product-shell, and audio-backend leakage, `Scripts` is opt-in because it currently separates Windows DLL entry glue from a portable runtime-core seam, and `commando` is opt-in because it currently exposes the main mixed client/FDS/online/config/render product shell rather than a portable executable seam:
+See: [`docs/architecture/9-bucket-architecture-map.md`](docs/architecture/9-bucket-architecture-map.md)
+
+## Key docs
+
+| Doc | What it is |
+|-----|-----------|
+| [`docs/architecture/9-bucket-architecture-map.md`](docs/architecture/9-bucket-architecture-map.md) | Full architecture map with dependency graph and open questions |
+| [`docs/architecture/project-scaffold-status.md`](docs/architecture/project-scaffold-status.md) | All 61 VC6 projects with status, bucket, and blocker notes |
+| [`docs/architecture/deferred-source-ledger.md`](docs/architecture/deferred-source-ledger.md) | Every intentionally deferred source file and why |
+| [`docs/architecture/modernization-progress-roadmap.md`](docs/architecture/modernization-progress-roadmap.md) | Batch-by-batch progress history |
+| [`docs/build/`](docs/build/) | Per-batch portability and scaffold documentation |
+
+## Build options
 
 ```bash
-cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_AUDIO_SEAMS=ON
-cmake -S . -B build/cmake-phys-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_PHYS_SEAMS=ON
-cmake -S . -B build/cmake-ui-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_UI_SEAMS=ON
-cmake -S . -B build/cmake-renderer-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_RENDERER_SEAMS=ON
-cmake -S . -B build/cmake-combat-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_COMBAT_SEAMS=ON
-cmake -S . -B build/cmake-scripts-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_SCRIPT_SEAMS=ON
-cmake -S . -B build/cmake-commando-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_AUDIO_SEAMS=ON -DRENEGADE_BUILD_PHYS_SEAMS=ON -DRENEGADE_BUILD_UI_SEAMS=ON -DRENEGADE_BUILD_RENDERER_SEAMS=ON -DRENEGADE_BUILD_COMBAT_SEAMS=ON -DRENEGADE_BUILD_SCRIPT_SEAMS=ON -DRENEGADE_BUILD_COMMANDO_SEAMS=ON
+# Default: foundation + engine seams (what builds cleanly)
+-DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_ENGINE_SEAMS=ON
+
+# Probe blocked targets (requires SDK or header cleanup first)
+-DRENEGADE_BUILD_RENDERER_SEAMS=ON    # ww3d2 — needs DirectX 8 SDK
+-DRENEGADE_BUILD_AUDIO_SEAMS=ON       # WWAudio — needs Miles Sound System SDK
+-DRENEGADE_BUILD_PHYS_SEAMS=ON        # wwphys — blocked by header tangle
+-DRENEGADE_BUILD_UI_SEAMS=ON          # wwui — needs Win32/text boundary
+-DRENEGADE_BUILD_COMBAT_SEAMS=ON      # Combat — blocked by header tangle
+
+# Products (all seams required)
+-DRENEGADE_BUILD_COMMANDO_SEAMS=ON    # Commando — everything
+-DRENEGADE_BUILD_TOOLS_SEAMS=ON       # Tools — mostly Win32/MFC
+
+# Strict: fail if a manifest-listed source is absent
+-DRENEGADE_STRICT_SOURCE_MANIFEST=ON
 ```
 
-## Dependencies
+## EA baseline dependencies (original)
 
-If you wish to rebuild the original source code and tools successfully you will need to find or write new replacements (or remove the code using them entirely) for the following libraries;
+The original EA source expects these SDKs. They are absent from this repo:
 
-- DirectX SDK (Version 8.0 or higher) (expected path `\Code\DirectX\`)
-- RAD Bink SDK - (expected path `\Code\BinkMovie\`)
-- RAD Miles Sound System SDK - (expected path `\Code\Miles6\`)
-- NvDXTLib SDK - (expected path `\Code\NvDXTLib\`)
-- Lightscape SDK - (expected path `\Code\Lightscape\`)
-- Umbra SDK - (expected path `\Code\Umbra\`)
-- GameSpy SDK - (expected path `\Code\GameSpy\`)
-- GNU Regex - (expected path `\Code\WWLib\`)
-- SafeDisk API - (expected path `\Code\Launcher\SafeDisk\`)
-- Microsoft Cab Archive Library - (expected path `\Code\Installer\Cab\`)
-- RTPatch Library - (expected path `\Code\Installer\`)
-- Java Runtime Headers - (expected path `\Code\Tools\RenegadeGR\`)
+```
+DirectX SDK 8.0+       \Code\DirectX\
+RAD Bink SDK            \Code\BinkMovie\
+RAD Miles Sound System  \Code\Miles6\
+NvDXTLib SDK            \Code\NvDXTLib\
+Lightscape SDK          \Code\Lightscape\
+Umbra SDK               \Code\Umbra\
+GameSpy SDK             \Code\GameSpy\
+GNU Regex               \Code\WWLib\
+SafeDisk API            \Code\Launcher\SafeDisk\
+Microsoft Cab Library   \Code\Installer\Cab\
+RTPatch Library         \Code\Installer\
+Java Runtime Headers    \Code\Tools\RenegadeGR\
+```
 
+## FDS
 
-## Compiling (Win32 Only)
+The dedicated server is **not** a standalone project. It is an alternate `Commando` build with `FREEDEDICATEDSERVER` defined in `Code/Combat/specialbuilds.h`.
 
-To use the compiled binaries, you must own the game. The C&C Ultimate Collection is available for purchase on [EA App](https://www.ea.com/en-gb/games/command-and-conquer/command-and-conquer-the-ultimate-collection/buy/pc) or [Steam](https://store.steampowered.com/bundle/39394/Command__Conquer_The_Ultimate_Collection/).
-
-### Renegade
-
-The quickest way to build all configurations in the project is to open `commando.dsw` in Microsoft Visual Studio C++ 6.0 (SP5 recommended for binary matching to patch 1.037) and select Build -> Batch Build, then hit the “Rebuild All” button.
-
-If you wish to compile the code under a modern version of Microsoft Visual Studio, you can convert the legacy project file to a modern MSVC solution by opening the `commando.dsw` in Microsoft Visual Studio .NET 2003, and then opening the newly created project and solution file in MSVC 2015 or newer.
-
-NOTE: As modern versions of MSVC enforce newer revisions of the C++ standard, you will need to make extensive changes to the codebase before it successfully compiles, even more so if you plan on compiling for the Win64 platform.
-
-When the workspace has finished building, the compiled binaries will be copied to the `/Run/` directory found in the root of this repository. 
-
-
-### Free Dedicated Server
-It’s possible to build the Windows version of the FDS (Free Dedicated Server) for Command & Conquer Renegade from the source code in this repository, just uncomment `#define FREEDEDICATEDSERVER` in [Combat\specialbuilds.h](Combat\specialbuilds.h) and perform a “Rebuild All” action on the Release config.
-
-
-### Level Edit (Public Release)
-To build the public release build of Level Edit, modify the LevelEdit project settings and add `PUBLIC_EDITOR_VER` to the preprocessor defines.
-
-
-## Known Issues
-
-The “Debug” configuration of the “Commando” project (the Renegade main project) will sometimes fail to link the final executable. This is due to Windows Defender incorrectly detecting RenegadeD.exe containing a virus (possibly due to the embedded browser code). Excluding the output `/Run/` folder found in the root of this repository in Windows Defender should resolve this for you.
-
+---
 
 ## Contributing
 
-This repository will not be accepting contributions (pull requests, issues, etc). If you wish to create changes to the source code and encourage collaboration, please create a fork of the repository under your GitHub user/organization space.
-
-
-## Support
-
-This repository is for preservation purposes only and is archived without support. 
-
-
-## License
-
-This repository and its contents are licensed under the GPL v3 license, with additional terms applied. Please see [LICENSE.md](LICENSE.md) for details.
+This repo will not accept direct contributions. Create a fork if you want to collaborate on changes.
