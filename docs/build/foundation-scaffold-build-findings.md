@@ -57,9 +57,22 @@ A first small portability batch advanced this target past several shallow compat
 - MSVC x86 inline assembly in `FastCriticalSectionClass`
 - old MSVC function-style cast / loop-scope behavior in `BitPacker.cpp`
 
-The target now reaches a more meaningful portability decision around Windows wide-character semantics. EA/Win32 `WCHAR` is 16-bit, while Linux `wchar_t` is commonly 32-bit. This affects `BitStreamClass`, `WideStringClass`, serialization, and compatibility-sensitive string handling, so it should not be papered over with an ad-hoc typedef.
+A follow-up narrow wide-character batch added non-Windows `BitStreamClass` overloads that serialize `WCHAR` through `USHORT`, preserving the Win32-era 16-bit bitstream width for this path while avoiding a global string redesign.
 
-See `docs/build/foundation-portability-batch-001.md` for the detailed batch notes.
+Current targeted result:
+
+```bash
+cmake --build build/cmake-scaffold --target wwbitpack -j4
+```
+
+```text
+[100%] Built target wwbitpack
+```
+
+See:
+
+- `docs/build/foundation-portability-batch-001.md`
+- `docs/build/legacy-wide-character-compatibility.md`
 
 ## Modernization rule for these blockers
 
