@@ -32,7 +32,7 @@
 #define NETUTIL_H
 
 #include "win.h"
-#include <winsock.h>
+#include "socket_compat.h"
 
 #include "bittype.h"
 

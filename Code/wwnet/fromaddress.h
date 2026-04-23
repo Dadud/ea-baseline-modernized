@@ -32,7 +32,7 @@
 #define FROMADDRESS_H
 
 #include "win.h"
-#include <winsock.h>
+#include "socket_compat.h"
 
 //
 // This trivial class exists solely to speed compile times.

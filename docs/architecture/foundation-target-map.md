@@ -15,6 +15,7 @@ The current rule is **logical mapping first, physical moves later**. Original pr
 | `Code/wwtranslatedb/wwtranslatedb.dsp` | `wwtranslatedb` | Builds in the foundation scaffold | Translation database support. Current non-Windows file API bridge is a scaffold shim, not final platform architecture. |
 | `Code/wwutil/wwutil.dsp` | `wwutil` | Builds in the foundation scaffold | Small support utilities. Windows stack walking is no-op on non-Windows scaffold builds. |
 | `Code/wwlib/wwlib.dsp` | `wwlib` | Builds in the non-Windows foundation scaffold after source-island classification | Mixed historical bucket. Current non-Windows scaffold compiles the portable subset and defers platform/display/DirectDraw/input/registry/version islands. Needs logical sub-boundaries before it can be a clean portable foundation layer. |
+| `Code/wwnet/wwnet.dsp` | `wwnet` | Builds in the non-Windows scaffold after socket/session source classification | First networking layer. Current scaffold compiles packet/stat/network-object helpers and defers live WinSock/session sources for a future platform networking boundary. |
 
 ## `wwlib` sub-bucket observations
 
@@ -29,7 +30,25 @@ The current rule is **logical mapping first, physical moves later**. Original pr
 
 The current scaffold intentionally keeps this as one `wwlib` target because original VC6 membership is the source of truth. The future architecture should split these responsibilities logically before moving files.
 
-## Current non-Windows classification seam
+## Current non-Windows classification seams
+
+### `wwnet`
+
+Batch 005 adds `wwnet` as the next support dependency layer. The target is
+temporarily grouped with the foundation scaffold for build-order purposes, but
+architecturally it crosses into the future `platform` networking boundary.
+
+The non-Windows scaffold keeps the original source inventory visible while
+deferring live socket/session sources:
+
+```text
+BWBalance.cpp, connect.cpp, netutil.cpp, packetmgr.cpp, rhost.cpp, singlepl.cpp
+```
+
+`Code/wwnet/socket_compat.h` provides only narrow socket type names needed by
+shared packet/object headers. It is not a WinSock implementation.
+
+### `wwlib`
 
 The first non-mechanical `wwlib` blocker was DirectDraw:
 
@@ -54,4 +73,4 @@ Before jumping to `Commando`, continue using this target map to classify origina
 
 1. refine the deferred `wwlib` islands one area at a time
 2. decide whether later scaffolding should model temporary subtargets for platform, file/archive, display/surface, and string-conversion islands
-3. then move outward to `wwnet` or shared runtime targets once foundation/platform seams are explicit
+3. refine the `wwnet` live socket/session seam before treating networking as portable

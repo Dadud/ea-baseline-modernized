@@ -43,7 +43,7 @@
 #include "wwdebug.h"
 #include "vector.h"
 
-#include <winsock.h> // for SOCKET
+#include "socket_compat.h" // for SOCKET
 
 #ifdef WWASSERT
 #ifndef pm_assert

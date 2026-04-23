@@ -167,6 +167,40 @@ See:
 - `docs/build/foundation-portability-batch-004.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 005: `wwnet` source-boundary classification
+
+Batch 005 models the original `Code/wwnet/wwnet.dsp` project as the next support dependency target. The first blocker was the expected WinSock boundary through headers such as:
+
+```text
+Code/wwnet/fromaddress.h -> <winsock.h>
+Code/wwnet/packetmgr.h -> <winsock.h>
+Code/wwnet/netutil.h -> <winsock.h>
+```
+
+The non-Windows scaffold now defers live socket/session sources while compiling the packet/stat/network-object side of `wwnet`:
+
+```text
+BWBalance.cpp, connect.cpp, netutil.cpp, packetmgr.cpp, rhost.cpp, singlepl.cpp
+```
+
+Targeted verification succeeds:
+
+```bash
+cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
+cmake --build build/cmake-scaffold --target wwnet -j4
+```
+
+Current result:
+
+```text
+[100%] Built target wwnet
+```
+
+See:
+
+- `docs/build/foundation-portability-batch-005.md`
+- `docs/architecture/foundation-target-map.md`
+
 ## Modernization rule for these blockers
 
 Do not paper over these by globally renaming files or adding broad platform shims yet.
