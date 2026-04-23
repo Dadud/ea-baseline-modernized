@@ -147,6 +147,10 @@ Key findings:
 
 These scripts make future batches faster and more systematic by automating scaffold generation and deferred-source tracking.
 
+### Previous batch completed: Batch 020 — probe WWAudio; classify as Miles audio seam
+
+Batch 020 attempted to model WWAudio using the automation tooling. Generated a CMakeLists.txt and attempted to build — failed. The failure confirmed the probe signal data: even the handle facade types (`Sound2DHandleClass`, `Sound3DHandleClass`, `SoundStreamHandleClass`) depend on `WWAudio.h` which unconditionally includes `Mss.H`. There is no portable C++ subset within WWAudio without the Miles Sound System SDK. WWAudio is classified as a third-party SDK seam alongside RAD/Bink and DirectX 8. No CMakeLists.txt was committed. Scaffold remains 10/10 green.
+
 ### Previous batch completed: Batch 018 — datasafe Win32 gating + Commando dependency mapping
 
 Batch 018 does two things:
