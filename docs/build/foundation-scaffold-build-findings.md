@@ -279,6 +279,28 @@ See:
 - `docs/build/foundation-portability-batch-009.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 010: `WWAudio` audio backend seam
+
+Batch 010 adds an opt-in scaffold for the original `Code/WWAudio/WWAudio.dsp` target under:
+
+```text
+RENEGADE_BUILD_AUDIO_SEAMS=ON
+```
+
+The source inventory is split into event, save/load, scene metadata, threading, utility, and Miles backend islands. The first raw probe exposed case-sensitive local include spelling issues; those were fixed so the target reaches the real proprietary audio backend seam:
+
+```text
+Code/WWAudio/AudibleSound.h -> mss.h
+Code/WWAudio/WWAudio.h -> Mss.H
+```
+
+The default scaffold does not build `WWAudio` yet. No fake Miles SDK or DirectSound replacement was added.
+
+See:
+
+- `docs/build/foundation-portability-batch-010.md`
+- `docs/architecture/foundation-target-map.md`
+
 ## Modernization rule for these blockers
 
 Do not paper over these by globally renaming files or adding broad platform shims yet.

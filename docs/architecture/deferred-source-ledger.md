@@ -50,6 +50,9 @@ A scaffold target can build while still having deferred source debt. This table 
 | `wwnet` | `Code/wwnet/singlepl.cpp` | session policy | network/session policy | Session path needs runtime/network design. | yes | yes | no | network session policy | deferred |
 | `BinkMovie` | `BINKMOVIE_SUBTITLE_RENDER_SOURCES` | subtitle rendering | renderer/presentation glue | Subtitle rendering needs renderer/presentation boundary. | yes | no | maybe | renderer presentation adapter | deferred |
 | `BinkMovie` | `BINKMOVIE_RAD_PLAYER_SOURCES` | media/video backend | RAD/Bink SDK | RAD/Bink playback requires media backend and third-party SDK policy. | yes | no | maybe | media/video backend | deferred |
+| `WWAudio` | `WWAUDIO_MILES_BACKEND_SOURCES` | audio backend | DirectSound/Miles/audio backend | Concrete runtime implementation depends on proprietary Miles Sound System and legacy DirectSound assumptions. | yes | maybe | maybe | audio backend | deferred |
+| `WWAudio` | `WWAUDIO_THREADING_SOURCES` | platform threading | threading/synchronization | Delayed-release threading uses Win32 thread/event types and should be reviewed with the platform threading boundary. | yes | maybe | maybe | platform threading/synchronization | deferred |
+| `WWAudio` | `WWAUDIO_SCENE_METADATA_SOURCES` | audio scene metadata | DirectSound/Miles/audio backend | Higher-level audio scene objects still include backend-facing `WWAudio.h` / Miles types; metadata/backend coupling needs boundary cleanup. | yes | maybe | yes | audio scene/backend split | deferred |
 
 ## Notes
 

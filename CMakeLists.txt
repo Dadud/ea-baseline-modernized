@@ -8,6 +8,7 @@ cmake_minimum_required(VERSION 3.20)
 project(CnC_Renegade_EA_Baseline LANGUAGES CXX)
 
 option(RENEGADE_BUILD_FOUNDATION_LIBS "Configure low-level EA baseline static library targets" ON)
+option(RENEGADE_BUILD_AUDIO_SEAMS "Configure experimental audio seam targets" OFF)
 option(RENEGADE_STRICT_SOURCE_MANIFEST "Fail configure if a manifest-listed source is missing" OFF)
 
 set(CMAKE_CXX_STANDARD 98)
@@ -27,4 +28,8 @@ if(RENEGADE_BUILD_FOUNDATION_LIBS)
   add_subdirectory(Code/wwnet)
   add_subdirectory(Code/BinkMovie)
   add_subdirectory(Code/SControl)
+endif()
+
+if(RENEGADE_BUILD_AUDIO_SEAMS)
+  add_subdirectory(Code/WWAudio)
 endif()

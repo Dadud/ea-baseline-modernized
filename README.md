@@ -40,6 +40,12 @@ SControl
 
 Scaffold success is tracked separately from full parity. Some original sources are intentionally deferred where they cross unresolved DirectDraw, WinSock, RAD/Bink, audio, UI, online-service, platform, or product-shell boundaries.
 
+Additional subsystem seam probes may be configured separately. For example, the current `WWAudio` scaffold is opt-in because it intentionally stops at the proprietary Miles/DirectSound backend boundary:
+
+```bash
+cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_AUDIO_SEAMS=ON
+```
+
 ## Dependencies
 
 If you wish to rebuild the original source code and tools successfully you will need to find or write new replacements (or remove the code using them entirely) for the following libraries;

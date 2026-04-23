@@ -97,7 +97,6 @@ No artifact parity has been proven yet. The current scaffold is compile-checkabl
 
 Important buckets still need scaffold modeling and boundary review:
 
-- `WWAudio`
 - `Combat`
 - `ww3d2`
 - `wwphys`
@@ -122,7 +121,11 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 009 — model `SControl`
+### Latest batch completed: Batch 010 — map `WWAudio`
+
+Batch 010 adds an opt-in scaffold for the original `WWAudio` target and classifies it into event, save/load, scene metadata, threading, utility, and Miles backend source islands. It intentionally documents the Miles/DirectSound backend blocker instead of adding fake Miles headers.
+
+### Previous batch completed: Batch 009 — model `SControl`
 
 Batch 009 adds the original `SControl` target as a small server-control/network seam. CMake now identifies:
 
@@ -176,13 +179,9 @@ Original target names and physical file locations remain unchanged.
 
 ### Following batch candidates
 
-After Batch 009, choose one bounded expansion:
+After Batch 010, choose one bounded expansion:
 
-1. `WWAudio`
-   - important audio subsystem;
-   - good candidate for future backend split;
-   - likely to expose DirectSound/Miles and threading assumptions.
-2. Continue status/inventory cleanup
+1. Continue status/inventory cleanup
    - update the 61-project matrix as each target is modeled;
    - refine current source-island docs before adding higher-coupling projects.
 
@@ -209,7 +208,7 @@ Those are high-coupling buckets and should wait until more boundary mapping exis
 
 ## Open questions
 
-- Should `WWAudio` be the next subsystem after `SControl`, or should the next batch focus on generated status/report cleanup?
+- Should the next batch focus on generated status/report cleanup before moving to `Combat`, `ww3d2`, `wwphys`, or `wwui`?
 - How much of `wwlib` should remain under `foundation` once platform/content/display pieces are split?
 - Should socket abstraction be introduced before or after `Combat` modeling?
 - What is the minimum useful artifact parity check for the first product build attempt?

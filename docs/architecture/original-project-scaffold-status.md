@@ -54,7 +54,7 @@ This matrix summarizes the generated VC6 project manifest after Batch 005. It is
 | `SControl` | `Static Library` | `Code/SControl/SControl.dsp` | modeled/builds with narrow POSIX socket bridge | products/dedicated_server/online_services/platform_sockets |
 | `pluglib` | `Static Library` | `Code/Tools/pluglib/pluglib.dsp` | not modeled | products/tools/engine_asset_content |
 | `ww3d2` | `Static Library` | `Code/ww3d2/ww3d2.dsp` | not modeled | renderer/engine_asset_content |
-| `WWAudio` | `Static Library` | `Code/WWAudio/WWAudio.dsp` | not modeled | audio |
+| `WWAudio` | `Static Library` | `Code/WWAudio/WWAudio.dsp` | modeled as opt-in audio seam; Miles/backend blocker documented | audio/platform_threading |
 | `wwbitpack` | `Static Library` | `Code/wwbitpack/wwbitpack.dsp` | modeled/builds | foundation |
 | `wwdebug` | `Static Library` | `Code/wwdebug/wwdebug.dsp` | modeled/builds | foundation |
 | `wwlib` | `Static Library` | `Code/wwlib/wwlib.dsp` | modeled/builds | foundation/platform/content/renderer seams |
