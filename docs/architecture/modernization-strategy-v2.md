@@ -139,17 +139,19 @@ For example, `BinkMovie` currently has portable subtitle data/parser scaffold co
 
 ### Batch 008: automation and ledger batch
 
-Recommended next batch:
+Completed in Batch 008:
 
-- create `docs/architecture/deferred-source-ledger.md`
-- add an initial ledger with known `wwlib`, `wwnet`, and `BinkMovie` deferred sources
-- add a project ingestion/probe workflow document or scripts
-- optionally start `scripts/build/probe_targets.py`
-- optionally start `scripts/projects/write_cmake_scaffold.py`
+- created `docs/architecture/deferred-source-ledger.md`
+- added an initial ledger with known `wwlib`, `wwnet`, and `BinkMovie` deferred sources
+- added `docs/build/project-ingestion-and-probe-workflow.md`
+- added `scripts/projects/write_cmake_scaffold.py`
+- added `scripts/build/probe_targets.py`
+- generated `docs/build/target-probe-report-batch-008.md`
+- updated `README.md` with modernization branch status and current scaffold commands
 
-### Batch 009: triage wave
+### Batch 009: targeted scaffold from triage
 
-Use the new workflow to inspect, not necessarily build, candidates such as:
+Use the new workflow to inspect, and where appropriate build, candidates such as:
 
 - `SControl`
 - `WWAudio`

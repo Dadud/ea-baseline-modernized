@@ -4,9 +4,44 @@
 This repository includes source code for Command & Conquer Renegade. This release provides support to the [Steam Workshop](https://steamcommunity.com/workshop/browse/?appid=2229890) for the game.
 
 
+## Modernization branch status
+
+This fork is being modernized with an **EA-baseline-first** workflow: preserve and document the original Electronic Arts Renegade source layout first, build a conservative modern scaffold from the original Visual Studio 6 project metadata, and only later replay OpenW3D/fork changes onto a cleaner foundation.
+
+Current modernization docs of interest:
+
+- [`docs/architecture/modernization-strategy-v2.md`](docs/architecture/modernization-strategy-v2.md) — current strategy and workflow.
+- [`docs/architecture/modernization-progress-roadmap.md`](docs/architecture/modernization-progress-roadmap.md) — progress and remaining work.
+- [`docs/architecture/original-project-scaffold-status.md`](docs/architecture/original-project-scaffold-status.md) — original VC6 project status matrix.
+- [`docs/architecture/deferred-source-ledger.md`](docs/architecture/deferred-source-ledger.md) — intentionally deferred source islands and why they remain deferred.
+- [`docs/build/project-ingestion-and-probe-workflow.md`](docs/build/project-ingestion-and-probe-workflow.md) — repeatable target ingestion/probe workflow.
+
+The current Linux bootstrap CMake scaffold builds selected low-level/media-adjacent source islands, not the final client/FDS/tools products yet:
+
+```bash
+cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
+cmake --build build/cmake-scaffold -j4
+```
+
+Currently modeled scaffold targets include:
+
+```text
+wwdebug
+wwmath
+wwbitpack
+wwsaveload
+wwtranslatedb
+wwlib
+wwutil
+wwnet
+BinkMovie
+```
+
+Scaffold success is tracked separately from full parity. Some original sources are intentionally deferred where they cross unresolved DirectDraw, WinSock, RAD/Bink, audio, UI, online-service, platform, or product-shell boundaries.
+
 ## Dependencies
 
-If you wish to rebuild the source code and tools successfully you will need to find or write new replacements (or remove the code using them entirely) for the following libraries;
+If you wish to rebuild the original source code and tools successfully you will need to find or write new replacements (or remove the code using them entirely) for the following libraries;
 
 - DirectX SDK (Version 8.0 or higher) (expected path `\Code\DirectX\`)
 - RAD Bink SDK - (expected path `\Code\BinkMovie\`)
