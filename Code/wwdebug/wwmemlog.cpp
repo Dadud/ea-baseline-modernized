@@ -42,8 +42,10 @@
 #include "wwmemlog.h"
 #include "wwdebug.h"
 #include "vector.h"
-#include "fastallocator.h"
+#include "FastAllocator.h"
+#if defined(_WIN32)
 #include <windows.h>
+#endif
 
 #define USE_FAST_ALLOCATOR
 
@@ -71,7 +73,11 @@
 ** method to use.
 */
 #define MEMLOG_USE_MUTEX					0
+#if defined(_WIN32)
 #define MEMLOG_USE_CRITICALSECTION		1
+#else
+#define MEMLOG_USE_CRITICALSECTION		0
+#endif
 #define MEMLOG_USE_FASTCRITICALSECTION	0
 
 
@@ -377,7 +383,11 @@ ActiveCategoryStackClass::operator = (const ActiveCategoryStackClass & that)
 ***************************************************************************************************/
 ActiveCategoryStackClass & ActiveCategoryClass::Get_Active_Stack(void)
 {
+#if defined(_WIN32)
 	int current_thread = ::GetCurrentThreadId();
+#else
+	int current_thread = 0;
+#endif
 
 	/*
 	** If we already have an allocated category stack for the current thread,
@@ -631,7 +641,11 @@ void * WWMemoryLogClass::Allocate_Memory(size_t size)
 	return ALLOC_MEMORY(size);
 #else
 
+#if defined(_WIN32)
 	__declspec( thread ) static bool reentrancy_test = false;
+#else
+	static bool reentrancy_test = false;
+#endif
 	MemLogMutexLockClass lock;
 
 	if (reentrancy_test) {

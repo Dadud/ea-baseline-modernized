@@ -43,15 +43,18 @@
 
 
 #include "wwdebug.h"
+#if defined(_WIN32)
 #include <windows.h>
+#endif
 //#include "win.h" can use this if allowed to see wwlib
+#include <errno.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
 #include <signal.h>
-#include "except.h"
+#include "Except.h"
 
 
 static PrintFunc			_CurMessageHandler = NULL;
@@ -65,7 +68,7 @@ static ProfileFunc		_CurProfileStopHandler = NULL;
 
 void Convert_System_Error_To_String(int id, char* buffer, int buf_len)
 {
-#ifndef _UNIX
+#if defined(_WIN32)
 	FormatMessage(
 		FORMAT_MESSAGE_FROM_SYSTEM,
 		NULL,
@@ -74,12 +77,20 @@ void Convert_System_Error_To_String(int id, char* buffer, int buf_len)
 		buffer,
 		buf_len,
 		NULL);
+#else
+	if (buffer != NULL && buf_len > 0) {
+		strncpy(buffer, strerror(id), buf_len - 1);
+		buffer[buf_len - 1] = '\0';
+	}
 #endif
 }
-
 int Get_Last_System_Error()
 {
+#if defined(_WIN32)
 	return GetLastError();
+#else
+	return errno;
+#endif
 }
 
 /***********************************************************************************************
@@ -305,6 +316,7 @@ void WWDebug_Assert_Fail(const char * expr,const char * file, int line)
       char assertbuf[4096];
 		sprintf(assertbuf, "Assert failed\n\n. File %s Line %d", file, line);
 
+#if defined(_WIN32)
       int code = MessageBoxA(NULL, assertbuf, "WWDebug_Assert_Fail", MB_ABORTRETRYIGNORE|MB_ICONHAND|MB_SETFOREGROUND|MB_TASKMODAL);
 
       if (code == IDABORT) {
@@ -316,6 +328,11 @@ void WWDebug_Assert_Fail(const char * expr,const char * file, int line)
 			_asm int 3;
       	return;
 		}
+#else
+		fprintf(stderr, "%s\n", assertbuf);
+		raise(SIGABRT);
+		_exit(3);
+#endif
    }
 }
 #endif
@@ -456,6 +473,7 @@ void WWDebug_Profile_Stop( const char * title)
  *=============================================================================================*/
 void WWDebug_DBWin32_Message_Handler( const char * str )
 {
+#if defined(_WIN32)
 
     HANDLE heventDBWIN;  /* DBWIN32 synchronization object */
     HANDLE heventData;   /* data passing synch object */
@@ -513,5 +531,8 @@ void WWDebug_DBWin32_Message_Handler( const char * str )
     CloseHandle(heventDBWIN);
 
     return;
+#else
+	(void)str;
+#endif
 }
 #endif // WWDEBUG

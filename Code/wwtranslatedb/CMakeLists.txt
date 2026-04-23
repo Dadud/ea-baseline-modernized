@@ -16,6 +16,6 @@ ea_vc6_static_library(wwtranslatedb
   INCLUDE_DIRS
     ../wwdebug
     ../wwlib
-    ../wwmath
+    ../WWMath
     ../wwsaveload
 )

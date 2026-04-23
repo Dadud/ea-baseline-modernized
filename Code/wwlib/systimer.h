@@ -38,8 +38,18 @@
 #ifndef _SYSTIMER_H
 
 #include "always.h"
+#if defined(_WIN32)
 #include <windows.h>
 #include "mmsys.h"
+#else
+#include <sys/time.h>
+inline unsigned long timeGetTime(void)
+{
+	struct timeval tv;
+	gettimeofday(&tv, 0);
+	return (unsigned long)((tv.tv_sec * 1000UL) + (tv.tv_usec / 1000UL));
+}
+#endif
 
 #define TIMEGETTIME SystemTime.Get
 

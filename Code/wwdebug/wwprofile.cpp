@@ -51,15 +51,24 @@
 
 
 #include "wwprofile.h"
-#include "fastallocator.h"
+#include "FastAllocator.h"
 #include "wwdebug.h"
+#if defined(_WIN32)
 #include <windows.h>
+#endif
 //#include "systimer.h"
 #include "systimer.h"
 #include "rawfile.h"
 #include "ffactory.h"
 #include "simplevec.h"
 #include "cpudetect.h"
+
+#if !defined(_WIN32)
+inline unsigned int GetCurrentThreadId(void)
+{
+	return 0;
+}
+#endif
 
 static SimpleDynVecClass<WWProfileHierachyNodeClass*> ProfileCollectVector;
 static double TotalFrameTimes;
@@ -84,7 +93,7 @@ unsigned WWProfile_Get_System_Time()
  *=============================================================================================*/
 inline void WWProfile_Get_Ticks(_int64 * ticks)
 {
-#ifdef _UNIX
+#if !defined(_WIN32)
        *ticks = TIMEGETTIME();
 #else
 	__asm

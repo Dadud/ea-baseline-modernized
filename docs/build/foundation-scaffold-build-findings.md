@@ -74,6 +74,35 @@ See:
 - `docs/build/foundation-portability-batch-001.md`
 - `docs/build/legacy-wide-character-compatibility.md`
 
+## Full initial foundation build check
+
+The broader initial foundation target set now compiles on Linux:
+
+```bash
+cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
+cmake --build build/cmake-scaffold -j4
+```
+
+Current result:
+
+```text
+[100%] Built target wwtranslatedb
+```
+
+Targets covered:
+
+- `wwdebug`
+- `wwmath`
+- `wwbitpack`
+- `wwsaveload`
+- `wwtranslatedb`
+
+The build still uses `-fpermissive` as a temporary VC6-era bridge and still emits legacy warnings. The result means the first generated foundation target graph is compile-checkable; it does not mean platform compatibility, warning cleanliness, or behavior parity is finished.
+
+See:
+
+- `docs/build/foundation-portability-batch-002.md`
+
 ## Modernization rule for these blockers
 
 Do not paper over these by globally renaming files or adding broad platform shims yet.

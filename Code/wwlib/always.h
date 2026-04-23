@@ -47,6 +47,24 @@
 #ifndef __cdecl
 #define __cdecl
 #endif
+#include <ctype.h>
+#include <strings.h>
+typedef signed long long __int64;
+typedef signed long long _int64;
+#define stricmp strcasecmp
+#define strnicmp strncasecmp
+inline char *strlwr(char *string)
+{
+	char *cursor = string;
+	while (cursor != 0 && *cursor != '\0') {
+		*cursor = (char)tolower((unsigned char)*cursor);
+		++cursor;
+	}
+	return string;
+}
+#ifndef _strlwr
+#define _strlwr strlwr
+#endif
 #endif
 
 // Disable warning about exception handling not being enabled. It's used as part of STL - in a part of STL we don't use.
@@ -94,6 +112,7 @@ void* __cdecl operator new(unsigned int s);
 #if defined(_MSC_VER)
 #define WWINLINE __forceinline
 #else
+#define __forceinline inline
 #define WWINLINE inline
 #endif
 

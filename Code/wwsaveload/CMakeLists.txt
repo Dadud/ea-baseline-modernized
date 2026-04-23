@@ -39,5 +39,5 @@ ea_vc6_static_library(wwsaveload
   INCLUDE_DIRS
     ../wwdebug
     ../wwlib
-    ../wwmath
+    ../WWMath
 )

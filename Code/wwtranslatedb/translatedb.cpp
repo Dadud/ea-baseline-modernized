@@ -37,7 +37,30 @@
 
 #include "translatedb.h"
 
+#if defined(_WIN32)
 #include <windows.h>
+#else
+#include <stdio.h>
+typedef FILE *HANDLE;
+#define INVALID_HANDLE_VALUE NULL
+#define GENERIC_READ 0x80000000
+#define GENERIC_WRITE 0x40000000
+#define FILE_SHARE_READ 1
+#define CREATE_ALWAYS 2
+#define OPEN_EXISTING 3
+inline HANDLE CreateFile(const char *filename, unsigned long access, unsigned long, void *, unsigned long creation, unsigned long, void *)
+{
+	const char *mode = (access & GENERIC_WRITE) ? "w" : "r";
+	if (creation == OPEN_EXISTING) {
+		mode = "r";
+	}
+	return fopen(filename, mode);
+}
+inline int CloseHandle(HANDLE file)
+{
+	return fclose(file);
+}
+#endif
 #include <string.h>
 
 #include "persist.h"
@@ -237,7 +260,7 @@ TranslateDBClass::Save (ChunkSaveClass &csave)
 		//
 		//	Loop over and save all the translation objects
 		//
-		for (index = 0; index < m_ObjectList.Count (); index ++) {			
+		for (int index = 0; index < m_ObjectList.Count (); index ++) {
 			TDBObjClass *translate_obj = m_ObjectList[index];
 
 			//
@@ -1318,7 +1341,7 @@ int Build_List_From_String
 			// Parse the string and pull out its entries.
 			//
 			count = 0;
-			for (entry = buffer;
+			for (const char *entry = buffer;
 				  (entry != NULL) && (entry[1] != 0);
 				  entry = ::strstr (entry, delimiter))
 			{
