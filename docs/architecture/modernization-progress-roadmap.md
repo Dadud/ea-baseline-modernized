@@ -99,7 +99,6 @@ Important buckets still need scaffold modeling and boundary review:
 
 - `Combat`
 - `ww3d2`
-- `wwui`
 - `Scripts`
 - `Commando`
 - tool projects under `Code/Tools`
@@ -127,7 +126,11 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 011 — map `wwphys`
+### Latest batch completed: Batch 012 — map `wwui`
+
+Batch 012 adds an opt-in scaffold for the original `wwui` target and classifies it into dialog/control, input/cursor, and IME source islands. It intentionally documents mixed UI/input/platform/renderer leakage instead of pushing fake IME, Win32, or renderer shims.
+
+### Previous batch completed: Batch 011 — map `wwphys`
 
 Batch 011 adds an opt-in scaffold for the original `wwphys` target and classifies it into path/visibility, runtime simulation, math/serialization, scene/render glue, and terrain/render source islands. It intentionally documents mixed runtime/renderer/platform leakage instead of pushing broad Win32 or renderer stubs.
 

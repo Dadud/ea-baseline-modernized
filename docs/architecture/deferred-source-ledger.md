@@ -56,6 +56,9 @@ A scaffold target can build while still having deferred source debt. This table 
 | `wwphys` | `WWPHYS_SCENE_RENDER_GLUE_SOURCES` | scene/render glue | renderer backend | Scene/projector/decal/Umbra-facing code is not yet below a clean portable physics boundary. | yes | maybe | maybe | renderer/runtime scene boundary | deferred |
 | `wwphys` | `WWPHYS_TERRAIN_RENDER_SOURCES` | terrain/render | renderer backend | Terrain material/patch rendering and dazzle effects are renderer-facing, not portable physics core. | yes | no | maybe | terrain renderer boundary | deferred |
 | `wwphys` | `WWPHYS_RUNTIME_SIM_SOURCES` | runtime simulation | Win32 window/message loop | Current runtime/path subset still leaks through shared Win32-heavy headers such as `wwlib/win.h` (`HINSTANCE`, `HWND`). | yes | yes | maybe | runtime/platform surface cleanup | deferred |
+| `wwui` | `WWUI_INPUT_CURSOR_SOURCES` | input/cursor | Win32 window/message loop | Mouse/input bridge still depends on Win32 message/input surfaces and should remain outside portable UI core for now. | yes | maybe | maybe | platform window/input boundary | deferred |
+| `wwui` | `WWUI_IME_SOURCES` | IME integration | Win32 IME / string-encoding | IME manager/candidate code depends on `<imm.h>`, HWND, and Windows IME APIs. | yes | no | maybe | platform IME/text input boundary | deferred |
+| `wwui` | `WWUI_DIALOG_CONTROL_SOURCES` | dialog/control | renderer backend | Even dialog/control code still reaches renderer presentation headers such as `Render2D.h` and Win32 callback/handle assumptions through shared UI surfaces. | yes | maybe | yes | UI presentation / platform UI split | deferred |
 
 ## Notes
 

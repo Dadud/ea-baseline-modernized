@@ -19,8 +19,8 @@
 #ifndef __IMECANDIDATECTRL_H__
 #define __IMECANDIDATECTRL_H__
 
-#include "DialogControl.h"
-#include "ScrollBarCtrl.h"
+#include "dialogcontrol.h"
+#include "scrollbarctrl.h"
 #include "Render2D.h"
 #include "Render2DSentence.h"
 #include "Vector.h"

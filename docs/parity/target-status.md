@@ -51,6 +51,7 @@ These are intentionally documented/mapped but not included in the default green 
 |---|---|---|
 | `WWAudio` | Opt-in seam map exists | Stops at proprietary Miles/DirectSound backend boundary; configured via `RENEGADE_BUILD_AUDIO_SEAMS=ON` |
 | `wwphys` | Opt-in seam map exists | Reaches mixed runtime/renderer/platform leakage; configured via `RENEGADE_BUILD_PHYS_SEAMS=ON` |
+| `wwui` | Opt-in seam map exists | Reaches mixed UI/input/platform/renderer leakage; configured via `RENEGADE_BUILD_UI_SEAMS=ON` |
 
 ## Current parity evidence state
 

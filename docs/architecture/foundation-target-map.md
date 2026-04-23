@@ -20,6 +20,7 @@ The current rule is **logical mapping first, physical moves later**. Original pr
 | `Code/SControl/SControl.dsp` | `SControl` | Builds in the non-Windows scaffold with a narrow POSIX socket bridge | Small server-control/network seam. Current scaffold compiles the protocol and UDP transport while preserving the WinSock path under `_WIN32`. |
 | `Code/WWAudio/WWAudio.dsp` | `WWAudio` | Opt-in scaffold; Miles/backend blocker documented | Audio subsystem seam. Current CMake classifies events, save/load, scene metadata, threading, utilities, and Miles backend sources. Not in the default green scaffold yet. |
 | `Code/wwphys/wwphys.dsp` | `wwphys` | Opt-in scaffold; mixed runtime/renderer/platform blocker documented | Physics subsystem seam. Current CMake classifies path/visibility, runtime simulation, math/serialization, scene/render glue, and terrain/render sources. Not in the default green scaffold yet. |
+| `Code/wwui/wwui.dsp` | `wwui` | Opt-in scaffold; mixed UI/input/platform/renderer blocker documented | UI/input subsystem seam. Current CMake classifies dialog/control, input/cursor, and IME islands. Not in the default green scaffold yet. |
 
 ## `wwlib` sub-bucket observations
 
@@ -145,6 +146,18 @@ WWPHYS_TERRAIN_RENDER_SOURCES
 ```
 
 The first raw probe exposed case-sensitive local include spellings, which were fixed so the target could reach a more meaningful blocker. The current documented seam is mixed runtime/renderer/platform leakage through shared headers, with the next meaningful non-Windows failure surfacing via `wwlib/win.h` (`HINSTANCE` / `HWND`) rather than a single isolated physics implementation file.
+
+### `wwui`
+
+Batch 012 adds `wwui` behind the opt-in `RENEGADE_BUILD_UI_SEAMS` switch. Its CMake source inventory is split into:
+
+```text
+WWUI_DIALOG_CONTROL_SOURCES
+WWUI_INPUT_CURSOR_SOURCES
+WWUI_IME_SOURCES
+```
+
+The first raw probe exposed local include-case mismatches, which were fixed so the target could reach more meaningful blockers. The current documented seam is mixed UI/input/platform/renderer leakage through dialog/control headers, IME integration, and ww3d2 presentation dependencies. The next meaningful blockers include `Render2D.h`, `<imm.h>`, and Win32 callback/handle expectations surfacing through `dialogbase.h`, `IMEManager.h`, and `wwlib/win.h`.
 
 ## Near-term recommendation
 
