@@ -49,7 +49,7 @@ This matrix summarizes the generated VC6 project manifest after Batch 005. It is
 | `RenegadeGR` | `Dynamic-Link Library` | `Code/Tools/RenegadeGR/RenegadeGR.dsp` | not modeled | products/tools/engine_asset_content |
 | `ViewTrans` | `Dynamic-Link Library` | `Code/Tools/ViewTrans/ViewTrans.dsp` | not modeled | products/tools/engine_asset_content |
 | `WWCtrl` | `Dynamic-Link Library` | `Code/Tools/WWCtrl/WWCtrl.dsp` | not modeled | products/tools/engine_asset_content |
-| `BinkMovie` | `Static Library` | `Code/BinkMovie/BinkMovie.dsp` | not modeled | engine_asset_content/products/client |
+| `BinkMovie` | `Static Library` | `Code/BinkMovie/BinkMovie.dsp` | modeled/builds subtitle parser island; RAD/renderer islands deferred | engine_asset_content/products/client/renderer seam |
 | `Combat` | `Static Library` | `Code/Combat/Combat.dsp` | not modeled | engine_runtime with presentation seams |
 | `SControl` | `Static Library` | `Code/SControl/SControl.dsp` | not modeled | products/dedicated_server/online_services |
 | `pluglib` | `Static Library` | `Code/Tools/pluglib/pluglib.dsp` | not modeled | products/tools/engine_asset_content |

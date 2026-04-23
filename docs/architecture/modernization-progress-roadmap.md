@@ -16,13 +16,13 @@ Current branch and remote target:
 ea-baseline-modernized -> ea-modernized/main
 ```
 
-Current latest reviewed commit before Batch 006:
+Current latest reviewed commit before Batch 007:
 
 ```text
-ba7d928 build: model wwnet support target
+43b647c build: classify support source islands
 ```
 
-Batch 006 then consolidates the current scaffold by turning `wwlib` and `wwnet` source filters into named logical source islands.
+Batch 007 then models `BinkMovie` as the next small media/content seam, compiling its subtitle data/parser island while documenting deferred RAD/Bink and renderer glue islands.
 
 ## What is now solid
 
@@ -51,6 +51,7 @@ wwtranslatedb
 wwlib
 wwutil
 wwnet
+BinkMovie
 ```
 
 Verified command:
@@ -63,7 +64,7 @@ cmake --build build/cmake-scaffold -j4
 Current successful result:
 
 ```text
-[100%] Built target wwnet
+[100%] Built target BinkMovie
 ```
 
 ### Architecture findings
@@ -72,7 +73,8 @@ The main progress is not just that the scaffold builds. The important architectu
 
 - `wwlib` is a mixed foundation/platform/display/input/content bucket, not a clean foundation library.
 - `wwnet` is a mixed packet/object networking plus live WinSock/session bucket.
-- DirectDraw and WinSock blockers are being treated as future boundary work, not fake-header problems.
+- `BinkMovie` is a small media/content bucket with subtitle parsing, subtitle renderer glue, and RAD/Bink playback concerns split apart.
+- DirectDraw, WinSock, RAD/Bink, and renderer blockers are being treated as future boundary work, not fake-header problems.
 - Logical boundaries are being documented before physical file movement.
 
 ## What is still missing
@@ -94,7 +96,6 @@ No artifact parity has been proven yet. The current scaffold is compile-checkabl
 
 Important buckets still need scaffold modeling and boundary review:
 
-- `BinkMovie`
 - `WWAudio`
 - `SControl`
 - `Combat`
@@ -121,7 +122,17 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Next batch completed: Batch 006 — consolidate and clarify the scaffold
+### Latest batch completed: Batch 007 — model `BinkMovie`
+
+Batch 007 adds the original `BinkMovie` target as a small media/content seam. CMake now identifies:
+
+- subtitle data/parser sources;
+- subtitle renderer glue sources;
+- RAD/Bink playback sources.
+
+On non-Windows, only the subtitle data/parser island is compiled for now. Renderer subtitle glue and RAD/Bink playback remain visible but deferred.
+
+### Previous batch completed: Batch 006 — consolidate and clarify the scaffold
 
 Batch 006 turns the current `wwlib` and `wwnet` source filters into named logical source islands.
 
@@ -148,20 +159,19 @@ Original target names and physical file locations remain unchanged.
 
 ### Following batch candidates
 
-After Batch 006, choose one low-risk expansion:
+After Batch 007, choose one low-risk expansion:
 
-1. `BinkMovie`
-   - small static library;
-   - useful for content/client media boundary discovery;
-   - may expose Bink SDK assumptions.
+1. `SControl`
+   - tiny static library;
+   - useful for server-control/online-service classification;
+   - final bucket is ambiguous.
 2. `WWAudio`
    - important audio subsystem;
    - good candidate for future backend split;
    - likely to expose platform/audio SDK assumptions.
-3. `SControl`
-   - tiny static library;
-   - useful for server-control/online-service classification;
-   - final bucket is ambiguous.
+3. Continue status/inventory cleanup
+   - update the 61-project matrix as each target is modeled;
+   - refine current source-island docs before adding higher-coupling projects.
 
 Avoid immediately jumping to:
 

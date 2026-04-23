@@ -225,6 +225,28 @@ See:
 - `docs/build/foundation-portability-batch-006.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 007: `BinkMovie` media/content seam
+
+Batch 007 models the original `Code/BinkMovie/BinkMovie.dsp` target. The CMake inventory now names subtitle data/parser, subtitle renderer, and RAD/Bink playback source islands.
+
+On non-Windows bootstrap builds, the scaffold compiles the subtitle data/parser island and defers the renderer subtitle manager plus RAD/Bink playback sources. This records the media/render seam without adding fake RAD SDK or renderer stubs.
+
+Targeted verification succeeds:
+
+```bash
+cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
+cmake --build build/cmake-scaffold --target BinkMovie -j4
+```
+
+```text
+[100%] Built target BinkMovie
+```
+
+See:
+
+- `docs/build/foundation-portability-batch-007.md`
+- `docs/architecture/foundation-target-map.md`
+
 ## Modernization rule for these blockers
 
 Do not paper over these by globally renaming files or adding broad platform shims yet.

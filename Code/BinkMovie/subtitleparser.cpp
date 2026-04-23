@@ -40,6 +40,11 @@
 #include "readline.h"
 #include "trim.h"
 #include <wchar.h>
+#if !defined(_MSC_VER)
+#include <wctype.h>
+#define wcsicmp wcscasecmp
+#define wcsnicmp wcsncasecmp
+#endif
 #include <stdlib.h>
 
 // Subtitle control file parsing tokens

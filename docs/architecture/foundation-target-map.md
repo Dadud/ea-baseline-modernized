@@ -16,6 +16,7 @@ The current rule is **logical mapping first, physical moves later**. Original pr
 | `Code/wwutil/wwutil.dsp` | `wwutil` | Builds in the foundation scaffold | Small support utilities. Windows stack walking is no-op on non-Windows scaffold builds. |
 | `Code/wwlib/wwlib.dsp` | `wwlib` | Builds in the non-Windows foundation scaffold after source-island classification | Mixed historical bucket. Current non-Windows scaffold compiles the portable subset and defers platform/display/DirectDraw/input/registry/version islands. Needs logical sub-boundaries before it can be a clean portable foundation layer. |
 | `Code/wwnet/wwnet.dsp` | `wwnet` | Builds in the non-Windows scaffold after socket/session source classification | First networking layer. Current scaffold compiles packet/stat/network-object helpers and defers live WinSock/session sources for a future platform networking boundary. |
+| `Code/BinkMovie/BinkMovie.dsp` | `BinkMovie` | Builds in the non-Windows scaffold after media/render source classification | Small media/content seam. Current scaffold compiles subtitle data/parser sources and defers RAD/Bink playback plus renderer subtitle glue. |
 
 ## `wwlib` sub-bucket observations
 
@@ -89,6 +90,18 @@ WWNET_LIVE_SOCKET_SESSION_SOURCES
 WWNET_BANDWIDTH_REMOTE_HOST_SOURCES
 WWNET_SOCKET_TYPE_BRIDGE_SOURCES
 ```
+
+### `BinkMovie`
+
+Batch 007 adds `BinkMovie` as a small media/content seam. It is not treated as a fully portable video backend yet. The target keeps the original VC6 project name and splits the source inventory into:
+
+```text
+BINKMOVIE_SUBTITLE_DATA_SOURCES
+BINKMOVIE_SUBTITLE_RENDER_SOURCES
+BINKMOVIE_RAD_PLAYER_SOURCES
+```
+
+On non-Windows, the scaffold compiles the subtitle data/parser island and defers the renderer subtitle manager plus RAD/Bink playback implementation until the renderer/media boundaries are modeled.
 
 ## Near-term recommendation
 
