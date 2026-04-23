@@ -124,7 +124,30 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 018 — datasafe Win32 gating + Commando dependency mapping
+### Latest batch completed: Batch 019 — automation tooling and multi-target probe
+
+Batch 019 does not add a new source target. It adds two automation scripts and runs the first structured multi-target probe across all unmapped subsystems.
+
+**Scripts added:**
+
+- `scripts/projects/write_cmake_scaffold.py` — generates CMake scaffolds from the VC6 manifest for any target in one command
+- `scripts/build/probe_targets.py` — probes targets using signal-pattern scanning and optional CMake build, outputs Markdown report
+
+**Probe coverage:**
+
+Ran structured probe against: WWAudio, SControl, Combat, ww3d2, wwphys, wwui, Scripts.
+
+Key findings:
+- WWAudio is the most threading-heavy target (127 hits), all tied to Miles/DirectSound backends
+- wwui has the highest string/encoding signal (158 hits) — expected for a UI text system
+- ww3d2 has the highest DirectX signal (133 hits) and 5 missing files (shader/resource files)
+- Combat has 265 sources, the largest gameplay bucket, with moderate portability risk
+- SControl is purely WinSock transport (60 signal hits, 4 source files)
+- Scripts has 1 missing file (`slnode.h`) and 99 old-MSVC spelling hits
+
+These scripts make future batches faster and more systematic by automating scaffold generation and deferred-source tracking.
+
+### Previous batch completed: Batch 018 — datasafe Win32 gating + Commando dependency mapping
 
 Batch 018 does two things:
 
