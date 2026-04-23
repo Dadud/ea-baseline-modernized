@@ -70,7 +70,7 @@
 #include "translatedb.h"
 #include "translateobj.h"
 #include "hlod.h"
-#include "audiblesound.h"
+#include "AudibleSound.h"
 #include "wwprofile.h"
 #include "globalsettings.h"
 #include "colors.h"

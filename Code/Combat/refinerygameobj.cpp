@@ -48,7 +48,7 @@
 #include "wwprofile.h"
 #include "combat.h"
 #include "wwaudio.h"
-#include "audiblesound.h"
+#include "AudibleSound.h"
 #include "soldier.h"
 #include "playertype.h"
 //#include "building.h"

@@ -125,7 +125,11 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 013 — map `ww3d2`
+### Latest batch completed: Batch 014 — map `Combat`
+
+Batch 014 adds an opt-in scaffold for the original `Combat` target and classifies it into gameplay/runtime, client presentation/input, script/save/network, and audio/conversation source islands. It intentionally documents product-shell and audio-backend leakage instead of pulling in `Commando` or faking Miles headers.
+
+### Previous batch completed: Batch 013 — map `ww3d2`
 
 Batch 013 adds an opt-in scaffold for the original `ww3d2` target and classifies it into asset/content, render runtime, presentation, texture/material, and DX8 backend source islands. It intentionally documents mixed renderer/platform/asset-content leakage instead of pushing fake D3D8, D3DX, or Win32 handle shims.
 
@@ -195,24 +199,23 @@ Original target names and physical file locations remain unchanged.
 
 ### Following batch candidates
 
-After Batch 013, choose one bounded expansion:
+After Batch 014, choose one bounded expansion:
 
-1. `Combat` inventory/modeling pass
-   - classify gameplay/runtime vs presentation/input seams before attempting broader product work;
-   - expect deeper coupling to `wwphys`, `wwui`, `ww3d2`, and online systems.
-2. `Scripts` DLL ingestion improvements
+1. `Scripts` DLL ingestion improvements
    - improve DLL/shared-library scaffold support;
    - account for missing manifest source `Code/Scripts/slnode.h` before claiming meaningful progress.
-3. targeted renderer-boundary prep
-   - document how `ww3d2` should eventually split into backend/device, asset/content, runtime scene graph, and presentation layers.
+2. targeted `Commando` dependency-prep docs
+   - document which `Combat` surfaces still reach back into `Commando` (for example `datasafe.h`) before trying to scaffold the product shell.
+3. focused Combat boundary prep
+   - classify which `Combat` files are truly shared gameplay/runtime versus product-shell and backend glue before any deeper compile push.
 
-Avoid immediately jumping to full products:
+Avoid immediately jumping to:
 
-- `Commando`
+- full `Commando` product build attempts
 - full tools workspace
 - parity claims for client/FDS/tools
 
-Those remain high-coupling buckets and should wait until more subsystem boundaries are mapped.
+Those remain high-coupling buckets and should wait until the `Combat` ↔ `Commando` boundary is described more clearly.
 
 ## Longer roadmap
 

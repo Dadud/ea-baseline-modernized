@@ -48,7 +48,7 @@
 #include "conversationmgr.h"
 #include "debug.h"
 #include "wwaudio.h"
-#include "audiblesound.h"
+#include "AudibleSound.h"
 #include "translatedb.h"
 #include "translateobj.h"
 #include "combat.h"

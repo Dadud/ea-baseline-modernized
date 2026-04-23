@@ -48,7 +48,7 @@
 #include "colmath.h"
 #include "movephys.h"
 #include "wwaudio.h"
-#include "audiblesound.h"
+#include "AudibleSound.h"
 #include "hanim.h"
 #include "timemgr.h"
 #include "assetmgr.h"

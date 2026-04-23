@@ -1,0 +1,333 @@
+# Conservative scaffold for the original EA VC6 Combat static library.
+#
+# This target keeps the original project name and physical layout. The source
+# groups below make shared gameplay/runtime, client presentation/input, script
+# and save/network glue, and audio/conversation seams explicit before final
+# product-shell and gameplay architecture work.
+
+set(COMBAT_GAMEPLAY_RUNTIME_SOURCES
+  ./CNCModeSettings.cpp
+  ./CNCModeSettings.h
+  ./WeatherMgr.cpp
+  ./WeatherMgr.h
+  ./action.cpp
+  ./action.h
+  ./actionparams.h
+  ./airstripgameobj.cpp
+  ./airstripgameobj.h
+  ./armedgameobj.cpp
+  ./armedgameobj.h
+  ./assetdep.cpp
+  ./assetdep.h
+  ./assets.cpp
+  ./assets.h
+  ./basecontroller.cpp
+  ./basecontroller.h
+  ./basegameobj.cpp
+  ./basegameobj.h
+  ./beacongameobj.cpp
+  ./beacongameobj.h
+  ./bones.cpp
+  ./bones.h
+  ./building.cpp
+  ./building.h
+  ./buildingaggregate.cpp
+  ./buildingaggregate.h
+  ./buildingmonitor.cpp
+  ./buildingmonitor.h
+  ./buildingstate.cpp
+  ./buildingstate.h
+  ./bullet.cpp
+  ./bullet.h
+  ./c4.cpp
+  ./c4.h
+  ./characterclasssettings.cpp
+  ./characterclasssettings.h
+  ./cheatmgr.cpp
+  ./cheatmgr.h
+  ./cinematicgameobj.cpp
+  ./cinematicgameobj.h
+  ./clientcontrol.cpp
+  ./clientcontrol.h
+  ./colors.cpp
+  ./colors.h
+  ./combat.cpp
+  ./combat.h
+  ./combatdazzle.cpp
+  ./combatdazzle.h
+  ./combatmaterialeffectmanager.cpp
+  ./combatmaterialeffectmanager.h
+  ./combatphysobserver.h
+  ./control.cpp
+  ./control.h
+  ./cover.cpp
+  ./cover.h
+  ./crandom.cpp
+  ./crandom.h
+  ./csdamageevent.cpp
+  ./csdamageevent.h
+  ./damage.cpp
+  ./damage.h
+  ./damageablegameobj.cpp
+  ./damageablegameobj.h
+  ./damageablestaticphys.cpp
+  ./damageablestaticphys.h
+  ./damagezone.cpp
+  ./damagezone.h
+  ./doors.cpp
+  ./doors.h
+  ./dynamicspeechanim.cpp
+  ./dynamicspeechanim.h
+  ./effectrecycler.cpp
+  ./effectrecycler.h
+  ./elevator.cpp
+  ./elevator.h
+  ./encyclopediamgr.cpp
+  ./encyclopediamgr.h
+  ./evasettings.cpp
+  ./evasettings.h
+  ./explosion.cpp
+  ./explosion.h
+  ./ffactorylist.cpp
+  ./ffactorylist.h
+  ./gameobjmanager.cpp
+  ./gameobjmanager.h
+  ./gameobjobserver.cpp
+  ./gameobjobserver.h
+  ./gameobjref.h
+  ./gametype.cpp
+  ./gametype.h
+  ./globalsettings.cpp
+  ./globalsettings.h
+  ./harvester.cpp
+  ./harvester.h
+  ./humanrecoil.cpp
+  ./humanrecoil.h
+  ./humanstate.cpp
+  ./humanstate.h
+  ./inventory.cpp
+  ./inventory.h
+  ./mapmgr.cpp
+  ./mapmgr.h
+  ./mendozabossgameobj.cpp
+  ./mendozabossgameobj.h
+  ./muzzlerecoil.cpp
+  ./muzzlerecoil.h
+  ./objectives.cpp
+  ./objectives.h
+  ./objlibrary.cpp
+  ./objlibrary.h
+  ./pathaction.cpp
+  ./pathaction.h
+  ./persistentgameobjobserver.cpp
+  ./persistentgameobjobserver.h
+  ./physicalgameobj.cpp
+  ./physicalgameobj.h
+  ./pilot.cpp
+  ./pilot.h
+  ./playerdata.cpp
+  ./playerdata.h
+  ./playertype.cpp
+  ./playertype.h
+  ./powerplantgameobj.cpp
+  ./powerplantgameobj.h
+  ./powerup.cpp
+  ./powerup.h
+  ./purchasesettings.cpp
+  ./purchasesettings.h
+  ./raveshawbossgameobj.cpp
+  ./raveshawbossgameobj.h
+  ./refinerygameobj.cpp
+  ./refinerygameobj.h
+  ./reflist.cpp
+  ./reflist.h
+  ./repairbaygameobj.cpp
+  ./repairbaygameobj.h
+  ./sakurabossgameobj.cpp
+  ./sakurabossgameobj.h
+  ./samsite.cpp
+  ./samsite.h
+  ./simplegameobj.cpp
+  ./simplegameobj.h
+  ./smartgameobj.cpp
+  ./smartgameobj.h
+  ./sniper.cpp
+  ./sniper.h
+  ./soldier.cpp
+  ./soldier.h
+  ./soldierfactorygameobj.cpp
+  ./soldierfactorygameobj.h
+  ./soldierobserver.cpp
+  ./soldierobserver.h
+  ./spawn.cpp
+  ./spawn.h
+  ./specialeffectsgameobj.cpp
+  ./specialeffectsgameobj.h
+  ./statemachine.cpp
+  ./statemachine.h
+  ./surfaceeffects.cpp
+  ./surfaceeffects.h
+  ./systeminfolog.cpp
+  ./systeminfolog.h
+  ./teampurchasesettings.cpp
+  ./teampurchasesettings.h
+  ./timemgr.cpp
+  ./timemgr.h
+  ./transition.cpp
+  ./transition.h
+  ./transitiongameobj.cpp
+  ./transitiongameobj.h
+  ./unitcoordinationzonemgr.cpp
+  ./unitcoordinationzonemgr.h
+  ./vehicle.cpp
+  ./vehicle.h
+  ./vehicledriver.cpp
+  ./vehicledriver.h
+  ./vehiclefactorygameobj.cpp
+  ./vehiclefactorygameobj.h
+  ./warfactorygameobj.cpp
+  ./warfactorygameobj.h
+  ./weaponbag.cpp
+  ./weaponbag.h
+  ./weaponmanager.cpp
+  ./weaponmanager.h
+  ./weapons.cpp
+  ./weapons.h
+)
+
+set(COMBAT_CLIENT_PRESENTATION_INPUT_SOURCES
+  ./backgroundmgr.cpp
+  ./backgroundmgr.h
+  ./ccamera.cpp
+  ./ccamera.h
+  ./debug.cpp
+  ./debug.h
+  ./diaglog.cpp
+  ./diaglog.h
+  ./directinput.cpp
+  ./directinput.h
+  ./hud.cpp
+  ./hud.h
+  ./hudinfo.cpp
+  ./hudinfo.h
+  ./input.cpp
+  ./input.h
+  ./messagewindow.cpp
+  ./messagewindow.h
+  ./objectivesviewer.cpp
+  ./objectivesviewer.h
+  ./playerterminal.cpp
+  ./playerterminal.h
+  ./radar.cpp
+  ./radar.h
+  ./screenfademanager.cpp
+  ./screenfademanager.h
+  ./textwindow.cpp
+  ./textwindow.h
+  ./weaponview.cpp
+  ./weaponview.h
+)
+
+set(COMBAT_SCRIPT_SAVE_NETWORK_SOURCES
+  ./apppackettypes.h
+  ./combatchunkid.h
+  ./combatsaveload.cpp
+  ./combatsaveload.h
+  ./netclassids.h
+  ./savegame.cpp
+  ./savegame.h
+  ./scriptablegameobj.cpp
+  ./scriptablegameobj.h
+  ./scriptcommands.cpp
+  ./scriptcommands.h
+  ./scriptevents.h
+  ./scripts.cpp
+  ./scripts.h
+  ./scriptzone.cpp
+  ./scriptzone.h
+  ./specialbuilds.h
+  ./staticnetworkobject.cpp
+  ./staticnetworkobject.h
+)
+
+set(COMBAT_AUDIO_CONVERSATION_SOURCES
+  ./SoundEnvironment.cpp
+  ./SoundEnvironment.h
+  ./activeconversation.cpp
+  ./activeconversation.h
+  ./combatsound.cpp
+  ./combatsound.h
+  ./conversation.cpp
+  ./conversation.h
+  ./conversationmgr.cpp
+  ./conversationmgr.h
+  ./conversationremark.cpp
+  ./conversationremark.h
+  ./dialogue.cpp
+  ./dialogue.h
+  ./orator.cpp
+  ./orator.h
+  ./oratortypes.cpp
+  ./oratortypes.h
+  ./viseme.cpp
+  ./viseme.h
+)
+
+set(COMBAT_SOURCES
+  ${COMBAT_GAMEPLAY_RUNTIME_SOURCES}
+  ${COMBAT_CLIENT_PRESENTATION_INPUT_SOURCES}
+  ${COMBAT_SCRIPT_SAVE_NETWORK_SOURCES}
+  ${COMBAT_AUDIO_CONVERSATION_SOURCES}
+)
+
+if(NOT WIN32)
+  # Combat is a mixed gameplay/runtime/product seam. Keep the full source
+  # inventory visible, but defer the most explicit client-presentation, script
+  # DLL/save-network, and audio/conversation islands while probing how much of
+  # the remaining gameplay/runtime layer still leaks renderer, platform, and
+  # online assumptions through shared headers.
+  list(REMOVE_ITEM COMBAT_SOURCES
+    ${COMBAT_CLIENT_PRESENTATION_INPUT_SOURCES}
+    ${COMBAT_SCRIPT_SAVE_NETWORK_SOURCES}
+    ${COMBAT_AUDIO_CONVERSATION_SOURCES}
+  )
+endif()
+
+ea_vc6_static_library(Combat
+  SOURCES
+    ${COMBAT_SOURCES}
+  INCLUDE_DIRS
+    ../DirectX/include
+    ../miles6/include
+    ../ww3d2
+    ../WWAudio
+    ../wwbitpack
+    ../wwdebug
+    ../wwlib
+    ../WWMath
+    ../wwnet
+    ../wwphys
+    ../wwsaveload
+    ../wwtranslatedb
+    ../wwui
+    ../wwutil
+  DEFINES
+    NDEBUG
+    PARAM_EDITING_ON
+    WIN32
+    WWDEBUG
+    _DEBUG
+    _LIB
+    _MBCS
+    _WIN32_WINNT=0x400
+    _WINDOWS
+  LINK_LIBRARIES
+    wwbitpack
+    wwdebug
+    wwlib
+    wwmath
+    wwnet
+    wwsaveload
+    wwtranslatedb
+    wwutil
+)

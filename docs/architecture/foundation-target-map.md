@@ -22,6 +22,7 @@ The current rule is **logical mapping first, physical moves later**. Original pr
 | `Code/wwphys/wwphys.dsp` | `wwphys` | Opt-in scaffold; mixed runtime/renderer/platform blocker documented | Physics subsystem seam. Current CMake classifies path/visibility, runtime simulation, math/serialization, scene/render glue, and terrain/render sources. Not in the default green scaffold yet. |
 | `Code/wwui/wwui.dsp` | `wwui` | Opt-in scaffold; mixed UI/input/platform/renderer blocker documented | UI/input subsystem seam. Current CMake classifies dialog/control, input/cursor, and IME islands. Not in the default green scaffold yet. |
 | `Code/ww3d2/ww3d2.dsp` | `ww3d2` | Opt-in scaffold; mixed renderer/platform/asset-content blocker documented | Core renderer subsystem seam. Current CMake classifies asset/content, render runtime, presentation, texture/material, and DX8 backend islands. Not in the default green scaffold yet. |
+| `Code/Combat/Combat.dsp` | `Combat` | Opt-in scaffold; mixed gameplay/runtime/product/audio blocker documented | Shared gameplay bucket with strong product-shell, audio-backend, script/save/network, and client-presentation seams. Not in the default green scaffold yet. |
 
 ## `wwlib` sub-bucket observations
 
@@ -173,6 +174,19 @@ WW3D2_DX8_BACKEND_SOURCES
 ```
 
 The explicit Direct3D 8 backend island is deferred on non-Windows seam probes, but the next meaningful blockers still come from shared Win32-heavy and DX8-heavy interfaces leaking through higher-level renderer code. The probe stops at `wwlib/win.h` (`HINSTANCE`, `HWND`) and `dx8wrapper.h` (`d3d8.h`), which is useful evidence that `ww3d2` is not yet separable into a portable renderer core without further boundary work.
+
+### `Combat`
+
+Batch 014 adds `Combat` behind the opt-in `RENEGADE_BUILD_COMBAT_SEAMS` switch. Its CMake source inventory is split into:
+
+```text
+COMBAT_GAMEPLAY_RUNTIME_SOURCES
+COMBAT_CLIENT_PRESENTATION_INPUT_SOURCES
+COMBAT_SCRIPT_SAVE_NETWORK_SOURCES
+COMBAT_AUDIO_CONVERSATION_SOURCES
+```
+
+The non-Windows seam probe defers explicit client-presentation/input, script/save/network, and audio/conversation islands, then probes how much of the remaining gameplay/runtime subset is actually separable from product-shell and backend concerns. After narrow include-identity cleanup, the next meaningful blockers are `..\\commando\\datasafe.h` from `damage.h` and `mss.h` from `WWAudio/AudibleSound.h`, which is useful evidence that `Combat` is not yet a clean shared gameplay core.
 
 ## Near-term recommendation
 

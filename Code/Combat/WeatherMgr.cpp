@@ -35,10 +35,10 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 // Includes.
-#include "weathermgr.h"
+#include "WeatherMgr.h"
 #include "apppackettypes.h"
 #include "assetmgr.h"
-#include "audiblesound.h"
+#include "AudibleSound.h"
 #include "camera.h"
 #include "chunkio.h"
 #include "combat.h"
@@ -53,7 +53,7 @@
 #include "rinfo.h"
 #include "scene.h"
 #include "sortingrenderer.h"
-#include "soundenvironment.h"
+#include "SoundEnvironment.h"
 #include "wwaudio.h"
 #include "wwmemlog.h"
 

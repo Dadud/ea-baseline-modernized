@@ -45,7 +45,7 @@
 #include "weapons.h"
 #include "rendobj.h"
 #include "wwaudio.h"
-#include "audiblesound.h"
+#include "AudibleSound.h"
 #include "explosion.h"
 #include "phys.h"
 #include "rbody.h"

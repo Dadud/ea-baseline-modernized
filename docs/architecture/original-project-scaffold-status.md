@@ -50,10 +50,10 @@ This matrix summarizes the generated VC6 project manifest after Batch 005. It is
 | `ViewTrans` | `Dynamic-Link Library` | `Code/Tools/ViewTrans/ViewTrans.dsp` | not modeled | products/tools/engine_asset_content |
 | `WWCtrl` | `Dynamic-Link Library` | `Code/Tools/WWCtrl/WWCtrl.dsp` | not modeled | products/tools/engine_asset_content |
 | `BinkMovie` | `Static Library` | `Code/BinkMovie/BinkMovie.dsp` | modeled/builds subtitle parser island; RAD/renderer islands deferred | engine_asset_content/products/client/renderer seam |
-| `Combat` | `Static Library` | `Code/Combat/Combat.dsp` | not modeled | engine_runtime with presentation seams |
+| `Combat` | `Static Library` | `Code/Combat/Combat.dsp` | modeled as opt-in gameplay/runtime seam; mixed gameplay/runtime/product/audio blockers documented | engine_runtime/products/audio seam |
 | `SControl` | `Static Library` | `Code/SControl/SControl.dsp` | modeled/builds with narrow POSIX socket bridge | products/dedicated_server/online_services/platform_sockets |
 | `pluglib` | `Static Library` | `Code/Tools/pluglib/pluglib.dsp` | not modeled | products/tools/engine_asset_content |
-| `ww3d2` | `Static Library` | `Code/ww3d2/ww3d2.dsp` | not modeled | renderer/engine_asset_content |
+| `ww3d2` | `Static Library` | `Code/ww3d2/ww3d2.dsp` | modeled as opt-in renderer seam; mixed renderer/platform/asset-content blocker documented | renderer/engine_asset_content/platform seam |
 | `WWAudio` | `Static Library` | `Code/WWAudio/WWAudio.dsp` | modeled as opt-in audio seam; Miles/backend blocker documented | audio/platform_threading |
 | `wwbitpack` | `Static Library` | `Code/wwbitpack/wwbitpack.dsp` | modeled/builds in default green scaffold | foundation |
 | `wwdebug` | `Static Library` | `Code/wwdebug/wwdebug.dsp` | modeled/builds in default green scaffold | foundation |

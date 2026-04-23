@@ -17,10 +17,10 @@
 */
 
 #include "CNCModeSettings.h"
-#include "CombatChunkID.h"
-#include "PersistFactory.h"
-#include "DefinitionFactory.h"
-#include "SimpleDefinitionFactory.h"
+#include "combatchunkid.h"
+#include "persistfactory.h"
+#include "definitionfactory.h"
+#include "simpledefinitionfactory.h"
 #include "PlayerType.h"
 #include "WWHack.h"
 #include "Debug.h"

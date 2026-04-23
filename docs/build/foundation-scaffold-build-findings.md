@@ -247,6 +247,26 @@ See:
 - `docs/build/foundation-portability-batch-007.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 014: `Combat` gameplay/runtime seam
+
+Batch 014 models the original `Code/Combat/Combat.dsp` target as an opt-in gameplay/runtime seam behind `RENEGADE_BUILD_COMBAT_SEAMS`. The CMake inventory now names:
+
+```text
+COMBAT_GAMEPLAY_RUNTIME_SOURCES
+COMBAT_CLIENT_PRESENTATION_INPUT_SOURCES
+COMBAT_SCRIPT_SAVE_NETWORK_SOURCES
+COMBAT_AUDIO_CONVERSATION_SOURCES
+```
+
+The explicit client-presentation/input, script/save/network, and audio/conversation islands are deferred on non-Windows seam probes so the remaining gameplay/runtime subset can be tested honestly. After narrow include-identity cleanup, the current meaningful blockers are:
+
+```text
+Code/Combat/damage.h:49:25: fatal error: ..\\commando\\datasafe.h: No such file or directory
+Code/WWAudio/AudibleSound.h:45:10: fatal error: mss.h: No such file or directory
+```
+
+This is treated as useful architecture evidence that `Combat` still mixes shared gameplay logic with product-shell and proprietary audio-backend coupling.
+
 ## Batch 013: `ww3d2` renderer seam
 
 Batch 013 models the original `Code/ww3d2/ww3d2.dsp` target as an opt-in renderer seam behind `RENEGADE_BUILD_RENDERER_SEAMS`. The CMake inventory now names:

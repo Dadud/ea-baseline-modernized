@@ -42,7 +42,7 @@
 #include "meshmdl.h"
 #include "gameobjmanager.h"
 #include "wwaudio.h"
-#include "audiblesound.h"
+#include "AudibleSound.h"
 #include "sound3d.h"
 #include "translateobj.h"
 #include "translatedb.h"

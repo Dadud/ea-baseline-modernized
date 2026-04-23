@@ -47,7 +47,7 @@
 #include "gameobjmanager.h"
 #include "soldier.h"
 #include "wwprofile.h"
-#include "audiblesound.h"
+#include "AudibleSound.h"
 #include "wwaudio.h"
 #include "bitpackids.h"
 
