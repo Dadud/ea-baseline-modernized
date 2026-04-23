@@ -39,7 +39,7 @@
 
 #include "DialogBase.h"
 #include <atlbase.h>
-#include <WWLib\Notify.h>
+#include <WWLib/Notify.h>
 
 class WebBrowser;
 class WebEvent;

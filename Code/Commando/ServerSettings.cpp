@@ -48,7 +48,7 @@
 #include "_globals.h"
 #include "bandwidth.h"
 #include "mpsettingsmgr.h"
-#include "wwonline\wolserver.h"
+#include "wwonline/wolserver.h"
 #include "useroptions.h"
 #include "gamespyadmin.h"
 #include "servercontrol.h"

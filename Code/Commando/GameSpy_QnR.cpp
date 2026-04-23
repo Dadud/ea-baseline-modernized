@@ -34,9 +34,9 @@
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include <Gamespy\gs_patch_usage.h>
-#include <Gamespy\gcdkeyserver.h>
-#include "specialbuilds.h"
+#include <Gamespy/gs_patch_usage.h>
+#include <Gamespy/gcdkeyserver.h>
+#include >specialbuilds.h"
 #include "dlgcncteaminfo.h"
 #include "resource.h"
 #include "listctrl.h"
@@ -59,8 +59,8 @@
 #include "assets.h"
 #include "translatedb.h"
 #include "WOLGMode.h"
-#include <WWOnline\WOLUser.h>
-#include "string_ids.h"
+#include <WWOnline/WOLUser.h>
+#include >string_ids.h"
 #include "mousemgr.h"
 #include "directinput.h"
 #include "GameSpy_QnR.h"

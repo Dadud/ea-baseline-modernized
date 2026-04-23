@@ -39,14 +39,14 @@
 #include	"string_ids.h"
 #include "translatedb.h"
 #include "natter.h"
-#include <WWOnline\WOLSession.h>
-#include <WWDebug\WWDebug.h>
+#include <WWOnline/WOLSession.h>
+#include <WWDebug/WWDebug.h>
 
 #ifdef _MSC_VER
 #pragma warning (push,3)
 #endif
 
-#include "systimer.h"
+#include >systimer.h"
 
 #ifdef _MSC_VER
 #pragma warning (pop)

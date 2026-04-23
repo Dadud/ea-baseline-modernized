@@ -51,7 +51,7 @@
 #include "miscutil.h"
 #include "smartgameobj.h"
 #include "weapons.h"
-#include "WWAudio.H"
+#include "WWAudio.h"
 #include "wwprofile.h"
 //#include "gamesettings.h"
 #include "waypoint.h"

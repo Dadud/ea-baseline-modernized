@@ -37,8 +37,8 @@
 
 #include "DlgMPWolAddIgnoreEntry.h"
 #include "WOLBuddyMgr.h"
-#include <WWUI\EditCtrl.h>
-#include <WWDebug\WWDebug.h>
+#include <WWUI/EditCtrl.h>
+#include <WWDebug/WWDebug.h>
 
 
 bool MPWolAddIgnoreEntry::DoDialog(const WCHAR* defaultUser)
@@ -63,7 +63,7 @@ MPWolAddIgnoreEntry::MPWolAddIgnoreEntry(const WCHAR* defaultUser) :
 		PopupDialogClass(IDD_MP_WOL_ADD_IGNORE_ENTRY),
 		mDefaultUser(defaultUser)
 {
-	WWDEBUG_SAY(("MPWolAddIgnoreEntry Instantiated\n"));
+	WWDEBUG_SAY((>MPWolAddIgnoreEntry Instantiated\n"));
 }
 
 

@@ -38,7 +38,7 @@
 
 namespace WOL
 {
-#include <WOLAPI\chatdefs.h>
+#include <WOLAPI/chatdefs.h>
 }
 
 namespace WWOnline {

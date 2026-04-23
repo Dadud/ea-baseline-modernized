@@ -584,6 +584,10 @@ target_include_directories(commando PRIVATE
   ../BinkMovie
   ../SControl
   ../GameSpy
+  ../WWLib
+  ../WWOnline
+  ../WWUI
+  ../WOLBrowser
 )
 
 target_compile_definitions(commando PRIVATE

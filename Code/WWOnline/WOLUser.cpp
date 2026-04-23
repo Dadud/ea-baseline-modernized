@@ -38,7 +38,7 @@
 #include "WOLChannel.h"
 #include "WOLSquad.h"
 #include "WOLLadder.h"
-#include <WWDebug\WWDebug.h>
+#include <WWDebug/WWDebug.h>
 
 namespace WWOnline {
 
@@ -115,7 +115,7 @@ UserData::UserData(const WOL::User& user) :
 		mUserName((char*)user.name),
 		mLocation(USERLOCATION_UNKNOWN)
 	{
-	WWDEBUG_SAY(("WOL: Instantiating UserData '%S'\n", (const WCHAR*)mUserName));
+	WWDEBUG_SAY((>WOL: Instantiating UserData '%S'\n", (const WCHAR*)mUserName));
 	memcpy(&mData, &user, sizeof(mData));
 	mKickTimer = 0;
 	mData.next = NULL;

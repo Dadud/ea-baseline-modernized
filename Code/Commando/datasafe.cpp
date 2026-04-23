@@ -39,10 +39,14 @@
 #include "datasafe.h"
 #include "vector.h"
 
+#include <stdio.h>
+#ifdef _WIN32
 #include <malloc.h>
 #include <windows.h>
+#else
+#include <stdlib.h>
+#endif
 #include "systimer.h"
-#include <stdio.h>
 
 /*
 ** Renegade specific includes. For reporting tampering.
@@ -93,7 +97,11 @@ int GenericDataSafeClass::CRCErrors = 0;
 #ifdef THREAD_SAFE_DATA_SAFE
 HANDLE GenericDataSafeClass::SafeMutex;
 #else //THREAD_SAFE_DATA_SAFE
+#ifdef _WIN32
 unsigned int GenericDataSafeClass::PreferredThread = GetCurrentThreadId();
+#else
+unsigned int GenericDataSafeClass::PreferredThread = 0;
+#endif
 #endif //THREAD_SAFE_DATA_SAFE
 
 #ifdef WWDEBUG
@@ -160,7 +168,9 @@ GenericDataSafeClass::GenericDataSafeClass(void)
 #ifdef THREAD_SAFE_DATA_SAFE
 		SafeMutex = CreateMutex(NULL, false, NULL);
 #else
+#ifdef _WIN32
 		PreferredThread = GetCurrentThreadId();
+#endif
 #endif //THREAD_SAFE_DATA_SAFE
 
 #ifdef FIXED_KEY

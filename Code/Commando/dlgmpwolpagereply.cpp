@@ -40,7 +40,7 @@
 #include "WOLLogonMgr.h"
 #include "Resource.h"
 #include "consolemode.h"
-#include <WWUI\ListCtrl.h>
+#include <WWUI/ListCtrl.h>
 
 DlgWOLPageReply* DlgWOLPageReply::_mInstance = NULL;
 
@@ -127,7 +127,7 @@ DlgWOLPageReply::DlgWOLPageReply(void) :
 		PopupDialogClass(IDD_MP_WOL_PAGE_REPLY),
 		mBuddyMgr(NULL)
 	{
-	WWDEBUG_SAY(("DlgWOLPageReply Instantiated\n"));
+	WWDEBUG_SAY((>DlgWOLPageReply Instantiated\n"));
 	WWASSERT(_mInstance == NULL);
 	_mInstance = this;
 	}

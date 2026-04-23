@@ -45,8 +45,8 @@
 
 #include "RefCounted.h"
 #include "RefPtr.h"
-#include <WWLib\WWString.h>
-#include <WWLib\WideString.h>
+#include <WWLib/WWString.h>
+#include <WWLib/WideString.h>
 
 namespace WWOnline {
 

@@ -37,12 +37,12 @@
 
 #include "RefCounted.h"
 #include "RefPtr.h"
-#include <WWLib\WideString.h>
-#include "WOLLadder.h"
+#include <WWLib/WideString.h>
+#include >WOLLadder.h"
 
 namespace WOL
 {
-#include <wolapi\wolapi.h>
+#include <wolapi/wolapi.h>
 }
 
 #if defined(_MSC_VER)

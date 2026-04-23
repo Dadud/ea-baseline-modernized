@@ -35,7 +35,7 @@
 #include <stdlib.h>
 #include <memory.h>
 #include "WOLSquad.h"
-#include <WWDebug\WWDebug.h>
+#include <WWDebug/WWDebug.h>
 
 namespace WWOnline {
 
@@ -197,7 +197,7 @@ RefPtr<SquadData> SquadData::Create(const WOL::Squad& wolSquad)
 
 SquadData::SquadData(const WOL::Squad& squad)
 	{
-	WWDEBUG_SAY(("WOL: Instantiating SquadData '%s'\n", (char*)squad.name));
+	WWDEBUG_SAY((>WOL: Instantiating SquadData '%s'\n", (char*)squad.name));
 	UpdateData(squad);
 	}
 

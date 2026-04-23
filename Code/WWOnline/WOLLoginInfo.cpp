@@ -37,12 +37,12 @@
 #include <atlbase.h>
 #include "WOLLoginInfo.h"
 #include "WOLSession.h"
-#include <WWLib\WWString.h>
-#include <WWDebug\WWDebug.h>
+#include <WWLib/WWString.h>
+#include <WWDebug/WWDebug.h>
 
 namespace WOL
 {
-#include <WOLAPI\wolapi.h>
+#include <WOLAPI/wolapi.h>
 }
 
 namespace WWOnline {
@@ -250,7 +250,7 @@ LoginInfo::LoginInfo(const wchar_t* nickname, const wchar_t* password, bool isEn
 		mIsPasswordEncrypted(isEncrypted),
 		mIsStored(false)
 	{
-	WWDEBUG_SAY(("WOL: Instantiating LoginInfo %S\n", (const WCHAR*)mNickname));
+	WWDEBUG_SAY((>WOL: Instantiating LoginInfo %S\n", (const WCHAR*)mNickname));
 
 	if (mNickname.Get_Length() > 9)
 		{

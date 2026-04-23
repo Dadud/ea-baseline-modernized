@@ -35,12 +35,12 @@
 #ifndef __WOLJOINGAME_H__
 #define __WOLJOINGAME_H__
 
-#include <WWLib\RefCount.h>
-#include <WWLib\Notify.h>
-#include <WWLib\Signaler.h>
-#include <WWLib\WideString.h>
-#include <WWOnline\RefPtr.h>
-#include "DlgMPTeamSelect.h"
+#include <WWLib/RefCount.h>
+#include <WWLib/Notify.h>
+#include <WWLib/Signaler.h>
+#include <WWLib/WideString.h>
+#include <WWOnline/RefPtr.h>
+#include >DlgMPTeamSelect.h"
 
 namespace WWOnline
 {

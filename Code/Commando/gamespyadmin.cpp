@@ -32,8 +32,8 @@
 #include "cnetwork.h"
 #include "dlgmpconnect.h"
 #include "gamespy_qnr.h"
-#include <Gamespy\ghttp.h>
-#include "useroptions.h"
+#include <Gamespy/ghttp.h>
+#include >useroptions.h"
 #include "renegadedialogmgr.h"
 #include "dialogtests.h"
 #include "translatedb.h"

@@ -55,16 +55,16 @@
 ** Project specific includes.
 */
 #include <Notify.h>
-#include	<wwonline\wolsession.h>
-#include	<wwonline\woluser.h>
-#include	<combat\combat.h>
-#include	<wwnet\wwpacket.h>
+#include	<wwonline/wolsession.h>
+#include	<wwonline/woluser.h>
+#include	<combat/combat.h>
+#include	<wwnet/wwpacket.h>
 
 
 /*
 ** Commonly available components.
 */
-#include <wwlib\vector.h>
+#include <wwlib/vector.h>
 
 
 #ifdef WWASSERT
@@ -222,7 +222,7 @@ class WOLNATInterfaceClass :	public Observer<WWOnline::UserEvent>,
 		};
 
 		/*
-		** Game options format for the firewall code only. All firewall options packets are prefixed with "NAT:"
+		** Game options format for the firewall code only. All firewall options packets are prefixed with >NAT:"
 		*/
 		typedef struct tPrivateGameOptions {
 

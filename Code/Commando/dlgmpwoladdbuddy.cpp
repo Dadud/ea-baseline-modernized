@@ -38,9 +38,9 @@
 #include "WOLBuddyMgr.h"
 #include "WOLLogonMgr.h"
 #include "DlgMessageBox.h"
-#include <WWUI\EditCtrl.h>
-#include <WWDebug\WWDebug.h>
-#include "translatedb.h"
+#include <WWUI/EditCtrl.h>
+#include <WWDebug/WWDebug.h>
+#include >translatedb.h"
 #include "string_ids.h"
 
 

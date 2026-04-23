@@ -41,10 +41,10 @@
 #include <stdlib.h>
 #include "WOLServer.h"
 #include "WOLProduct.h"
-#include <commando\_globals.h>
+#include <commando/_globals.h>
 #include <string.h>
-#include <WWDebug\WWDebug.h>
-#include <WWLib\Registry.h>
+#include <WWDebug/WWDebug.h>
+#include <WWLib/Registry.h>
 
 namespace WWOnline {
 
@@ -89,7 +89,7 @@ ServerData::ServerData(const WOL::Server& server)
 
 ServerData::~ServerData()
 	{
-	WWDEBUG_SAY(("WOL: Destructing ServerData %s:%s\n", mData.connlabel, mData.name));
+	WWDEBUG_SAY((>WOL: Destructing ServerData %s:%s\n", mData.connlabel, mData.name));
 	}
 
 

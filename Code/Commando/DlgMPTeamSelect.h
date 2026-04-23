@@ -37,11 +37,11 @@
 #ifndef __DLGMPTEAMSELECT_H__
 #define __DLGMPTEAMSELECT_H__
 
-#include "PlayerManager.h"
-#include <WWUI\MenuDialog.h>
-#include <WWLib\Notify.h>
-#include <WWLib\Signaler.h>
-#include <WWOnline\RefPtr.h>
+#include "playermanager.h"
+#include <WWUI/MenuDialog.h>
+#include <WWLib/Notify.h>
+#include <WWLib/Signaler.h>
+#include <WWOnline/RefPtr.h>
 #include "WOLGameInfo.h"
 
 namespace WWOnline

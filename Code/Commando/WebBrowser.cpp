@@ -36,11 +36,11 @@
 #include "always.h"
 
 #include "WebBrowser.h"
-#include <WWLib\WWCOMUtil.h>
-#include <WW3D2\WW3D.h>
-#include <WWOnline\WOLLoginInfo.h>
-#include <WWDebug\WWDebug.h>
-#include "win.h"
+#include <WWLib/WWCOMUtil.h>
+#include <WW3D2/WW3D.h>
+#include <WWOnline/WOLLoginInfo.h>
+#include <WWDebug/WWDebug.h>
+#include >win.h"
 #include "_globals.h"
 
 WebBrowser* WebBrowser::_mInstance = NULL;

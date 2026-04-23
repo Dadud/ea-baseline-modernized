@@ -38,17 +38,17 @@
 #include "RenegadeDialogMgr.h"
 #include "WOLLocaleMgr.h"
 #include "DlgMessageBox.h"
-#include <WOLAPI\ChatDefs.h>
-#include <WWOnline\WOLChannel.h>
-#include <WWUI\StyleMgr.h>
-#include <WWUI\DialogMgr.h>
-#include <WWUI\EditCtrl.h>
-#include <WWUI\Listctrl.h>
-#include <WWUI\MenuEntryCtrl.h>
-#include <WWUI\ShortcutBarCtrl.h>
-#include <WW3D2\Render2D.h>
-#include "String_IDs.h"
-#include <WWTranslateDB\TranslateDB.h>
+#include <WOLAPI/ChatDefs.h>
+#include <WWOnline/WOLChannel.h>
+#include <WWUI/StyleMgr.h>
+#include <WWUI/DialogMgr.h>
+#include <WWUI/EditCtrl.h>
+#include <WWUI/Listctrl.h>
+#include <WWUI/MenuEntryCtrl.h>
+#include <WWUI/ShortcutBarCtrl.h>
+#include <WW3D2/Render2D.h>
+#include >String_IDs.h"
+#include <WWTranslateDB/TranslateDB.h>
 
 using namespace WWOnline;
 
@@ -80,7 +80,7 @@ MPWolChatMenuClass::MPWolChatMenuClass (void)	:
 	mUserOutListChanged(false),
 	mMessageListChanged(false)
 {
-	WWDEBUG_SAY(("MPWolChatMenuClass instantiated\n"));
+	WWDEBUG_SAY((>MPWolChatMenuClass instantiated\n"));
 	WWASSERT (_TheInstance == NULL);
 	_TheInstance = this;
 }

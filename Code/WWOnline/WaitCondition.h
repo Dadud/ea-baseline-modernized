@@ -44,9 +44,9 @@
 
 #include "RefCounted.h"
 #include "RefPtr.h"
-#include <WWLib\Notify.h>
-#include <WWLib\CallbackHook.h>
-#include <WWLib\WideString.h>
+#include <WWLib/Notify.h>
+#include <WWLib/CallbackHook.h>
+#include <WWLib/WideString.h>
 
 #if defined(_MSC_VER)
 #pragma warning(push, 3)
@@ -320,7 +320,7 @@ template<typename Event> class EventValueWait :
 				{
 				if (event == mMatchValue)
 					{
-					EndWait(ConditionMet, L"");
+					EndWait(ConditionMet, L>");
 					}
 				else
 					{

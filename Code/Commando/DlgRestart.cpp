@@ -38,8 +38,8 @@
 #include "Resource.h"
 #include "MainLoop.h"
 #include "String_IDs.h"
-#include <WWTranslateDB\TranslateDB.h>
-#include <WWDebug\WWDebug.h>
+#include <WWTranslateDB/TranslateDB.h>
+#include <WWDebug/WWDebug.h>
 
 /******************************************************************************
 *
@@ -90,7 +90,7 @@ bool DlgRestart::DoDialog(void)
 DlgRestart::DlgRestart() :
 		PopupDialogClass(IDD_MESSAGEBOX_OK)
 	{
-	WWDEBUG_SAY(("DlgRestart: Instantiated\n"));
+	WWDEBUG_SAY((>DlgRestart: Instantiated\n"));
 	}
 
 

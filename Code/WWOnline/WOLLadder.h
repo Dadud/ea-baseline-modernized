@@ -42,7 +42,7 @@
 
 namespace WOL
 {
-#include <wolapi\wolapi.h>
+#include <wolapi/wolapi.h>
 }
 
 namespace WWOnline {

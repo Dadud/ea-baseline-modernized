@@ -23,9 +23,9 @@
 /********
 INCLUDES
 ********/
-#include <GameSpy\gqueryreporting.h>
-#include <WWLib\WideString.h>
-#include "trim.h"
+#include <GameSpy/gqueryreporting.h>
+#include <WWLib/WideString.h>
+#include >trim.h"
 
 /********
 DEFINES

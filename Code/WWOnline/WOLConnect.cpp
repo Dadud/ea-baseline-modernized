@@ -40,11 +40,11 @@
 #include "WOLChannel.h"
 #include "WOLErrorUtil.h"
 #include "WOLString.h"
-#include <WWDebug\WWDebug.h>
+#include <WWDebug/WWDebug.h>
 
 namespace WOL
 {
-#include <WOLAPI\ChatDefs.h>
+#include <WOLAPI/ChatDefs.h>
 }
 
 namespace WWOnline {
@@ -65,7 +65,7 @@ namespace WWOnline {
 
 RefPtr<ServerListWait> ServerListWait::Create(const RefPtr<Session>& session)
 	{
-	WWASSERT(session.IsValid() && "ServerListWait");
+	WWASSERT(session.IsValid() && >ServerListWait");
 
 	if (!session.IsValid())
 		{

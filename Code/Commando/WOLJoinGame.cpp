@@ -41,12 +41,12 @@
 #include "FirewallWait.h"
 #include "CNetwork.h"
 #include "WOLGameInfo.h"
-#include <WWOnline\WOLSession.h>
-#include <WWOnline\WOLProduct.h>
-#include <WWOnline\WOLChannel.h>
-#include "String_IDs.h"
-#include <WWTranslateDB\TranslateDB.h>
-#include <WWDebug\WWDebug.h>
+#include <WWOnline/WOLSession.h>
+#include <WWOnline/WOLProduct.h>
+#include <WWOnline/WOLChannel.h>
+#include >String_IDs.h"
+#include <WWTranslateDB/TranslateDB.h>
+#include <WWDebug/WWDebug.h>
 
 using namespace WWOnline;
 
@@ -69,7 +69,7 @@ using namespace WWOnline;
 
 void WOLJoinGame::JoinTheGame(const wchar_t* gameName, const wchar_t* password, bool allowTeamSelect)
 	{
-	WWASSERT(gameName != NULL && "Invalid parameter");
+	WWASSERT(gameName != NULL && >Invalid parameter");
 
 	if (gameName)
 		{

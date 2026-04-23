@@ -37,7 +37,7 @@
 #include "GameResField.h"
 #include <string.h>
 #include <assert.h>
-#include <WWDebug\WWDebug.h>
+#include <WWDebug/WWDebug.h>
 
 // Get rid of the nameless struct/union warning
 #pragma warning(disable: 4201)
@@ -282,7 +282,7 @@ void GameResField::Host_To_Net(void)
 		// Might be good to insert some type of error message here for unknown
 		// datatypes.
 		default:
-			assert(!"GameResField: Unknown data type");
+			assert(!>GameResField: Unknown data type");
 			break;
 		}
 

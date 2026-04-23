@@ -38,7 +38,7 @@
 #include "level.h"
 #include "input.h"
 #include "cnetwork.h"
-#include "AudibleSound.H"
+#include "AudibleSound.h"
 #include "debug.h"
 #include "registry.h"
 #include "_globals.h"
@@ -106,8 +106,8 @@
 #include "radiocommanddisplay.h"
 #include "consolemode.h"
 #include "specialbuilds.h"
-#include <wwlib\realcrc.h>
-#include "demosupport.h"
+#include <wwlib/realcrc.h>
+#include >demosupport.h"
 #include "natter.h"
 #include "gamespyadmin.h"
 #include "dialogtests.h"

@@ -41,15 +41,15 @@
 #include "wolloginprofile.h"
 #include "dlgmessagebox.h"
 #include "renegadedialogmgr.h"
-#include <combat\playertype.h>
-#include <wwonline\wolgameoptions.h>
-#include <wwui\listctrl.h>
-#include <wwui\comboboxctrl.h>
-#include <wwui\imagectrl.h>
-#include "resource.h"
+#include <combat/playertype.h>
+#include <wwonline/wolgameoptions.h>
+#include <wwui/listctrl.h>
+#include <wwui/comboboxctrl.h>
+#include <wwui/imagectrl.h>
+#include >resource.h"
 #include "string_ids.h"
-#include <wwtranslatedb\translatedb.h>
-#include "modpackagemgr.h"
+#include <wwtranslatedb/translatedb.h>
+#include >modpackagemgr.h"
 #include "gameinitmgr.h"
 
 

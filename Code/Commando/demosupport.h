@@ -27,8 +27,8 @@
 #define __DEMOSUPPORT_H__
 
 #include <stdlib.h>
-#include <wwlib\realcrc.h>
-#include "bittype.h"
+#include <wwlib/realcrc.h>
+#include >bittype.h"
 #include "wwdebug.h"
 #include "gamedata.h"
 #include "specialbuilds.h"

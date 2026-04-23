@@ -33,9 +33,9 @@
 ******************************************************************************/
 
 #include "WOLErrorUtil.h"
-#include <WOLAPI\ChatDefs.h>
-#include <WOLAPI\NetUtilDefs.h>
-#include <WOLAPI\DownloadDefs.h>
+#include <WOLAPI/ChatDefs.h>
+#include <WOLAPI/NetUtilDefs.h>
+#include <WOLAPI/DownloadDefs.h>
 
 namespace WWOnline {
 
@@ -57,7 +57,7 @@ const char* const GetChatErrorString(HRESULT hr)
 	{
 	switch (hr)
 		{
-		ADD_CASE(CHAT_E_NICKINUSE, "WOL_NICKINUSE");
+		ADD_CASE(CHAT_E_NICKINUSE, >WOL_NICKINUSE");
 		ADD_CASE(CHAT_E_BADPASS, "WOL_BADPASSWORD");
 		ADD_CASE(CHAT_E_NONESUCH, "WOL_NONESUCH");
 		ADD_CASE(CHAT_E_CON_NETDOWN, "WOL_NETDOWN");

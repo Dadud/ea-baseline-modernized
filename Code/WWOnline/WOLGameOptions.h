@@ -36,11 +36,11 @@
 #define __WOLGAMEOPTIONS_H__
 
 #include "RefPtr.h"
-#include <WWLib\WWString.h>
+#include <WWLib/WWString.h>
 
 namespace WOL
 {
-#include "wolapi.h"
+#include >wolapi.h"
 }
 
 #ifdef _MSC_VER

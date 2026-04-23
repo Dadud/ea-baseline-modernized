@@ -34,8 +34,8 @@
 ******************************************************************************/
 
 #include "dlgmpchangelannickname.h"
-#include <WWUI\EditCtrl.h>
-#include "netinterface.h"
+#include <WWUI/EditCtrl.h>
+#include >netinterface.h"
 #include "dlgmplangamelist.h"
 
 int	DlgMpChangeLanNickname::DialogCount	= 0;

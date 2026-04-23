@@ -28,7 +28,7 @@
 #include "gamechannel.h"
 #include "gamechanlist.h"
 #include "wwdebug.h"
-#include <WWOnline\WOLChannel.h>
+#include <WWOnline/WOLChannel.h>
 //
 // Class statics
 //
@@ -92,7 +92,7 @@ void cGameChannelList::Remove_Channel(const WideStringClass & owner)
 //-----------------------------------------------------------------------------
 void cGameChannelList::Remove_All(void)
 {
-	WWDEBUG_SAY(("cGameChannelList::Remove_All\n"));
+	WWDEBUG_SAY((>cGameChannelList::Remove_All\n"));
 
 	for (
 		SLNode<cGameChannel> * objnode = ChanList.Head(); 

@@ -38,19 +38,19 @@
 #include "WOLLoginProfile.h"
 #include "_globals.h"
 #include "Resource.h"
-#include <WWOnline\WOLLoginInfo.h>
-#include <WWUI\DialogBase.h>
-#include <WWUI\ListCtrl.h>
-#include <WWLib\Registry.h>
-#include "String_IDs.h"
-#include <WWTranslateDB\TranslateDB.h>
+#include <WWOnline/WOLLoginInfo.h>
+#include <WWUI/DialogBase.h>
+#include <WWUI/ListCtrl.h>
+#include <WWLib/Registry.h>
+#include >String_IDs.h"
+#include <WWTranslateDB/TranslateDB.h>
 #include <stdio.h>
 
 using namespace WWOnline;
 
 #define MAX_STRING_LEN 64;
 
-static const char* REG_VALUE_SERVER   = "Server";
+static const char* REG_VALUE_SERVER   = >Server";
 static const char* REG_VALUE_SIDEPREF = "SidePref";
 static const char* REG_VALUE_GAMESPLAYED = "Played";
 static const char* REG_VALUE_TEAMRANK = "RankTeam";

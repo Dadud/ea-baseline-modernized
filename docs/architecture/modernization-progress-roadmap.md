@@ -124,9 +124,15 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 017 — map `commando`
+### Latest batch completed: Batch 018 — datasafe Win32 gating + Commando dependency mapping
 
-Batch 017 adds an opt-in scaffold for the original `commando` application target and classifies it into product-startup, client/frontend/UI, runtime orchestration, FDS-mode, online-service, config-shell, render/audio ownership, and local-support source islands. It intentionally documents the reverse product-shell coupling through `Combat` into `datasafe.h` and the resulting Win32 dependency instead of faking out the product shell with broad Windows stubs.
+Batch 018 does two things:
+
+1. **datasafe Win32 gating**: Adds narrow non-Windows compatibility to `datasafe.h` and `datasafe.cpp`. The `safe_int`/`safe_float` encrypted storage types are pure C++ — their thread-safety mutex path (`HANDLE`, `CreateMutex`, `GetCurrentThreadId`, `CloseHandle`) is now gated under `#ifdef _WIN32`. Non-Windows gets `PreferredThread = 0` as a no-op. This unblocks the `Combat` → `datasafe` chain for Linux scaffold compilation without faking the data-safe architecture.
+
+2. **Commando probe and path/case fixes**: Batch-fixed 87 Commando files with Windows backslash include paths (→ forward slashes), 10 files with `WWAudio.H` case issue (→ `WWAudio.h`), and created minimal stubs for genuinely missing EA baseline headers (`gamespybanlist.h`, `WWLib/Notify.h`, `WWLib/Signaler.h`, `WWOnline/RefPtr.h`, `WWOnline/WOLLangCodes.h`, `WWUI/MenuDialog.h`, `WWUI/PopupDialog.h`, `WOLGameInfo.h`, `AudibleSound.h`). Gated `winsock.h` in `wwnet/rhost.h` under `_WIN32`.
+
+The Commando probe revealed that `Commando` is deeply coupled to EA's closed-source WWOnline/WWLib/WWUI framework (event-driven session management, dialog UI, reference-counted smart pointers) and WOLBrowser (COM/IDL ActiveX control with RPC dependencies). This is classified as a **product shell seam** — not buildable on non-Windows without substantial framework reconstruction or behavior-changing stubs.
 
 ### Previous batch completed: Batch 016 — `Commando` dependency prep
 

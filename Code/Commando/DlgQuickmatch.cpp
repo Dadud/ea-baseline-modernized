@@ -43,17 +43,17 @@
 #include "gameinitmgr.h"
 #include "WOLJoinGame.h"
 #include "String_IDs.h"
-#include <WWTranslateDB\TranslateDB.h>
-#include <WWOnline\WaitCondition.h>
-#include <WWUI\ListCtrl.h>
-#include <WWDebug\WWDebug.h>
+#include <WWTranslateDB/TranslateDB.h>
+#include <WWOnline/WaitCondition.h>
+#include <WWUI/ListCtrl.h>
+#include <WWDebug/WWDebug.h>
 
 
 #ifdef _MSC_VER
 #pragma warning (push,3)
 #endif
 
-#include "systimer.h"
+#include >systimer.h"
 
 #ifdef _MSC_VER
 #pragma warning (pop)

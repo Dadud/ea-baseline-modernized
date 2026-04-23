@@ -35,7 +35,7 @@
 ******************************************************************************/
 
 #include "DlgPasswordPrompt.h"
-#include <WWUI\EditCtrl.h>
+#include <WWUI/EditCtrl.h>
 
 /******************************************************************************
 *
@@ -92,7 +92,7 @@ bool DlgPasswordPrompt::DoDialog(Signaler<DlgPasswordPrompt>* target)
 DlgPasswordPrompt::DlgPasswordPrompt() :
 		PopupDialogClass(IDD_MP_JOIN_PASSWORD)
 	{
-	WWDEBUG_SAY(("DlgPasswordPrompt Instantiated\n"));
+	WWDEBUG_SAY((>DlgPasswordPrompt Instantiated\n"));
 	}
 
 

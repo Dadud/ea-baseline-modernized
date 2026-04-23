@@ -44,12 +44,12 @@
 #include "ww3d.h"
 #include "translatedb.h"
 #include "string_ids.h"
-#include <WWUI\ListCtrl.h>
-#include <WWUI\ComboBoxCtrl.h>
-#include <WWUI\DialogMgr.h>
-#include <WWUI\shortcutbarctrl.h>
-#include <WWOnline\WOLUser.h>
-#include <WWOnline\WOLSquad.h>
+#include <WWUI/ListCtrl.h>
+#include <WWUI/ComboBoxCtrl.h>
+#include <WWUI/DialogMgr.h>
+#include <WWUI/shortcutbarctrl.h>
+#include <WWOnline/WOLUser.h>
+#include <WWOnline/WOLSquad.h>
 
 
 ////////////////////////////////////////////////////////////////
@@ -97,7 +97,7 @@ MPWolBuddiesMenuClass::MPWolBuddiesMenuClass (void)	:
 	mBuddyListChanged(false),
 	mBuddyInfoChanged(false)
 {
-	WWDEBUG_SAY(("MPWolBuddiesMenuClass: Instantiated\n"));
+	WWDEBUG_SAY((>MPWolBuddiesMenuClass: Instantiated\n"));
 	WWASSERT(_mInstance == NULL);
 	_mInstance = this;
 

@@ -45,14 +45,14 @@
 #include "WOLServer.h"
 #include "WaitCondition.h"
 #include "WOLErrorUtil.h"
-#include <WWDebug\WWDebug.h>
+#include <WWDebug/WWDebug.h>
 #include <stdlib.h>
 
 #ifdef _MSC_VER
 #pragma warning (push,3)
 #endif
 
-#include "systimer.h"
+#include >systimer.h"
 
 #ifdef _MSC_VER
 #pragma warning (pop)

@@ -35,7 +35,7 @@
 #ifndef __WOLPING_H__
 #define __WOLPING_H__
 
-#include <WWLib\WWString.h>
+#include <WWLib/WWString.h>
 
 namespace WWOnline {
 

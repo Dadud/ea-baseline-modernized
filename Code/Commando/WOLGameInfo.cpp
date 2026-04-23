@@ -35,11 +35,11 @@
 #include "WOLGameInfo.h"
 #include "GameData.h"
 #include "CNetwork.h"
-#include <WWOnline\WOLUser.h>
-#include <WWOnline\WOLChannel.h>
-#include <WWOnline\PingProfile.h>
-#include <WWLib\RealCRC.h>
-#include "modpackagemgr.h"
+#include <WWOnline/WOLUser.h>
+#include <WWOnline/WOLChannel.h>
+#include <WWOnline/PingProfile.h>
+#include <WWLib/RealCRC.h>
+#include >modpackagemgr.h"
 
 using namespace WWOnline;
 

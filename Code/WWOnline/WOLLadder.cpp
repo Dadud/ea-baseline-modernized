@@ -35,7 +35,7 @@
 #include <string.h>
 #include <memory.h>
 #include "WOLLadder.h"
-#include <WWDebug\WWDebug.h>
+#include <WWDebug/WWDebug.h>
 
 namespace WWOnline {
 
@@ -79,7 +79,7 @@ RefPtr<LadderData> LadderData::Create(const WOL::Ladder& ladder, long time)
 LadderData::LadderData(const WOL::Ladder& ladder, long time) :
 		mTimeStamp(time)
 	{
-//	WWDEBUG_SAY(("WOL: Instantiating LadderData\n"));
+//	WWDEBUG_SAY((>WOL: Instantiating LadderData\n"));
 	memcpy(&mData, &ladder, sizeof(mData));
 	mData.next = NULL;
 	}

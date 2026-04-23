@@ -45,8 +45,8 @@
 #include "translatedb.h"
 #include "wwaudio.h"
 #include "messagewindow.h"
-#include <wwlib\widestring.h>
-#include "cncmodesettings.h"
+#include <wwlib/widestring.h>
+#include >cncmodesettings.h"
 #include "floodprotectionmgr.h"
 
 

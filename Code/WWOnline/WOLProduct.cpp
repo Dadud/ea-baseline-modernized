@@ -41,7 +41,7 @@
 ******************************************************************************/
 
 #include "WOLProduct.h"
-#include <WWLib\win.h>
+#include <WWLib/win.h>
 
 namespace WWOnline {
 
@@ -131,7 +131,7 @@ Product::Product(const char* registryPath, int gameCode, const wchar_t* chanPass
 		mGameCode(gameCode),
 		mChannelPassword(chanPass)
 	{
-	WWASSERT(registryPath && "Invalid parameter");
+	WWASSERT(registryPath && >Invalid parameter");
 
 	HKEY rKey;
 	LONG result = RegOpenKeyEx(HKEY_LOCAL_MACHINE, registryPath, 0, KEY_READ, &rKey);

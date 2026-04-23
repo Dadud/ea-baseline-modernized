@@ -50,15 +50,15 @@
 #include "WOLGameOptions.h"
 #include "WOLGame.h"
 #include "WOLErrorUtil.h"
-#include <wwlib\registry.h>
-#include <commando\_globals.h>
-#include "systimer.h"
+#include <wwlib/registry.h>
+#include <commando/_globals.h>
+#include >systimer.h"
 #include "specialbuilds.h"
 #include "simplevec.h"
-#include "..\commando\cnetwork.h"
+#include "../commando/cnetwork.h"
 namespace WOL
 {
-#include <WOLAPI\chatdefs.h>
+#include <WOLAPI/chatdefs.h>
 }
 
 namespace WWOnline {
@@ -83,7 +83,7 @@ ChatObserver::ChatObserver() :
 		mRefCount(1),
 		mOuter(NULL)
 	{
-	WWDEBUG_SAY(("WOL: ChatObserver Instantiated\n"));
+	WWDEBUG_SAY((>WOL: ChatObserver Instantiated\n"));
 	}
 
 

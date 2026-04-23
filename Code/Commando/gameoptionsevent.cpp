@@ -54,7 +54,7 @@
 #include "dlgmpconnectionrefused.h"
 #include "translatedb.h"
 #include "string_ids.h"
-#include <WWLib\RealCRC.h>
+#include <WWLib/RealCRC.h>
 
 DECLARE_NETWORKOBJECT_FACTORY(cGameOptionsEvent, NETCLASSID_GAMEOPTIONSEVENT);
 
@@ -123,7 +123,7 @@ cGameOptionsEvent::Export_Creation(BitStreamClass & packet)
 	packet.Add(CRC_Stringi(The_Game()->Get_Map_Name()));
 #endif // MULTIPLAYERDEMO
 
-	WWDEBUG_SAY(("cGameOptionsEvent sent\n"));
+	WWDEBUG_SAY((>cGameOptionsEvent sent\n"));
 
 	Set_Delete_Pending();
 }

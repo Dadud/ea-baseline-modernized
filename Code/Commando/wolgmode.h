@@ -43,9 +43,9 @@
 
 #include "GameMode.h"
 #include "WOLBuddyMgr.h"
-#include <WWOnline\RefPtr.h>
-#include <WWLib\Notify.h>
-#include <WWLib\Signaler.h>
+#include <WWOnline/RefPtr.h>
+#include <WWLib/Notify.h>
+#include <WWLib/Signaler.h>
 
 class cGameData;
 class cPlayer;
@@ -87,7 +87,7 @@ class	WolGameModeClass :
 		~WolGameModeClass();
 
 		inline const char* Name(void)
-			{return "WOL";}
+			{return >WOL";}
 
 		void Init(void);
 		void Shutdown(void);

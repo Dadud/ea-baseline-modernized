@@ -61,11 +61,11 @@
 #include	"fromaddress.h"
 #include "packetmgr.h"
 
-#include "..\wwonline\wolchannel.h"
-#include "..\wwonline\wolgameoptions.h"
-#include "..\wwonline\wollogininfo.h"
-#include "..\wwonline\wolproduct.h"
-#include "..\wwonline\wolserver.h"
+#include "../wwonline/wolchannel.h"
+#include "../wwonline/wolgameoptions.h"
+#include "../wwonline/wollogininfo.h"
+#include "../wwonline/wolproduct.h"
+#include "../wwonline/wolserver.h"
 
 
 WOLNATInterfaceClass WOLNATInterface;

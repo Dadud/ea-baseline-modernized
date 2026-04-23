@@ -33,8 +33,8 @@
 
 #include "wwdebug.h"
 #include "always.h"
-#include <WWOnline\RefPtr.h>
-#include "refcount.h"
+#include <WWOnline/RefPtr.h>
+#include >refcount.h"
 
 namespace WWOnline
 {

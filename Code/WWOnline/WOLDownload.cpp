@@ -33,14 +33,14 @@
 *
 ******************************************************************************/
 
-#include <WWLib\Always.h>
-#include "WOLDownload.h"
+#include <WWLib/Always.h>
+#include >WOLDownload.h"
 #include "WOLProduct.h"
 #include "WOLErrorUtil.h"
 #include "WOLString.h"
-#include <WOLAPI\DownloadDefs.h>
-#include <WWLib\WWString.h>
-#include <WWDebug\WWDebug.h>
+#include <WOLAPI/DownloadDefs.h>
+#include <WWLib/WWString.h>
+#include <WWDebug/WWDebug.h>
 
 namespace WWOnline {
 
@@ -98,7 +98,7 @@ Download::Download(const WOL::Update& update) :
 	memcpy(&mWOLUpdate, &update, sizeof(mWOLUpdate));
 	mWOLUpdate.next = NULL;
 
-	WWDEBUG_SAY(("WOL: Download instantiated '%s'\n", GetFilename()));
+	WWDEBUG_SAY((>WOL: Download instantiated '%s'\n", GetFilename()));
 	}
 
 

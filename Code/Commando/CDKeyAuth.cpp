@@ -36,12 +36,12 @@
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include <GameSpy\gcdkeyserver.h>
-#include <GameSpy\gcdkeyclient.h>
-#include <GameSpy\nonport.h>
-#include <GameSpy\gs_md5.h>
+#include <GameSpy/gcdkeyserver.h>
+#include <GameSpy/gcdkeyclient.h>
+#include <GameSpy/nonport.h>
+#include <GameSpy/gs_md5.h>
 #include <stdlib.h>
-#include "wwdebug.h"
+#include >wwdebug.h"
 #include "CDKeyAuth.h"
 #include "gamespyauthmgr.h"
 #include "registry.h"

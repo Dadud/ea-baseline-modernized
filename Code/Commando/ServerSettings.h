@@ -35,7 +35,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include <win.h>
-#include "wwonline\wolsession.h"
+#include "wwonline/wolsession.h"
 
 class StringClass;
 

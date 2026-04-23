@@ -138,9 +138,13 @@
 #ifndef 	_ALWAYS_H
 #include "always.h"
 #include <assert.h>
-#include <malloc.h>
 #include <memory.h>
+#ifdef _WIN32
+#include <malloc.h>
 #include <windows.h>
+#else
+#include <stdlib.h>
+#endif
 #endif	//_ALWAYS_H
 
 #ifndef 	_TIMEMGR_H
@@ -640,13 +644,15 @@ class GenericDataSafeClass
 		{
 			public:
 #ifdef WWDEBUG
-				__forceinline ThreadLockClass(void) {
-					if (GenericDataSafeClass::PreferredThread != GetCurrentThreadId()) {
-						WWDEBUG_SAY(("DATASAFE.H - PreferredThread = %08X, GetCurrentThreadId() == %08X\n", GenericDataSafeClass::PreferredThread, GetCurrentThreadId()));
-					}
-					ds_assert(GenericDataSafeClass::PreferredThread == GetCurrentThreadId());
-				};
-#endif //WWDEBUG
+			__forceinline ThreadLockClass(void) {
+#ifdef _WIN32
+				if (GenericDataSafeClass::PreferredThread != GetCurrentThreadId()) {
+					WWDEBUG_SAY(("DATASAFE.H - PreferredThread = %08X, GetCurrentThreadId() == %08X\n", GenericDataSafeClass::PreferredThread, GetCurrentThreadId()));
+				}
+				ds_assert(GenericDataSafeClass::PreferredThread == GetCurrentThreadId());
+#endif
+			};
+#endif
 		};
 
 		static unsigned int PreferredThread;

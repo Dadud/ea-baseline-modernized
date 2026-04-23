@@ -4,7 +4,7 @@ This matrix summarizes the generated VC6 project manifest after Batch 005. It is
 
 | Project | Type | VC6 project | Scaffold status | Likely future bucket |
 | --- | --- | --- | --- | --- |
-| `commando` | `Application` | `Code/Commando/commando.dsp` | modeled as opt-in product-shell seam; client/FDS/online/config/render blockers documented | products/client + products/dedicated_server + online_services |
+| `commando` | `Application` | `Code/Commando/commando.dsp` | modeled as opt-in product-shell seam; Win32 path fixes applied (backslash includes, case issues); WWOnline/WWLib/WWUI/WOL seam classified; datasafe Win32 gating applied; WWOnline stubs created; ww3d2/WWAudio stubs deferred to existing target seams; WOLBrowser COM/IDL classified as not-applicable non-Windows | products/client + products/dedicated_server + online_services |
 | `Installer` | `Application` | `Code/Installer/Installer.dsp` | not modeled | products/installer |
 | `launcher` | `Application` | `Code/Launcher/launcher.dsp` | not modeled | products/launcher |
 | `meshtest` | `Application` | `Code/Tests/MeshTest/meshtest.dsp` | not modeled | tests |

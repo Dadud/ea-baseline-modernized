@@ -61,7 +61,7 @@
 #include "specialbuilds.h"
 #include "gamespyadmin.h"
 
-#include <WWOnline\WOLSession.h>
+#include <WWOnline/WOLSession.h>
 
 /*
 ** Class statics.
@@ -76,7 +76,7 @@ unsigned long BandwidthCheckerClass::ReportedDownstreamBandwidth = 0;
 unsigned short *BandwidthCheckerClass::DownstreamBandwidthString = NULL;
 int BandwidthCheckerClass::FailureCode = BANDTEST_OK;
 bool BandwidthCheckerClass::GotBandwidth = false;
-const char *BandwidthCheckerClass::DefaultServerName = "www.westwood.com";
+const char *BandwidthCheckerClass::DefaultServerName = >www.westwood.com";
 
 /*
 ** Possible error codes from the bandwidth test.

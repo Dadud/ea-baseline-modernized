@@ -34,8 +34,8 @@
 ******************************************************************************/
 
 #include "WOLDiags.h"
-#include <WWOnline\WOLSession.h>
-#include <WWOnline\WOLServer.h>
+#include <WWOnline/WOLSession.h>
+#include <WWOnline/WOLServer.h>
 
 using namespace WWOnline;
 
@@ -43,7 +43,7 @@ void ShowWOLVersion(const RefPtr<Session>& session)
 	{
 	unsigned long ver = 0;
 	session->GetChatObject()->GetVersion(&ver);
-	ConsoleFunctionClass::Print("WOLAPI V%u.%u\n", (ver >> 16), (ver & 0xFFFF));
+	ConsoleFunctionClass::Print(>WOLAPI V%u.%u\n", (ver >> 16), (ver & 0xFFFF));
 	}
 
 

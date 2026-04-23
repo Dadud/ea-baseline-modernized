@@ -47,7 +47,7 @@
 #include "textdisplay.h"
 #include "gameobjmanager.h"
 #include "multihud.h"
-#include "WWAudio.H"
+#include "WWAudio.h"
 #include "useroptions.h"
 #include "devoptions.h"
 #include "translatedb.h"
@@ -89,8 +89,8 @@
 #include "dlgmpconnectionrefused.h"
 
 #include "Resource.h"
-#include <WWUI\DialogMgr.h>
-#include "ffactory.h"
+#include <WWUI/DialogMgr.h>
+#include >ffactory.h"
 #include "realcrc.h"
 
 extern bool g_is_loading;

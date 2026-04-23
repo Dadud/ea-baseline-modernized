@@ -55,7 +55,7 @@
 #include "gamedata.h"
 #include "nat.h"
 #include "consolemode.h"
-#include "wwonline\wolserver.h"
+#include "wwonline/wolserver.h"
 #include "notify.h"
 #include "serversettings.h"
 #include "wolbuddymgr.h"

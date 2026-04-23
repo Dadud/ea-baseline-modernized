@@ -36,8 +36,8 @@
 #include <stdlib.h>
 #include "WOLChannel.h"
 #include "WOLString.h"
-#include <WOLAPI\ChatDefs.h>
-#include <WWDebug\WWDebug.h>
+#include <WOLAPI/ChatDefs.h>
+#include <WWDebug/WWDebug.h>
 
 namespace WWOnline {
 
@@ -140,7 +140,7 @@ ChannelData::ChannelData(const wchar_t* name, const wchar_t* password, int type)
 	memset(&mData, 0, sizeof(mData));
 	mData.type = type;
 
-	WWASSERT(name && "NULL channel name");
+	WWASSERT(name && >NULL channel name");
 	wcstombs((char*)mData.name, name, sizeof(mData.name));
 	mData.name[sizeof(mData.name) - 1] = 0;
 

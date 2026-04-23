@@ -36,17 +36,17 @@
 #include "GameData.h"
 #include "Player.h"
 #include "consolemode.h"
-#include <Combat\PlayerType.h>
-#include <WWOnline\GameResPacket.h>
-#include <WWOnline\WOLSession.h>
-#include <WWOnline\WOLProduct.h>
-#include <WWOnline\WOLUser.h>
-#include <WWLib\CPUDetect.h>
-#include <WWLib\VerChk.h>
-#include <WWLib\CPUDetect.h>
-#include <WWLib\global.h>
-#include <WWLib\md5.h>
-#include <WW3D2\DX8Wrapper.h>
+#include <Combat/PlayerType.h>
+#include <WWOnline/GameResPacket.h>
+#include <WWOnline/WOLSession.h>
+#include <WWOnline/WOLProduct.h>
+#include <WWOnline/WOLUser.h>
+#include <WWLib/CPUDetect.h>
+#include <WWLib/VerChk.h>
+#include <WWLib/CPUDetect.h>
+#include <WWLib/global.h>
+#include <WWLib/md5.h>
+#include <WW3D2/DX8Wrapper.h>
 #include <windows.h>
 
 using namespace WWOnline;
@@ -77,7 +77,7 @@ void SendGameResults(unsigned long gameID, cGameData* theGame, SList<cPlayer>* p
 
 	if (!session.IsValid())
 		{
-		assert(session.IsValid() && "SendGameResults() WOLSession not instantiated.");
+		assert(session.IsValid() && >SendGameResults() WOLSession not instantiated.");
 		WWDEBUG_SAY(("ERROR: SendGameResults() WOLSession not instantiated.\n"));
 		return;
 		}

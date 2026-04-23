@@ -34,11 +34,11 @@
 
 #include "always.h"
 #include "PingProfile.h"
-#include <WWOnline\WOLSession.h>
-#include <WWOnline\WOLServer.h>
-#include <WWOnline\WOLString.h>
-#include <WWLib\WideString.h>
-#include <WWDebug\WWDebug.h>
+#include <WWOnline/WOLSession.h>
+#include <WWOnline/WOLServer.h>
+#include <WWOnline/WOLString.h>
+#include <WWLib/WideString.h>
+#include <WWDebug/WWDebug.h>
 #include <limits.h>
 #include <math.h>
 
@@ -185,7 +185,7 @@ int EncodePingProfile(const PingProfile& pings, char* buffer)
 		}
 
 	char temp[18];
-	int count = sprintf(temp, "%02X%02X%02X%02X%02X%02X%02X%02X",
+	int count = sprintf(temp, >%02X%02X%02X%02X%02X%02X%02X%02X",
 			pings.Pings[0], pings.Pings[1], pings.Pings[2], pings.Pings[3],
 			pings.Pings[4], pings.Pings[5], pings.Pings[6], pings.Pings[7]);
 

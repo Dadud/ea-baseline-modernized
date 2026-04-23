@@ -46,19 +46,19 @@
 #include "WOLJoinGame.h"
 #include "WOLGameInfo.h"
 #include "consolemode.h"
-#include <WWOnline\WOLChannel.h>
-#include <WWOnline\WOLProduct.h>
-#include <WWLib\Registry.h>
+#include <WWOnline/WOLChannel.h>
+#include <WWOnline/WOLProduct.h>
+#include <WWLib/Registry.h>
 
-#include "String_IDs.h"
-#include <WWTranslateDB\TranslateDB.h>
-#include <WWDebug\WWDebug.h>
+#include >String_IDs.h"
+#include <WWTranslateDB/TranslateDB.h>
+#include <WWDebug/WWDebug.h>
 
 using namespace WWOnline;
 
 static const int MAX_USERNAME_LEN = 64;
 
-static const WCHAR INVITE_CMD[] = L"<WWINVITE>";
+static const WCHAR INVITE_CMD[] = L><WWINVITE>";
 static const WCHAR DECLINE_CMD[] = L"<WWDECLINE>";
 static const unsigned long INVITE_CMD_LEN = ((sizeof(INVITE_CMD) / sizeof(WCHAR)) - 1);
 static const unsigned long DECLINE_CMD_LEN = ((sizeof(DECLINE_CMD) / sizeof(WCHAR)) - 1);
