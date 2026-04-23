@@ -1,0 +1,2074 @@
+{
+  "description": "Original EA Visual Studio 6 workspace/project manifest.",
+  "projects": [
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "BandTest - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "BandTest - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "BandTest - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "BandTest",
+      "outputs": [],
+      "path": "Code/BandTest/BandTest.dsp",
+      "project_type": "Win32 (x86) Dynamic-Link Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "BinkMovie - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "BinkMovie - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "BinkMovie - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "BinkMovie",
+      "outputs": [],
+      "path": "Code/BinkMovie/BinkMovie.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "Combat - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "Combat - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "Combat - Win32 Profile"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "Combat - Win32 DebugE"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "Combat - Win32 ProfileE"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "Combat",
+      "outputs": [],
+      "path": "Code/Combat/Combat.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "commando - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "commando - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "commando - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "commando",
+      "outputs": [],
+      "path": "Code/Commando/commando.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "Installer - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "Installer - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "Installer",
+      "outputs": [],
+      "path": "Code/Installer/Installer.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "launcher - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "launcher - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "launcher - Win32 Debug FDS"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "launcher - Win32 Release FDS"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "launcher - Win32 Debug Demo"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "launcher - Win32 Release Demo"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "launcher",
+      "outputs": [],
+      "path": "Code/Launcher/launcher.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "SControl - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "SControl - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "SControl - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "SControl",
+      "outputs": [],
+      "path": "Code/SControl/SControl.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "Scripts - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "Scripts - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "Scripts - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "Scripts",
+      "outputs": [],
+      "path": "Code/Scripts/Scripts.dsp",
+      "project_type": "Win32 (x86) Dynamic-Link Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "bandy - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "bandy - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "bandy",
+      "outputs": [],
+      "path": "Code/Tests/Bandy/bandy.dsp",
+      "project_type": "Win32 (x86) Console Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "BitPackTest - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "BitPackTest - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "BitPackTest",
+      "outputs": [],
+      "path": "Code/Tests/BitPackTest/BitPackTest.dsp",
+      "project_type": "Win32 (x86) Console Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "LocalHost - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "LocalHost",
+      "outputs": [],
+      "path": "Code/Tests/LocalHost/LocalHost.dsp",
+      "project_type": "Win32 (x86) Console Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "meshtest - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "meshtest - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "meshtest - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "meshtest",
+      "outputs": [],
+      "path": "Code/Tests/MeshTest/meshtest.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "PhysTest - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "PhysTest - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "PhysTest",
+      "outputs": [],
+      "path": "Code/Tests/PhysTest/PhysTest.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "SplineTest - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "SplineTest - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "SplineTest",
+      "outputs": [],
+      "path": "Code/Tests/SplineTest/SplineTest.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "collide - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "collide - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "collide",
+      "outputs": [],
+      "path": "Code/Tests/collide/collide.dsp",
+      "project_type": "Win32 (x86) Console Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "mathtest - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "mathtest - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "mathtest - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "mathtest",
+      "outputs": [],
+      "path": "Code/Tests/mathtest/mathtest.dsp",
+      "project_type": "Win32 (x86) Console Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "movietest - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "movietest - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "movietest",
+      "outputs": [],
+      "path": "Code/Tests/movietest/movietest.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "skeleton_gth - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "skeleton_gth - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "skeleton_gth - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "skeleton_gth",
+      "outputs": [],
+      "path": "Code/Tests/skeleton_gth/skeleton_gth.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "AMC_imp - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "AMC_imp - Win32 Hybrid"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "AMC_imp",
+      "outputs": [],
+      "path": "Code/Tools/AMC_IMP/AMC_IMP.dsp",
+      "project_type": "Win32 (x86) Dynamic-Link Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "asf_imp - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "asf_imp - Win32 Hybrid"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "asf_imp",
+      "outputs": [],
+      "path": "Code/Tools/ASF_IMP/ASF_IMP.dsp",
+      "project_type": "Win32 (x86) Dynamic-Link Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "Blender2 - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "Blender2 - Win32 Hybrid"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "Blender2",
+      "outputs": [],
+      "path": "Code/Tools/Blender2/Blender2.dsp",
+      "project_type": "Win32 (x86) Dynamic-Link Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "ChunkView - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "ChunkView - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "ChunkView",
+      "outputs": [],
+      "path": "Code/Tools/ChunkView/ChunkView.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "Clipbord - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "Clipbord - Win32 Hybrid"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "Clipbord",
+      "outputs": [],
+      "path": "Code/Tools/Clipbord/Clipbord.dsp",
+      "project_type": "Win32 (x86) Dynamic-Link Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "CommandoUpdate - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "CommandoUpdate - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "CommandoUpdate",
+      "outputs": [],
+      "path": "Code/Tools/CommandoUpdate/CommandoUpdate.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "CopyLocked - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "CopyLocked - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "CopyLocked",
+      "outputs": [],
+      "path": "Code/Tools/CopyLocked/CopyLocked.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "LevelEdit - Win32 DebugE"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "LevelEdit - Win32 ProfileE"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "LevelEdit",
+      "outputs": [],
+      "path": "Code/Tools/LevelEdit/LevelEdit.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "LightMap - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "LightMap - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "LightMap - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "LightMap",
+      "outputs": [],
+      "path": "Code/Tools/LightMap/LightMap.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "MakeMix - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "MakeMix - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "MakeMix",
+      "outputs": [],
+      "path": "Code/Tools/MakeMix/MakeMix.dsp",
+      "project_type": "Win32 (x86) Console Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "MaxFly - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "MaxFly - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "MaxFly - Win32 Hybrid"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "MaxFly",
+      "outputs": [],
+      "path": "Code/Tools/MaxFly/MaxFly.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "MixViewer - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "MixViewer - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "MixViewer",
+      "outputs": [],
+      "path": "Code/Tools/MixViewer/MixViewer.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "RenRem - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "RenRem - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "RenRem - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "RenRem",
+      "outputs": [],
+      "path": "Code/Tools/RenRem/RenRem.dsp",
+      "project_type": "Win32 (x86) Console Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "RenegadeGR - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "RenegadeGR - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "RenegadeGR",
+      "outputs": [],
+      "path": "Code/Tools/RenegadeGR/RenegadeGR.dsp",
+      "project_type": "Win32 (x86) Dynamic-Link Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "SimpleGraph - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "SimpleGraph - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "SimpleGraph",
+      "outputs": [],
+      "path": "Code/Tools/SimpleGraph/SimpleGraph.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "SkeletonHack - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "SkeletonHack - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "SkeletonHack",
+      "outputs": [],
+      "path": "Code/Tools/SkeletonHack/SkeletonHack.dsp",
+      "project_type": "Win32 (x86) Console Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "VerStamp - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "VerStamp - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "VerStamp",
+      "outputs": [],
+      "path": "Code/Tools/VerStamp/VerStamp.dsp",
+      "project_type": "Win32 (x86) Console Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "ViewTrans - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "ViewTrans - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "ViewTrans",
+      "outputs": [],
+      "path": "Code/Tools/ViewTrans/ViewTrans.dsp",
+      "project_type": "Win32 (x86) Dynamic-Link Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "W3DShellExt - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "W3DShellExt - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "W3DShellExt",
+      "outputs": [],
+      "path": "Code/Tools/W3DShellExt/W3DShellExt.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "W3DUpdate - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "W3DUpdate - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "W3DUpdate",
+      "outputs": [],
+      "path": "Code/Tools/W3DUpdate/W3DUpdate.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "W3DView - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "W3DView - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "W3DView - Win32 Profile"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "W3DView - Win32 Compressed"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "W3DView",
+      "outputs": [],
+      "path": "Code/Tools/W3DView/W3DView.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "WWConfig - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "WWConfig - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "WWConfig",
+      "outputs": [],
+      "path": "Code/Tools/WWConfig/WWConfig.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "WWCtrl - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "WWCtrl - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "WWCtrl - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "WWCtrl",
+      "outputs": [],
+      "path": "Code/Tools/WWCtrl/WWCtrl.dsp",
+      "project_type": "Win32 (x86) Dynamic-Link Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "bin2cpp - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Console Application",
+          "name": "bin2cpp - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "bin2cpp",
+      "outputs": [],
+      "path": "Code/Tools/bin2cpp/bin2cpp.dsp",
+      "project_type": "Win32 (x86) Console Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "max2w3d - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "max2w3d - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "max2w3d - Win32 Hybrid"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "max2w3d - Win32 Max4Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "max2w3d - Win32 GMax Hybrid"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "max2w3d - Win32 GMax Release"
+        },
+        {
+          "based_on": "Win32 (x86) Dynamic-Link Library",
+          "name": "max2w3d - Win32 mainMax4Hybrid"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "max2w3d",
+      "outputs": [],
+      "path": "Code/Tools/max2w3d/max2w3d.dsp",
+      "project_type": "Win32 (x86) Dynamic-Link Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "pluglib - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "pluglib - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "pluglib - Win32 Hybrid"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "pluglib - Win32 GMax Hybrid"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "pluglib - Win32 GMax Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "pluglib - Win32 Max4 Hybrid"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "pluglib - Win32 Max4 Release"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "pluglib",
+      "outputs": [],
+      "path": "Code/Tools/pluglib/pluglib.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "VidInit - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "VidInit - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "VidInit",
+      "outputs": [],
+      "path": "Code/Tools/vidinit/VidInit.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "wdump - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "wdump - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "wdump - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wdump",
+      "outputs": [],
+      "path": "Code/Tools/wdump/wdump.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "WWAudio - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "WWAudio - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "WWAudio - Win32 Profile"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "WWAudio - Win32 DebugE"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "WWAudio - Win32 ProfileE"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "WWAudio",
+      "outputs": [],
+      "path": "Code/WWAudio/WWAudio.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwmath - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwmath - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwmath - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wwmath",
+      "outputs": [],
+      "path": "Code/WWMath/wwmath.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "skeleton - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "skeleton - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "skeleton",
+      "outputs": [],
+      "path": "Code/ww3d2/hueshift/hueshift.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "skeleton - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "skeleton - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "skeleton",
+      "outputs": [],
+      "path": "Code/ww3d2/skeleton/skeleton.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "skeleton - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Application",
+          "name": "skeleton - Win32 Debug"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "skeleton",
+      "outputs": [],
+      "path": "Code/ww3d2/sorttest/sorttest.dsp",
+      "project_type": "Win32 (x86) Application",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "ww3d2 - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "ww3d2 - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "ww3d2 - Win32 Profile"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "ww3d2 - Win32 ProfileE"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "ww3d2 - Win32 DebugE"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "ww3d2 - Win32 Debug Compressed"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "ww3d2",
+      "outputs": [],
+      "path": "Code/ww3d2/ww3d2.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwbitpack - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwbitpack - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwbitpack - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wwbitpack",
+      "outputs": [],
+      "path": "Code/wwbitpack/wwbitpack.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwdebug - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwdebug - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwdebug - Win32 Profile"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwdebug - Win32 DebugE"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwdebug - Win32 ProfileE"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wwdebug",
+      "outputs": [],
+      "path": "Code/wwdebug/wwdebug.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwlib - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwlib - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwlib - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wwlib",
+      "outputs": [],
+      "path": "Code/wwlib/wwlib.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwnet - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwnet - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwnet - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wwnet",
+      "outputs": [],
+      "path": "Code/wwnet/wwnet.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwphys - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwphys - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwphys - Win32 Profile"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwphys - Win32 ProfileE"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwphys - Win32 DebugE"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wwphys",
+      "outputs": [],
+      "path": "Code/wwphys/wwphys.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwsaveload - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwsaveload - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwsaveload - Win32 Profile"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwsaveload - Win32 ProfileE"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwsaveload - Win32 DebugE"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wwsaveload",
+      "outputs": [],
+      "path": "Code/wwsaveload/wwsaveload.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwtranslatedb - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwtranslatedb - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwtranslatedb - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wwtranslatedb",
+      "outputs": [],
+      "path": "Code/wwtranslatedb/wwtranslatedb.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwui - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwui - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwui - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wwui",
+      "outputs": [],
+      "path": "Code/wwui/wwui.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    },
+    {
+      "configurations": [
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwutil - Win32 Release"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwutil - Win32 Debug"
+        },
+        {
+          "based_on": "Win32 (x86) Static Library",
+          "name": "wwutil - Win32 Profile"
+        }
+      ],
+      "defines": [],
+      "include_paths": [],
+      "libraries": [],
+      "library_paths": [],
+      "name": "wwutil",
+      "outputs": [],
+      "path": "Code/wwutil/wwutil.dsp",
+      "project_type": "Win32 (x86) Static Library",
+      "source_count": 0,
+      "sources": []
+    }
+  ],
+  "schema_version": 1,
+  "workspaces": [
+    {
+      "path": "Code/BandTest/BandTest.dsw",
+      "projects": [
+        {
+          "dependencies": [],
+          "name": "BandTest",
+          "path": "./BandTest.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/Tests/Bandy/bandy.dsw",
+      "projects": [
+        {
+          "dependencies": [],
+          "name": "bandy",
+          "path": "./bandy.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/Tests/LocalHost/LocalHost.dsw",
+      "projects": [
+        {
+          "dependencies": [],
+          "name": "LocalHost",
+          "path": "./LocalHost.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/Tools/MaxFly/MaxFly.dsw",
+      "projects": [
+        {
+          "dependencies": [],
+          "name": "MaxFly",
+          "path": "./MaxFly.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "max2w3d",
+          "path": "../max2w3d/max2w3d.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/Tools/RenRem/RenRem.dsw",
+      "projects": [
+        {
+          "dependencies": [],
+          "name": "RenRem",
+          "path": "./RenRem.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/Tools/RenegadeGR/RenegadeGR.dsw",
+      "projects": [
+        {
+          "dependencies": [],
+          "name": "RenegadeGR",
+          "path": "./RenegadeGR.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/Tools/VerStamp/VerStamp.dsw",
+      "projects": [
+        {
+          "dependencies": [],
+          "name": "VerStamp",
+          "path": "./VerStamp.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/Tools/W3DView/W3DView.dsw",
+      "projects": [
+        {
+          "dependencies": [
+            "ww3d2",
+            "WWAudio",
+            "wwdebug",
+            "wwlib",
+            "wwmath",
+            "wwsaveload"
+          ],
+          "name": "W3DView",
+          "path": "./W3DView.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "WWAudio",
+          "path": "../../WWAudio/WWAudio.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "ww3d2",
+          "path": "../../ww3d2/ww3d2.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwdebug",
+          "path": "../../wwdebug/wwdebug.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwlib",
+          "path": "../../wwlib/wwlib.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwmath",
+          "path": "../../WWMath/wwmath.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwsaveload",
+          "path": "../../wwsaveload/wwsaveload.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/Tools/WWConfig/WWConfig.dsw",
+      "projects": [
+        {
+          "dependencies": [],
+          "name": "WWConfig",
+          "path": "./WWConfig.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/commando.dsw",
+      "projects": [
+        {
+          "dependencies": [],
+          "name": "BandTest",
+          "path": "./BandTest/BandTest.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "BinkMovie",
+          "path": "./BinkMovie/BinkMovie.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "Combat",
+          "path": "./combat/Combat.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "GameSpy",
+          "path": "./GameSpy/GameSpy.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "LevelEdit",
+          "path": "./Tools/LevelEdit/LevelEdit.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "SControl",
+          "path": "./SControl/SControl.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "Scripts",
+          "path": "./Scripts/Scripts.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "WWAudio",
+          "path": "./WWAudio/WWAudio.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "WWConfig",
+          "path": "./Tools/WWConfig/WWConfig.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "WWCtrl",
+          "path": "./Tools/WWCtrl/WWCtrl.dsp"
+        },
+        {
+          "dependencies": [
+            "Scripts",
+            "wwdebug",
+            "wwlib",
+            "wwmath",
+            "wwnet",
+            "wwphys",
+            "wwutil",
+            "WWAudio",
+            "wwsaveload",
+            "Combat",
+            "wwtranslatedb",
+            "wwbitpack",
+            "ww3d2",
+            "wwui",
+            "BinkMovie",
+            "BandTest",
+            "SControl",
+            "GameSpy"
+          ],
+          "name": "commando",
+          "path": "./Commando/commando.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "max2w3d",
+          "path": "./Tools/max2w3d/max2w3d.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "ww3d2",
+          "path": "./ww3d2/ww3d2.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwbitpack",
+          "path": "./wwbitpack/wwbitpack.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwdebug",
+          "path": "./wwdebug/wwdebug.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwlib",
+          "path": "./wwlib/wwlib.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwmath",
+          "path": "./WWMath/wwmath.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwnet",
+          "path": "./wwnet/wwnet.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwphys",
+          "path": "./wwphys/wwphys.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwsaveload",
+          "path": "./wwsaveload/wwsaveload.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwtranslatedb",
+          "path": "./wwtranslatedb/wwtranslatedb.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwui",
+          "path": "./wwui/wwui.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwutil",
+          "path": "./wwutil/wwutil.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/tools.dsw",
+      "projects": [
+        {
+          "dependencies": [],
+          "name": "AMC_imp",
+          "path": "./Tools/AMC_IMP/AMC_IMP.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "Blender2",
+          "path": "./Tools/Blender2/Blender2.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "ChunkView",
+          "path": "./Tools/ChunkView/ChunkView.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "Clipbord",
+          "path": "./Tools/Clipbord/Clipbord.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "CommandoUpdate",
+          "path": "./Tools/CommandoUpdate/CommandoUpdate.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "CopyLocked",
+          "path": "./Tools/CopyLocked/CopyLocked.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "LevelEdit",
+          "path": "./Tools/LevelEdit/LevelEdit.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "LightMap",
+          "path": "./Tools/LightMap/LightMap.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "MakeMix",
+          "path": "./Tools/MakeMix/MakeMix.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "MaxFly",
+          "path": "./Tools/MaxFly/MaxFly.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "MixViewer",
+          "path": "./Tools/MixViewer/MixViewer.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "RenRem",
+          "path": "./Tools/RenRem/RenRem.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "SimpleGraph",
+          "path": "./Tools/SimpleGraph/SimpleGraph.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "SkeletonHack",
+          "path": "./Tools/SkeletonHack/SkeletonHack.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "VerStamp",
+          "path": "./Tools/VerStamp/VerStamp.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "VidInit",
+          "path": "./Tools/vidinit/VidInit.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "ViewTrans",
+          "path": "./Tools/ViewTrans/ViewTrans.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "W3DShellExt",
+          "path": "./Tools/W3DShellExt/W3DShellExt.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "W3DUpdate",
+          "path": "./Tools/W3DUpdate/W3DUpdate.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "W3DView",
+          "path": "./Tools/W3DView/W3DView.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "WWConfig",
+          "path": "./Tools/WWConfig/WWConfig.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "WWCtrl",
+          "path": "./Tools/WWCtrl/WWCtrl.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "asf_imp",
+          "path": "./Tools/ASF_IMP/ASF_IMP.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "bin2cpp",
+          "path": "./Tools/bin2cpp/bin2cpp.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "max2w3d",
+          "path": "./Tools/max2w3d/max2w3d.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "pluglib",
+          "path": "./Tools/pluglib/pluglib.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wdump",
+          "path": "./Tools/wdump/wdump.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/ww3d2/hueshift/hueshift.dsw",
+      "projects": [
+        {
+          "dependencies": [
+            "ww3d2",
+            "wwmath",
+            "wwlib"
+          ],
+          "name": "skeleton",
+          "path": "./hueshift.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "ww3d2",
+          "path": "../ww3d2.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwlib",
+          "path": "../../wwlib/wwlib.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwmath",
+          "path": "../../wwmath/wwmath.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/ww3d2/skeleton/sample.dsw",
+      "projects": [
+        {
+          "dependencies": [
+            "ww3d2",
+            "wwdebug",
+            "wwlib",
+            "wwmath"
+          ],
+          "name": "skeleton",
+          "path": "./skeleton.dsp"
+        },
+        {
+          "dependencies": [
+            "wwdebug",
+            "wwlib",
+            "wwmath"
+          ],
+          "name": "ww3d2",
+          "path": "../ww3d2.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwdebug",
+          "path": "../../wwdebug/wwdebug.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwlib",
+          "path": "../../wwlib/wwlib.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwmath",
+          "path": "../../wwmath/wwmath.dsp"
+        }
+      ]
+    },
+    {
+      "path": "Code/ww3d2/sorttest/sorttest.dsw",
+      "projects": [
+        {
+          "dependencies": [
+            "ww3d2",
+            "wwmath",
+            "wwlib"
+          ],
+          "name": "skeleton",
+          "path": "./hueshift.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "ww3d2",
+          "path": "../ww3d2.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwlib",
+          "path": "../../wwlib/wwlib.dsp"
+        },
+        {
+          "dependencies": [],
+          "name": "wwmath",
+          "path": "../../wwmath/wwmath.dsp"
+        }
+      ]
+    }
+  ]
+}
