@@ -13,6 +13,10 @@ GameSpy/
 DirectX/
 
 # Output build folders
+/[Bb]uild/
+[Cc]MakeFiles/
+CMakeCache.txt
+cmake_install.cmake
 [Rr]elease*
 [Pp]rofile*
 [Dd]ebug*
@@ -45,6 +49,9 @@ GMax_Hybrid/
 
 *.cod
 *.rpt
+
+*.py[cod]
+__pycache__/
 
 # Build number
 /Code/Commando/build.bin

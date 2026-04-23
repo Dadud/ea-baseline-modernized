@@ -171,67 +171,67 @@ Generated from the original EA Visual Studio 6 `.dsw` / `.dsp` files.
 
 | Project | Type | Configurations | Sources | DSP path |
 | --- | --- | ---: | ---: | --- |
-| `BandTest` | dll | 3 | 0 | `Code/BandTest/BandTest.dsp` |
-| `BinkMovie` | static library | 3 | 0 | `Code/BinkMovie/BinkMovie.dsp` |
-| `Combat` | static library | 5 | 0 | `Code/Combat/Combat.dsp` |
-| `commando` | gui app | 3 | 0 | `Code/Commando/commando.dsp` |
-| `Installer` | gui app | 2 | 0 | `Code/Installer/Installer.dsp` |
-| `launcher` | gui app | 6 | 0 | `Code/Launcher/launcher.dsp` |
-| `SControl` | static library | 3 | 0 | `Code/SControl/SControl.dsp` |
-| `Scripts` | dll | 3 | 0 | `Code/Scripts/Scripts.dsp` |
-| `bandy` | console app | 2 | 0 | `Code/Tests/Bandy/bandy.dsp` |
-| `BitPackTest` | console app | 2 | 0 | `Code/Tests/BitPackTest/BitPackTest.dsp` |
-| `collide` | console app | 2 | 0 | `Code/Tests/collide/collide.dsp` |
-| `LocalHost` | console app | 1 | 0 | `Code/Tests/LocalHost/LocalHost.dsp` |
-| `mathtest` | console app | 3 | 0 | `Code/Tests/mathtest/mathtest.dsp` |
-| `meshtest` | gui app | 3 | 0 | `Code/Tests/MeshTest/meshtest.dsp` |
-| `movietest` | gui app | 2 | 0 | `Code/Tests/movietest/movietest.dsp` |
-| `PhysTest` | gui app | 2 | 0 | `Code/Tests/PhysTest/PhysTest.dsp` |
-| `skeleton_gth` | gui app | 3 | 0 | `Code/Tests/skeleton_gth/skeleton_gth.dsp` |
-| `SplineTest` | gui app | 2 | 0 | `Code/Tests/SplineTest/SplineTest.dsp` |
-| `AMC_imp` | dll | 2 | 0 | `Code/Tools/AMC_IMP/AMC_IMP.dsp` |
-| `asf_imp` | dll | 2 | 0 | `Code/Tools/ASF_IMP/ASF_IMP.dsp` |
-| `bin2cpp` | console app | 2 | 0 | `Code/Tools/bin2cpp/bin2cpp.dsp` |
-| `Blender2` | dll | 2 | 0 | `Code/Tools/Blender2/Blender2.dsp` |
-| `ChunkView` | gui app | 2 | 0 | `Code/Tools/ChunkView/ChunkView.dsp` |
-| `Clipbord` | dll | 2 | 0 | `Code/Tools/Clipbord/Clipbord.dsp` |
-| `CommandoUpdate` | gui app | 2 | 0 | `Code/Tools/CommandoUpdate/CommandoUpdate.dsp` |
-| `CopyLocked` | gui app | 2 | 0 | `Code/Tools/CopyLocked/CopyLocked.dsp` |
-| `LevelEdit` | gui app | 2 | 0 | `Code/Tools/LevelEdit/LevelEdit.dsp` |
-| `LightMap` | gui app | 3 | 0 | `Code/Tools/LightMap/LightMap.dsp` |
-| `MakeMix` | console app | 2 | 0 | `Code/Tools/MakeMix/MakeMix.dsp` |
-| `max2w3d` | dll | 7 | 0 | `Code/Tools/max2w3d/max2w3d.dsp` |
-| `MaxFly` | gui app | 3 | 0 | `Code/Tools/MaxFly/MaxFly.dsp` |
-| `MixViewer` | gui app | 2 | 0 | `Code/Tools/MixViewer/MixViewer.dsp` |
-| `pluglib` | static library | 7 | 0 | `Code/Tools/pluglib/pluglib.dsp` |
-| `RenegadeGR` | dll | 2 | 0 | `Code/Tools/RenegadeGR/RenegadeGR.dsp` |
-| `RenRem` | console app | 3 | 0 | `Code/Tools/RenRem/RenRem.dsp` |
-| `SimpleGraph` | gui app | 2 | 0 | `Code/Tools/SimpleGraph/SimpleGraph.dsp` |
-| `SkeletonHack` | console app | 2 | 0 | `Code/Tools/SkeletonHack/SkeletonHack.dsp` |
-| `VerStamp` | console app | 2 | 0 | `Code/Tools/VerStamp/VerStamp.dsp` |
-| `VidInit` | gui app | 2 | 0 | `Code/Tools/vidinit/VidInit.dsp` |
-| `ViewTrans` | dll | 2 | 0 | `Code/Tools/ViewTrans/ViewTrans.dsp` |
-| `W3DShellExt` | gui app | 2 | 0 | `Code/Tools/W3DShellExt/W3DShellExt.dsp` |
-| `W3DUpdate` | gui app | 2 | 0 | `Code/Tools/W3DUpdate/W3DUpdate.dsp` |
-| `W3DView` | gui app | 4 | 0 | `Code/Tools/W3DView/W3DView.dsp` |
-| `wdump` | gui app | 3 | 0 | `Code/Tools/wdump/wdump.dsp` |
-| `WWConfig` | gui app | 2 | 0 | `Code/Tools/WWConfig/WWConfig.dsp` |
-| `WWCtrl` | dll | 3 | 0 | `Code/Tools/WWCtrl/WWCtrl.dsp` |
-| `skeleton` | gui app | 2 | 0 | `Code/ww3d2/hueshift/hueshift.dsp` |
-| `skeleton` | gui app | 2 | 0 | `Code/ww3d2/skeleton/skeleton.dsp` |
-| `skeleton` | gui app | 2 | 0 | `Code/ww3d2/sorttest/sorttest.dsp` |
-| `ww3d2` | static library | 6 | 0 | `Code/ww3d2/ww3d2.dsp` |
-| `WWAudio` | static library | 5 | 0 | `Code/WWAudio/WWAudio.dsp` |
-| `wwbitpack` | static library | 3 | 0 | `Code/wwbitpack/wwbitpack.dsp` |
-| `wwdebug` | static library | 5 | 0 | `Code/wwdebug/wwdebug.dsp` |
-| `wwlib` | static library | 3 | 0 | `Code/wwlib/wwlib.dsp` |
-| `wwmath` | static library | 3 | 0 | `Code/WWMath/wwmath.dsp` |
-| `wwnet` | static library | 3 | 0 | `Code/wwnet/wwnet.dsp` |
-| `wwphys` | static library | 5 | 0 | `Code/wwphys/wwphys.dsp` |
-| `wwsaveload` | static library | 5 | 0 | `Code/wwsaveload/wwsaveload.dsp` |
-| `wwtranslatedb` | static library | 3 | 0 | `Code/wwtranslatedb/wwtranslatedb.dsp` |
-| `wwui` | static library | 3 | 0 | `Code/wwui/wwui.dsp` |
-| `wwutil` | static library | 3 | 0 | `Code/wwutil/wwutil.dsp` |
+| `BandTest` | dll | 3 | 4 | `Code/BandTest/BandTest.dsp` |
+| `BinkMovie` | static library | 3 | 10 | `Code/BinkMovie/BinkMovie.dsp` |
+| `Combat` | static library | 5 | 265 | `Code/Combat/Combat.dsp` |
+| `commando` | gui app | 3 | 492 | `Code/Commando/commando.dsp` |
+| `Installer` | gui app | 2 | 54 | `Code/Installer/Installer.dsp` |
+| `launcher` | gui app | 6 | 51 | `Code/Launcher/launcher.dsp` |
+| `SControl` | static library | 3 | 4 | `Code/SControl/SControl.dsp` |
+| `Scripts` | dll | 3 | 82 | `Code/Scripts/Scripts.dsp` |
+| `bandy` | console app | 2 | 1 | `Code/Tests/Bandy/bandy.dsp` |
+| `BitPackTest` | console app | 2 | 6 | `Code/Tests/BitPackTest/BitPackTest.dsp` |
+| `collide` | console app | 2 | 5 | `Code/Tests/collide/collide.dsp` |
+| `LocalHost` | console app | 1 | 1 | `Code/Tests/LocalHost/LocalHost.dsp` |
+| `mathtest` | console app | 3 | 18 | `Code/Tests/mathtest/mathtest.dsp` |
+| `meshtest` | gui app | 3 | 15 | `Code/Tests/MeshTest/meshtest.dsp` |
+| `movietest` | gui app | 2 | 15 | `Code/Tests/movietest/movietest.dsp` |
+| `PhysTest` | gui app | 2 | 40 | `Code/Tests/PhysTest/PhysTest.dsp` |
+| `skeleton_gth` | gui app | 3 | 4 | `Code/Tests/skeleton_gth/skeleton_gth.dsp` |
+| `SplineTest` | gui app | 2 | 23 | `Code/Tests/SplineTest/SplineTest.dsp` |
+| `AMC_imp` | dll | 2 | 4 | `Code/Tools/AMC_IMP/AMC_IMP.dsp` |
+| `asf_imp` | dll | 2 | 7 | `Code/Tools/ASF_IMP/ASF_IMP.dsp` |
+| `bin2cpp` | console app | 2 | 1 | `Code/Tools/bin2cpp/bin2cpp.dsp` |
+| `Blender2` | dll | 2 | 6 | `Code/Tools/Blender2/Blender2.dsp` |
+| `ChunkView` | gui app | 2 | 25 | `Code/Tools/ChunkView/ChunkView.dsp` |
+| `Clipbord` | dll | 2 | 5 | `Code/Tools/Clipbord/Clipbord.dsp` |
+| `CommandoUpdate` | gui app | 2 | 15 | `Code/Tools/CommandoUpdate/CommandoUpdate.dsp` |
+| `CopyLocked` | gui app | 2 | 19 | `Code/Tools/CopyLocked/CopyLocked.dsp` |
+| `LevelEdit` | gui app | 2 | 543 | `Code/Tools/LevelEdit/LevelEdit.dsp` |
+| `LightMap` | gui app | 3 | 34 | `Code/Tools/LightMap/LightMap.dsp` |
+| `MakeMix` | console app | 2 | 4 | `Code/Tools/MakeMix/MakeMix.dsp` |
+| `max2w3d` | dll | 7 | 159 | `Code/Tools/max2w3d/max2w3d.dsp` |
+| `MaxFly` | gui app | 3 | 6 | `Code/Tools/MaxFly/MaxFly.dsp` |
+| `MixViewer` | gui app | 2 | 28 | `Code/Tools/MixViewer/MixViewer.dsp` |
+| `pluglib` | static library | 7 | 46 | `Code/Tools/pluglib/pluglib.dsp` |
+| `RenegadeGR` | dll | 2 | 18 | `Code/Tools/RenegadeGR/RenegadeGR.dsp` |
+| `RenRem` | console app | 3 | 1 | `Code/Tools/RenRem/RenRem.dsp` |
+| `SimpleGraph` | gui app | 2 | 19 | `Code/Tools/SimpleGraph/SimpleGraph.dsp` |
+| `SkeletonHack` | console app | 2 | 4 | `Code/Tools/SkeletonHack/SkeletonHack.dsp` |
+| `VerStamp` | console app | 2 | 1 | `Code/Tools/VerStamp/VerStamp.dsp` |
+| `VidInit` | gui app | 2 | 14 | `Code/Tools/vidinit/VidInit.dsp` |
+| `ViewTrans` | dll | 2 | 5 | `Code/Tools/ViewTrans/ViewTrans.dsp` |
+| `W3DShellExt` | gui app | 2 | 23 | `Code/Tools/W3DShellExt/W3DShellExt.dsp` |
+| `W3DUpdate` | gui app | 2 | 15 | `Code/Tools/W3DUpdate/W3DUpdate.dsp` |
+| `W3DView` | gui app | 4 | 227 | `Code/Tools/W3DView/W3DView.dsp` |
+| `wdump` | gui app | 3 | 29 | `Code/Tools/wdump/wdump.dsp` |
+| `WWConfig` | gui app | 2 | 40 | `Code/Tools/WWConfig/WWConfig.dsp` |
+| `WWCtrl` | dll | 3 | 20 | `Code/Tools/WWCtrl/WWCtrl.dsp` |
+| `skeleton` | gui app | 2 | 7 | `Code/ww3d2/hueshift/hueshift.dsp` |
+| `skeleton` | gui app | 2 | 7 | `Code/ww3d2/skeleton/skeleton.dsp` |
+| `skeleton` | gui app | 2 | 5 | `Code/ww3d2/sorttest/sorttest.dsp` |
+| `ww3d2` | static library | 6 | 233 | `Code/ww3d2/ww3d2.dsp` |
+| `WWAudio` | static library | 5 | 43 | `Code/WWAudio/WWAudio.dsp` |
+| `wwbitpack` | static library | 3 | 9 | `Code/wwbitpack/wwbitpack.dsp` |
+| `wwdebug` | static library | 5 | 7 | `Code/wwdebug/wwdebug.dsp` |
+| `wwlib` | static library | 3 | 206 | `Code/wwlib/wwlib.dsp` |
+| `wwmath` | static library | 3 | 78 | `Code/WWMath/wwmath.dsp` |
+| `wwnet` | static library | 3 | 32 | `Code/wwnet/wwnet.dsp` |
+| `wwphys` | static library | 5 | 193 | `Code/wwphys/wwphys.dsp` |
+| `wwsaveload` | static library | 5 | 33 | `Code/wwsaveload/wwsaveload.dsp` |
+| `wwtranslatedb` | static library | 3 | 10 | `Code/wwtranslatedb/wwtranslatedb.dsp` |
+| `wwui` | static library | 3 | 84 | `Code/wwui/wwui.dsp` |
+| `wwutil` | static library | 3 | 6 | `Code/wwutil/wwutil.dsp` |
 
 ## Notes
 

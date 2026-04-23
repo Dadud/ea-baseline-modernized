@@ -19,9 +19,9 @@ PROJECT_NAME_RE = re.compile(r'# Microsoft Developer Studio Project File - Name=
 WORKSPACE_PROJECT_RE = re.compile(r'Project: "([^"]+)"=(.+?) - Package')
 WORKSPACE_DEP_RE = re.compile(r'Project_Dep_Name\s+(.+)')
 CONFIG_RE = re.compile(r'!MESSAGE "([^"]+)" \(based on "([^"]+)"\)')
-SOURCE_RE = re.compile(r'^SOURCE=(.+)$')
-ADD_CPP_RE = re.compile(r'^# ADD CPP\s+(.+)$')
-ADD_LINK_RE = re.compile(r'^# ADD LINK32\s+(.+)$')
+SOURCE_RE = re.compile(r'^\s*SOURCE=(.+)$', re.MULTILINE)
+ADD_CPP_RE = re.compile(r'^\s*# ADD CPP\s+(.+)$', re.MULTILINE)
+ADD_LINK_RE = re.compile(r'^\s*# ADD LINK32\s+(.+)$', re.MULTILINE)
 OUTPUT_RE = re.compile(r'/out:"([^"]+)"', re.IGNORECASE)
 
 

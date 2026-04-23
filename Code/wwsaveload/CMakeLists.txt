@@ -1,0 +1,39 @@
+# Generated from build-manifests/vc6-projects.json for the original EA VC6 project "wwsaveload".
+# Keep this source membership descriptive until baseline parity is established.
+
+ea_vc6_static_library(wwsaveload
+  SOURCES
+    definition.cpp
+    definition.h
+    definitionclassids.h
+    definitionfactory.cpp
+    definitionfactory.h
+    definitionfactorymgr.cpp
+    definitionfactorymgr.h
+    definitionmgr.cpp
+    definitionmgr.h
+    editable.h
+    parameter.cpp
+    parameter.h
+    parameterlist.h
+    parametertypes.h
+    persist.h
+    persistfactory.cpp
+    persistfactory.h
+    pointerremap.cpp
+    pointerremap.h
+    postloadable.h
+    saveload.cpp
+    saveload.h
+    saveloadids.h
+    saveloadstatus.cpp
+    saveloadstatus.h
+    saveloadsubsystem.cpp
+    saveloadsubsystem.h
+    simpledefinitionfactory.h
+    simpleparameter.h
+    twiddler.cpp
+    twiddler.h
+    wwsaveload.cpp
+    wwsaveload.h
+)
