@@ -14,6 +14,7 @@ option(RENEGADE_BUILD_UI_SEAMS "Configure experimental UI/input seam targets" OF
 option(RENEGADE_BUILD_RENDERER_SEAMS "Configure experimental renderer seam targets" OFF)
 option(RENEGADE_BUILD_COMBAT_SEAMS "Configure experimental gameplay/runtime seam targets" OFF)
 option(RENEGADE_BUILD_SCRIPT_SEAMS "Configure experimental script DLL seam targets" OFF)
+option(RENEGADE_BUILD_TOOLS_SEAMS "Configure experimental tools seam targets" OFF)
 option(RENEGADE_BUILD_COMMANDO_SEAMS "Configure experimental product-shell Commando seam targets" OFF)
 option(RENEGADE_STRICT_SOURCE_MANIFEST "Fail configure if a manifest-listed source is missing" OFF)
 
@@ -58,6 +59,11 @@ endif()
 
 if(RENEGADE_BUILD_SCRIPT_SEAMS)
   add_subdirectory(Code/Scripts)
+endif()
+
+if(RENEGADE_BUILD_TOOLS_SEAMS)
+  add_subdirectory(Code/BandTest)
+  add_subdirectory(Code/Tools/MakeMix)
 endif()
 
 if(RENEGADE_BUILD_COMMANDO_SEAMS)

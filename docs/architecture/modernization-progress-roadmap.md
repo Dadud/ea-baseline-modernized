@@ -147,6 +147,10 @@ Key findings:
 
 These scripts make future batches faster and more systematic by automating scaffold generation and deferred-source tracking.
 
+### Previous batch completed: Batch 021 — probe and model Scripts, BandTest, MakeMix
+
+Batch 021 used the automation tooling to probe three targets simultaneously. Results: Scripts built `libScripts.so` with only warnings — no compatibility patches needed. BandTest is entirely WinSock2/Win32 (84 signal hits) — classified as a WinSock/network transport seam, deferred. MakeMix is entirely Win32 `FindFirstFile`/`WIN32_FIND_DATA` (84 signal hits) — classified as a platform/filesystem seam, deferred. The MakeMix `StdAfx.h` vs `stdafx.h` case mismatch was fixed. A `MixFile.h` symlink was added to `Code/wwlib`. No CMakeLists.txt was committed for BandTest or MakeMix. Scripts remains opt-in under `RENEGADE_BUILD_SCRIPT_SEAMS=ON`.
+
 ### Previous batch completed: Batch 020 — probe WWAudio; classify as Miles audio seam
 
 Batch 020 attempted to model WWAudio using the automation tooling. Generated a CMakeLists.txt and attempted to build — failed. The failure confirmed the probe signal data: even the handle facade types (`Sound2DHandleClass`, `Sound3DHandleClass`, `SoundStreamHandleClass`) depend on `WWAudio.h` which unconditionally includes `Mss.H`. There is no portable C++ subset within WWAudio without the Miles Sound System SDK. WWAudio is classified as a third-party SDK seam alongside RAD/Bink and DirectX 8. No CMakeLists.txt was committed. Scaffold remains 10/10 green.
