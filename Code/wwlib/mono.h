@@ -42,6 +42,12 @@
 
 #include	"win.h"
 
+#if !defined(_WIN32)
+typedef void *MONO_HANDLE;
+#else
+typedef HANDLE MONO_HANDLE;
+#endif
+
 class MonoClass {
 	public:
       typedef enum MonoAttribute {
@@ -87,7 +93,7 @@ class MonoClass {
 		/*
 		**	Handle of the mono page.
 		*/
-		HANDLE Handle;
+		MONO_HANDLE Handle;
 
 		/*
 		**	If this is true, then monochrome output is allowed. It defaults to false

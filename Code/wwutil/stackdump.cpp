@@ -36,6 +36,7 @@
 
 #include "stackdump.h"
 
+#if defined(_WIN32)
 #include	<windows.h>
 #include	<imagehlp.h>
 #include	<conio.h>
@@ -283,4 +284,17 @@ cStackDump::Print_Call_Stack
 		::SetCurrentDirectory(path);
 	}
 	*/
+#else
 
+#include "wwdebug.h"
+
+void
+cStackDump::Print_Call_Stack
+(
+	void
+)
+{
+	WWDEBUG_SAY(("cStackDump::Print_Call_Stack is unavailable on this scaffold platform.\n"));
+}
+
+#endif

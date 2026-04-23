@@ -65,6 +65,18 @@ inline char *strlwr(char *string)
 #ifndef _strlwr
 #define _strlwr strlwr
 #endif
+inline char *strupr(char *string)
+{
+	char *cursor = string;
+	while (cursor != 0 && *cursor != '\0') {
+		*cursor = (char)toupper((unsigned char)*cursor);
+		++cursor;
+	}
+	return string;
+}
+#ifndef _strupr
+#define _strupr strupr
+#endif
 #endif
 
 // Disable warning about exception handling not being enabled. It's used as part of STL - in a part of STL we don't use.

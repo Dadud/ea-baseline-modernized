@@ -103,6 +103,36 @@ See:
 
 - `docs/build/foundation-portability-batch-002.md`
 
+## Batch 003: `wwlib` and `wwutil` scaffold expansion
+
+The scaffold now models two more original EA support projects:
+
+- `wwlib` from `Code/wwlib/wwlib.dsp`
+- `wwutil` from `Code/wwutil/wwutil.dsp`
+
+Targeted `wwutil` verification succeeds:
+
+```bash
+cmake --build build/cmake-scaffold --target wwutil -j4
+```
+
+```text
+[100%] Built target wwutil
+```
+
+The full foundation build now advances into `wwlib` and stops at a higher-risk DirectDraw/platform seam:
+
+```text
+Code/wwlib/dsurface.h:43:17: fatal error: ddraw.h: No such file or directory
+```
+
+This is a useful architectural finding: original `wwlib` is not a clean foundation-only bucket. It contains low-level utility code, but also Windows/COM, mono-console, registry/version, image/surface, and DirectDraw-adjacent code. Batch 003 intentionally stops short of stubbing DirectDraw because that belongs in a later `platform` / `renderer` boundary design.
+
+See:
+
+- `docs/build/foundation-portability-batch-003.md`
+- `docs/architecture/foundation-target-map.md`
+
 ## Modernization rule for these blockers
 
 Do not paper over these by globally renaming files or adding broad platform shims yet.

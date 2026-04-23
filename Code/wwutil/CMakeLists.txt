@@ -1,0 +1,16 @@
+ea_vc6_static_library(wwutil
+  SOURCES
+    ./mathutil.cpp
+    ./mathutil.h
+    ./miscutil.cpp
+    ./miscutil.h
+    ./stackdump.cpp
+    ./stackdump.h
+  INCLUDE_DIRS
+    .
+    ../wwlib
+    ../WWMath
+    ../wwdebug
+  DEFINES
+    WWDEBUG
+)

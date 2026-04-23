@@ -60,7 +60,7 @@
 *
 ****************************************************************************/
 
-#include "targa.h"
+#include "TARGA.H"
 #ifndef TGA_USES_WWLIB_FILE_CLASSES
 #include <stdio.h>
 #endif
@@ -71,9 +71,13 @@
 #include "wwfile.h"
 #include "ffactory.h"
 #else
+#if defined(_WIN32)
 #include <io.h>
+#else
+#include <unistd.h>
+#endif
 #include <fcntl.h>
-#include <sys\stat.h>
+#include <sys/stat.h>
 #endif
 
 

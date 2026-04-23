@@ -27,6 +27,10 @@
 #include "miscutil.h" // I WANNA BE FIRST!
 
 #include <time.h>
+#if !defined(_WIN32)
+#include <sys/stat.h>
+#include <unistd.h>
+#endif
 
 #include "rawfile.h"
 #include "wwdebug.h"
@@ -119,8 +123,12 @@ bool cMiscUtil::File_Is_Read_Only(LPCSTR filename)
 {
    WWASSERT(filename != NULL);
 
+#if defined(_WIN32)
 	DWORD attributes = ::GetFileAttributes(filename);
 	return ((attributes != 0xFFFFFFFF) && (attributes & FILE_ATTRIBUTE_READONLY));
+#else
+	return (::access(filename, W_OK) != 0);
+#endif
 }
 
 //-----------------------------------------------------------------------------
@@ -182,6 +190,7 @@ void cMiscUtil::Get_File_Id_String(LPCSTR filename, StringClass & str)
 	//
 	// Note... this timedatestamp is not present for all file types...
 	//
+#if defined(_WIN32)
 	IMAGE_FILE_HEADER header = {0};
 	extern bool Get_Image_File_Header(LPCSTR filename, IMAGE_FILE_HEADER *file_header);
 	/*
@@ -191,6 +200,9 @@ void cMiscUtil::Get_File_Id_String(LPCSTR filename, StringClass & str)
 	*/
 	Get_Image_File_Header(filename, &header);
 	int time_date_stamp = header.TimeDateStamp;
+#else
+	int time_date_stamp = 0;
+#endif
 
 	char working_filename[500];
 	strcpy(working_filename, filename);
@@ -220,7 +232,11 @@ void cMiscUtil::Remove_File(LPCSTR filename)
 {
    WWASSERT(filename != NULL);
 
+#if defined(_WIN32)
 	::DeleteFile(filename);
+#else
+	::unlink(filename);
+#endif
 }
 
 
