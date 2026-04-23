@@ -5,16 +5,16 @@
 # VC6 manifest. This gives us a checkable bridge from legacy metadata to modern
 # build tooling before semantic refactors or physical file moves.
 
-function(ea_normalize_legacy_sources out_var)
-  set(normalized_sources)
-  foreach(source IN LISTS ARGN)
-    if(IS_ABSOLUTE "${source}")
-      list(APPEND normalized_sources "${source}")
+function(ea_normalize_legacy_paths out_var)
+  set(normalized_paths)
+  foreach(path IN LISTS ARGN)
+    if(IS_ABSOLUTE "${path}")
+      list(APPEND normalized_paths "${path}")
     else()
-      list(APPEND normalized_sources "${CMAKE_CURRENT_LIST_DIR}/${source}")
+      list(APPEND normalized_paths "${CMAKE_CURRENT_LIST_DIR}/${path}")
     endif()
   endforeach()
-  set(${out_var} ${normalized_sources} PARENT_SCOPE)
+  set(${out_var} ${normalized_paths} PARENT_SCOPE)
 endfunction()
 
 function(ea_filter_existing_sources target_name out_var)
@@ -37,13 +37,14 @@ function(ea_vc6_static_library target_name)
   set(multi_value_args SOURCES INCLUDE_DIRS DEFINES LINK_LIBRARIES)
   cmake_parse_arguments(EA_VC6 "${options}" "${one_value_args}" "${multi_value_args}" ${ARGN})
 
-  ea_normalize_legacy_sources(target_sources_normalized ${EA_VC6_SOURCES})
+  ea_normalize_legacy_paths(target_sources_normalized ${EA_VC6_SOURCES})
   ea_filter_existing_sources(${target_name} target_sources_existing ${target_sources_normalized})
+  ea_normalize_legacy_paths(target_include_dirs_normalized ${EA_VC6_INCLUDE_DIRS})
 
   add_library(${target_name} STATIC ${target_sources_existing})
   target_include_directories(${target_name} PUBLIC
     "${CMAKE_CURRENT_LIST_DIR}"
-    ${EA_VC6_INCLUDE_DIRS}
+    ${target_include_dirs_normalized}
   )
 
   if(EA_VC6_DEFINES)

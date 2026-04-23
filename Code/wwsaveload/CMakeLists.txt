@@ -36,4 +36,8 @@ ea_vc6_static_library(wwsaveload
     twiddler.h
     wwsaveload.cpp
     wwsaveload.h
+  INCLUDE_DIRS
+    ../wwdebug
+    ../wwlib
+    ../wwmath
 )

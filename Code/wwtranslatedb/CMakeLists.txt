@@ -13,4 +13,9 @@ ea_vc6_static_library(wwtranslatedb
     translatedbids.h
     translateobj.cpp
     translateobj.h
+  INCLUDE_DIRS
+    ../wwdebug
+    ../wwlib
+    ../wwmath
+    ../wwsaveload
 )

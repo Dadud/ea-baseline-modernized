@@ -4,7 +4,7 @@ This scaffold is a conservative bridge from the original EA Visual Studio 6 proj
 
 ## Scope
 
-The first CMake pass intentionally models a small set of low-level static libraries from `build-manifests/vc6-projects.json`:
+The first CMake pass intentionally models a small set of low-level static libraries from `build-manifests/vc6-projects.json`. It carries both source membership and the original VC6 include paths for these projects:
 
 - `wwdebug`
 - `wwmath`

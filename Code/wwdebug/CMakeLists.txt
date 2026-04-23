@@ -10,4 +10,6 @@ ea_vc6_static_library(wwdebug
     wwmemlog.h
     wwprofile.cpp
     wwprofile.h
+  INCLUDE_DIRS
+    ../wwlib
 )

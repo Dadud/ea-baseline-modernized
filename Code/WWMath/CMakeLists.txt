@@ -81,4 +81,8 @@ ea_vc6_static_library(wwmath
     wwmath.cpp
     wwmath.h
     wwmathids.h
+  INCLUDE_DIRS
+    ../wwdebug
+    ../wwlib
+    ../wwsaveload
 )

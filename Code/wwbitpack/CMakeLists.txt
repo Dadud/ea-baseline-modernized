@@ -12,4 +12,8 @@ ea_vc6_static_library(wwbitpack
     encoderlist.h
     encodertypeentry.cpp
     encodertypeentry.h
+  INCLUDE_DIRS
+    ../wwdebug
+    ../wwlib
+    ../wwutil
 )
