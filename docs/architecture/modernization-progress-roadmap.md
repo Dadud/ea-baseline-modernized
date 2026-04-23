@@ -125,7 +125,11 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 014 — map `Combat`
+### Latest batch completed: Batch 015 — map `Scripts`
+
+Batch 015 adds an opt-in scaffold for the original `Scripts` DLL target and classifies it into DLL entry, runtime core, mission/toolkit content, and local support islands. It intentionally distinguishes portable runtime-core build evidence from the still-unproven Windows DLL boundary and mission content body.
+
+### Previous batch completed: Batch 014 — map `Combat`
 
 Batch 014 adds an opt-in scaffold for the original `Combat` target and classifies it into gameplay/runtime, client presentation/input, script/save/network, and audio/conversation source islands. It intentionally documents product-shell and audio-backend leakage instead of pulling in `Commando` or faking Miles headers.
 
@@ -199,23 +203,22 @@ Original target names and physical file locations remain unchanged.
 
 ### Following batch candidates
 
-After Batch 014, choose one bounded expansion:
+After Batch 015, choose one bounded expansion:
 
-1. `Scripts` DLL ingestion improvements
-   - improve DLL/shared-library scaffold support;
-   - account for missing manifest source `Code/Scripts/slnode.h` before claiming meaningful progress.
-2. targeted `Commando` dependency-prep docs
-   - document which `Combat` surfaces still reach back into `Commando` (for example `datasafe.h`) before trying to scaffold the product shell.
-3. focused Combat boundary prep
-   - classify which `Combat` files are truly shared gameplay/runtime versus product-shell and backend glue before any deeper compile push.
+1. targeted `Commando` dependency-prep docs
+   - document which `Combat` and `Scripts` surfaces still reach into the product shell before attempting `commando` ingestion.
+2. deeper `Scripts` content pass
+   - classify which mission/toolkit files are truly content scripts versus runtime/plugin boundary glue.
+3. `BandTest` or another smaller DLL/tool seam
+   - continue improving dynamic-library ingestion patterns without jumping straight to the main product shell.
 
 Avoid immediately jumping to:
 
-- full `Commando` product build attempts
+- full `commando` product build attempts
 - full tools workspace
-- parity claims for client/FDS/tools
+- parity claims for client/FDS/tools/script DLL deployment
 
-Those remain high-coupling buckets and should wait until the `Combat` ↔ `Commando` boundary is described more clearly.
+Those remain high-coupling buckets and should wait until the product-shell boundaries are described more clearly.
 
 ## Longer roadmap
 

@@ -40,7 +40,7 @@ This matrix summarizes the generated VC6 project manifest after Batch 005. It is
 | `SkeletonHack` | `Console Application` | `Code/Tools/SkeletonHack/SkeletonHack.dsp` | not modeled | products/tools/engine_asset_content |
 | `VerStamp` | `Console Application` | `Code/Tools/VerStamp/VerStamp.dsp` | not modeled | products/tools/engine_asset_content |
 | `BandTest` | `Dynamic-Link Library` | `Code/BandTest/BandTest.dsp` | not modeled | online_services/test |
-| `Scripts` | `Dynamic-Link Library` | `Code/Scripts/Scripts.dsp` | not modeled | products/scripts/engine_runtime |
+| `Scripts` | `Dynamic-Link Library` | `Code/Scripts/Scripts.dsp` | modeled as opt-in script DLL seam; runtime-core build evidence documented | products/scripts/engine_runtime seam |
 | `AMC_imp` | `Dynamic-Link Library` | `Code/Tools/AMC_IMP/AMC_IMP.dsp` | not modeled | products/tools/engine_asset_content |
 | `asf_imp` | `Dynamic-Link Library` | `Code/Tools/ASF_IMP/ASF_IMP.dsp` | not modeled | products/tools/engine_asset_content |
 | `Blender2` | `Dynamic-Link Library` | `Code/Tools/Blender2/Blender2.dsp` | not modeled | products/tools/engine_asset_content |

@@ -34,10 +34,14 @@
 ******************************************************************************/
 
 #include "scripts.h"
-#include "scriptfactory.h"
-#include "dprint.h"
+#include "ScriptFactory.h"
+#include "DPrint.h"
 #include "strtrim.h"
 #include <string.h>
+#if !defined(_MSC_VER)
+#include <strings.h>
+#define stricmp strcasecmp
+#endif
 #include <stdio.h>
 
 #define	CHUNKID_SCRIPTHEADER				'shdr'

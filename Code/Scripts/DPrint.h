@@ -38,6 +38,10 @@
 #ifndef _DPRINT_H_
 #define _DPRINT_H_
 
+#if !defined(_MSC_VER) && !defined(__cdecl)
+#define __cdecl
+#endif
+
 #ifdef __cplusplus
 extern "C"
 {

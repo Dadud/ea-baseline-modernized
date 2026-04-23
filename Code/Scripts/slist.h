@@ -57,7 +57,7 @@
 #ifndef __SLIST_H__
 #define __SLIST_H__
 
-#include "slnode.h"
+#include "ScriptNode.h"
 
 #ifndef NULL
 #define NULL 0L

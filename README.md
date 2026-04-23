@@ -41,7 +41,7 @@ SControl
 
 Scaffold success is tracked separately from full parity. Some original sources are intentionally deferred where they cross unresolved DirectDraw, WinSock, RAD/Bink, audio, UI, online-service, platform, or product-shell boundaries.
 
-Additional subsystem seam probes may be configured separately. For example, the current `WWAudio` scaffold is opt-in because it intentionally stops at the proprietary Miles/DirectSound backend boundary, `wwphys` is opt-in because it currently exposes mixed runtime/renderer/platform leakage, `wwui` is opt-in because it currently exposes mixed UI/input/platform/renderer leakage, `ww3d2` is opt-in because it currently exposes mixed renderer/platform/asset-content leakage even after the explicit DX8 backend island is deferred, and `Combat` is opt-in because it currently exposes mixed gameplay/runtime, product-shell, and audio-backend leakage:
+Additional subsystem seam probes may be configured separately. For example, the current `WWAudio` scaffold is opt-in because it intentionally stops at the proprietary Miles/DirectSound backend boundary, `wwphys` is opt-in because it currently exposes mixed runtime/renderer/platform leakage, `wwui` is opt-in because it currently exposes mixed UI/input/platform/renderer leakage, `ww3d2` is opt-in because it currently exposes mixed renderer/platform/asset-content leakage even after the explicit DX8 backend island is deferred, `Combat` is opt-in because it currently exposes mixed gameplay/runtime, product-shell, and audio-backend leakage, and `Scripts` is opt-in because it currently separates Windows DLL entry glue from a portable runtime-core seam:
 
 ```bash
 cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_AUDIO_SEAMS=ON
@@ -49,6 +49,7 @@ cmake -S . -B build/cmake-phys-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEG
 cmake -S . -B build/cmake-ui-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_UI_SEAMS=ON
 cmake -S . -B build/cmake-renderer-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_RENDERER_SEAMS=ON
 cmake -S . -B build/cmake-combat-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_COMBAT_SEAMS=ON
+cmake -S . -B build/cmake-scripts-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_SCRIPT_SEAMS=ON
 ```
 
 ## Dependencies

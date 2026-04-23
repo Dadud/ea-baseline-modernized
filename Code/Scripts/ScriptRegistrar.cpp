@@ -34,10 +34,14 @@
 ******************************************************************************/
 
 #include "always.h"
-#include "scriptregistrar.h"
-#include "scriptfactory.h"
-#include "dprint.h"
+#include "ScriptRegistrar.h"
+#include "ScriptFactory.h"
+#include "DPrint.h"
 #include <string.h>
+#if !defined(_MSC_VER)
+#include <strings.h>
+#define stricmp strcasecmp
+#endif
 #include <assert.h>
 
 // ScriptFactory list

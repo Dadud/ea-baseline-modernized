@@ -247,6 +247,25 @@ See:
 - `docs/build/foundation-portability-batch-007.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 015: `Scripts` DLL seam
+
+Batch 015 models the original `Code/Scripts/Scripts.dsp` target as an opt-in script DLL seam behind `RENEGADE_BUILD_SCRIPT_SEAMS`. The CMake inventory now names:
+
+```text
+SCRIPTS_DLL_ENTRY_SOURCES
+SCRIPTS_RUNTIME_CORE_SOURCES
+SCRIPTS_MISSION_TOOLKIT_SOURCES
+SCRIPTS_LOCAL_SUPPORT_SOURCES
+```
+
+The non-Windows seam probe defers the explicit Windows DLL entry layer and the large mission/toolkit content body, then probes the script runtime core plus local support layer. After narrow include-identity and compiler-spelling cleanup, the current probe result is:
+
+```text
+[100%] Built target Scripts
+```
+
+On Linux this currently produces a shared-library probe form (`libScripts.so`), which is useful runtime-core build evidence but not a Windows DLL parity claim.
+
 ## Batch 014: `Combat` gameplay/runtime seam
 
 Batch 014 models the original `Code/Combat/Combat.dsp` target as an opt-in gameplay/runtime seam behind `RENEGADE_BUILD_COMBAT_SEAMS`. The CMake inventory now names:

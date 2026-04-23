@@ -66,6 +66,8 @@ A scaffold target can build while still having deferred source debt. This table 
 | `Combat` | `COMBAT_SCRIPT_SAVE_NETWORK_SOURCES` | script/save/network glue | product shell coupling | Script DLL loading, save/load glue, and static network object code remain tied to product-shell and runtime wiring beyond the current gameplay seam probe. | yes | yes | maybe | product shell / scripting / save-network split | deferred |
 | `Combat` | `COMBAT_AUDIO_CONVERSATION_SOURCES` | audio/conversation | DirectSound/Miles/audio backend | Combat audio, dialogue, and conversation glue still reaches the Miles-backed `WWAudio` path and cannot be treated as backend-neutral gameplay code yet. | yes | maybe | maybe | gameplay audio/conversation boundary | deferred |
 | `Combat` | `COMBAT_GAMEPLAY_RUNTIME_SOURCES` | gameplay/runtime | product shell coupling | Even the remaining gameplay/runtime subset still reaches back into `Commando` via `..\\commando\\datasafe.h` and therefore is not yet a clean shared runtime layer. | yes | yes | maybe | engine runtime / product shell split | deferred |
+| `Scripts` | `SCRIPTS_DLL_ENTRY_SOURCES` | DLL entry/export glue | Win32 process/shell/dynamic-library | Windows DLL entrypoints and debug-print glue remain outside the non-Windows runtime-core probe. | yes | maybe | yes | script plugin/DLL boundary | deferred |
+| `Scripts` | `SCRIPTS_MISSION_TOOLKIT_SOURCES` | mission/toolkit content | product shell coupling | Mission/test/toolkit script body depends on the broader in-game command surface and is intentionally outside the initial runtime-core seam claim. | yes | maybe | maybe | script content/runtime split | deferred |
 
 ## Notes
 

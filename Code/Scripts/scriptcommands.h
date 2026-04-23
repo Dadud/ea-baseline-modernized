@@ -54,8 +54,14 @@
 ** DLL import/export macros
 */
 #ifdef	BUILDING_DLL
+#if !defined(_MSC_VER) && !defined(_declspec)
+#define _declspec(x)
+#endif
 	#define	SCRIPT_DLL_COMMAND	_declspec(dllimport)
 #else
+#if !defined(_MSC_VER) && !defined(_declspec)
+#define _declspec(x)
+#endif
 	#define	SCRIPT_DLL_COMMAND	extern "C" _declspec(dllexport)
 #endif
 

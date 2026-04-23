@@ -23,6 +23,7 @@ The current rule is **logical mapping first, physical moves later**. Original pr
 | `Code/wwui/wwui.dsp` | `wwui` | Opt-in scaffold; mixed UI/input/platform/renderer blocker documented | UI/input subsystem seam. Current CMake classifies dialog/control, input/cursor, and IME islands. Not in the default green scaffold yet. |
 | `Code/ww3d2/ww3d2.dsp` | `ww3d2` | Opt-in scaffold; mixed renderer/platform/asset-content blocker documented | Core renderer subsystem seam. Current CMake classifies asset/content, render runtime, presentation, texture/material, and DX8 backend islands. Not in the default green scaffold yet. |
 | `Code/Combat/Combat.dsp` | `Combat` | Opt-in scaffold; mixed gameplay/runtime/product/audio blocker documented | Shared gameplay bucket with strong product-shell, audio-backend, script/save/network, and client-presentation seams. Not in the default green scaffold yet. |
+| `Code/Scripts/Scripts.dsp` | `Scripts` | Opt-in scaffold; portable runtime-core seam builds while DLL entry and mission content remain deferred | Script/plugin subsystem seam. Current CMake classifies DLL entry, runtime core, mission/toolkit, and local support islands. Not in the default green scaffold yet. |
 
 ## `wwlib` sub-bucket observations
 
@@ -187,6 +188,19 @@ COMBAT_AUDIO_CONVERSATION_SOURCES
 ```
 
 The non-Windows seam probe defers explicit client-presentation/input, script/save/network, and audio/conversation islands, then probes how much of the remaining gameplay/runtime subset is actually separable from product-shell and backend concerns. After narrow include-identity cleanup, the next meaningful blockers are `..\\commando\\datasafe.h` from `damage.h` and `mss.h` from `WWAudio/AudibleSound.h`, which is useful evidence that `Combat` is not yet a clean shared gameplay core.
+
+### `Scripts`
+
+Batch 015 adds `Scripts` behind the opt-in `RENEGADE_BUILD_SCRIPT_SEAMS` switch. Its CMake source inventory is split into:
+
+```text
+SCRIPTS_DLL_ENTRY_SOURCES
+SCRIPTS_RUNTIME_CORE_SOURCES
+SCRIPTS_MISSION_TOOLKIT_SOURCES
+SCRIPTS_LOCAL_SUPPORT_SOURCES
+```
+
+The non-Windows seam probe defers the Windows DLL entry layer and the large mission/toolkit content body, then probes the script runtime core plus local support layer. After narrow include-identity and compiler-spelling cleanup, that runtime-core seam builds on Linux as a shared-library probe target. This is useful evidence that the script registration/runtime core is more separable than the Windows DLL boundary and mission content body, but it is not a Windows DLL parity claim.
 
 ## Near-term recommendation
 

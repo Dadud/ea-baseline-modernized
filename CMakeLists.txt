@@ -13,6 +13,7 @@ option(RENEGADE_BUILD_PHYS_SEAMS "Configure experimental physics seam targets" O
 option(RENEGADE_BUILD_UI_SEAMS "Configure experimental UI/input seam targets" OFF)
 option(RENEGADE_BUILD_RENDERER_SEAMS "Configure experimental renderer seam targets" OFF)
 option(RENEGADE_BUILD_COMBAT_SEAMS "Configure experimental gameplay/runtime seam targets" OFF)
+option(RENEGADE_BUILD_SCRIPT_SEAMS "Configure experimental script DLL seam targets" OFF)
 option(RENEGADE_STRICT_SOURCE_MANIFEST "Fail configure if a manifest-listed source is missing" OFF)
 
 set(CMAKE_CXX_STANDARD 98)
@@ -52,4 +53,8 @@ endif()
 
 if(RENEGADE_BUILD_COMBAT_SEAMS)
   add_subdirectory(Code/Combat)
+endif()
+
+if(RENEGADE_BUILD_SCRIPT_SEAMS)
+  add_subdirectory(Code/Scripts)
 endif()
