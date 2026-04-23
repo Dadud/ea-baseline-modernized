@@ -107,6 +107,13 @@ Important buckets still need scaffold modeling and boundary review:
 
 See `docs/architecture/original-project-scaffold-status.md` for the full project matrix.
 
+Use `docs/parity/target-status.md` when you need the shorter answer to three separate questions:
+
+- is a target modeled?
+- is it part of the default green scaffold?
+- does it have any real parity evidence yet?
+
+
 ### Real platform abstraction
 
 Current non-Windows compatibility is intentionally narrow. Still needed:

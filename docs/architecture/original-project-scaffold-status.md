@@ -55,13 +55,13 @@ This matrix summarizes the generated VC6 project manifest after Batch 005. It is
 | `pluglib` | `Static Library` | `Code/Tools/pluglib/pluglib.dsp` | not modeled | products/tools/engine_asset_content |
 | `ww3d2` | `Static Library` | `Code/ww3d2/ww3d2.dsp` | not modeled | renderer/engine_asset_content |
 | `WWAudio` | `Static Library` | `Code/WWAudio/WWAudio.dsp` | modeled as opt-in audio seam; Miles/backend blocker documented | audio/platform_threading |
-| `wwbitpack` | `Static Library` | `Code/wwbitpack/wwbitpack.dsp` | modeled/builds | foundation |
-| `wwdebug` | `Static Library` | `Code/wwdebug/wwdebug.dsp` | modeled/builds | foundation |
-| `wwlib` | `Static Library` | `Code/wwlib/wwlib.dsp` | modeled/builds | foundation/platform/content/renderer seams |
-| `wwmath` | `Static Library` | `Code/WWMath/wwmath.dsp` | modeled/builds | foundation |
-| `wwnet` | `Static Library` | `Code/wwnet/wwnet.dsp` | modeled/builds | platform/engine_runtime |
+| `wwbitpack` | `Static Library` | `Code/wwbitpack/wwbitpack.dsp` | modeled/builds in default green scaffold | foundation |
+| `wwdebug` | `Static Library` | `Code/wwdebug/wwdebug.dsp` | modeled/builds in default green scaffold | foundation |
+| `wwlib` | `Static Library` | `Code/wwlib/wwlib.dsp` | modeled/builds in default green scaffold | foundation/platform/content/renderer seams |
+| `wwmath` | `Static Library` | `Code/WWMath/wwmath.dsp` | modeled/builds in default green scaffold | foundation |
+| `wwnet` | `Static Library` | `Code/wwnet/wwnet.dsp` | modeled/builds in default green scaffold | platform/engine_runtime |
 | `wwphys` | `Static Library` | `Code/wwphys/wwphys.dsp` | not modeled | engine_runtime/renderer seam |
-| `wwsaveload` | `Static Library` | `Code/wwsaveload/wwsaveload.dsp` | modeled/builds | foundation |
-| `wwtranslatedb` | `Static Library` | `Code/wwtranslatedb/wwtranslatedb.dsp` | modeled/builds | foundation |
+| `wwsaveload` | `Static Library` | `Code/wwsaveload/wwsaveload.dsp` | modeled/builds in default green scaffold | foundation |
+| `wwtranslatedb` | `Static Library` | `Code/wwtranslatedb/wwtranslatedb.dsp` | modeled/builds in default green scaffold | foundation |
 | `wwui` | `Static Library` | `Code/wwui/wwui.dsp` | not modeled | products/client/input_and_control |
-| `wwutil` | `Static Library` | `Code/wwutil/wwutil.dsp` | modeled/builds | foundation |
+| `wwutil` | `Static Library` | `Code/wwutil/wwutil.dsp` | modeled/builds in default green scaffold | foundation |

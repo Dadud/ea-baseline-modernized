@@ -14,6 +14,7 @@ Current modernization docs of interest:
 - [`docs/architecture/modernization-progress-roadmap.md`](docs/architecture/modernization-progress-roadmap.md) — progress and remaining work.
 - [`docs/architecture/original-project-scaffold-status.md`](docs/architecture/original-project-scaffold-status.md) — original VC6 project status matrix.
 - [`docs/architecture/deferred-source-ledger.md`](docs/architecture/deferred-source-ledger.md) — intentionally deferred source islands and why they remain deferred.
+- [`docs/parity/target-status.md`](docs/parity/target-status.md) — distinguishes modeled targets, default green scaffold targets, and parity evidence state.
 - [`docs/build/project-ingestion-and-probe-workflow.md`](docs/build/project-ingestion-and-probe-workflow.md) — repeatable target ingestion/probe workflow.
 
 The current Linux bootstrap CMake scaffold builds selected low-level/media-adjacent source islands, not the final client/FDS/tools products yet:
