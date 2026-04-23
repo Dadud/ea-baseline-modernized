@@ -1,0 +1,263 @@
+# Conservative scaffold for the original EA VC6 wwphys static library.
+#
+# This target keeps the original project name and physical layout. The source
+# groups below make runtime physics, path/visibility data, scene/render glue,
+# and terrain/render implementation seams explicit before final architecture work.
+
+set(WWPHYS_PATH_VIS_SOURCES
+  ./Path.cpp
+  ./Path.h
+  ./PathDebugPlotter.cpp
+  ./PathDebugPlotter.h
+  ./PathNode.h
+  ./PathObject.cpp
+  ./PathObject.h
+  ./Pathfind.cpp
+  ./Pathfind.h
+  ./PathfindPortal.cpp
+  ./PathfindPortal.h
+  ./PathfindSector.cpp
+  ./PathfindSector.h
+  ./pathfindbox.cpp
+  ./pathfindbox.h
+  ./pathmgr.cpp
+  ./pathmgr.h
+  ./pathnode.cpp
+  ./pathsolve.cpp
+  ./pathsolve.h
+  ./visenum.h
+  ./visoptimizationcontext.cpp
+  ./visoptimizationcontext.h
+  ./visoptprogress.cpp
+  ./visoptprogress.h
+  ./visrendercontext.cpp
+  ./visrendercontext.h
+  ./vissample.cpp
+  ./vissample.h
+  ./vissectorstats.cpp
+  ./vissectorstats.h
+  ./vistable.cpp
+  ./vistable.h
+  ./vistablemgr.cpp
+  ./vistablemgr.h
+  ./waypath.cpp
+  ./waypath.h
+  ./waypathposition.h
+  ./waypoint.cpp
+  ./waypoint.h
+)
+
+set(WWPHYS_RUNTIME_SIM_SOURCES
+  ./accessiblephys.cpp
+  ./accessiblephys.h
+  ./animcollisionmanager.cpp
+  ./animcollisionmanager.h
+  ./camerashakesystem.cpp
+  ./camerashakesystem.h
+  ./cloud.h
+  ./decophys.cpp
+  ./decophys.h
+  ./dynamicanimphys.cpp
+  ./dynamicanimphys.h
+  ./dynamicphys.cpp
+  ./dynamicphys.h
+  ./humanphys.cpp
+  ./humanphys.h
+  ./lightphys.cpp
+  ./lightphys.h
+  ./motorcycle.cpp
+  ./motorcycle.h
+  ./motorvehicle.cpp
+  ./motorvehicle.h
+  ./movephys.cpp
+  ./movephys.h
+  ./phunits.h
+  ./phys.cpp
+  ./phys.h
+  ./phys3.cpp
+  ./phys3.h
+  ./physcon.cpp
+  ./physcon.h
+  ./physcontrol.cpp
+  ./physcontrol.h
+  ./projectile.cpp
+  ./projectile.h
+  ./rbody.cpp
+  ./rbody.h
+  ./rbody_obsolete.cpp
+  ./ridermanager.cpp
+  ./ridermanager.h
+  ./shakeablestaticphys.cpp
+  ./shakeablestaticphys.h
+  ./staticanimphys.cpp
+  ./staticanimphys.h
+  ./staticphys.cpp
+  ./staticphys.h
+  ./timeddecophys.cpp
+  ./timeddecophys.h
+  ./trackedvehicle.cpp
+  ./trackedvehicle.h
+  ./vehiclephys.cpp
+  ./vehiclephys.h
+  ./vtolvehicle.cpp
+  ./vtolvehicle.h
+  ./wheel.cpp
+  ./wheel.h
+  ./wheelvehicle.cpp
+  ./wheelvehicle.h
+  ./widgets.cpp
+  ./widgets.h
+  ./widgetuser.cpp
+  ./widgetuser.h
+  ./wwphys.cpp
+  ./wwphys.h
+  ./wwphysids.h
+  ./wwphystrig.h
+  ./zone.h
+)
+
+set(WWPHYS_MATH_SERIALIZATION_SOURCES
+  ./bin_aabox.cpp
+  ./bin_aabox.h
+  ./bin_axes.cpp
+  ./bin_axes.h
+  ./bin_obbox.cpp
+  ./bin_obbox.h
+  ./bin_point.cpp
+  ./bin_point.h
+  ./bin_vector.cpp
+  ./bin_vector.h
+  ./bpt.cpp
+  ./bpt.h
+  ./floodfillbox.cpp
+  ./floodfillbox.h
+  ./floodfillgrid.cpp
+  ./floodfillgrid.h
+  ./grideffect.cpp
+  ./grideffect.h
+  ./heightdb.cpp
+  ./heightdb.h
+  ./octbox.cpp
+  ./octbox.h
+)
+
+set(WWPHYS_SCENE_RENDER_GLUE_SOURCES
+  ./dynamicaabtreecull.cpp
+  ./dynamicaabtreecull.h
+  ./dynamicshadowmanager.cpp
+  ./dynamicshadowmanager.h
+  ./dyntexproject.cpp
+  ./dyntexproject.h
+  ./lightcull.cpp
+  ./lightcull.h
+  ./lightexclude.h
+  ./lightsolve.cpp
+  ./lightsolve.h
+  ./lightsolvecontext.cpp
+  ./lightsolvecontext.h
+  ./lightsolveprogress.h
+  ./materialeffect.cpp
+  ./materialeffect.h
+  ./materialeffectlist.h
+  ./physaabtreecull.cpp
+  ./physaabtreecull.h
+  ./physcoltest.h
+  ./physdecalsys.cpp
+  ./physdecalsys.h
+  ./physdynamicsavesystem.cpp
+  ./physdynamicsavesystem.h
+  ./physgridcull.cpp
+  ./physgridcull.h
+  ./physinttest.h
+  ./physlist.h
+  ./physobserver.h
+  ./physresourcemgr.cpp
+  ./physresourcemgr.h
+  ./physstaticsavesystem.cpp
+  ./physstaticsavesystem.h
+  ./phystexproject.cpp
+  ./phystexproject.h
+  ./progcall.cpp
+  ./progcall.h
+  ./projectormanager.cpp
+  ./projectormanager.h
+  ./pscene.cpp
+  ./pscene.h
+  ./pscene_collision.cpp
+  ./pscene_decal.cpp
+  ./pscene_lighting.cpp
+  ./pscene_projectors.cpp
+  ./pscene_saveload.cpp
+  ./pscene_vis.cpp
+  ./renderobjphys.cpp
+  ./renderobjphys.h
+  ./staticaabtreecull.cpp
+  ./staticaabtreecull.h
+  ./stealtheffect.cpp
+  ./stealtheffect.h
+  ./transitioneffect.cpp
+  ./transitioneffect.h
+  ./umbrasupport.cpp
+  ./umbrasupport.h
+)
+
+set(WWPHYS_TERRAIN_RENDER_SOURCES
+  ./renegadeterrainmaterialpass.cpp
+  ./renegadeterrainmaterialpass.h
+  ./renegadeterrainpatch.cpp
+  ./renegadeterrainpatch.h
+  ./terrainmaterial.cpp
+  ./terrainmaterial.h
+  ./vehicledazzle.cpp
+  ./vehicledazzle.h
+)
+
+set(WWPHYS_SOURCES
+  ${WWPHYS_PATH_VIS_SOURCES}
+  ${WWPHYS_RUNTIME_SIM_SOURCES}
+  ${WWPHYS_MATH_SERIALIZATION_SOURCES}
+  ${WWPHYS_SCENE_RENDER_GLUE_SOURCES}
+  ${WWPHYS_TERRAIN_RENDER_SOURCES}
+)
+
+if(NOT WIN32)
+  # wwphys is deeply coupled to renderer/scene/platform code. Keep the source
+  # inventory visible, but defer the scene/render and terrain-render islands in
+  # the portable bootstrap until the renderer/runtime boundaries are clearer.
+  list(REMOVE_ITEM WWPHYS_SOURCES
+    ${WWPHYS_SCENE_RENDER_GLUE_SOURCES}
+    ${WWPHYS_TERRAIN_RENDER_SOURCES}
+  )
+endif()
+
+ea_vc6_static_library(wwphys
+  SOURCES
+    ${WWPHYS_SOURCES}
+  INCLUDE_DIRS
+    ../DirectX/include
+    ../umbra/interface
+    ../ww3d2
+    ../wwbitpack
+    ../wwdebug
+    ../wwlib
+    ../wwlzhl
+    ../WWMath
+    ../wwsaveload
+    ../wwutil
+  DEFINES
+    NDEBUG
+    PARAM_EDITING_ON
+    WIN32
+    WWDEBUG
+    _DEBUG
+    _LIB
+    _MBCS
+    _WINDOWS
+  LINK_LIBRARIES
+    wwbitpack
+    wwdebug
+    wwlib
+    wwmath
+    wwsaveload
+    wwutil
+)

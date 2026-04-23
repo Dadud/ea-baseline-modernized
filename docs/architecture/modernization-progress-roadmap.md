@@ -99,7 +99,6 @@ Important buckets still need scaffold modeling and boundary review:
 
 - `Combat`
 - `ww3d2`
-- `wwphys`
 - `wwui`
 - `Scripts`
 - `Commando`
@@ -128,7 +127,11 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 010 — map `WWAudio`
+### Latest batch completed: Batch 011 — map `wwphys`
+
+Batch 011 adds an opt-in scaffold for the original `wwphys` target and classifies it into path/visibility, runtime simulation, math/serialization, scene/render glue, and terrain/render source islands. It intentionally documents mixed runtime/renderer/platform leakage instead of pushing broad Win32 or renderer stubs.
+
+### Previous batch completed: Batch 010 — map `WWAudio`
 
 Batch 010 adds an opt-in scaffold for the original `WWAudio` target and classifies it into event, save/load, scene metadata, threading, utility, and Miles backend source islands. It intentionally documents the Miles/DirectSound backend blocker instead of adding fake Miles headers.
 

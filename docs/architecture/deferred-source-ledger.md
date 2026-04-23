@@ -53,6 +53,9 @@ A scaffold target can build while still having deferred source debt. This table 
 | `WWAudio` | `WWAUDIO_MILES_BACKEND_SOURCES` | audio backend | DirectSound/Miles/audio backend | Concrete runtime implementation depends on proprietary Miles Sound System and legacy DirectSound assumptions. | yes | maybe | maybe | audio backend | deferred |
 | `WWAudio` | `WWAUDIO_THREADING_SOURCES` | platform threading | threading/synchronization | Delayed-release threading uses Win32 thread/event types and should be reviewed with the platform threading boundary. | yes | maybe | maybe | platform threading/synchronization | deferred |
 | `WWAudio` | `WWAUDIO_SCENE_METADATA_SOURCES` | audio scene metadata | DirectSound/Miles/audio backend | Higher-level audio scene objects still include backend-facing `WWAudio.h` / Miles types; metadata/backend coupling needs boundary cleanup. | yes | maybe | yes | audio scene/backend split | deferred |
+| `wwphys` | `WWPHYS_SCENE_RENDER_GLUE_SOURCES` | scene/render glue | renderer backend | Scene/projector/decal/Umbra-facing code is not yet below a clean portable physics boundary. | yes | maybe | maybe | renderer/runtime scene boundary | deferred |
+| `wwphys` | `WWPHYS_TERRAIN_RENDER_SOURCES` | terrain/render | renderer backend | Terrain material/patch rendering and dazzle effects are renderer-facing, not portable physics core. | yes | no | maybe | terrain renderer boundary | deferred |
+| `wwphys` | `WWPHYS_RUNTIME_SIM_SOURCES` | runtime simulation | Win32 window/message loop | Current runtime/path subset still leaks through shared Win32-heavy headers such as `wwlib/win.h` (`HINSTANCE`, `HWND`). | yes | yes | maybe | runtime/platform surface cleanup | deferred |
 
 ## Notes
 

@@ -41,10 +41,11 @@ SControl
 
 Scaffold success is tracked separately from full parity. Some original sources are intentionally deferred where they cross unresolved DirectDraw, WinSock, RAD/Bink, audio, UI, online-service, platform, or product-shell boundaries.
 
-Additional subsystem seam probes may be configured separately. For example, the current `WWAudio` scaffold is opt-in because it intentionally stops at the proprietary Miles/DirectSound backend boundary:
+Additional subsystem seam probes may be configured separately. For example, the current `WWAudio` scaffold is opt-in because it intentionally stops at the proprietary Miles/DirectSound backend boundary, and `wwphys` is opt-in because it currently exposes mixed runtime/renderer/platform leakage:
 
 ```bash
 cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_AUDIO_SEAMS=ON
+cmake -S . -B build/cmake-phys-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_PHYS_SEAMS=ON
 ```
 
 ## Dependencies

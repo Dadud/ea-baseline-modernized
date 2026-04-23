@@ -60,7 +60,7 @@ This matrix summarizes the generated VC6 project manifest after Batch 005. It is
 | `wwlib` | `Static Library` | `Code/wwlib/wwlib.dsp` | modeled/builds in default green scaffold | foundation/platform/content/renderer seams |
 | `wwmath` | `Static Library` | `Code/WWMath/wwmath.dsp` | modeled/builds in default green scaffold | foundation |
 | `wwnet` | `Static Library` | `Code/wwnet/wwnet.dsp` | modeled/builds in default green scaffold | platform/engine_runtime |
-| `wwphys` | `Static Library` | `Code/wwphys/wwphys.dsp` | not modeled | engine_runtime/renderer seam |
+| `wwphys` | `Static Library` | `Code/wwphys/wwphys.dsp` | modeled as opt-in physics seam; mixed runtime/renderer/platform blocker documented | engine_runtime/renderer/platform seam |
 | `wwsaveload` | `Static Library` | `Code/wwsaveload/wwsaveload.dsp` | modeled/builds in default green scaffold | foundation |
 | `wwtranslatedb` | `Static Library` | `Code/wwtranslatedb/wwtranslatedb.dsp` | modeled/builds in default green scaffold | foundation |
 | `wwui` | `Static Library` | `Code/wwui/wwui.dsp` | not modeled | products/client/input_and_control |

@@ -19,6 +19,7 @@ The current rule is **logical mapping first, physical moves later**. Original pr
 | `Code/BinkMovie/BinkMovie.dsp` | `BinkMovie` | Builds in the non-Windows scaffold after media/render source classification | Small media/content seam. Current scaffold compiles subtitle data/parser sources and defers RAD/Bink playback plus renderer subtitle glue. |
 | `Code/SControl/SControl.dsp` | `SControl` | Builds in the non-Windows scaffold with a narrow POSIX socket bridge | Small server-control/network seam. Current scaffold compiles the protocol and UDP transport while preserving the WinSock path under `_WIN32`. |
 | `Code/WWAudio/WWAudio.dsp` | `WWAudio` | Opt-in scaffold; Miles/backend blocker documented | Audio subsystem seam. Current CMake classifies events, save/load, scene metadata, threading, utilities, and Miles backend sources. Not in the default green scaffold yet. |
+| `Code/wwphys/wwphys.dsp` | `wwphys` | Opt-in scaffold; mixed runtime/renderer/platform blocker documented | Physics subsystem seam. Current CMake classifies path/visibility, runtime simulation, math/serialization, scene/render glue, and terrain/render sources. Not in the default green scaffold yet. |
 
 ## `wwlib` sub-bucket observations
 
@@ -130,6 +131,20 @@ WWAUDIO_MILES_BACKEND_SOURCES
 ```
 
 The first raw build probe exposed many case-sensitive local include spellings. Those were fixed so the target now reaches the real blocker: proprietary Miles Sound System headers such as `mss.h` / `Mss.H`. The Miles/DirectSound backend is recorded as a future audio backend boundary; no fake Miles headers were added.
+
+### `wwphys`
+
+Batch 011 adds `wwphys` behind the opt-in `RENEGADE_BUILD_PHYS_SEAMS` switch. Its CMake source inventory is split into:
+
+```text
+WWPHYS_PATH_VIS_SOURCES
+WWPHYS_RUNTIME_SIM_SOURCES
+WWPHYS_MATH_SERIALIZATION_SOURCES
+WWPHYS_SCENE_RENDER_GLUE_SOURCES
+WWPHYS_TERRAIN_RENDER_SOURCES
+```
+
+The first raw probe exposed case-sensitive local include spellings, which were fixed so the target could reach a more meaningful blocker. The current documented seam is mixed runtime/renderer/platform leakage through shared headers, with the next meaningful non-Windows failure surfacing via `wwlib/win.h` (`HINSTANCE` / `HWND`) rather than a single isolated physics implementation file.
 
 ## Near-term recommendation
 
