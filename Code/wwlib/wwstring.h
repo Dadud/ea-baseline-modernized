@@ -46,7 +46,21 @@
 #include "win.h"
 #include <string.h>
 #include <stdarg.h>
+#if defined(_MSC_VER)
 #include <tchar.h>
+#else
+#include <strings.h>
+typedef char TCHAR;
+typedef wchar_t WCHAR;
+#define _tcslen strlen
+#define _tcsclen strlen
+#define _tcscmp strcmp
+#define _tcsicmp strcasecmp
+#define _wcsicmp wcscasecmp
+#ifndef _T
+#define _T(x) x
+#endif
+#endif
 #include "trim.h"
 #include "wwdebug.h"
 #ifdef _UNIX

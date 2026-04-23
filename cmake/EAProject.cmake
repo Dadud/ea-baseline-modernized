@@ -42,6 +42,9 @@ function(ea_vc6_static_library target_name)
   ea_normalize_legacy_paths(target_include_dirs_normalized ${EA_VC6_INCLUDE_DIRS})
 
   add_library(${target_name} STATIC ${target_sources_existing})
+  if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(${target_name} PRIVATE -fpermissive)
+  endif()
   target_include_directories(${target_name} PUBLIC
     "${CMAKE_CURRENT_LIST_DIR}"
     ${target_include_dirs_normalized}

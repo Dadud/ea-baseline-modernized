@@ -53,7 +53,11 @@
 #include "bittype.h"
 #include "wwdebug.h"
 #include "mutex.h"
+#if defined(_MSC_VER)
 #include <new.h>
+#else
+#include <new>
+#endif
 #include <stdlib.h>
 #include <stddef.h>
 

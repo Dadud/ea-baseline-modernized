@@ -121,6 +121,7 @@ class FastCriticalSectionClass
 
 	void Thread_Safe_Set_Flag()
 	{
+#if defined(_MSC_VER) && defined(_M_IX86)
 		volatile unsigned& nFlag=Flag;
 
 		#define ts_lock _emit 0xF0
@@ -138,11 +139,20 @@ class FastCriticalSectionClass
 		__asm ts_lock
 		__asm bts dword ptr [ebx], 0
 		__asm jc  The_Bit_Was_Previously_Set_So_Try_Again
+#else
+		while (__sync_lock_test_and_set(&Flag, 1) != 0) {
+			ThreadClass::Switch_Thread();
+		}
+#endif
 	}
 
 	WWINLINE void Thread_Safe_Clear_Flag()
 	{
+#if defined(_MSC_VER) && defined(_M_IX86)
 		Flag = 0;
+#else
+		__sync_lock_release(&Flag);
+#endif
 	}
 
 public:

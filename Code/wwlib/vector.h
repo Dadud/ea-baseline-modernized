@@ -61,7 +61,11 @@
 #include	<assert.h>
 #include	<stdlib.h>
 #include <string.h>
+#if defined(_MSC_VER)
 #include <new.h>
+#else
+#include <new>
+#endif
 
 #ifdef _MSC_VER
 #pragma warning (disable : 4702) // unreachable code, happens with some uses of these templates
