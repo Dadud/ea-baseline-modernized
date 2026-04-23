@@ -11,6 +11,7 @@ This summary distinguishes three different states that were previously easy to b
 - Total original VC6 projects in manifest: `61`
 - Modeled in some form: `14`
 - Not modeled yet: `47`
+- Additional prep-only docs now exist for `commando`, but it still does **not** count as modeled until a target/scaffold exists.
 
 ### By project type
 
@@ -99,6 +100,7 @@ For example:
 
 ## Related docs
 
+- `docs/architecture/commando-dependency-prep.md`
 - `docs/architecture/original-project-scaffold-status.md`
 - `docs/architecture/deferred-source-ledger.md`
 - `docs/architecture/modernization-progress-roadmap.md`

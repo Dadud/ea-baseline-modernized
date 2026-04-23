@@ -8,14 +8,16 @@ This repository includes source code for Command & Conquer Renegade. This releas
 
 This fork is being modernized with an **EA-baseline-first** workflow: preserve and document the original Electronic Arts Renegade source layout first, build a conservative modern scaffold from the original Visual Studio 6 project metadata, and only later replay OpenW3D/fork changes onto a cleaner foundation.
 
-Current modernization docs of interest:
+## Current modernization docs of interest:
 
 - [`docs/architecture/modernization-strategy-v2.md`](docs/architecture/modernization-strategy-v2.md) — current strategy and workflow.
 - [`docs/architecture/modernization-progress-roadmap.md`](docs/architecture/modernization-progress-roadmap.md) — progress and remaining work.
 - [`docs/architecture/original-project-scaffold-status.md`](docs/architecture/original-project-scaffold-status.md) — original VC6 project status matrix.
 - [`docs/architecture/deferred-source-ledger.md`](docs/architecture/deferred-source-ledger.md) — intentionally deferred source islands and why they remain deferred.
+- [`docs/architecture/commando-dependency-prep.md`](docs/architecture/commando-dependency-prep.md) — product-shell prep notes before the first `commando` ingestion batch.
 - [`docs/parity/target-status.md`](docs/parity/target-status.md) — distinguishes modeled targets, default green scaffold targets, and parity evidence state.
 - [`docs/build/project-ingestion-and-probe-workflow.md`](docs/build/project-ingestion-and-probe-workflow.md) — repeatable target ingestion/probe workflow.
+
 
 The current Linux bootstrap CMake scaffold builds selected low-level/media-adjacent source islands, not the final client/FDS/tools products yet:
 

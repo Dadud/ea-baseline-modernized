@@ -125,7 +125,11 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 015 — map `Scripts`
+### Latest batch completed: Batch 016 — `Commando` dependency prep
+
+Batch 016 does not ingest `commando` yet. Instead it adds `docs/architecture/commando-dependency-prep.md` to record the original VC6 dependency shape, the already-known `Combat` and `Scripts` product-shell complications, and the first-pass source-island vocabulary that should be used for a bounded `commando` ingestion batch.
+
+### Previous batch completed: Batch 015 — map `Scripts`
 
 Batch 015 adds an opt-in scaffold for the original `Scripts` DLL target and classifies it into DLL entry, runtime core, mission/toolkit content, and local support islands. It intentionally distinguishes portable runtime-core build evidence from the still-unproven Windows DLL boundary and mission content body.
 
@@ -203,14 +207,14 @@ Original target names and physical file locations remain unchanged.
 
 ### Following batch candidates
 
-After Batch 015, choose one bounded expansion:
+After Batch 016, choose one bounded expansion:
 
-1. targeted `Commando` dependency-prep docs
-   - document which `Combat` and `Scripts` surfaces still reach into the product shell before attempting `commando` ingestion.
+1. first `commando` ingestion batch
+   - inspect `Code/Commando/commando.dsp`, generate a conservative opt-in scaffold, classify first-pass source islands, and stop at the first meaningful product-shell blockers.
 2. deeper `Scripts` content pass
    - classify which mission/toolkit files are truly content scripts versus runtime/plugin boundary glue.
 3. `BandTest` or another smaller DLL/tool seam
-   - continue improving dynamic-library ingestion patterns without jumping straight to the main product shell.
+   - continue improving dynamic-library ingestion patterns without jumping straight to the full product shell.
 
 Avoid immediately jumping to:
 
@@ -232,7 +236,7 @@ Those remain high-coupling buckets and should wait until the product-shell bound
 
 ## Open questions
 
-- Should the next batch focus on `Combat` inventory/modeling or on improving DLL/shared-library ingestion for `Scripts`?
-- How much of `wwlib` should remain under `foundation` once platform/content/display pieces are split?
-- Should socket abstraction be introduced before or after `Combat` modeling?
+- What is the smallest honest first-pass source-island split for `commando` itself?
+- How much of `Combat` can move below the product shell once `datasafe.h` ownership is classified?
+- How much of the `Scripts` mission/toolkit body is true content versus product/runtime glue?
 - What is the minimum useful artifact parity check for the first product build attempt?

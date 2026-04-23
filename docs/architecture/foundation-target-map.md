@@ -204,8 +204,8 @@ The non-Windows seam probe defers the Windows DLL entry layer and the large miss
 
 ## Near-term recommendation
 
-Before jumping to `Commando`, continue using this target map to classify original projects:
+Before jumping to `Commando`, use the new prep doc plus this target map to bound the first product-shell batch:
 
-1. refine the deferred `wwlib` islands one area at a time
-2. decide whether later scaffolding should model temporary subtargets for platform, file/archive, display/surface, and string-conversion islands
-3. refine the `wwnet` live socket/session seam before treating networking as portable
+1. keep `docs/architecture/commando-dependency-prep.md` as the source of truth for known product-shell, FDS-mode, script, and backend seams
+2. use a first `commando` batch only to classify source islands and capture blockers, not to claim a product build
+3. continue treating `Combat`, `Scripts`, `wwui`, `WWAudio`, `ww3d2`, and `BinkMovie` as upstream seam evidence feeding into `commando` rather than solved dependencies

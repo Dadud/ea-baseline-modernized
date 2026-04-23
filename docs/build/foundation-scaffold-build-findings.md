@@ -247,6 +247,19 @@ See:
 - `docs/build/foundation-portability-batch-007.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 016: `Commando` dependency prep
+
+Batch 016 does not add a `commando` target yet. Instead it adds `docs/architecture/commando-dependency-prep.md` so the first product-shell ingestion can be bounded by the dependency evidence already uncovered in earlier seam batches.
+
+The prep doc records that `commando` sits above nearly every currently mapped seam (`Combat`, `Scripts`, `wwui`, `ww3d2`, `WWAudio`, `BinkMovie`, `SControl`, `wwnet`) and reiterates the known product-shell complications:
+
+```text
+Code/Combat/damage.h:49:25: fatal error: ..\\commando\\datasafe.h: No such file or directory
+Code/WWAudio/AudibleSound.h:45:10: fatal error: mss.h: No such file or directory
+```
+
+This is treated as planning evidence for the next opt-in `commando` ingestion batch, not as a signal to add fake product-shell or SDK shims.
+
 ## Batch 015: `Scripts` DLL seam
 
 Batch 015 models the original `Code/Scripts/Scripts.dsp` target as an opt-in script DLL seam behind `RENEGADE_BUILD_SCRIPT_SEAMS`. The CMake inventory now names:

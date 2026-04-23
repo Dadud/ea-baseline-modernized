@@ -4,7 +4,7 @@ This matrix summarizes the generated VC6 project manifest after Batch 005. It is
 
 | Project | Type | VC6 project | Scaffold status | Likely future bucket |
 | --- | --- | --- | --- | --- |
-| `commando` | `Application` | `Code/Commando/commando.dsp` | not modeled | products/client + products/dedicated_server + online_services |
+| `commando` | `Application` | `Code/Commando/commando.dsp` | not modeled yet; Batch 016 dependency-prep doc added | products/client + products/dedicated_server + online_services |
 | `Installer` | `Application` | `Code/Installer/Installer.dsp` | not modeled | products/installer |
 | `launcher` | `Application` | `Code/Launcher/launcher.dsp` | not modeled | products/launcher |
 | `meshtest` | `Application` | `Code/Tests/MeshTest/meshtest.dsp` | not modeled | tests |
