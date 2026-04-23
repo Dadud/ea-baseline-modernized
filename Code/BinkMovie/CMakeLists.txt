@@ -29,11 +29,9 @@ set(BINKMOVIE_SOURCES
   ${BINKMOVIE_RAD_PLAYER_SOURCES}
 )
 
-if(NOT WIN32)
-  # The movie player implementation depends on the RAD/Bink SDK and concrete
-  # ww3d2/DX8 renderer types. Subtitle rendering also depends on renderer text
-  # primitives. Keep those source islands visible, but defer them from the
-  # non-Windows bootstrap scaffold until renderer/media boundaries exist.
+# Non-Windows (Linux/macOS): defer the RAD/Bink SDK path and subtitle renderer
+# glue. On Windows with the real SDKs installed, these compile natively.
+if(UNIX)
   list(REMOVE_ITEM BINKMOVIE_SOURCES
     ${BINKMOVIE_SUBTITLE_RENDER_SOURCES}
     ${BINKMOVIE_RAD_PLAYER_SOURCES}

@@ -5,6 +5,46 @@
 # VC6 manifest. This gives us a checkable bridge from legacy metadata to modern
 # build tooling before semantic refactors or physical file moves.
 
+# -----------------------------------------------------------------------------
+# SDK path options — used on Windows when real SDKs are available.
+# These are optional; targets that need missing SDKs will defer gracefully.
+# -----------------------------------------------------------------------------
+option(RENEGADE_USE_DX8_SDK "Enable DirectX 8 SDK path (Code/DirectX/Include)" OFF)
+option(RENEGADE_USE_MILES_SDK "Enable Miles Sound System SDK path (Code/Miles/Include)" OFF)
+option(RENEGADE_USE_BINK_SDK "Enable RAD Bink SDK path (Code/Bink/)" OFF)
+
+set(RENEGADE_DX8_INCLUDE_DIR "" CACHE PATH "Path to DirectX 8 SDK Include directory")
+set(RENEGADE_MILES_INCLUDE_DIR "" CACHE PATH "Path to Miles Sound System Include directory")
+set(RENEGADE_BINK_INCLUDE_DIR "" CACHE PATH "Path to RAD Bink SDK Include directory")
+
+# Helper to append an include directory if the path exists.
+function(ea_add_sdk_include out_var path)
+  if(EXISTS "${path}")
+    list(APPEND _dirs "${path}")
+    message(STATUS "  SDK include found: ${path}")
+  endif()
+  set(${out_var} ${_dirs} PARENT_SCOPE)
+endfunction()
+
+# Per-target SDK include aggregator. Call after the target is defined.
+# Usage: ea_provide_sdk_includes(target_name DX8_DIR ... MILES_DIR ...)
+function(ea_provide_sdk_includes)
+  set(options)
+  set(one_value_args TARGET)
+  set(multi_value_args DX8_DIR MILES_DIR BINK_DIR)
+  cmake_parse_arguments(EA_SDK "${options}" "${one_value_args}" "${multi_value_args}" ${ARGN})
+
+  if(EA_SDK_DX8_DIR AND RENEGADE_USE_DX8_SDK AND EA_SDK_DX8_DIR)
+    target_include_directories(${EA_SDK_TARGET} PRIVATE "${EA_SDK_DX8_DIR}")
+  endif()
+  if(EA_SDK_MILES_DIR AND RENEGADE_USE_MILES_SDK AND EA_SDK_MILES_DIR)
+    target_include_directories(${EA_SDK_TARGET} PRIVATE "${EA_SDK_MILES_DIR}")
+  endif()
+  if(EA_SDK_BINK_DIR AND RENEGADE_USE_BINK_SDK AND EA_SDK_BINK_DIR)
+    target_include_directories(${EA_SDK_TARGET} PRIVATE "${EA_SDK_BINK_DIR}")
+  endif()
+endfunction()
+
 function(ea_normalize_legacy_paths out_var)
   set(normalized_paths)
   foreach(path IN LISTS ARGN)

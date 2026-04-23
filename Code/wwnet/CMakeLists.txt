@@ -59,9 +59,9 @@ set(WWNET_SOURCES
 
 # The original wwnet target includes both packet/object serialization helpers
 # and the live WinSock connection/session layer. Keep the source inventory
-# visible, but defer the live socket/session policy sources from the
-# non-Windows bootstrap until a deliberate platform networking layer exists.
-if(NOT WIN32)
+# visible, but defer the live socket/session policy sources on non-Windows
+# (Linux/macOS) until a deliberate platform networking layer exists.
+if(UNIX)
   set(WWNET_SOURCES
     ${WWNET_PACKET_OBJECT_SOURCES}
     ${WWNET_SOCKET_TYPE_BRIDGE_SOURCES}

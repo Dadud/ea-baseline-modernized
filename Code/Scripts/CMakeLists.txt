@@ -108,11 +108,9 @@ set(SCRIPTS_BUILD_SOURCES
   ${SCRIPTS_ALL_SOURCES}
 )
 
-if(NOT WIN32)
-  # Scripts is an original DLL/plugin seam. Keep the full inventory visible, but
-  # defer the Windows DLL entry layer and the large mission/toolkit content body
-  # while probing whether the script runtime core is separable from product-shell
-  # and Windows export assumptions.
+# Non-Windows (Linux/macOS): defer the Windows DLL entry layer and large
+# mission/toolkit content body. On Windows, the full Scripts source compiles.
+if(UNIX)
   list(REMOVE_ITEM SCRIPTS_BUILD_SOURCES
     ${SCRIPTS_DLL_ENTRY_SOURCES}
     ${SCRIPTS_MISSION_TOOLKIT_SOURCES}

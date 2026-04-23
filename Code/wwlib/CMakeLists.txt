@@ -273,11 +273,11 @@ set(WWLIB_SOURCES
     ${WWLIB_DIAGNOSTIC_CONSOLE_SOURCES}
 )
 
-# Non-Windows bootstrap: compile the currently proven portable subset while
-# keeping the full logical source inventory above. Deferred sources are seams
-# for future platform, renderer/display, input/message, registry/version,
-# archive/content, and string/encoding work -- not missing-header accidents.
-if(NOT WIN32)
+# Non-Windows (Linux/macOS) bootstrap: compile only the proven portable subset.
+# On Windows, the full wwlib source compiles — all Win32 display, input, registry,
+# and platform-specific sources are native.
+# Deferred sources are future platform/renderer/input/registry seams, not missing headers.
+if(UNIX)
   list(REMOVE_ITEM WWLIB_SOURCES
     ./blit.cpp
     ./convert.cpp
