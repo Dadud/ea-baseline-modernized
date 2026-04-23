@@ -183,7 +183,8 @@ After Batch 010, choose one bounded expansion:
 
 1. Continue status/inventory cleanup
    - update the 61-project matrix as each target is modeled;
-   - refine current source-island docs before adding higher-coupling projects.
+   - refine current source-island docs before adding higher-coupling projects;
+   - use `.hermes/plans/2026-04-23_102700-batch-forecast-roadmap.md` as the working forecast for remaining waves.
 
 Avoid immediately jumping to:
 
