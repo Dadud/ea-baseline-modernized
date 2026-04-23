@@ -42,7 +42,25 @@
 #include	"assert.h"
 #include	"vector.h"
 
+#ifdef _WIN32
 #include	<winsock.h>
+#else
+#include <errno.h>
+#include <sys/ioctl.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+typedef int SOCKET;
+typedef struct sockaddr * LPSOCKADDR;
+#define INVALID_SOCKET (-1)
+#define SOCKET_ERROR (-1)
+#define closesocket close
+#define ioctlsocket ioctl
+#define WSAGetLastError() errno
+#define WSAEWOULDBLOCK EWOULDBLOCK
+inline void Sleep(unsigned long milliseconds) { usleep(milliseconds * 1000); }
+#endif
 
 #ifndef DebugString
 #include	"wwdebug.h"
@@ -59,12 +77,14 @@
 #define fw_assert assert
 #endif //WWASSERT
 
+#ifdef _WIN32
 #ifdef errno
 #undef errno
 #endif	//errno
 
 #define errno (WSAGetLastError())
-#define LAST_ERROR errno
+#endif
+#define LAST_ERROR WSAGetLastError()
 
 #ifndef TIMER_SECOND
 #define TIMER_SECOND 1000

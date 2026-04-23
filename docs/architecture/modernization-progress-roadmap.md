@@ -52,6 +52,7 @@ wwlib
 wwutil
 wwnet
 BinkMovie
+SControl
 ```
 
 Verified command:
@@ -64,7 +65,7 @@ cmake --build build/cmake-scaffold -j4
 Current successful result:
 
 ```text
-[100%] Built target BinkMovie
+[100%] Built target SControl
 ```
 
 ### Architecture findings
@@ -97,7 +98,6 @@ No artifact parity has been proven yet. The current scaffold is compile-checkabl
 Important buckets still need scaffold modeling and boundary review:
 
 - `WWAudio`
-- `SControl`
 - `Combat`
 - `ww3d2`
 - `wwphys`
@@ -122,7 +122,24 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 007 — model `BinkMovie`
+### Latest batch completed: Batch 009 — model `SControl`
+
+Batch 009 adds the original `SControl` target as a small server-control/network seam. CMake now identifies:
+
+- server-control protocol sources;
+- UDP socket transport sources.
+
+The non-Windows scaffold compiles both islands using a narrow POSIX socket bridge local to `servercontrolsocket.h`, while preserving the original WinSock path under `_WIN32`.
+
+### Previous batch completed: Batch 008 — automation and target probes
+
+Batch 008 added the scaffold generator/probe scripts and produced the first multi-target probe report:
+
+- `scripts/projects/write_cmake_scaffold.py`
+- `scripts/build/probe_targets.py`
+- `docs/build/target-probe-report-batch-008.md`
+
+### Previous batch completed: Batch 007 — model `BinkMovie`
 
 Batch 007 adds the original `BinkMovie` target as a small media/content seam. CMake now identifies:
 
@@ -159,17 +176,13 @@ Original target names and physical file locations remain unchanged.
 
 ### Following batch candidates
 
-After Batch 007, choose one low-risk expansion:
+After Batch 009, choose one bounded expansion:
 
-1. `SControl`
-   - tiny static library;
-   - useful for server-control/online-service classification;
-   - final bucket is ambiguous.
-2. `WWAudio`
+1. `WWAudio`
    - important audio subsystem;
    - good candidate for future backend split;
-   - likely to expose platform/audio SDK assumptions.
-3. Continue status/inventory cleanup
+   - likely to expose DirectSound/Miles and threading assumptions.
+2. Continue status/inventory cleanup
    - update the 61-project matrix as each target is modeled;
    - refine current source-island docs before adding higher-coupling projects.
 
@@ -196,7 +209,7 @@ Those are high-coupling buckets and should wait until more boundary mapping exis
 
 ## Open questions
 
-- Should `BinkMovie` or `WWAudio` be the next subsystem after scaffold cleanup?
+- Should `WWAudio` be the next subsystem after `SControl`, or should the next batch focus on generated status/report cleanup?
 - How much of `wwlib` should remain under `foundation` once platform/content/display pieces are split?
 - Should socket abstraction be introduced before or after `Combat` modeling?
 - What is the minimum useful artifact parity check for the first product build attempt?

@@ -17,6 +17,7 @@ The current rule is **logical mapping first, physical moves later**. Original pr
 | `Code/wwlib/wwlib.dsp` | `wwlib` | Builds in the non-Windows foundation scaffold after source-island classification | Mixed historical bucket. Current non-Windows scaffold compiles the portable subset and defers platform/display/DirectDraw/input/registry/version islands. Needs logical sub-boundaries before it can be a clean portable foundation layer. |
 | `Code/wwnet/wwnet.dsp` | `wwnet` | Builds in the non-Windows scaffold after socket/session source classification | First networking layer. Current scaffold compiles packet/stat/network-object helpers and defers live WinSock/session sources for a future platform networking boundary. |
 | `Code/BinkMovie/BinkMovie.dsp` | `BinkMovie` | Builds in the non-Windows scaffold after media/render source classification | Small media/content seam. Current scaffold compiles subtitle data/parser sources and defers RAD/Bink playback plus renderer subtitle glue. |
+| `Code/SControl/SControl.dsp` | `SControl` | Builds in the non-Windows scaffold with a narrow POSIX socket bridge | Small server-control/network seam. Current scaffold compiles the protocol and UDP transport while preserving the WinSock path under `_WIN32`. |
 
 ## `wwlib` sub-bucket observations
 
@@ -102,6 +103,17 @@ BINKMOVIE_RAD_PLAYER_SOURCES
 ```
 
 On non-Windows, the scaffold compiles the subtitle data/parser island and defers the renderer subtitle manager plus RAD/Bink playback implementation until the renderer/media boundaries are modeled.
+
+### `SControl`
+
+Batch 009 adds `SControl` as a small server-control/network seam. It is split into:
+
+```text
+SCONTROL_PROTOCOL_SOURCES
+SCONTROL_SOCKET_TRANSPORT_SOURCES
+```
+
+Unlike `wwnet`, the small `SControl` UDP transport is compiled in the non-Windows scaffold using a narrow POSIX socket bridge in `servercontrolsocket.h`. This is not a general WinSock replacement; it only maps the concrete socket calls this target already uses and keeps the original WinSock include path under `_WIN32`.
 
 ## Near-term recommendation
 

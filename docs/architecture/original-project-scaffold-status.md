@@ -51,7 +51,7 @@ This matrix summarizes the generated VC6 project manifest after Batch 005. It is
 | `WWCtrl` | `Dynamic-Link Library` | `Code/Tools/WWCtrl/WWCtrl.dsp` | not modeled | products/tools/engine_asset_content |
 | `BinkMovie` | `Static Library` | `Code/BinkMovie/BinkMovie.dsp` | modeled/builds subtitle parser island; RAD/renderer islands deferred | engine_asset_content/products/client/renderer seam |
 | `Combat` | `Static Library` | `Code/Combat/Combat.dsp` | not modeled | engine_runtime with presentation seams |
-| `SControl` | `Static Library` | `Code/SControl/SControl.dsp` | not modeled | products/dedicated_server/online_services |
+| `SControl` | `Static Library` | `Code/SControl/SControl.dsp` | modeled/builds with narrow POSIX socket bridge | products/dedicated_server/online_services/platform_sockets |
 | `pluglib` | `Static Library` | `Code/Tools/pluglib/pluglib.dsp` | not modeled | products/tools/engine_asset_content |
 | `ww3d2` | `Static Library` | `Code/ww3d2/ww3d2.dsp` | not modeled | renderer/engine_asset_content |
 | `WWAudio` | `Static Library` | `Code/WWAudio/WWAudio.dsp` | not modeled | audio |

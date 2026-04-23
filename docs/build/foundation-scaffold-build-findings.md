@@ -247,6 +247,38 @@ See:
 - `docs/build/foundation-portability-batch-007.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 009: `SControl` server-control/network seam
+
+Batch 009 models the original `Code/SControl/SControl.dsp` target. The CMake inventory now names protocol and socket transport source islands:
+
+```text
+SCONTROL_PROTOCOL_SOURCES
+SCONTROL_SOCKET_TRANSPORT_SOURCES
+```
+
+The first blocker was the expected WinSock include:
+
+```text
+Code/SControl/servercontrolsocket.h -> <winsock.h>
+```
+
+For this small target, the non-Windows scaffold compiles the real UDP transport using a narrow POSIX socket bridge local to `servercontrolsocket.h`. This does not introduce a general WinSock implementation.
+
+Targeted verification succeeds:
+
+```bash
+cmake --build build/cmake-scaffold --target SControl -j4
+```
+
+```text
+[100%] Built target SControl
+```
+
+See:
+
+- `docs/build/foundation-portability-batch-009.md`
+- `docs/architecture/foundation-target-map.md`
+
 ## Modernization rule for these blockers
 
 Do not paper over these by globally renaming files or adding broad platform shims yet.

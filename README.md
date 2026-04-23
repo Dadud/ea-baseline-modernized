@@ -35,6 +35,7 @@ wwlib
 wwutil
 wwnet
 BinkMovie
+SControl
 ```
 
 Scaffold success is tracked separately from full parity. Some original sources are intentionally deferred where they cross unresolved DirectDraw, WinSock, RAD/Bink, audio, UI, online-service, platform, or product-shell boundaries.
