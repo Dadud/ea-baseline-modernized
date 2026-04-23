@@ -247,6 +247,29 @@ See:
 - `docs/build/foundation-portability-batch-007.md`
 - `docs/architecture/foundation-target-map.md`
 
+## Batch 017: `commando` product-shell seam
+
+Batch 017 models the original `Code/Commando/commando.dsp` target as an opt-in product-shell seam behind `RENEGADE_BUILD_COMMANDO_SEAMS`. The CMake inventory now names:
+
+```text
+COMMANDO_PRODUCT_STARTUP_SOURCES
+COMMANDO_CLIENT_FRONTEND_UI_SOURCES
+COMMANDO_CLIENT_RUNTIME_ORCHESTRATION_SOURCES
+COMMANDO_FDS_MODE_SOURCES
+COMMANDO_ONLINE_SERVICE_GLUE_SOURCES
+COMMANDO_CONFIG_SHELL_SOURCES
+COMMANDO_RENDER_AUDIO_OWNERSHIP_SOURCES
+COMMANDO_LOCAL_SUPPORT_SOURCES
+```
+
+The explicit startup/UI/FDS/online/render-audio islands are deferred on non-Windows seam probes so the remaining runtime-oriented subset can be tested honestly. After narrow include-dir casing cleanup and path-separator fixes in `Combat`'s `datasafe.h` reach-back, the current meaningful blocker is:
+
+```text
+/tmp/openw3d-ea-baseline/Code/Commando/../Combat/../Commando/datasafe.h:143:10: fatal error: windows.h: No such file or directory
+```
+
+This is treated as useful architecture evidence that the product shell still collapses into Win32-heavy ownership surfaces even below the first-pass deferred `commando` islands.
+
 ## Batch 016: `Commando` dependency prep
 
 Batch 016 does not add a `commando` target yet. Instead it adds `docs/architecture/commando-dependency-prep.md` so the first product-shell ingestion can be bounded by the dependency evidence already uncovered in earlier seam batches.

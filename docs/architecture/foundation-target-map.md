@@ -24,6 +24,7 @@ The current rule is **logical mapping first, physical moves later**. Original pr
 | `Code/ww3d2/ww3d2.dsp` | `ww3d2` | Opt-in scaffold; mixed renderer/platform/asset-content blocker documented | Core renderer subsystem seam. Current CMake classifies asset/content, render runtime, presentation, texture/material, and DX8 backend islands. Not in the default green scaffold yet. |
 | `Code/Combat/Combat.dsp` | `Combat` | Opt-in scaffold; mixed gameplay/runtime/product/audio blocker documented | Shared gameplay bucket with strong product-shell, audio-backend, script/save/network, and client-presentation seams. Not in the default green scaffold yet. |
 | `Code/Scripts/Scripts.dsp` | `Scripts` | Opt-in scaffold; portable runtime-core seam builds while DLL entry and mission content remain deferred | Script/plugin subsystem seam. Current CMake classifies DLL entry, runtime core, mission/toolkit, and local support islands. Not in the default green scaffold yet. |
+| `Code/Commando/commando.dsp` | `commando` | Opt-in scaffold; mixed client/FDS/online/config/render blocker documented | Main product-shell seam. Current CMake classifies product-startup, client/frontend/UI, runtime orchestration, FDS-mode, online-service, config-shell, render/audio ownership, and local support islands. Not in the default green scaffold yet. |
 
 ## `wwlib` sub-bucket observations
 
@@ -202,10 +203,27 @@ SCRIPTS_LOCAL_SUPPORT_SOURCES
 
 The non-Windows seam probe defers the Windows DLL entry layer and the large mission/toolkit content body, then probes the script runtime core plus local support layer. After narrow include-identity and compiler-spelling cleanup, that runtime-core seam builds on Linux as a shared-library probe target. This is useful evidence that the script registration/runtime core is more separable than the Windows DLL boundary and mission content body, but it is not a Windows DLL parity claim.
 
+### `commando`
+
+Batch 017 adds `commando` behind the opt-in `RENEGADE_BUILD_COMMANDO_SEAMS` switch. Its CMake source inventory is split into:
+
+```text
+COMMANDO_PRODUCT_STARTUP_SOURCES
+COMMANDO_CLIENT_FRONTEND_UI_SOURCES
+COMMANDO_CLIENT_RUNTIME_ORCHESTRATION_SOURCES
+COMMANDO_FDS_MODE_SOURCES
+COMMANDO_ONLINE_SERVICE_GLUE_SOURCES
+COMMANDO_CONFIG_SHELL_SOURCES
+COMMANDO_RENDER_AUDIO_OWNERSHIP_SOURCES
+COMMANDO_LOCAL_SUPPORT_SOURCES
+```
+
+The non-Windows seam probe defers explicit product-startup, frontend/UI, FDS-mode, online-service, and render/audio ownership islands, then probes whether any meaningful runtime-oriented product-shell subset exists below those already-known boundaries. After narrow path/case cleanup in the CMake include dirs and the `Combat` reach-back includes to `datasafe.h`, the next meaningful blocker is `datasafe.h` itself pulling in `<windows.h>`. That is useful evidence that the product shell is still embedded inside Win32-heavy ownership surfaces rather than sitting on top of a narrow platform-neutral runtime seam.
+
 ## Near-term recommendation
 
-Before jumping to `Commando`, use the new prep doc plus this target map to bound the first product-shell batch:
+After the first `commando` ingestion, keep the next work bounded:
 
-1. keep `docs/architecture/commando-dependency-prep.md` as the source of truth for known product-shell, FDS-mode, script, and backend seams
-2. use a first `commando` batch only to classify source islands and capture blockers, not to claim a product build
-3. continue treating `Combat`, `Scripts`, `wwui`, `WWAudio`, `ww3d2`, and `BinkMovie` as upstream seam evidence feeding into `commando` rather than solved dependencies
+1. classify `datasafe.h` ownership before attempting broader product-shell compilation
+2. decide whether `BandTest` or a smaller dedicated-server-adjacent seam should be mapped next to clarify FDS-mode ownership
+3. pick a small tools pilot target before attempting the full tools workspace

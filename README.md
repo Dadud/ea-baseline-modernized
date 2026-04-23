@@ -43,7 +43,7 @@ SControl
 
 Scaffold success is tracked separately from full parity. Some original sources are intentionally deferred where they cross unresolved DirectDraw, WinSock, RAD/Bink, audio, UI, online-service, platform, or product-shell boundaries.
 
-Additional subsystem seam probes may be configured separately. For example, the current `WWAudio` scaffold is opt-in because it intentionally stops at the proprietary Miles/DirectSound backend boundary, `wwphys` is opt-in because it currently exposes mixed runtime/renderer/platform leakage, `wwui` is opt-in because it currently exposes mixed UI/input/platform/renderer leakage, `ww3d2` is opt-in because it currently exposes mixed renderer/platform/asset-content leakage even after the explicit DX8 backend island is deferred, `Combat` is opt-in because it currently exposes mixed gameplay/runtime, product-shell, and audio-backend leakage, and `Scripts` is opt-in because it currently separates Windows DLL entry glue from a portable runtime-core seam:
+Additional subsystem seam probes may be configured separately. For example, the current `WWAudio` scaffold is opt-in because it intentionally stops at the proprietary Miles/DirectSound backend boundary, `wwphys` is opt-in because it currently exposes mixed runtime/renderer/platform leakage, `wwui` is opt-in because it currently exposes mixed UI/input/platform/renderer leakage, `ww3d2` is opt-in because it currently exposes mixed renderer/platform/asset-content leakage even after the explicit DX8 backend island is deferred, `Combat` is opt-in because it currently exposes mixed gameplay/runtime, product-shell, and audio-backend leakage, `Scripts` is opt-in because it currently separates Windows DLL entry glue from a portable runtime-core seam, and `commando` is opt-in because it currently exposes the main mixed client/FDS/online/config/render product shell rather than a portable executable seam:
 
 ```bash
 cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_AUDIO_SEAMS=ON
@@ -52,6 +52,7 @@ cmake -S . -B build/cmake-ui-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGAD
 cmake -S . -B build/cmake-renderer-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_RENDERER_SEAMS=ON
 cmake -S . -B build/cmake-combat-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_COMBAT_SEAMS=ON
 cmake -S . -B build/cmake-scripts-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_SCRIPT_SEAMS=ON
+cmake -S . -B build/cmake-commando-probe -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DRENEGADE_BUILD_AUDIO_SEAMS=ON -DRENEGADE_BUILD_PHYS_SEAMS=ON -DRENEGADE_BUILD_UI_SEAMS=ON -DRENEGADE_BUILD_RENDERER_SEAMS=ON -DRENEGADE_BUILD_COMBAT_SEAMS=ON -DRENEGADE_BUILD_SCRIPT_SEAMS=ON -DRENEGADE_BUILD_COMMANDO_SEAMS=ON
 ```
 
 ## Dependencies

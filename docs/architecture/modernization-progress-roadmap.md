@@ -97,10 +97,9 @@ No artifact parity has been proven yet. The current scaffold is compile-checkabl
 
 Important buckets still need scaffold modeling and boundary review:
 
-- `Combat`
-- `Scripts`
-- `Commando`
 - tool projects under `Code/Tools`
+- `BandTest`
+- service/online projects beyond the currently documented seams
 
 See `docs/architecture/original-project-scaffold-status.md` for the full project matrix.
 
@@ -125,7 +124,11 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 016 — `Commando` dependency prep
+### Latest batch completed: Batch 017 — map `commando`
+
+Batch 017 adds an opt-in scaffold for the original `commando` application target and classifies it into product-startup, client/frontend/UI, runtime orchestration, FDS-mode, online-service, config-shell, render/audio ownership, and local-support source islands. It intentionally documents the reverse product-shell coupling through `Combat` into `datasafe.h` and the resulting Win32 dependency instead of faking out the product shell with broad Windows stubs.
+
+### Previous batch completed: Batch 016 — `Commando` dependency prep
 
 Batch 016 does not ingest `commando` yet. Instead it adds `docs/architecture/commando-dependency-prep.md` to record the original VC6 dependency shape, the already-known `Combat` and `Scripts` product-shell complications, and the first-pass source-island vocabulary that should be used for a bounded `commando` ingestion batch.
 
@@ -207,14 +210,14 @@ Original target names and physical file locations remain unchanged.
 
 ### Following batch candidates
 
-After Batch 016, choose one bounded expansion:
+After Batch 017, choose one bounded expansion:
 
-1. first `commando` ingestion batch
-   - inspect `Code/Commando/commando.dsp`, generate a conservative opt-in scaffold, classify first-pass source islands, and stop at the first meaningful product-shell blockers.
-2. deeper `Scripts` content pass
-   - classify which mission/toolkit files are truly content scripts versus runtime/plugin boundary glue.
-3. `BandTest` or another smaller DLL/tool seam
-   - continue improving dynamic-library ingestion patterns without jumping straight to the full product shell.
+1. deeper `commando` source pass
+   - refine first-pass source-island membership, especially where config-shell and runtime orchestration still collapse into `datasafe.h` / Win32 product ownership.
+2. `BandTest` or another smaller DLL/tool seam
+   - continue dynamic-library and dedicated-server-adjacent ingestion patterns without immediately claiming product builds.
+3. tools workspace pilot target
+   - pick a smaller console/tool target such as `bin2cpp`, `VerStamp`, or `MakeMix` to start proving the tools side of the baseline.
 
 Avoid immediately jumping to:
 
@@ -236,7 +239,7 @@ Those remain high-coupling buckets and should wait until the product-shell bound
 
 ## Open questions
 
-- What is the smallest honest first-pass source-island split for `commando` itself?
-- How much of `Combat` can move below the product shell once `datasafe.h` ownership is classified?
-- How much of the `Scripts` mission/toolkit body is true content versus product/runtime glue?
+- What parts of `datasafe.h` are truly product-shell-owned versus runtime-safe state/locking infrastructure?
+- How much of `Commando` runtime orchestration can move below the product shell once `datasafe.h` ownership is classified?
+- Should the next bounded seam be `BandTest` as a dedicated-server-adjacent DLL/service step or a small tools pilot target?
 - What is the minimum useful artifact parity check for the first product build attempt?

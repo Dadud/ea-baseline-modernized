@@ -9,15 +9,14 @@ This summary distinguishes three different states that were previously easy to b
 ## Current snapshot
 
 - Total original VC6 projects in manifest: `61`
-- Modeled in some form: `14`
-- Not modeled yet: `47`
-- Additional prep-only docs now exist for `commando`, but it still does **not** count as modeled until a target/scaffold exists.
+- Modeled in some form: `15`
+- Not modeled yet: `46`
 
 ### By project type
 
 | Project type | Total | Modeled | Not modeled |
 |---|---:|---:|---:|
-| Application | 25 | 0 | 25 |
+| Application | 25 | 1 | 24 |
 | Console Application | 10 | 0 | 10 |
 | Dynamic-Link Library | 10 | 1 | 9 |
 | Static Library | 16 | 13 | 3 |
@@ -56,6 +55,7 @@ These are intentionally documented/mapped but not included in the default green 
 | `ww3d2` | Opt-in seam map exists | Reaches mixed renderer/platform/asset-content leakage; configured via `RENEGADE_BUILD_RENDERER_SEAMS=ON` |
 | `Combat` | Opt-in seam map exists | Reaches mixed gameplay/runtime, product-shell, and audio-backend leakage; configured via `RENEGADE_BUILD_COMBAT_SEAMS=ON` |
 | `Scripts` | Opt-in seam map exists | Runtime core builds as a Linux shared-library probe while DLL entry and mission content remain deferred; configured via `RENEGADE_BUILD_SCRIPT_SEAMS=ON` |
+| `commando` | Opt-in seam map exists | Reaches mixed client/FDS/online/config/render product-shell leakage; configured via `RENEGADE_BUILD_COMMANDO_SEAMS=ON` |
 
 ## Current parity evidence state
 
@@ -80,7 +80,7 @@ parity complete for current phase
 | Scope | Current highest evidence |
 |---|---|
 | `wwdebug`, `wwmath`, `wwbitpack`, `wwsaveload`, `wwtranslatedb`, `wwlib`, `wwutil`, `wwnet`, `BinkMovie`, `SControl` | portable island builds / compile-checkable scaffold evidence |
-| `WWAudio`, `wwphys`, `wwui`, `ww3d2`, `Combat` | sources classified / blocker documented |
+| `WWAudio`, `wwphys`, `wwui`, `ww3d2`, `Combat`, `commando` | sources classified / blocker documented |
 | `Scripts` | portable runtime-core builds / DLL parity not proven |
 | client / FDS / tools / scripts product integration | not yet parity-proven |
 
