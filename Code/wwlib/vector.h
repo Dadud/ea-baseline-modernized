@@ -520,6 +520,8 @@ class DynamicVectorClass : public VectorClass<T>
 
 		// Delete object at this vector index.
 		bool Delete(int index);
+		// Delete at unsigned index (resolves MSVC x64 overload ambiguity).
+		bool Delete(unsigned index);
 
 		// Deletes all objects in the vector.
 		void Delete_All(void);
@@ -866,6 +868,13 @@ bool DynamicVectorClass<T>::Delete(int index)
 		return(true);
 	}
 	return(false);
+}
+
+// MSVC x64 ambiguity resolver: unsigned index delegates to int-based Delete.
+template<class T>
+bool DynamicVectorClass<T>::Delete(unsigned index)
+{
+	return Delete(static_cast<int>(index));
 }
 
 

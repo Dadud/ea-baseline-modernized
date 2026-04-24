@@ -612,10 +612,10 @@ bool cConnection::Receive_Packet()
 			if (LaggedPacketTimes[p] <= time_now) {
 				packet = *LaggedPackets[p];
 				delete LaggedPackets[p];
-				LaggedPackets.Delete((int)p);
-				LaggedPacketTimes.Delete((int)p);
+				LaggedPackets.Delete((unsigned)p);
+				LaggedPacketTimes.Delete((unsigned)p);
 				ret_code = LaggedPacketRetCodes[p];
-				LaggedPacketRetCodes.Delete((int)p);
+				LaggedPacketRetCodes.Delete((unsigned)p);
 				break;
 			}
 		}
