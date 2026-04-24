@@ -289,7 +289,7 @@ DECLARE_SCRIPT(M08_Havoc_DLS, "")
 	{
 		// Remove all of Havocs starting weapons except for the pistol
 		Commands->Clear_Weapons(STAR);
-		Commands->Give_PowerUp(obj, "POW_Pistol_Player");
+		Commands->Give_PowerUp(obj, "POW_Pistol_Player", true);
 
 		Commands->Grant_Key (obj, 10, true);
 		Commands->Set_Shield_Strength(obj, 0.0f);
@@ -803,8 +803,8 @@ DECLARE_SCRIPT(M08_Initial_Prisoner, "Reinforcment_ID=0:int")
 		if((action_id == PUNCH_ENEMY) && (reason == ACTION_COMPLETE_NORMAL))
 		{
 			Commands->Apply_Damage( Commands->Find_Object(enemy_id), 10000.0f, "STEEL");
-			Commands->Give_PowerUp(obj, "MG Weapon 1 Clip PowerUp");
-			Commands->Give_PowerUp(obj, "MiniGun 2 Clips PU");
+			Commands->Give_PowerUp(obj, "MG Weapon 1 Clip PowerUp", true);
+			Commands->Give_PowerUp(obj, "MiniGun 2 Clips PU", true);
 		}
 		
 	}
@@ -5574,7 +5574,7 @@ DECLARE_SCRIPT(M08_Unarmed_Prisoner, "Exit_Cell_ID=0:int, Weapon_Loc_ID=0:int")
 
 		if(action_id == WEAPONS && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Give_PowerUp(obj, "POW_Chaingun_AI");
+			Commands->Give_PowerUp(obj, "POW_Chaingun_AI", true);
 			Commands->Select_Weapon(obj, "Weapon_Chaingun_Ai" );
 		}
 		if(action_id == EXIT_CELL && reason == ACTION_COMPLETE_NORMAL)
@@ -5630,7 +5630,7 @@ DECLARE_SCRIPT(M08_Unarmed_Prisoner, "Exit_Cell_ID=0:int, Weapon_Loc_ID=0:int")
 	{
 		if (Commands->Is_A_Star(poker))
 		{
-			Commands->Give_PowerUp(obj, "POW_Chaingun_AI");
+			Commands->Give_PowerUp(obj, "POW_Chaingun_AI", true);
 			Commands->Select_Weapon(obj, "Weapon_Chaingun_Ai" );
 		}
 	}
