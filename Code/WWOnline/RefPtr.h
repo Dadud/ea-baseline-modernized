@@ -17,15 +17,15 @@ class RefPtr
 {
 public:
 	RefPtr() : ptr_(nullptr) {}
-	RefPtr(T* p) : ptr_(p) { if (ptr_) ptr_->AddRef(); }
-	RefPtr(const RefPtr& other) : ptr_(other.ptr_) { if (ptr_) ptr_->AddRef(); }
-	~RefPtr() { if (ptr_) ptr_->Release(); }
+	RefPtr(T* p) : ptr_(p) { if (ptr_) ptr_->AddReference(); }
+	RefPtr(const RefPtr& other) : ptr_(other.ptr_) { if (ptr_) ptr_->AddReference(); }
+	~RefPtr() { if (ptr_) ptr_->ReleaseReference(); }
 
 	RefPtr& operator=(const RefPtr& other) {
 		if (this != &other) {
-			if (ptr_) ptr_->Release();
+			if (ptr_) ptr_->ReleaseReference();
 			ptr_ = other.ptr_;
-			if (ptr_) ptr_->AddRef();
+			if (ptr_) ptr_->AddReference();
 		}
 		return *this;
 	}
@@ -70,8 +70,8 @@ public:
 	RefCounted() : refcount_(0) {}
 	virtual ~RefCounted() {}
 
-	void AddRef() { refcount_++; }
-	void Release() { if (--refcount_ == 0) delete this; }
+	void AddReference() { refcount_++; }
+	void ReleaseReference() { if (--refcount_ == 0) delete this; }
 
 protected:
 	int refcount_;
