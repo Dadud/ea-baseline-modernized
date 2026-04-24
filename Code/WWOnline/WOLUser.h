@@ -38,7 +38,7 @@
 // Disable warning about exception handling not being enabled.
 #pragma warning(disable : 4530)
 
-#include <atlbase.h>
+#include "atlbase.h"
 #include "RefCounted.h"
 #include "RefPtr.h"
 #include <WWLib/Notify.h>
