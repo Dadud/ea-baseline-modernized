@@ -1352,7 +1352,7 @@ PresetClass::Remove_Child_Preset (int child_id)
 {
 	int index = m_ChildIDList.ID (child_id);
 	if (index != -1) {
-		m_ChildIDList.Delete (index);
+		m_ChildIDList.DeleteIndex(index);
 	}
 		
 	return ;

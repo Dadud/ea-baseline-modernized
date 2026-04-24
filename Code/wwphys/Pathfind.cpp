@@ -1028,7 +1028,7 @@ PathfindClass::Remove_Waypath (WaypathClass *waypath)
 			//
 			if (curr_waypath == waypath) {
 				REF_PTR_RELEASE (waypath);
-				m_WaypathList.Delete (index);
+				m_WaypathList.DeleteIndex(index);
 				retval = true;
 			}
 		}		
@@ -1479,7 +1479,7 @@ PathfindClass::Free_Waypath_Sectors_And_Portals (void)
 			//	Free the sector and remove it from the list
 			//
 			REF_PTR_RELEASE (sector);
-			m_SectorList.Delete (index);
+			m_SectorList.DeleteIndex(index);
 			index --;
 		}
 	}

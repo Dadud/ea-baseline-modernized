@@ -908,7 +908,7 @@ MapCtrlClass::Set_Marker_Data (int index, uint32 user_data)
 void
 MapCtrlClass::Remove_Marker (int index)
 {
-	MarkerList.Delete (index);
+	MarkerList.DeleteIndex(index);
 	return ;
 }
 

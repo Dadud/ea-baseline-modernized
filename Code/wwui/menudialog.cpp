@@ -83,7 +83,7 @@ MenuDialogClass::~MenuDialogClass (void)
 	//
 	int index = MenuStack.ID (this);
 	if (index != -1) {
-		MenuStack.Delete (index);
+		MenuStack.DeleteIndex(index);
 	}
 
 	return ;

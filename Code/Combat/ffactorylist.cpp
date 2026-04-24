@@ -80,8 +80,8 @@ void	FileFactoryListClass::Remove_FileFactory( FileFactoryClass * factory )
 		// it from the list.
 		//
 		if (FactoryList[index] == factory) {
-			FactoryList.Delete (index);
-			FactoryNameList.Delete (index);
+			FactoryList.DeleteIndex(index);
+			FactoryNameList.DeleteIndex(index);
 			Reset_Search_Start ();
 			break;
 		}

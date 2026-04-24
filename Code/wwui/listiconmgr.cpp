@@ -116,8 +116,8 @@ ListIconMgrClass::Remove_Icon (const char *texture_name)
 		//	Remove this entry from out lists
 		//
 		delete Renderers[index];
-		Renderers.Delete (index);
-		TextureNames.Delete (index);
+		Renderers.DeleteIndex(index);
+		TextureNames.DeleteIndex(index);
 	}
 
 	return ;

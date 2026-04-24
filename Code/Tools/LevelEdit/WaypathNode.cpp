@@ -675,7 +675,7 @@ WaypathNodeClass::Delete_Point (int index)
 	waypoint->Remove_From_Scene ();
 	//NodeMgrClass::Remove_Node (waypoint);
 	MEMBER_RELEASE (waypoint);	
-	m_PointList.Delete (index);
+	m_PointList.DeleteIndex(index);
 
 	if (m_PointList.Count () > 0) {
 

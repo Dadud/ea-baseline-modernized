@@ -509,14 +509,14 @@ CoverSpotNodeClass::Remove_Attack_Point (CoverAttackPointNodeClass *attack_point
 			//	Free the attack point
 			//
 			MEMBER_RELEASE (attack_point);
-			m_AttackPointNodes.Delete (index);
+			m_AttackPointNodes.DeleteIndex(index);
 			
 			//
 			//	Remove and free the line to the attack point
 			//
 			::Get_Scene_Editor ()->Remove_Object (m_AttackPointLines[index]);
 			m_AttackPointLines[index]->Release_Ref ();
-			m_AttackPointLines.Delete (index);
+			m_AttackPointLines.DeleteIndex(index);
 			break;
 		}
 	}

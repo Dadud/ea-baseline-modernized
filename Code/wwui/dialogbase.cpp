@@ -1202,7 +1202,7 @@ DialogBaseClass::Find_Next_Group_Control
 	//
 	/*for (int index = control_list.Count () - 1; index >= 0; index --) {
 		if (control_list[index]->Is_Enabled () == false) {
-			control_list.Delete (index);
+			control_list.DeleteIndex(index);
 		}
 	}*/
 
@@ -1335,7 +1335,7 @@ DialogBaseClass::Remove_Control (DialogControlClass *control)
 		//
 		index = ControlList.ID (control);
 		if (index != -1) {
-			ControlList.Delete (index);
+			ControlList.DeleteIndex(index);
 		}
 
 		//
@@ -1466,7 +1466,7 @@ DialogBaseClass::Remove_Child_Dialog (ChildDialogClass *child)
 		//
 		child->Set_Parent_Dialog (NULL);
 		child->Release_Ref ();
-		ControlList.Delete (index);
+		ControlList.DeleteIndex(index);
 	}
 
 	//

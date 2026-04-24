@@ -262,7 +262,7 @@ InputConfigMgrClass::Delete_Configuration (int index)
 	//
 	//	Now remove this entry from the list
 	//
-	ConfigList.Delete (index);
+	ConfigList.DeleteIndex(index);
 
 	//
 	//	Load the default configuration is we just deleted the current configuration

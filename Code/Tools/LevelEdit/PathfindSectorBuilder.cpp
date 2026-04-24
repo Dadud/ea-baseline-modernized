@@ -2527,7 +2527,7 @@ PathfindSectorBuilderClass::Post_Process_Floodfill_For_Level_Features (void)
 					//
 					int portal_list_index = m_PossiblePortalList.ID (body_box);
 					if (portal_list_index != -1) {
-						m_PossiblePortalList.Delete (portal_list_index);
+						m_PossiblePortalList.DeleteIndex(portal_list_index);
 					}
 					
 					//

@@ -83,7 +83,7 @@ FloodProtectionMgrClass::Decay_Old_Entries (void)
 		//
 		uint32 time = FloodList[index].time;
 		if ((curr_time - time) >= DECAY_TIME) {
-			FloodList.Delete (index);
+			FloodList.DeleteIndex(index);
 			index --;
 			count --;
 		}

@@ -721,14 +721,14 @@ SpawnerNodeClass::Remove_Spawn_Point (SpawnPointNodeClass *spawn_point)
 			//	Free the spawn point
 			//
 			MEMBER_RELEASE (spawn_point);
-			m_SpawnPointNodes.Delete (index);
+			m_SpawnPointNodes.DeleteIndex(index);
 			
 			//
 			//	Remove and free the line to the spawn point
 			//
 			::Get_Scene_Editor ()->Remove_Object (m_SpawnPointLines[index]);
 			m_SpawnPointLines[index]->Release_Ref ();
-			m_SpawnPointLines.Delete (index);
+			m_SpawnPointLines.DeleteIndex(index);
 			break;
 		}
 	}

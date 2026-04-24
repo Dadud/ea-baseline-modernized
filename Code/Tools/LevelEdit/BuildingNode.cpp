@@ -469,14 +469,14 @@ BuildingNodeClass::Remove_Child_Node (NodeClass *child_node)
 			//	Free the child node
 			//
 			MEMBER_RELEASE (child_node);
-			m_ChildNodes.Delete (index);
+			m_ChildNodes.DeleteIndex(index);
 			
 			//
 			//	Remove and free the line to the child node
 			//
 			::Get_Scene_Editor ()->Remove_Object (m_ChildLines[index]);
 			m_ChildLines[index]->Release_Ref ();
-			m_ChildLines.Delete (index);
+			m_ChildLines.DeleteIndex(index);
 			break;
 		}
 	}

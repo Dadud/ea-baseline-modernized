@@ -336,7 +336,7 @@ VideoConfigDialogClass::Update_Resolution_Slider (void)
 		// bit depth
 		//
 		if (res_desc.BitDepth != CurrentBitDepth || res_desc.Width < 640 || res_desc.Height < 480) {
-			ResolutionList.Delete (index);
+			ResolutionList.DeleteIndex(index);
 			index --;
 		}
 	}

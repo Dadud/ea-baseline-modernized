@@ -586,7 +586,7 @@ WWAudioClass::Free_Cache_Space (int bytes)
 				REF_PTR_RELEASE (info.buffer);
 
 				// Remove this entry from the hash table
-				m_CachedBuffers[hash_index].Delete (index);
+				m_CachedBuffers[hash_index].DeleteIndex(index);
 				index --;
 			}
 		}
@@ -1305,7 +1305,7 @@ WWAudioClass::Free_Completed_Sounds (void)
 							//
 							// Free our hold on this sound object
 							//
-							m_Playlist[page].Delete (play_index);
+							m_Playlist[page].DeleteIndex(play_index);
 							REF_PTR_RELEASE (sound_obj);
 							found = true;
 						}

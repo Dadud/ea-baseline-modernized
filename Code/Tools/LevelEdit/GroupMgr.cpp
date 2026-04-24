@@ -138,7 +138,7 @@ GroupMgrClass::Remove_Node (NodeClass *node_to_remove)
 		// from the list and free our hold on it.
 		//
 		if (node == node_to_remove) {
-			m_GroupList.Delete (index);
+			m_GroupList.DeleteIndex(index);
 			MEMBER_RELEASE (node);
 			found = true;
 		}

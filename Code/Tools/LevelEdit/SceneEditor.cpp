@@ -2381,7 +2381,7 @@ SceneEditorClass::Filter_Lights (DynamicVectorClass<LightClass *> &light_list)
 		//
 		if (is_unique == false) {
 			MEMBER_RELEASE (light1);
-			light_list.Delete (index1);
+			light_list.DeleteIndex(index1);
 			index1 --;
 		}
 	}

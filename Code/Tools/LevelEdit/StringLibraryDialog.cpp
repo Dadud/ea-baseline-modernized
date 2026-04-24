@@ -439,7 +439,7 @@ StringLibraryDialogClass::OnRemove (void)
 				//
 				CategoryPages[index]->DestroyWindow ();
 				delete CategoryPages[index];
-				CategoryPages.Delete (index);
+				CategoryPages.DeleteIndex(index);
 
 				//
 				//	Change focus back to the first page

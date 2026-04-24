@@ -239,7 +239,7 @@ DialogMgrClass::UnRegister_Dialog (DialogBaseClass *dialog)
 		//
 		//	Remove the dialog from our list
 		//
-		DialogList.Delete (index);
+		DialogList.DeleteIndex(index);
 		REF_PTR_RELEASE (dialog);
 
 		//

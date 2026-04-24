@@ -870,7 +870,7 @@ TranslateDBClass::Remove_Category (int index)
 		//
 		//	Remove the entry from our list
 		//
-		m_CategoryList.Delete (index);
+		m_CategoryList.DeleteIndex(index);
 		retval = true;
 	}
 

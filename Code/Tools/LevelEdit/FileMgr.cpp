@@ -386,7 +386,7 @@ FileMgrClass::Remove_File (int index)
 			// Free the memory used by this entry and remove it
 			// from the list
 			SAFE_DELETE (pentry);
-			m_FileList.Delete (index);
+			m_FileList.DeleteIndex(index);
 		}
 
 		// Success!

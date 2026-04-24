@@ -479,7 +479,7 @@ TerrainSectionPersistListClass::Assign_Section_IDs (TerrainNodeClass *node)
 					//	Success! Assign the ID(s)
 					//
 					persist_obj->Apply (sub_node);
-					m_VirginSections.Delete (node_index);
+					m_VirginSections.DeleteIndex(node_index);
 					found = true;
 				}
 			}

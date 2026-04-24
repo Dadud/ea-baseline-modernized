@@ -240,7 +240,7 @@ PathMgrClass::Return_Path_Object (PathSolveClass *path)
 				//
 				//	Remove the object from the used list
 				//
-				UsedPathList.Delete (used_index);
+				UsedPathList.DeleteIndex(used_index);
 
 				//
 				//	Add the path object to our list (its assumed we

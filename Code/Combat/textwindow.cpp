@@ -417,7 +417,7 @@ TextWindowClass::Remove_Column (int index)
 	//
 	//	Remove the column from the list
 	//
-	Columns.Delete (index);
+	Columns.DeleteIndex(index);
 	IsViewDirty = true;
 	return true;
 }
@@ -984,7 +984,7 @@ TextColumnClass::Delete_Item (int index)
 	//
 	if (index >= 0 && index < Items.Count ()) {
 		delete Items[index];
-		Items.Delete (index);
+		Items.DeleteIndex(index);
 	}
 
 	return retval;
