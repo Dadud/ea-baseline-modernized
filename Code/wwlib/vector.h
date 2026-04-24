@@ -870,12 +870,7 @@ bool DynamicVectorClass<T>::Delete(int index)
 	return(false);
 }
 
-// MSVC x64 ambiguity resolver: unsigned index delegates to int-based Delete.
-template<class T>
-bool DynamicVectorClass<T>::Delete(unsigned index)
-{
-	return Delete(static_cast<int>(index));
-}
+
 
 
 template<class T>
