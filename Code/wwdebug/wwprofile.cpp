@@ -95,6 +95,8 @@ inline void WWProfile_Get_Ticks(_int64 * ticks)
 {
 #if !defined(_WIN32)
        *ticks = TIMEGETTIME();
+#elif defined(_MSC_VER) && defined(_M_X64)
+       *ticks = __rdtsc();
 #else
 	__asm
 	{
