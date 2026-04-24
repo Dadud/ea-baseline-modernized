@@ -87,8 +87,6 @@ set(WWPHYS_RUNTIME_SIM_SOURCES
   ./ridermanager.h
   ./shakeablestaticphys.cpp
   ./shakeablestaticphys.h
-  ./staticanimphys.cpp
-  ./staticanimphys.h
   ./staticphys.cpp
   ./staticphys.h
   ./timeddecophys.cpp

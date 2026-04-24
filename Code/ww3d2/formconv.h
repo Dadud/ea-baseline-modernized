@@ -44,14 +44,16 @@
 #define FORMCONV_H
 
 #include "ww3dformat.h"
-#include <d3d8.h>
 
 /*
-** This file is used for conversions between D3DFORMAT and WW3DFormat.
+** This file is used for conversions between D3DFORMAT (Windows DirectX 8) and WW3DFormat.
+** D3DFORMAT is a DirectX type (typedef'd to unsigned in d3d8.h), represented here as unsigned
+** for cross-platform compatibility. On non-Windows builds, only WW3DFormat-based conversions
+** are meaningful; the D3DFORMAT variants become no-ops / identity functions.
 */
 
-D3DFORMAT WW3DFormat_To_D3DFormat(WW3DFormat ww3d_format);
-WW3DFormat D3DFormat_To_WW3DFormat(D3DFORMAT d3d_format);
+WW3DFormat WW3DFormat_To_D3DFormat(WW3DFormat ww3d_format);
+WW3DFormat D3DFormat_To_WW3DFormat(unsigned d3d_format);
 
 void Init_D3D_To_WW3_Conversion();
 

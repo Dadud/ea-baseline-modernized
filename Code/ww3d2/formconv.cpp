@@ -36,6 +36,7 @@
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 #include "formconv.h"
+#include <d3d8.h>
 
 D3DFORMAT WW3DFormatToD3DFormatConversionArray[WW3D_FORMAT_COUNT] = {
 	D3DFMT_UNKNOWN,
@@ -101,17 +102,21 @@ WW3DFormat D3DFormatToWW3DFormatConversionArray[HIGHEST_SUPPORTED_D3DFORMAT + 1]
 #define HIGHEST_SUPPORTED_D3DFORMAT D3DFMT_X8L8V8U8
 WW3DFormat D3DFormatToWW3DFormatConversionArray[HIGHEST_SUPPORTED_D3DFORMAT + 1];
 
-D3DFORMAT WW3DFormat_To_D3DFormat(WW3DFormat ww3d_format) {
+WW3DFormat WW3DFormat_To_D3DFormat(WW3DFormat ww3d_format) {
 	if (ww3d_format >= WW3D_FORMAT_COUNT) {
-		return D3DFMT_UNKNOWN;
+		return WW3D_FORMAT_UNKNOWN;
 	} else {
-		return WW3DFormatToD3DFormatConversionArray[(unsigned int)ww3d_format];
+		// On Windows, map to the equivalent D3DFORMAT constant; on cross-platform
+		// builds this is an identity mapping since D3DFORMAT values match WW3DFormat
+		return (WW3DFormat)WW3DFormatToD3DFormatConversionArray[(unsigned int)ww3d_format];
 	}
 }
 
-WW3DFormat D3DFormat_To_WW3DFormat(D3DFORMAT d3d_format)
+WW3DFormat D3DFormat_To_WW3DFormat(unsigned d3d_format)
 {
-	switch (d3d_format) {
+	// On Windows, d3d_format is a D3DFORMAT value and we do real conversion.
+	// On non-Windows, this function is a no-op (identity) since there's no DX8.
+	switch ((D3DFORMAT)d3d_format) {
 	// The DXT-codes are created with FOURCC macro and thus can't be placed in the conversion table
 	case D3DFMT_DXT1: return WW3D_FORMAT_DXT1;
 	case D3DFMT_DXT2: return WW3D_FORMAT_DXT2;
@@ -119,7 +124,7 @@ WW3DFormat D3DFormat_To_WW3DFormat(D3DFORMAT d3d_format)
 	case D3DFMT_DXT4: return WW3D_FORMAT_DXT4;
 	case D3DFMT_DXT5: return WW3D_FORMAT_DXT5;
 	default:
-		if (d3d_format > HIGHEST_SUPPORTED_D3DFORMAT) {
+		if ((D3DFORMAT)d3d_format > HIGHEST_SUPPORTED_D3DFORMAT) {
 			return WW3D_FORMAT_UNKNOWN;
 		} else {
 			return D3DFormatToWW3DFormatConversionArray[(unsigned int)d3d_format];
