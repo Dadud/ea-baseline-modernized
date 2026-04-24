@@ -187,7 +187,7 @@ DECLARE_SCRIPT(M06_Objective_Controller, "") // 100018
 		// Alarm State: Stand Down
 		case 610: 
 			{
-				Commands->Add_Objective(610, OBJECTIVE_TYPE_SECONDARY, OBJECTIVE_STATUS_HIDDEN, 1000, NULL, NULL, 0);
+				Commands->Add_Objective(610, OBJECTIVE_TYPE_SECONDARY, OBJECTIVE_STATUS_HIDDEN, 1000, NULL, 0);
 			}
 			break;
 		// Escape Chateau with Dr. Sydney Mobius
