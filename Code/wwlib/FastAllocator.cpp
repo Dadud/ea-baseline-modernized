@@ -20,6 +20,11 @@
 
 static FastAllocatorGeneral* generalAllocator; //This general allocator will do all allocations for us.
 
+FastAllocatorGeneral* Get_Fast_Allocator_General()
+{
+	return FastAllocatorGeneral::Get_Allocator();
+}
+
 FastAllocatorGeneral* FastAllocatorGeneral::Get_Allocator()
 {
 	if (!generalAllocator) {

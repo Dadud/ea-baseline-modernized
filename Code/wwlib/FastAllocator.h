@@ -54,6 +54,7 @@
 //
 class FastFixedAllocator;    //Allocates and deletes items of a fixed size.
 class FastAllocatorGeneral;  //Allocates and deletes items of any size. Can use as a fast replacement for global new/delete.
+FastAllocatorGeneral* Get_Fast_Allocator_General();
 
 
 
@@ -587,8 +588,8 @@ WWINLINE void* FastAllocatorGeneral::Realloc(void* pAlloc, unsigned int n){
      pointer address(reference x) const             { return &x; }
      const_pointer address(const_reference x) const { return &x; }
 
-     T* allocate(size_type n, const void* = NULL) { return n != 0 ? static_cast<T*>(generalAllocator.Alloc(n*sizeof(T))) : NULL; }
-     void deallocate(pointer p, size_type n)      { generalAllocator.Free(p); }
+     T* allocate(size_type n, const void* = NULL) { return n != 0 ? static_cast<T*>(Get_Fast_Allocator_General()->Alloc(n*sizeof(T))) : NULL; }
+     void deallocate(pointer p, size_type n)      { Get_Fast_Allocator_General()->Free(p); }
      size_type max_size() const                   { return size_t(-1) / sizeof(T); }
      void construct(pointer p, const T& val)      { new(p) T(val); }
      void destroy(pointer p)                      { p->~T(); }
