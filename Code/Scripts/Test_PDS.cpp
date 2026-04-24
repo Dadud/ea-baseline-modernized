@@ -107,7 +107,7 @@ DECLARE_SCRIPT(PDS_Test_Modify_Attack, "WaypathID=:int")
 			params.Set_Attack (Commands->Get_The_Star (), 100, 0.5F, true);	
 			params.AttackCheckBlocked = false;
 			
-			Commands->Modify_Action (game_obj, 777, params);
+			Commands->Modify_Action (game_obj, 777, params, true, true);
 
 			Commands->Start_Timer(game_obj, this, 4.0F, 999);			
 
@@ -122,7 +122,7 @@ DECLARE_SCRIPT(PDS_Test_Modify_Attack, "WaypathID=:int")
 			params.AttackCheckBlocked = false;
 			//params.Set_Attack (Commands->Get_The_Star (), 100, 0.5F, true);	
 			
-			Commands->Modify_Action (game_obj, 777, params);
+			Commands->Modify_Action (game_obj, 777, params, true, true);
 
 			Commands->Start_Timer(game_obj, this, 4.0F, 888);
 		}
@@ -484,14 +484,14 @@ DECLARE_SCRIPT(PDS_Test_Follow_Waypath, "WaypathID=:int,WaypointStartID=:int,Way
 {
 	void Created (GameObject *game_obj)
 	{		
-		Commands->Grant_Key (game_obj, 0);
-		Commands->Grant_Key (game_obj, 1);
-		Commands->Grant_Key (game_obj, 2);
-		Commands->Grant_Key (game_obj, 3);
-		Commands->Grant_Key (game_obj, 4);
-		Commands->Grant_Key (game_obj, 5);
-		Commands->Grant_Key (game_obj, 6);
-		Commands->Grant_Key (game_obj, 7);
+		Commands->Grant_Key (game_obj, 0, true);
+		Commands->Grant_Key (game_obj, 1, true);
+		Commands->Grant_Key (game_obj, 2, true);
+		Commands->Grant_Key (game_obj, 3, true);
+		Commands->Grant_Key (game_obj, 4, true);
+		Commands->Grant_Key (game_obj, 5, true);
+		Commands->Grant_Key (game_obj, 6, true);
+		Commands->Grant_Key (game_obj, 7, true);
 
 		Commands->Enable_Engine (game_obj, true);
 
@@ -526,7 +526,7 @@ DECLARE_SCRIPT(PDS_Test_Follow_Waypath, "WaypathID=:int,WaypointStartID=:int,Way
 			params.AttackCheckBlocked = false;
 			params.Set_Attack (Commands->Get_The_Star (), 100, 0.5F, true);	
 			
-			Commands->Modify_Action (game_obj, 777, params);
+			Commands->Modify_Action (game_obj, 777, params, true, true);
 
 			//Commands->Action_Goto( game_obj, params );
 			return ;
@@ -544,7 +544,7 @@ DECLARE_SCRIPT(PDS_Test_Follow_Waypath, "WaypathID=:int,WaypointStartID=:int,Way
 		params.AttackCheckBlocked = false;
 		params.Set_Attack (Commands->Get_The_Star (), 100, 0.5F, true);	
 		
-		Commands->Modify_Action (game_obj, 777, params);
+		Commands->Modify_Action (game_obj, 777, params, true, true);
 
 		// attack for a while, then go back to following the waypath
 		Commands->Start_Timer(game_obj, this, 5.0F, 777);

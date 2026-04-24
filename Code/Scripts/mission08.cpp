@@ -1196,7 +1196,7 @@ DECLARE_SCRIPT(M08_Prison_Apache, "")
 			params.Set_Movement( Vector3(0,0,0), RUN, 1.5f );
 			params.Set_Attack (enemy, 150.0f, 0.0f, 1);
 			params.WaypathID = Closest_Waypath();
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 		}
 	}
 
@@ -2195,7 +2195,7 @@ DECLARE_SCRIPT(M08_Archaelogical_Site_Buggy, "")
 			params.Set_Movement( Vector3(0,0,0), WALK, 1.5f );
 			params.Set_Attack (enemy, 250.0f, 0.0f, 1);
 			params.WaypathID = 100406;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 
 			Commands->Start_Timer (obj, this, 10.0f, ATTACK_OVER);
 		}
@@ -2213,7 +2213,7 @@ DECLARE_SCRIPT(M08_Archaelogical_Site_Buggy, "")
 			params.Set_Movement( Vector3(0,0,0), RUN, 1.5f );
 			params.Set_Attack (NULL, 250.0f, 0.0f, 1);
 			params.WaypathID = 100406;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 			
 		}
 		
@@ -2338,7 +2338,7 @@ DECLARE_SCRIPT(M08_PetraA25_Tank, "")
 			params.Set_Attack (enemy, 250.0f, 0.0f, 1);
 			params.WaypathID = 100437;
 			params.WaypathSplined = true;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 
 			Commands->Start_Timer (obj, this, 10.0f, ATTACK_OVER);
 		}
@@ -2369,7 +2369,7 @@ DECLARE_SCRIPT(M08_PetraA25_Tank, "")
 			params.Set_Attack (NULL, 250.0f, 0.0f, 1);
 			params.WaypathID = 100437;
 			params.WaypathSplined = true;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 			
 		}
 		
@@ -2751,7 +2751,7 @@ DECLARE_SCRIPT(M08_Facility_Tank, "Waypath_ID=0:int")
 			params.Set_Attack (enemy, 250.0f, 0.0f, 1);
 			params.WaypathID = waypath_id;
 			params.WaypathSplined = true;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 
 			Commands->Start_Timer (obj, this, 10.0f, ATTACK_OVER);
 		}
@@ -2782,7 +2782,7 @@ DECLARE_SCRIPT(M08_Facility_Tank, "Waypath_ID=0:int")
 			params.Set_Attack (NULL, 250.0f, 0.0f, 1);
 			params.WaypathID = waypath_id;
 			params.WaypathSplined = true;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 			
 		}
 		
@@ -2835,7 +2835,7 @@ DECLARE_SCRIPT(M08_Facility_Vehicle_Dec, "")
 
 			params.Set_Basic( this, INNATE_PRIORITY_ENEMY_SEEN + 5, ATTACKING );
 			params.Set_Attack (NULL, 250.0f, 0.0f, 1);
-			Commands->Modify_Action (obj, ATTACKING, params);
+			Commands->Modify_Action (obj, ATTACKING, params, true, true);
 			
 		}
 		
@@ -5504,7 +5504,7 @@ DECLARE_SCRIPT(M08_Lower_Cavern_Buggy, "")
 			params.Set_Attack (enemy, 250.0f, 0.0f, 1);
 			params.WaypathID = 100631;
 			params.WaypathSplined = true;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 
 			Commands->Start_Timer (obj, this, 10.0f, ATTACK_OVER);
 		}
@@ -5540,7 +5540,7 @@ DECLARE_SCRIPT(M08_Lower_Cavern_Buggy, "")
 			params.Set_Movement( Vector3(0,0,0), RUN, 1.5f );
 			params.Set_Attack (STAR, 250.0f, 0.0f, 1);
 			params.WaypathID = 100631;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 			
 		}
 		
@@ -5732,7 +5732,7 @@ DECLARE_SCRIPT(M08_Sakura, "")
 			params.Set_Movement( Vector3(0,0,0), RUN, 1.5f );
 			params.Set_Attack (enemy, 150.0f, 0.0f, 1);
 			params.WaypathID = current_waypath;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 		}
 	}
 
@@ -6010,7 +6010,7 @@ DECLARE_SCRIPT (M08_Mobile_Vehicle, "CheckBlocked=1:int, Attack_Loc0=0:int, Atta
 		params.Set_Attack(enemy, 100.0f, 5.0f, true);
 		params.AttackCheckBlocked = blocked;
 		
-		Commands->Modify_Action(obj, 10, params);				
+		Commands->Modify_Action(obj, 10, params, true, true);				
 	}
 
 	void Timer_Expired (GameObject* obj, int timer_id)
