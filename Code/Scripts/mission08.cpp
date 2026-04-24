@@ -802,7 +802,7 @@ DECLARE_SCRIPT(M08_Initial_Prisoner, "Reinforcment_ID=0:int")
 		}
 		if((action_id == PUNCH_ENEMY) && (reason == ACTION_COMPLETE_NORMAL))
 		{
-			Commands->Apply_Damage( Commands->Find_Object(enemy_id), 10000.0f, "STEEL");
+			Commands->Apply_Damage( Commands->Find_Object(enemy_id), 10000.0f, "STEEL", nullptr);
 			Commands->Give_PowerUp(obj, "MG Weapon 1 Clip PowerUp", true);
 			Commands->Give_PowerUp(obj, "MiniGun 2 Clips PU", true);
 		}
@@ -3648,7 +3648,7 @@ DECLARE_SCRIPT(M08_Petra_A_Unit, "Unit_ID=0:int")
 
 		if(action_id == GO_PETRA_A && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Apply_Damage( obj, 10000.0f, "STEEL");
+			Commands->Apply_Damage( obj, 10000.0f, "STEEL", nullptr);
 		}
 		
 		
@@ -4037,7 +4037,7 @@ DECLARE_SCRIPT(M08_Petra_B_Unit, "Unit_ID=0:int")
 
 		if(action_id == GO_PETRA_B && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Apply_Damage( obj, 10000.0f, "STEEL");
+			Commands->Apply_Damage( obj, 10000.0f, "STEEL", nullptr);
 		}
 		
 		
@@ -4415,7 +4415,7 @@ DECLARE_SCRIPT(M08_Petra_C_Unit, "Unit_ID=0:int")
 
 		if(action_id == GO_PETRA_C && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Apply_Damage( obj, 10000.0f, "STEEL");
+			Commands->Apply_Damage( obj, 10000.0f, "STEEL", nullptr);
 		}
 		
 		
@@ -4952,7 +4952,7 @@ DECLARE_SCRIPT(M08_Cavern_Entrance_Truck, "")
 		
 		if(action_id == WAYPATH && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Apply_Damage( obj, 10000.0f, "STEEL");
+			Commands->Apply_Damage( obj, 10000.0f, "STEEL", nullptr);
 		}
 	}
 
@@ -6485,7 +6485,7 @@ DECLARE_SCRIPT(M08_Apache, "Area:int")
 			pad_destroyed = true;
 			if (on_pad)
 			{
-				Commands->Apply_Damage(obj, 10000.0f, "EXPLOSIVE");
+				Commands->Apply_Damage(obj, 10000.0f, "EXPLOSIVE", nullptr);
 			}
 		}
 		if (type == 400 && param == 400)

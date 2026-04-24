@@ -371,7 +371,7 @@ DECLARE_SCRIPT(M00_Monitor_Attached_Primary, "")
 	{
 		if(!object_detached)
 		{
-			Commands->Apply_Damage( Commands->Find_Object(attached_object_id), 10000.0f, "DEATH");
+			Commands->Apply_Damage( Commands->Find_Object(attached_object_id), 10000.0f, "DEATH", nullptr);
 		}
 	}
 	

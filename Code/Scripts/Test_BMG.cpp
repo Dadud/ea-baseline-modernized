@@ -597,7 +597,7 @@ DECLARE_SCRIPT( BMG_Test_Damage, "" )
 	{
 		Commands->Start_Timer( obj, this,  3, 0 );
 		Commands->Debug_Message( "BMG_Test_Damage\n" );
-		Commands->Apply_Damage( obj, 2, "STEEL" );
+		Commands->Apply_Damage( obj, 2, "STEEL" , nullptr);
 	}
 };
 
