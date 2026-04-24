@@ -93,7 +93,58 @@ These are real seam implementations, but they do **not** imply full parity.
 
 ---
 
-## 4. Current verified build commands
+## 4. Machine bootstrap dependencies
+
+A new machine needs **two layers** of dependencies:
+1. core repo/tooling dependencies
+2. optional seam/product dependencies
+
+### Core dependencies (recommended minimum)
+These should exist before doing ordinary scaffold/doc work:
+- `git`
+- `python3`
+- `cmake`
+- a C/C++ compiler toolchain
+  - Linux: GCC or Clang
+  - macOS: Apple Clang / Xcode command line tools
+  - Windows: Visual Studio / MSVC or equivalent configured generator
+
+### Useful helper dependency
+- `pkg-config`
+  - recommended on UNIX-like systems
+  - used for SDL3 detection in the current SDL3 seam work
+
+### Optional dependency for current SDL3 seam verification
+If the next AI wants to verify the SDL3-backed `wwlib` seams, the machine should also have:
+- SDL3 development package / headers / library
+
+Typical UNIX-side check:
+```bash
+pkg-config --modversion sdl3
+```
+
+If that succeeds, SDL3 seam verification is likely available.
+
+### Windows-only / product-seam SDK dependencies
+These are **not** required for ordinary documentation, scaffold, or most current Linux/UNIX batches, but they matter for broader product work:
+- DirectX 8 SDK — renderer / `ww3d2`
+- Miles Sound System SDK — `WWAudio`
+- RAD Bink SDK — full `BinkMovie`
+- other original EA-era tool/product SDKs listed in `README.md`
+
+### Dependency policy for a fresh AI
+- Do **not** assume all optional SDKs exist.
+- Detect what is available on the machine first.
+- If a dependency is absent, prefer:
+  - documenting the missing dependency,
+  - running the subset of verification that still applies,
+  - keeping the batch bounded,
+  instead of forcing a broad install detour.
+- For machine bootstrap truth, consult `README.md` in addition to this guide.
+
+---
+
+## 5. Current verified build commands
 
 ### Default scaffold
 Run from `<EA_BASELINE_REPO_ROOT>`:

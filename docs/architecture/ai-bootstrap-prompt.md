@@ -19,6 +19,14 @@ Path discovery rules:
 - If the donor repo path is unknown, ask the operator or locate/clone it and treat its root as <DONOR_OPENW3D_REPO_ROOT>
 - Build directories are local choices; `build/cmake-scaffold` and `build/cmake-scaffold-sdl3` are conventions, not mandatory absolute paths
 
+Machine bootstrap dependencies:
+- Required minimum: git, python3, cmake, and a working C/C++ compiler toolchain
+- Recommended on UNIX-like systems: pkg-config
+- Optional for current SDL3 seam verification: SDL3 development package/headers/library
+- Optional Windows-era SDKs for broader product work: DirectX 8 SDK, Miles Sound System SDK, RAD Bink SDK, plus other SDKs noted in README.md
+- Do not assume optional SDKs exist; detect what is available first and keep the batch bounded if they are absent
+
+
 Primary strategy:
 - Modernize the original EA Renegade baseline first.
 - Preserve client/FDS/tools parity expectations.
