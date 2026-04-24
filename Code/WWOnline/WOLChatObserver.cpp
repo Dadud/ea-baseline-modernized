@@ -36,7 +36,7 @@
 
 #pragma warning (disable : 4530)
 
-#include <atlbase.h>
+#include "atlbase.h"
 #include "WOLChatObserver.h"
 #include "WOLSession.h"
 #include "WOLProduct.h"
