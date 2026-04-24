@@ -40,7 +40,7 @@
 
 #include	"sha.h"
 #if defined(_MSC_VER)
-#include	<iostream.h>
+#include <iostream>
 #endif
 #include	<stdlib.h>
 
