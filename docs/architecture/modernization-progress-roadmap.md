@@ -168,26 +168,34 @@ Current conclusion:
 - both are already excluded from the current UNIX `wwlib` build
 - any future work should begin with a real `platform CPU capabilities` boundary contract, not an ad hoc fallback
 
-### Batch 031 completed — `mesh.h` shared header-surface leak reduction
+### Batch 031 completed — ww3d2 header surface reduction (mesh.h + dynamesh.h)
 
-Batch 031 lands the first more-ambitious shared-boundary cut in `ww3d2` by removing the circular include between `mesh.h` and `dx8polygonrenderer.h`.
+Two independent cuts to break the DX8 header chain from `ww3d2` public headers:
 
-Changes landed:
-- `mesh.h` no longer includes `dx8polygonrenderer.h`
-- `dx8polygonrenderer.h` no longer includes `mesh.h`
-- both headers now rely on forward declarations where header-level pointer/friend/list usage is sufficient
-- dead `meshmdl.h` header inclusion was removed from `dx8polygonrenderer.h`
+**Cut 1 — mesh.h:**
+- Prior partial fix removed `dx8polygonrenderer.h` from `mesh.h` but forgot to add the replacement include
+- Added `#include "dx8list.h"` — provides `DX8PolygonRendererList` typedef without any DX8 SDK dependency
+- `mesh.h` now has zero DX8 SDK exposure in its public include surface
+
+**Cut 2 — dynamesh.h:**
+- `dynamesh.h` included `dx8wrapper.h` for one pure-math utility: `DX8Wrapper::Convert_Color_Clamp()`
+- Extracted `Color_Convert_Clamp(const Vector4&)` as a standalone inline helper in `WWMath/vector4.h`
+- Replaced all 3 calls in `dynamesh.h` with the local helper
+- Removed `dx8wrapper.h` include from `dynamesh.h`, replaced with `vector4.h`
+- `dynamesh.cpp` still includes `dx8wrapper.h` directly (legitimate DX8 API usage)
 
 Why this matters:
-- it reduces a high-value shared DX8 include leak identified in Batch 029
-- it pushes a real renderer dependency back into implementation space instead of public header surface
-- it raises batch ambition without pretending that deeper renderer disentangling is already done
+- two independent header cuts that each break the `d3d8.h` chain from public ww3d2 headers
+- `Color_Convert_Clamp` is pure C, portable, no inline asm — suitable for all platforms
+- raises batch ambition by tackling inline-logic coupling (dynamesh.h), not just include structure
+
+Changes landed:
+- `Code/ww3d2/mesh.h` — added `#include "dx8list.h"`
+- `Code/ww3d2/dynamesh.h` — replaced `#include "dx8wrapper.h"` with `#include "vector4.h"`, replaced 3 calls
+- `Code/WWMath/vector4.h` — added `Color_Convert_Clamp()` inline helper
 
 Primary output:
 - `docs/build/foundation-portability-batch-031.md`
-
-Notably deferred:
-- `dynamesh.h` remains deferred because its DX8 dependency is in inline code logic, not just include structure
 
 ### Batch 030 completed — first leakage-cut implementation slice
 

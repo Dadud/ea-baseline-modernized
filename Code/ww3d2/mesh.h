@@ -47,6 +47,7 @@
 #include "rendobj.h"
 #include "bittype.h"
 #include "w3derr.h"
+#include "dx8list.h"
 
 class MeshBuilderClass;
 class HModelClass;

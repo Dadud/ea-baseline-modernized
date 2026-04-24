@@ -1,147 +1,83 @@
-# Foundation Portability Batch 031 — `mesh.h` Shared Header-Surface Leak Reduction
+# Batch 031: ww3d2 Header Surface Reduction
+
+**Date:** 2026-04-24
+**Status:** ✅ Completed
+**Theme:** Break the shared DX8 header chain from `ww3d2` public headers
 
 ## Goal
 
-Land a more ambitious but still bounded shared-boundary cut by reducing the DX8 backend bleed caused by the `mesh.h` / `dx8polygonrenderer.h` include cycle.
-
-This batch focuses on the highest-value safe cut identified after Batch 030:
-- break the circular include between `mesh.h` and `dx8polygonrenderer.h`
-- keep the real DX8 implementation dependency in `.cpp` code where it belongs
-- avoid pretending that `dynamesh.h` is the same kind of problem
+Reduce the shared DX8 header surface exposed through `ww3d2` public headers. The audit identified two independent but complementary cuts: one in `mesh.h` and one in `dynamesh.h`.
 
 ---
 
-## Problem
+## Cut 1: mesh.h — Replace dx8polygonrenderer.h with dx8list.h
 
-Before this batch:
-- `mesh.h` included `dx8polygonrenderer.h`
-- `dx8polygonrenderer.h` included `mesh.h`
+**Problem:** `mesh.h` included `dx8polygonrenderer.h` (line ~50), pulling in the full chain:
+```
+dx8polygonrenderer.h → dx8wrapper.h → d3d8.h
+```
+But `mesh.h` used **zero** symbols from `dx8wrapper.h`. It only needed:
+- `DX8PolygonRendererList` — a `MultiListClass<T>` typedef defined in `dx8list.h`
 
-That circular structure meant any consumer of `mesh.h` inherited a DX8-heavy public include surface even when it only needed the mesh interface.
+**Fix:** Added `#include "dx8list.h"` to `mesh.h`. The prior partial fix (commit `869788b`) removed `dx8polygonrenderer.h` but forgot to add the replacement — this completes that fix.
 
-This was a real shared header contamination path and one of the most important leakage points found in Batch 029.
+**Impact:** `mesh.h` no longer pulls in any DX8 SDK types. `mesh.cpp` still includes `dx8polygonrenderer.h` directly and continues to compile correctly — it legitimately calls DX8 API.
 
----
-
-## Changes made
-
-## 1. Narrowed `mesh.h`
-
-Removed:
-- `#include "dx8polygonrenderer.h"`
-
-Added forward declaration:
-- `class DX8PolygonRendererClass;`
-
-### Why this is safe
-
-`mesh.h` only needs `DX8PolygonRendererClass` at header level for:
-- friendship
-- `DX8PolygonRendererList` member storage through existing list typedefs
-
-Those uses do not require the full renderer class definition in the header.
+**Files changed:**
+- `Code/ww3d2/mesh.h`
 
 ---
 
-## 2. Narrowed `dx8polygonrenderer.h`
+## Cut 2: dynamesh.h — Remove dx8wrapper.h, extract Color_Convert_Clamp
 
-Removed:
-- `#include "mesh.h"`
-- `#include "meshmdl.h"`
+**Problem:** `dynamesh.h` included `dx8wrapper.h` for one function call:
+```cpp
+DX8Wrapper::Convert_Color_Clamp(Vector4(r,g,b,a))
+```
+`Convert_Color_Clamp` is a pure math utility: clamp components to [0,1], pack as ABGR. It touches zero DX8 device state or types.
 
-Added forward declaration:
-- `class MeshClass;`
+**Fix:** 
+1. Added `Color_Convert_Clamp(const Vector4&)` to `WWMath/vector4.h` — a pure C, portable implementation
+2. Replaced all three `DX8Wrapper::Convert_Color_Clamp` calls in `dynamesh.h` with `Color_Convert_Clamp`
+3. Removed `#include "dx8wrapper.h"` from `dynamesh.h`, replaced with `#include "vector4.h"`
 
-### Why this is safe
-
-At header level, `dx8polygonrenderer.h` only uses `MeshClass` by pointer/reference shape:
-- constructor parameter
-- member pointer
-- getter return type
-
-That means a forward declaration is sufficient.
-
-`meshmdl.h` was dead in practice for this header surface and only appeared in a commented-out line.
+**Files changed:**
+- `Code/WWMath/vector4.h` (new helper added)
+- `Code/ww3d2/dynamesh.h`
 
 ---
 
-## What stays true after this batch
+## What Was NOT Changed (correctly)
 
-This is **not** a fake abstraction pass.
-
-The DX8 dependency still exists where it is semantically real:
-- `mesh.cpp` still includes `dx8polygonrenderer.h`
-- `MeshClass::Render_Material_Pass` still uses DX8-side renderer behavior in implementation code
-
-So this batch removes a **public header leak**, not a real renderer implementation dependency.
-
----
-
-## What was explicitly deferred
-
-`dynamesh.h` was inspected for the same batch and intentionally deferred.
-
-Why:
-- unlike `mesh.h`, `dynamesh.h` contains inline code that directly calls `DX8Wrapper::Convert_Color_Clamp(...)`
-- that is a real logic dependency, not just an include-shape problem
-- cleaning it up honestly would require a separate helper/abstraction decision
-
-That should be its own batch.
+- **dynamesh.cpp**: Still includes `dx8wrapper.h` and makes extensive DX8 API calls — this is correct and expected
+- **mesh.cpp**: Still includes `dx8polygonrenderer.h` — correct, it calls real DX8 methods
+- Other `ww3d2` files: The audit found more files with `dx8wrapper.h` in their include chains, but those are deferred to future batches
 
 ---
 
 ## Verification
 
-### Doc verification
-```bash
-python3 scripts/architecture/check_doc_sync.py
-```
-
-Result: passed.
-
-### Build verification
-```bash
-cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-cmake --build build/cmake-scaffold -j4
-```
-
-Observed successful end-state included:
-```text
-[100%] Built target wwnet
-```
-
-### Diff hygiene
-```bash
-git diff --check
-```
-
-Result: passed.
+- Default scaffold configure: ✅
+- Default scaffold build: ✅ (`[100%] Built target wwnet`)
+- `check_doc_sync.py`: ✅
+- `git diff --check`: ✅ (no whitespace errors)
 
 ---
 
-## Outcome
+## Impact on Include Graph
 
-Batch 031 successfully reduces one of the highest-value shared DX8 header leaks without overclaiming architectural progress.
+| Header | Before | After |
+|--------|--------|-------|
+| `mesh.h` | `dx8polygonrenderer.h` → `dx8wrapper.h` → `d3d8.h` | `dx8list.h` only (pure typedef/containers) |
+| `dynamesh.h` | `dx8wrapper.h` → `d3d8.h` | `vector4.h` only (math utilities) |
 
-### Improvements achieved
-- `mesh.h` no longer drags `dx8polygonrenderer.h` into every consumer
-- the circular include between `mesh.h` and `dx8polygonrenderer.h` is removed
-- the DX8 dependency is pushed back into implementation space instead of public header surface
-
-### What this does not solve
-- `dynamesh.h` inline DX8 helper usage
-- broader `ww3d2` backend disentangling
-- deeper renderer/runtime interface redesign
+Both are now DX8-SDK-free in their public header interfaces.
 
 ---
 
-## Recommended next step
+## Next Batch Candidates
 
-Continue the more ambitious batch style, but keep it bounded.
-
-### Preferred next batch
-Either:
-1. attack the next `ww3d2` header-surface leak adjacent to `mesh.h`, or
-2. take `dynamesh.h` as its own honest refactor batch with a DX8-independent color conversion helper decision up front
-
-My recommendation: do `dynamesh.h` only if we are ready to treat it as a small real refactor rather than another include-only cleanup.
+1. **meshmdl.h** — Has `dx8list.h` dependency, used widely across ww3d2; worth auditing if it's a good next cut
+2. **dx8polygonrenderer.h itself** — the inline Render/Render_Sorted methods use DX8Wrapper inline; can those be moved to the .cpp?
+3. **bmp2d.h / textdraw.h** — both include `dynamesh.h` and now benefit from the dynamesh.h cut automatically
+4. **Combat deep datasafe coupling** — `damage.h`, `playerdata.h`, `weaponmanager.h` use `safe_*` types as struct fields; requires product-shell data layout review

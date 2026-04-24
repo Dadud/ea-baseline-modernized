@@ -408,5 +408,31 @@ WWINLINE bool Vector4::Is_Valid(void) const
 }
 
 
+/*
+** Color_Convert_Clamp -- Pack a Vector4 (r,g,b,a in [0,1]) into an ABGR unsigned.
+** Extracted from dx8wrapper.h to break the DX8 header chain from dynamesh.h.
+** Pure C, no inline asm, portable across all platforms.
+*/
+WWINLINE unsigned Color_Convert_Clamp(const Vector4& color)
+{
+	float c[4];
+	c[0] = color[0];
+	c[1] = color[1];
+	c[2] = color[2];
+	c[3] = color[3];
+
+	for (int i = 0; i < 4; ++i) {
+		if (c[i] < 0.0f) c[i] = 0.0f;
+		else if (c[i] > 1.0f) c[i] = 1.0f;
+	}
+
+	unsigned r = static_cast<unsigned>(c[0] * 255.0f);
+	unsigned g = static_cast<unsigned>(c[1] * 255.0f);
+	unsigned b = static_cast<unsigned>(c[2] * 255.0f);
+	unsigned a = static_cast<unsigned>(c[3] * 255.0f);
+
+	return (a << 24) | (b << 16) | (g << 8) | r;
+}
+
 #endif /* VECTOR4_H */
 
