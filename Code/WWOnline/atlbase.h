@@ -21,7 +21,6 @@ public:
 
     T* operator=(T* lp) { if (lp) lp->AddRef(); if (p) p->Release(); p = lp; return *this; }
     T* operator=(const CComPtr<T>& lp) { return (*this = lp.p); }
-
     operator T*() const { return p; }
     T* operator->() const { return p; }
     T** operator&() { return &p; }
@@ -41,7 +40,6 @@ public:
     CComBSTR(LPCOLESTR sz) { if (sz) bstr = ::SysAllocString(sz); else bstr = nullptr; }
     CComBSTR(const CComBSTR& src) { bstr = src.bstr ? ::SysAllocStringLen(src.bstr, ::SysStringLen(src.bstr)) : nullptr; }
     ~CComBSTR() { ::SysFreeString(bstr); }
-
     CComBSTR& operator=(BSTR s) { ::SysFreeString(bstr); bstr = s; return *this; }
     unsigned int Length() const { return ::SysStringLen(bstr); }
     operator BSTR() const { return bstr; }
@@ -57,16 +55,16 @@ class CComModule {};
 #endif
 #define _ATL_ASSERT(expr) ((void)0)
 
-#endif // __ATLBASE_H__
-
-// TypedEvent - ATL event source support =========================================
-// Minimal stub: provides the event source interface needed by WWOnline
+// TypedEvent - typed event source pattern used by WWOnline =====================
+// Self-referential template: derived class passes itself as first arg.
 template<class T, class T_arg>
-class TypedEvent
-{
+class TypedEvent {
 public:
     typedef T_arg ArgType;
     T_arg m_arg;
+    TypedEvent() : m_arg() {}
     TypedEvent(T_arg arg) : m_arg(arg) {}
     virtual ~TypedEvent() {}
 };
+
+#endif // __ATLBASE_H__

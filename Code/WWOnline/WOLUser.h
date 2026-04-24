@@ -43,7 +43,7 @@
 #include "RefPtr.h"
 #include <WWLib/Notify.h>
 #include <WWLib/WideString.h>
-#include >WOLChannel.h"
+#include "WOLChannel.h"
 #include "WOLSquad.h"
 #include "WOLLadder.h"
 
