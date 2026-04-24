@@ -225,6 +225,20 @@ This is semantically zero-change: struct layouts, save format, and hot-path cast
 Primary output:
 - `docs/build/foundation-portability-batch-032.md`
 
+### ww3d2 build fixes — real code bugs fixed
+
+Probed ww3d2 enablement by building with `RENEGADE_BUILD_RENDERER_SEAMS=ON` on Linux. Found and fixed:
+
+- `htree.cpp`: `anim_num` used in second `for` loop but declared in first loop's scope — added `int` declaration
+- `motchan.cpp`: `_isnan()` (MSVC) → `isnan()` (standard C) for Linux compatibility; `i` variable in second loop declared `int`
+- `lightenvironment.cpp`: implicit `int` type on `static _LightingLODCutoff`/`_LightingLODCutoff2` → explicit `float`
+- `CMakeLists.txt`: removed unconditional `WIN32`/`WIN32_LEAN_AND_MEAN`/`WINVER=0x400`/`_WINDOWS` compile definitions that forced Windows SDK types on Linux builds; Win32-only definitions now gated behind `if(WIN32)`
+
+Remaining ww3d2 build blockers (SDK gaps, not code bugs):
+- `d3d8.h` — DirectX 8 SDK header
+- `windows.h` — Windows SDK header
+- `targa.h` — third-party TGA library header (not present in source tree)
+
 ### Batch 030 completed — first leakage-cut implementation slice
 
 Batch 030 turns the Batch 029 inventory into the first small implementation cuts.
