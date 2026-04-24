@@ -135,9 +135,7 @@ class BitStreamClass : public cBitPacker
 		char		Get(char & set_val,int type = NO_ENCODER)					{ return Internal_Get(set_val,type); }
 		int		Get(int & set_val,int type = NO_ENCODER)					{ return Internal_Get(set_val,type); }
 		float		Get(float & set_val,int type = NO_ENCODER)				{ return Internal_Get(set_val,type); }
-#if !defined(_WIN32)
 		WCHAR		Get(WCHAR & set_val,int type = NO_ENCODER)				{ USHORT temp; Internal_Get(temp,type); set_val = static_cast<WCHAR>(temp); return set_val; }
-#endif
 
 	private:
 		
