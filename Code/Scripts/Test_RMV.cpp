@@ -299,7 +299,7 @@ DECLARE_SCRIPT(RMV_Camera_Behavior, "Angle:float, Alarm_ID=0:int, Is_Gun=0:int, 
 		is_gun = (Get_Int_Parameter("Is_Gun") == 1) ? true : false;
 		enemy_seen = timer_expired = alert = attacking = false;
 
-		Commands->Enable_Enemy_Seen(obj);
+		Commands->Enable_Enemy_Seen(obj, true);
 
 		ActionParamsStruct params;
 		params.Set_Basic(this, 90, 0);

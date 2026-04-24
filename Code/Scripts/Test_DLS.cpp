@@ -715,7 +715,7 @@ DECLARE_SCRIPT(M06_Camera_Behavior, "Angle:float")
 		switcher = enemy_id = 0;
 		enemy_seen = timer_expired = alert = false;
 
-		Commands->Enable_Enemy_Seen(obj);
+		Commands->Enable_Enemy_Seen(obj, true);
 
 		ActionParamsStruct params;
 		params.Set_Basic(this, INNATE_PRIORITY_ENEMY_SEEN - 5, 0);
