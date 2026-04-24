@@ -41,36 +41,44 @@ class LadderInfoEvent;
 class GameOptionsMessage;
 
 /*
-** Minimal static Observer<T> registration system.
-**
-** Usage pattern in Renegade:
-**   Observer<GameOptionsMessage>::NotifyMe(*mWOLSession);
-**   Observer<WWOnline::ServerError>::StopObserving();
-**
-** This is a no-op stub for Linux/non-Windows scaffold compilation.
-** Full static registration tracking not implemented.
+** Minimal Observer<T> registration system (stub).
+** Real Notifier<T>/Observer<T> pattern from wwlib/Notify.h.
+** Stub: registration is a no-op; HandleNotification is a no-op.
 */
 template<typename T>
 class Observer
 {
 public:
-	/*
-	** Register an object to receive events of type T.
-	** Stub: no-op on non-Windows.
-	*/
-	template<typename U>
-	static void NotifyMe(U& /*obj*/) {}
+	Observer() {}
+	virtual ~Observer() {}
 
-	/*
-	** Unregister an object from receiving events of type T.
-	** Stub: no-op on non-Windows.
-	*/
-	template<typename U>
-	static void StopObserving(U* /*obj*/ = nullptr) {}
+	//! Handle event notification (stub: no-op)
+	virtual void HandleNotification(T&) {}
+
+	//! Request notification of this event (stub: no-op)
+	virtual void NotifyMe(Notifier<T>& /*notifier*/) {}
+
+	//! Stop observing all events (stub: no-op)
+	void StopObserving() {}
+};
+
+//! Notifier<T> template (stub) - event source that holds observers
+template<typename T>
+class Notifier
+{
+public:
+	Notifier() {}
+	virtual ~Notifier() {}
+
+	//! Add an observer to receive notifications (stub: no-op)
+	void AddObserver(Observer<T>& /*observer*/) {}
+
+	//! Remove an observer (stub: no-op)
+	void RemoveObserver(Observer<T>& /*observer*/) {}
 };
 
 /*
-** Minimal non-intrusive Signaler<T> base for event broadcasting.
+** Minimal Signaler<T> base for event broadcasting.
 ** Used throughout Renegade's event-driven online service layer.
 ** This is a no-op stub.
 */

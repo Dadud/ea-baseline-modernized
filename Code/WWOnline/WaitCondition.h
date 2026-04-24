@@ -320,7 +320,7 @@ template<typename Event> class EventValueWait :
 				{
 				if (event == mMatchValue)
 					{
-					EndWait(ConditionMet, L>");
+					EndWait(ConditionMet, L">");
 					}
 				else
 					{
