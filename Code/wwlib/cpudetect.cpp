@@ -23,6 +23,7 @@
 #include "mpu.h"
 #pragma warning (disable : 4201)	// Nonstandard extension - nameless struct
 #include <windows.h>
+#include <intrin.h>
 #include "systimer.h"
 
 struct OSInfoStruct {
