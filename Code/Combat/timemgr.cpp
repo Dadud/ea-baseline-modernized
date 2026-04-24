@@ -36,8 +36,10 @@
 
 #include "timemgr.h"
 #include "always.h"
-#include "ww3d.h"
 #include "debug.h"
+#ifdef _WIN32
+#include "ww3d.h"
+#endif
 #include "slist.h"
 #include "input.h"
 #include "combat.h"
@@ -69,6 +71,24 @@ float			TimeManager::RealFrameSeconds = 0.0f;
 #define		TIME_STABILIZING_TECHNOLOGY_ENABLED			0
 #define		TIME_DESTABILIZING_TECHNOLOGY_ENABLED		0
 #define		SLOWEST_FPS									      5
+
+static float TimeManager_Get_Movie_Capture_Frame_Rate()
+{
+#ifdef _WIN32
+	return WW3D::Get_Movie_Capture_Frame_Rate();
+#else
+	return 0.0f;
+#endif
+}
+
+static void TimeManager_Sync_Render_Time(int frame_ticks)
+{
+#ifdef _WIN32
+	WW3D::Sync(WW3D::Get_Sync_Time() + frame_ticks);
+#else
+	(void)frame_ticks;
+#endif
+}
 
 FrameTimeHistogramClass::FrameTimeHistogramClass(unsigned slot_count, float step)
 	:
@@ -175,8 +195,9 @@ void	TimeManager::Update_Frame_Time()
 
 	FrameTicks = MIN( FrameTicks, (TICKS_PER_SECOND / SLOWEST_FPS) );
 
-	if ( WW3D::Get_Movie_Capture_Frame_Rate() != 0.0f ) {
-		FrameTicks = TICKS_PER_SECOND / WW3D::Get_Movie_Capture_Frame_Rate();
+	float movie_capture_frame_rate = TimeManager_Get_Movie_Capture_Frame_Rate();
+	if ( movie_capture_frame_rate != 0.0f ) {
+		FrameTicks = TICKS_PER_SECOND / movie_capture_frame_rate;
 	}
 
 #if	TIME_STABILIZING_TECHNOLOGY_ENABLED
@@ -224,7 +245,7 @@ void	TimeManager::Update_Frame_Time()
 	FrameSeconds=(float)FrameTicks / TICKS_PER_SECOND;
 	RealFrameSeconds=(float)RealFrameTicks / TICKS_PER_SECOND;
 
-	WW3D::Sync( WW3D::Get_Sync_Time() + FrameTicks );
+	TimeManager_Sync_Render_Time(FrameTicks);
 
 /*
 #if 0

@@ -168,6 +168,40 @@ Current conclusion:
 - both are already excluded from the current UNIX `wwlib` build
 - any future work should begin with a real `platform CPU capabilities` boundary contract, not an ad hoc fallback
 
+### Batch 030 completed — first leakage-cut implementation slice
+
+Batch 030 turns the Batch 029 inventory into the first small implementation cuts.
+
+Changes landed:
+- reclassified obvious `wwphys` renderer-glue files (`phys.*`, `staticanimphys.*`) out of runtime-sim grouping and into scene/render-glue grouping in CMake
+- narrowed the non-Windows `Combat/timemgr.cpp` dependency on renderer timing hooks by gating the `ww3d.h` usage behind small local helpers
+
+Why this matters:
+- it improves the honesty of the current portable/runtime boundary without broad refactoring
+- it proves the pattern of inventory-first, then tiny bounded cuts
+- it avoids touching deeper product-shell coupling such as `datasafe`
+
+Primary output:
+- `docs/build/foundation-portability-batch-030.md`
+
+### Batch 029 completed — renderer/runtime leakage inventory
+
+Batch 029 is a documentation/inventory batch covering the most important current leakage points across:
+- `ww3d2`
+- `Combat`
+- `wwphys`
+
+Key findings:
+- `ww3d2` has a severe shared header-surface bleed through `mesh.h -> dx8polygonrenderer.h -> dx8wrapper.h -> d3d8.h`
+- some `wwphys` files currently classified near runtime simulation are better understood as renderer glue and should be reclassified before deeper portability claims
+- `Combat` contains both tiny cuttable renderer/timer leaks and a deeper `datasafe` product-shell coupling that should not be treated as an early cleanup target
+
+Primary output:
+- `docs/build/foundation-portability-batch-029.md`
+
+Recommended follow-on:
+- attack the `ww3d2` shared header-surface leak beginning with the `mesh.h` include chain
+
 ### Previous batch completed: Batch 026 — opt-in SDL3 version/file metadata seam for `wwlib`
 
 Batch 026 extends the first SDL3 platform replay into `Code/wwlib/verchk.h` and `Code/wwlib/verchk.cpp`. The seam is intentionally partial: when `RENEGADE_USE_SDL3=ON`, `verchk.cpp` now builds on non-Windows with portable PE image-header timestamp comparison and host-file `FILETIME` synthesis, while preserving the original Win32 path for real PE version-resource extraction.

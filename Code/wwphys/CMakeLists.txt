@@ -72,8 +72,6 @@ set(WWPHYS_RUNTIME_SIM_SOURCES
   ./movephys.cpp
   ./movephys.h
   ./phunits.h
-  ./phys.cpp
-  ./phys.h
   ./phys3.cpp
   ./phys3.h
   ./physcon.cpp
@@ -159,6 +157,8 @@ set(WWPHYS_SCENE_RENDER_GLUE_SOURCES
   ./materialeffect.cpp
   ./materialeffect.h
   ./materialeffectlist.h
+  ./phys.cpp
+  ./phys.h
   ./physaabtreecull.cpp
   ./physaabtreecull.h
   ./physcoltest.h
@@ -193,6 +193,8 @@ set(WWPHYS_SCENE_RENDER_GLUE_SOURCES
   ./renderobjphys.h
   ./staticaabtreecull.cpp
   ./staticaabtreecull.h
+  ./staticanimphys.cpp
+  ./staticanimphys.h
   ./stealtheffect.cpp
   ./stealtheffect.h
   ./transitioneffect.cpp
