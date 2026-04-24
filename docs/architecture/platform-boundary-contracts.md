@@ -75,9 +75,9 @@ public:
 };
 ```
 
-**Current implementation:** `Code/wwlib/thread.cpp` now has an opt-in SDL3-backed non-Windows thread path when `RENEGADE_USE_SDL3=ON`. On Windows, native thread APIs remain in place.
+**Current implementation:** `Code/wwlib/thread.cpp` now has an opt-in SDL3-backed non-Windows thread path when `RENEGADE_USE_SDL3=ON`. `Code/wwlib/mutex.cpp` now also has an opt-in SDL3-backed non-Windows synchronization path for `MutexClass` and `CriticalSectionClass`, while the Windows path still uses native Win32 primitives.
 
-**Deferred work:** Thread priority mapping on Linux is still approximate, event/mutex modernization is separate work, and broader platform synchronization cleanup still remains.
+**Deferred work:** Named/global inter-process mutex identity is still Windows-only, `FastCriticalSectionClass` still uses the historical inline atomic/spin path instead of a modern platform abstraction, and broader platform synchronization cleanup still remains.
 
 ---
 

@@ -329,12 +329,14 @@ if(UNIX)
 
   if(NOT RENEGADE_USE_SDL3)
     list(REMOVE_ITEM WWLIB_SOURCES
+      ./mutex.cpp
       ./rawfile.cpp
       ./rcfile.cpp
       ./verchk.cpp
       ./rawfile.cpp
       ./rcfile.cpp
       ./verchk.cpp
+      ./mutex.cpp
     )
   endif()
 endif()

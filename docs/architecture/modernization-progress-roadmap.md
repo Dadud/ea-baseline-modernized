@@ -124,7 +124,27 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 026 — opt-in SDL3 version/file metadata seam for `wwlib`
+### Latest batch completed: Batch 027 — opt-in SDL3 mutex/synchronization seam for `wwlib`
+
+Batch 027 extends the SDL3 platform replay into `Code/wwlib/mutex.cpp`, preserving the original Windows implementation while adding a real non-Windows path under `RENEGADE_USE_SDL3=ON`. On the SDL3 path, both `MutexClass` and `CriticalSectionClass` now use SDL recursive mutexes so the historical lock/unlock semantics continue to build without a broad header redesign.
+
+This batch intentionally does **not** modernize the entire synchronization header. `FastCriticalSectionClass` remains the older inline atomic/spin-style implementation, and named inter-process mutex identity is still a Windows-only behavior. The goal here is to land the real `mutex.cpp` seam, not to redesign all synchronization primitives at once.
+
+CMake now also re-enables `mutex.cpp` in the UNIX `wwlib` build only when `RENEGADE_USE_SDL3=ON`.
+
+Verified result:
+
+```bash
+cmake --build build/cmake-scaffold-sdl3 --target wwlib -j4
+```
+
+with final output including:
+
+```text
+[100%] Built target wwlib
+```
+
+### Previous batch completed: Batch 026 — opt-in SDL3 version/file metadata seam for `wwlib`
 
 Batch 026 extends the first SDL3 platform replay into `Code/wwlib/verchk.h` and `Code/wwlib/verchk.cpp`. The seam is intentionally partial: when `RENEGADE_USE_SDL3=ON`, `verchk.cpp` now builds on non-Windows with portable PE image-header timestamp comparison and host-file `FILETIME` synthesis, while preserving the original Win32 path for real PE version-resource extraction.
 

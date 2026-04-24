@@ -18,7 +18,12 @@
 
 #include "mutex.h"
 #include "wwdebug.h"
+#if defined(_WIN32)
 #include <windows.h>
+#elif defined(OPENW3D_SDL3)
+#include <SDL3/SDL_mutex.h>
+#include <SDL3/SDL_timer.h>
+#endif
 
 
 // ----------------------------------------------------------------------------
@@ -26,7 +31,13 @@
 MutexClass::MutexClass(const char* name) : handle(NULL), locked(false)
 {
 	#ifdef _UNIX
-		//assert(0);
+		#if defined(OPENW3D_SDL3)
+			(void)name;
+			handle = SDL_CreateMutex();
+			WWASSERT(handle);
+		#else
+			//assert(0);
+		#endif
 	#else
 		handle=CreateMutex(NULL,false,name);
 		WWASSERT(handle);
@@ -36,7 +47,15 @@ MutexClass::MutexClass(const char* name) : handle(NULL), locked(false)
 MutexClass::~MutexClass()
 {
 	#ifdef _UNIX
-		//assert(0);
+		#if defined(OPENW3D_SDL3)
+			WWASSERT(!locked);
+			if (handle) {
+				SDL_DestroyMutex(reinterpret_cast<SDL_Mutex*>(handle));
+				handle = NULL;
+			}
+		#else
+			//assert(0);
+		#endif
 	#else
 		WWASSERT(!locked); // Can't delete locked mutex!
 		CloseHandle(handle);
@@ -46,8 +65,36 @@ MutexClass::~MutexClass()
 bool MutexClass::Lock(int time)
 {
 	#ifdef _UNIX
-		//assert(0);
-		return true;
+		#if defined(OPENW3D_SDL3)
+			SDL_Mutex *mutex = reinterpret_cast<SDL_Mutex*>(handle);
+			if (mutex == NULL) {
+				return false;
+			}
+			if (time == WAIT_INFINITE) {
+				SDL_LockMutex(mutex);
+				locked++;
+				return true;
+			}
+			if (time <= 0) {
+				if (!SDL_TryLockMutex(mutex)) {
+					return false;
+				}
+				locked++;
+				return true;
+			}
+			Uint64 deadline = SDL_GetTicks() + static_cast<Uint64>(time);
+			do {
+				if (SDL_TryLockMutex(mutex)) {
+					locked++;
+					return true;
+				}
+				SDL_Delay(1);
+			} while (SDL_GetTicks() < deadline);
+			return false;
+		#else
+			//assert(0);
+			return true;
+		#endif
 	#else
 		int res = WaitForSingleObject(handle,time==WAIT_INFINITE ? INFINITE : time);
 		if (res!=WAIT_OBJECT_0) return false;
@@ -59,7 +106,13 @@ bool MutexClass::Lock(int time)
 void MutexClass::Unlock()
 {
 	#ifdef _UNIX
-		//assert(0);
+		#if defined(OPENW3D_SDL3)
+			WWASSERT(locked);
+			locked--;
+			SDL_UnlockMutex(reinterpret_cast<SDL_Mutex*>(handle));
+		#else
+			//assert(0);
+		#endif
 	#else
 		WWASSERT(locked);
 		locked--;
@@ -91,7 +144,12 @@ MutexClass::LockClass::~LockClass()
 CriticalSectionClass::CriticalSectionClass() : handle(NULL), locked(false)
 {
 	#ifdef _UNIX
-		//assert(0);
+		#if defined(OPENW3D_SDL3)
+			handle = SDL_CreateMutex();
+			WWASSERT(handle);
+		#else
+			//assert(0);
+		#endif
 	#else
 		handle=new char[sizeof(CRITICAL_SECTION)];
 		InitializeCriticalSection((CRITICAL_SECTION*)handle);
@@ -101,7 +159,15 @@ CriticalSectionClass::CriticalSectionClass() : handle(NULL), locked(false)
 CriticalSectionClass::~CriticalSectionClass()
 {
 	#ifdef _UNIX
-		//assert(0);
+		#if defined(OPENW3D_SDL3)
+			WWASSERT(!locked); // Can't delete locked mutex!
+			if (handle) {
+				SDL_DestroyMutex(reinterpret_cast<SDL_Mutex*>(handle));
+				handle = NULL;
+			}
+		#else
+			//assert(0);
+		#endif
 	#else
 		WWASSERT(!locked); // Can't delete locked mutex!
 		DeleteCriticalSection((CRITICAL_SECTION*)handle);
@@ -112,7 +178,12 @@ CriticalSectionClass::~CriticalSectionClass()
 void CriticalSectionClass::Lock()
 {
 	#ifdef _UNIX
-		//assert(0);
+		#if defined(OPENW3D_SDL3)
+			SDL_LockMutex(reinterpret_cast<SDL_Mutex*>(handle));
+			locked++;
+		#else
+			//assert(0);
+		#endif
 	#else
 		EnterCriticalSection((CRITICAL_SECTION*)handle);
 		locked++;
@@ -122,7 +193,13 @@ void CriticalSectionClass::Lock()
 void CriticalSectionClass::Unlock()
 {
 	#ifdef _UNIX
-		//assert(0);
+		#if defined(OPENW3D_SDL3)
+			WWASSERT(locked);
+			locked--;
+			SDL_UnlockMutex(reinterpret_cast<SDL_Mutex*>(handle));
+		#else
+			//assert(0);
+		#endif
 	#else
 		WWASSERT(locked);
 		locked--;
