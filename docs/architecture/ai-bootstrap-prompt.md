@@ -5,11 +5,19 @@ Use this when starting a fresh AI session on this repo.
 ```text
 You are continuing the EA-baseline-first modernization of Renegade/OpenW3D.
 
-Primary repo (truth): /tmp/openw3d-ea-baseline
-Donor/reference repo: /tmp/openw3d
+Primary repo (truth): <EA_BASELINE_REPO_ROOT>
+Donor/reference repo: <DONOR_OPENW3D_REPO_ROOT>
 Active branch: main
-Latest known handoff commit: d48074d docs: add AI handoff guide for baseline modernization
-Latest implementation seam commit before that: 75bf5df build: add opt-in SDL3 mutex seam for wwlib
+Latest known documentation handoff commit: 3e60dbb docs: add compact AI bootstrap prompt
+Latest known implementation seam commit: 75bf5df build: add opt-in SDL3 mutex seam for wwlib
+
+Path discovery rules:
+- Do not assume `/tmp` or any fixed directory layout.
+- If you are already somewhere inside the EA baseline checkout, identify the repo root with: git rev-parse --show-toplevel
+- Treat that result as <EA_BASELINE_REPO_ROOT>
+- If you are not inside a checkout yet, find or clone the EA baseline repo first, then cd into it before running project commands
+- If the donor repo path is unknown, ask the operator or locate/clone it and treat its root as <DONOR_OPENW3D_REPO_ROOT>
+- Build directories are local choices; `build/cmake-scaffold` and `build/cmake-scaffold-sdl3` are conventions, not mandatory absolute paths
 
 Primary strategy:
 - Modernize the original EA Renegade baseline first.
@@ -19,7 +27,7 @@ Primary strategy:
 - Continue in bounded, reviewable batches.
 
 First commands to run:
-1. cd /tmp/openw3d-ea-baseline
+1. git rev-parse --show-toplevel
 2. git status --short --branch
 3. python3 scripts/architecture/check_doc_sync.py
 4. cmake --build build/cmake-scaffold -j4

@@ -33,17 +33,34 @@ Do **not** revert to patching the OpenW3D fork first.
 ## 2. Repository and branch state
 
 ### Active implementation repo
-- Path: `/tmp/openw3d-ea-baseline`
-- Branch: `main`
-- Remote: `origin`
-- Latest known commit at handoff:
+- Canonical role: **EA baseline modernization truth**
+- Recommended symbolic name in this guide: `<EA_BASELINE_REPO_ROOT>`
+- Expected branch: `main`
+- Expected remote: `origin`
+- Latest known documentation handoff commit:
+  - `3e60dbb docs: add compact AI bootstrap prompt`
+- Latest known implementation seam commit:
   - `75bf5df build: add opt-in SDL3 mutex seam for wwlib`
 
 ### Donor/reference repo
-- Path: `/tmp/openw3d`
+- Canonical role: **OpenW3D donor/reference tree**
+- Recommended symbolic name in this guide: `<DONOR_OPENW3D_REPO_ROOT>`
 
-Use `/tmp/openw3d` only as a donor/reference tree.
-Use `/tmp/openw3d-ea-baseline` as the modernization truth.
+Use `<DONOR_OPENW3D_REPO_ROOT>` only as a donor/reference tree.
+Use `<EA_BASELINE_REPO_ROOT>` as the modernization truth.
+
+### Path discovery on a new machine
+Do **not** assume the repos live under `/tmp` or any fixed directory.
+
+Preferred discovery rules:
+1. Start from the current git checkout and use:
+   ```bash
+   git rev-parse --show-toplevel
+   ```
+   to identify `<EA_BASELINE_REPO_ROOT>`.
+2. If the donor repo is not adjacent or obvious, ask the operator for the OpenW3D donor checkout path or locate it from their workspace layout.
+3. If no donor checkout exists yet, clone one where appropriate for that machine and treat its root as `<DONOR_OPENW3D_REPO_ROOT>`.
+4. Build directories are also machine-local choices. `build/cmake-scaffold` and `build/cmake-scaffold-sdl3` are conventions, not hard requirements.
 
 ---
 
@@ -79,8 +96,8 @@ These are real seam implementations, but they do **not** imply full parity.
 ## 4. Current verified build commands
 
 ### Default scaffold
+Run from `<EA_BASELINE_REPO_ROOT>`:
 ```bash
-cd /tmp/openw3d-ea-baseline
 cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
 cmake --build build/cmake-scaffold -j4
 ```
@@ -91,8 +108,8 @@ Expected successful end-state currently includes:
 ```
 
 ### SDL3-enabled `wwlib` seam verification
+Run from `<EA_BASELINE_REPO_ROOT>`:
 ```bash
-cd /tmp/openw3d-ea-baseline
 cmake -S . -B build/cmake-scaffold-sdl3 \
   -DRENEGADE_USE_SDL3=ON \
   -DRENEGADE_BUILD_FOUNDATION_LIBS=ON \
@@ -106,8 +123,8 @@ Expected successful end-state currently includes:
 ```
 
 ### Doc consistency check
+Run from `<EA_BASELINE_REPO_ROOT>`:
 ```bash
-cd /tmp/openw3d-ea-baseline
 python3 scripts/architecture/check_doc_sync.py
 ```
 
@@ -310,8 +327,8 @@ This is a better next step than jumping sideways into random product glue.
 If you continue from here, do this:
 
 ### Step 1: verify the repo is healthy
+Run from `<EA_BASELINE_REPO_ROOT>`:
 ```bash
-cd /tmp/openw3d-ea-baseline
 git status --short --branch
 python3 scripts/architecture/check_doc_sync.py
 cmake --build build/cmake-scaffold -j4
@@ -325,7 +342,7 @@ Search `docs/architecture/deferred-source-ledger.md` for:
 - any adjacent `wwlib` platform items you may touch
 
 ### Step 3: inspect donor/reference state
-Check whether `/tmp/openw3d` or donor PR refs contain useful, bounded prior work.
+Check whether `<DONOR_OPENW3D_REPO_ROOT>` or donor PR refs contain useful, bounded prior work.
 Do not assume direct replay is appropriate.
 
 ### Step 4: define the smallest honest batch
@@ -379,10 +396,10 @@ Example of correct reporting:
 
 If you are a fresh AI and only read one minute of context, retain this:
 
-- Work in `/tmp/openw3d-ea-baseline`
+- Work in `<EA_BASELINE_REPO_ROOT>`
 - `main` is the active branch
 - latest handoff commit is `75bf5df`
-- EA baseline is truth; `/tmp/openw3d` is donor/reference only
+- EA baseline is truth; `<DONOR_OPENW3D_REPO_ROOT>` is donor/reference only
 - default scaffold is green
 - SDL3 `wwlib` seams now include thread/rawfile/rcfile/verchk(partial)/mutex
 - do not overclaim parity
