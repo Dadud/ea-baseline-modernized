@@ -64,6 +64,7 @@
 #include	<conio.h>
 #include	<imagehlp.h>
 #include <crtdbg.h>
+#include <intrin.h>
 #include	<stdio.h>
 
 #ifdef WWDEBUG
@@ -123,9 +124,15 @@ typedef BOOL  (WINAPI *SymInitializeType) (HANDLE hProcess, LPSTR UserSearchPath
 typedef BOOL  (WINAPI *SymLoadModuleType) (HANDLE hProcess, HANDLE hFile, LPSTR ImageName, LPSTR ModuleName, DWORD BaseOfDll, DWORD SizeOfDll);
 typedef DWORD (WINAPI *SymSetOptionsType) (DWORD SymOptions);
 typedef BOOL  (WINAPI *SymUnloadModuleType) (HANDLE hProcess, DWORD BaseOfDll);
+#if defined(_MSC_VER) && defined(_M_X64)
+typedef BOOL  (WINAPI *StackWalk64Type) (DWORD MachineType, HANDLE hProcess, HANDLE hThread, LPSTACKFRAME64 StackFrame, PVOID ContextRecord, PREAD_PROCESS_MEMORY_ROUTINE64 ReadMemoryRoutine, PFUNCTION_TABLE_ACCESS_ROUTINE64 FunctionTableAccessRoutine, PGET_MODULE_BASE_ROUTINE64 GetModuleBaseRoutine, PTRANSLATE_ADDRESS_ROUTINE64 TranslateAddress);
+typedef LPVOID (WINAPI *SymFunctionTableAccess64Type) (HANDLE hProcess, DWORD64 AddrBase);
+typedef DWORD64 (WINAPI *SymGetModuleBase64Type) (HANDLE hProcess, DWORD64 dwAddr);
+#else
 typedef BOOL  (WINAPI *StackWalkType) (DWORD MachineType, HANDLE hProcess, HANDLE hThread, LPSTACKFRAME StackFrame, LPVOID ContextRecord, PREAD_PROCESS_MEMORY_ROUTINE ReadMemoryRoutine, PFUNCTION_TABLE_ACCESS_ROUTINE FunctionTableAccessRoutine, PGET_MODULE_BASE_ROUTINE GetModuleBaseRoutine, PTRANSLATE_ADDRESS_ROUTINE TranslateAddress);
 typedef LPVOID (WINAPI *SymFunctionTableAccessType) (HANDLE hProcess, DWORD AddrBase);
 typedef DWORD (WINAPI *SymGetModuleBaseType) (HANDLE hProcess, DWORD dwAddr);
+#endif
 
 
 static SymCleanupType							_SymCleanup = NULL;
@@ -134,9 +141,15 @@ static SymInitializeType						_SymInitialize = NULL;
 static SymLoadModuleType						_SymLoadModule = NULL;
 static SymSetOptionsType						_SymSetOptions = NULL;
 static SymUnloadModuleType					_SymUnloadModule = NULL;
+#if defined(_MSC_VER) && defined(_M_X64)
+static StackWalk64Type								_StackWalk = NULL;
+static SymFunctionTableAccess64Type	_SymFunctionTableAccess = NULL;
+static SymGetModuleBase64Type				_SymGetModuleBase = NULL;
+#else
 static StackWalkType								_StackWalk = NULL;
 static SymFunctionTableAccessType	_SymFunctionTableAccess = NULL;
 static SymGetModuleBaseType				_SymGetModuleBase = NULL;
+#endif
 
 static char const *ImagehelpFunctionNames[] =
 {
@@ -146,9 +159,15 @@ static char const *ImagehelpFunctionNames[] =
 	"SymLoadModule",
 	"SymSetOptions",
 	"SymUnloadModule",
+#if defined(_MSC_VER) && defined(_M_X64)
+	"StackWalk64",
+	"SymFunctionTableAccess64",
+	"SymGetModuleBase64",
+#else
 	"StackWalk",
 	"SymFunctionTableAccess",
 	"SymGetModuleBaseType",
+#endif
 	NULL
 };
 
@@ -1261,7 +1280,11 @@ int Stack_Walk(unsigned long *return_addresses, int num_addresses, CONTEXT *cont
 	/*
 	** Set up the stack frame structure for the start point of the stack walk (i.e. here).
 	*/
+#if defined(_MSC_VER) && defined(_M_X64)
+	STACKFRAME64 stack_frame;
+#else
 	STACKFRAME stack_frame;
+#endif
 	memset(&stack_frame, 0, sizeof(stack_frame));
 
 #if defined(_MSC_VER) && defined(_M_X64)
@@ -1312,7 +1335,11 @@ here:
 	** Walk the stack by the requested number of return address iterations.
 	*/
 	for (int i = 0; i < num_addresses + 1; i++) {
+#if defined(_MSC_VER) && defined(_M_X64)
+		if (_StackWalk(IMAGE_FILE_MACHINE_AMD64, GetCurrentProcess(), GetCurrentThread(), &stack_frame, NULL, NULL, _SymFunctionTableAccess, _SymGetModuleBase, NULL)) {
+#else
 		if (_StackWalk(IMAGE_FILE_MACHINE_I386, GetCurrentProcess(), GetCurrentThread(), &stack_frame, NULL, NULL, _SymFunctionTableAccess, _SymGetModuleBase, NULL)) {
+#endif
 
 			/*
 			** First result will always be the return address we were called from.
