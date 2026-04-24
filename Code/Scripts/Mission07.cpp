@@ -2983,7 +2983,7 @@ DECLARE_SCRIPT(M07_Player_Vehicle, "")
 		health = Commands->Get_Max_Health(obj);
 		int vehicle_id = Commands->Get_ID(obj);
 		// Let enemy tank drop controller know player vehicle id
-		Commands->Send_Custom_Event(obj, Commands->Find_Object(101131), M07_PLAYER_VEHICLE_ID, vehicle_id);
+		Commands->Send_Custom_Event(obj, Commands->Find_Object(101131), M07_PLAYER_VEHICLE_ID, vehicle_id, 0);
 	}
 
 	void Damaged(GameObject * obj, GameObject * damager, float amount)
@@ -3000,7 +3000,7 @@ DECLARE_SCRIPT(M07_Player_Vehicle, "")
 
 	void Killed(GameObject * obj, GameObject * killer)
 	{
-		Commands->Send_Custom_Event(obj, Commands->Find_Object(100757), M07_PLAYER_VEHICLE_KILLED, 1);
+		Commands->Send_Custom_Event(obj, Commands->Find_Object(100757), M07_PLAYER_VEHICLE_KILLED, 1, 0);
 	}
 	
 };
@@ -3148,7 +3148,7 @@ DECLARE_SCRIPT(M07_Vehicle_Drop_Zone, "Zone_ID=0:int")
 				already_entered = true;
 			}
 
-			Commands->Send_Custom_Event(obj, Commands->Find_Object(100757), M07_VEHICLE_DROP_ZONE, zone_id);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object(100757), M07_VEHICLE_DROP_ZONE, zone_id, 0);
 		}
 
 	}
@@ -3175,7 +3175,7 @@ DECLARE_SCRIPT(M07_Biohazard_Barrel, "")
 	{
 		Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(obj));
 		
-		Commands->Send_Custom_Event(obj, Commands->Find_Object(100781), M07_EXPLODE_BARRELS, 1);
+		Commands->Send_Custom_Event(obj, Commands->Find_Object(100781), M07_EXPLODE_BARRELS, 1, 0);
 
 	}
 	
@@ -3401,7 +3401,7 @@ DECLARE_SCRIPT(M07_Park_SSM, "")
 
 	void Killed(GameObject * obj, GameObject * killer)
 	{
-		Commands->Send_Custom_Event(obj, Commands->Find_Object(100799), M07_ARTILLERY_KILLED, 1);
+		Commands->Send_Custom_Event(obj, Commands->Find_Object(100799), M07_ARTILLERY_KILLED, 1, 0);
 	}
 };
 
@@ -3521,7 +3521,7 @@ DECLARE_SCRIPT(M07_Park_Zone, "Zone=0:int")
 		{
 						
 			int activate_zone = Get_Int_Parameter("Zone");
-			Commands->Send_Custom_Event(obj, Commands->Find_Object(100801), M07_MOVE_STEALTH_TANK, activate_zone);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object(100801), M07_MOVE_STEALTH_TANK, activate_zone, 0);
 
 		}
 	}
@@ -3656,7 +3656,7 @@ DECLARE_SCRIPT(M07_Deactivate_Encounter, "Activate_Zone=0:int")
 			already_entered = true;
 			
 			int activate_zone = Get_Int_Parameter("Activate_Zone");
-			Commands->Send_Custom_Event(obj, Commands->Find_Object(activate_zone), M07_DEACTIVATE_ENCOUNTER, 1);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object(activate_zone), M07_DEACTIVATE_ENCOUNTER, 1, 0);
 
 		}
 	}
@@ -3893,7 +3893,7 @@ DECLARE_SCRIPT(M07_Activate_V05, "")
 			if(Commands->Is_A_Star(enterer) && !already_entered)
 			{
 				already_entered = true;
-				Commands->Send_Custom_Event(obj, Commands->Find_Object(100899), M07_ACTIVATE_ENCOUNTER, 1);				
+				Commands->Send_Custom_Event(obj, Commands->Find_Object(100899), M07_ACTIVATE_ENCOUNTER, 1, 0);				
 			}
 
 		}
@@ -4928,7 +4928,7 @@ DECLARE_SCRIPT(M07_Fuel_Barrel, "")
 	{
 		Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(obj));
 		
-		Commands->Send_Custom_Event(obj, Commands->Find_Object(101059), M07_EXPLODE_BARRELS, 1);
+		Commands->Send_Custom_Event(obj, Commands->Find_Object(101059), M07_EXPLODE_BARRELS, 1, 0);
 
 	}
 	
@@ -5296,7 +5296,7 @@ DECLARE_SCRIPT(M07_Activate_E10_Tank_Drop, "")
 		}
 		if ( type == M07_E10_TANK_CREATED ) 
 		{
-			Commands->Send_Custom_Event(obj, sender, M07_PLAYER_VEHICLE_ID, Commands->Get_ID(sender));
+			Commands->Send_Custom_Event(obj, sender, M07_PLAYER_VEHICLE_ID, Commands->Get_ID(sender), 0);
 		}
 	}
 
@@ -5333,7 +5333,7 @@ DECLARE_SCRIPT(M07_E10_Tank, "")
 	{
 		Commands->Enable_Enemy_Seen(obj, true);
 		m07_player_vehicle_id = 0;
-		Commands->Send_Custom_Event(obj, Commands->Find_Object(101131), M07_E10_TANK_CREATED, 1);
+		Commands->Send_Custom_Event(obj, Commands->Find_Object(101131), M07_E10_TANK_CREATED, 1, 0);
 	}
 
 	void Custom( GameObject * obj, int type, int param, GameObject * sender ) 
@@ -5533,7 +5533,7 @@ DECLARE_SCRIPT(M07_Para_Drop_Zone, "Zone_ID=0:int")
 
 		if(Commands->Is_A_Star(enterer))
 		{
-			Commands->Send_Custom_Event(obj, Commands->Find_Object(101133), M07_VEHICLE_DROP_ZONE, zone_id);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object(101133), M07_VEHICLE_DROP_ZONE, zone_id, 0);
 		}
 
 	}
@@ -5579,7 +5579,7 @@ DECLARE_SCRIPT(M07_Para_Drop_Unit, "Unit_ID=0:int")
 	void Killed(GameObject * obj, GameObject * killer)
 	{
 		int unit_id = Get_Int_Parameter("Unit_ID");
-		Commands->Send_Custom_Event(obj, Commands->Find_Object(101133), M07_PARADROP_UNIT_KILLED, unit_id);
+		Commands->Send_Custom_Event(obj, Commands->Find_Object(101133), M07_PARADROP_UNIT_KILLED, unit_id, 0);
 	}
 	
 };
@@ -5655,7 +5655,7 @@ DECLARE_SCRIPT(M07_Deactivate_Para_Drop, "")
 		{
 			already_entered = true;
 
-			Commands->Send_Custom_Event(obj, Commands->Find_Object(101133), M07_DEACTIVATE_PARADROP, 1);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object(101133), M07_DEACTIVATE_PARADROP, 1, 0);
 
 		}
 

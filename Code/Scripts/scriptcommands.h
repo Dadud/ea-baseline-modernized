@@ -37,19 +37,6 @@
 #ifndef	SCRIPTCOMMANDS_H
 #define	SCRIPTCOMMANDS_H
 
-// Default argument macro: provides default values for function pointer args on MSVC x64.
-// MSVC x64 does not allow default arguments in function pointer declarations.
-// Non-MSVC platforms see no defaults; MSVC x64 sees = 0 / = NULL / = 0.0f.
-#if _WIN64
-#define	DEF_ARG_DEFAULT	= 0
-#define	DEF_ARG_NULL	= NULL
-#define	DEF_ARG_FLOAT0	= 0.0f
-#else
-#define	DEF_ARG_DEFAULT
-#define	DEF_ARG_NULL
-#define	DEF_ARG_FLOAT0
-#endif
-
 #ifndef	VECTOR3_H
 	#include "vector3.h"
 #endif
@@ -156,7 +143,7 @@ typedef struct {
 	void ( * Action_Dock )( GameObject * obj, const ActionParamsStruct & params );
 	void ( * Action_Follow_Input )( GameObject * obj, const ActionParamsStruct & params );
 
-	void ( * Modify_Action )( GameObject * obj, int action_id, const ActionParamsStruct & params, bool modify_move DEF_ARG_DEFAULT, bool modify_attack DEF_ARG_DEFAULT );
+	void ( * Modify_Action )( GameObject * obj, int action_id, const ActionParamsStruct & params, bool modify_move, bool modify_attack );
 
 	// Action information queries
 	int	( * Get_Action_ID )( GameObject * obj );
@@ -190,11 +177,11 @@ typedef struct {
 	void	( * Start_Timer )( GameObject * obj, ScriptClass * script, float duration, int timer_id );
 
 	// Weapons
-	void	( * Trigger_Weapon )( GameObject * obj, bool trigger, const Vector3 & target, bool primary DEF_ARG_DEFAULT );
+	void	( * Trigger_Weapon )( GameObject * obj, bool trigger, const Vector3 & target, bool primary );
 	void	( * Select_Weapon )( GameObject * obj, const char * weapon_name );
 
 	// Custom Script
-	void	( * Send_Custom_Event )( GameObject * from, GameObject * to, int type DEF_ARG_DEFAULT, int param DEF_ARG_DEFAULT, float delay DEF_ARG_FLOAT0 );
+	void	( * Send_Custom_Event )( GameObject * from, GameObject * to, int type, int param, float delay );
 	void	( * Send_Damaged_Event )( GameObject * object, GameObject * damager );
 
 	// Random Numbers
@@ -206,19 +193,19 @@ typedef struct {
 
 	// Object Display
 	void	( * Set_Model )( GameObject * obj, const char * model_name );
-	void	( * Set_Animation )( GameObject * obj, const char * anim_name, bool looping, const char * sub_obj_name DEF_ARG_NULL, float start_frame DEF_ARG_FLOAT0, float end_frame DEF_ARG_FLOAT0, bool is_blended DEF_ARG_DEFAULT );
+	void	( * Set_Animation )( GameObject * obj, const char * anim_name, bool looping, const char * sub_obj_name, float start_frame, float end_frame, bool is_blended );
 	void	( * Set_Animation_Frame )( GameObject * obj, const char * anim_name, int frame );
 
 	// Sounds
 	// Note: Each sound creation function returns the ID of the new sound (0 on error)
-	int	( * Create_Sound )( const char * sound_preset_name, const Vector3 & position, GameObject * creator DEF_ARG_NULL );
+	int	( * Create_Sound )( const char * sound_preset_name, const Vector3 & position, GameObject * creator );
 	int	( * Create_2D_Sound )( const char * sound_preset_name );
 	int	( * Create_2D_WAV_Sound )( const char * wav_filename );
 	int	( * Create_3D_WAV_Sound_At_Bone )( const char * wav_filename, GameObject * obj, const char * bone_name );
 	int	( * Create_3D_Sound_At_Bone )( const char * sound_preset_name, GameObject * obj, const char * bone_name );
 	int	( * Create_Logical_Sound )( GameObject * creator, int type, const Vector3 & position, float radius );	
 	void	( * Start_Sound )( int sound_id );
-	void	( * Stop_Sound )( int sound_id, bool destroy_sound DEF_ARG_DEFAULT );
+	void	( * Stop_Sound )( int sound_id, bool destroy_sound );
 	void	( * Monitor_Sound )( GameObject * game_obj, int sound_id );
 	void	( * Set_Background_Music )( const char * wav_filename );
 	void	( * Fade_Background_Music )( const char * wav_filename, int fade_out_time, int fade_in_time );
@@ -245,11 +232,11 @@ typedef struct {
 	// Get the Star
 	GameObject * ( * Get_The_Star )( void );
 	GameObject * ( * Get_A_Star )( const Vector3 & pos );
-	GameObject * ( * Find_Closest_Soldier )( const Vector3 & pos, float min_dist, float max_dist, bool only_human DEF_ARG_DEFAULT );
+	GameObject * ( * Find_Closest_Soldier )( const Vector3 & pos, float min_dist, float max_dist, bool only_human );
 	bool		    ( * Is_A_Star )( GameObject * obj );
 
 	// Object Control
-	void	( * Control_Enable )( GameObject * obj, bool enable DEF_ARG_DEFAULT );
+	void	( * Control_Enable )( GameObject * obj, bool enable );
 
 	// Hack
 	const char * ( * Get_Damage_Bone_Name )( void );
@@ -257,13 +244,13 @@ typedef struct {
 
 	// Visibility
 	bool	( * Is_Object_Visible)( GameObject * looker, GameObject * obj );
-	void	( * Enable_Enemy_Seen)( GameObject * obj, bool enable DEF_ARG_DEFAULT );
+	void	( * Enable_Enemy_Seen)( GameObject * obj, bool enable );
 
 	// Display Text
-	void	(*	Set_Display_Color )( unsigned char red DEF_ARG_DEFAULT, unsigned char green DEF_ARG_DEFAULT, unsigned char blue DEF_ARG_DEFAULT );
+	void	(*	Set_Display_Color )( unsigned char red, unsigned char green, unsigned char blue );
 	void	(*	Display_Text )( int string_id );
-	void	(*	Display_Float )( float value, const char * format DEF_ARG_NULL );
-	void	(*	Display_Int )( int value, const char * format DEF_ARG_NULL );
+	void	(*	Display_Float )( float value, const char * format );
+	void	(*	Display_Int )( int value, const char * format );
 
 	// SaveLoad
 	void	(*	Save_Data )( ScriptSaver & saver, int id, int size, void * data );
@@ -303,8 +290,8 @@ typedef struct {
 	float	(* Get_Safe_Flight_Height )( float x_pos, float y_pos );
 
 	// Explosions
-	void	(* Create_Explosion )( const char * explosion_def_name, const Vector3 & pos, GameObject * creator DEF_ARG_NULL );
-	void	(* Create_Explosion_At_Bone )( const char * explosion_def_name, GameObject * object, const char * bone_name, GameObject * creator DEF_ARG_NULL );
+	void	(* Create_Explosion )( const char * explosion_def_name, const Vector3 & pos, GameObject * creator );
+	void	(* Create_Explosion_At_Bone )( const char * explosion_def_name, GameObject * object, const char * bone_name, GameObject * creator );
 
 	// HUD
 	void	(* Enable_HUD )( bool enable );
@@ -322,7 +309,7 @@ typedef struct {
 	bool	(* Innate_Soldier_Enable_Footsteps_Heard )( GameObject * obj, bool state );
 	bool	(* Innate_Soldier_Enable_Bullet_Heard )( GameObject * obj, bool state );
 	bool	(* Innate_Soldier_Enable_Actions )( GameObject * obj, bool state );
-	void	(* Set_Innate_Soldier_Home_Location )( GameObject * obj, const Vector3& home_pos, float home_radius DEF_ARG_FLOAT0 );
+	void	(* Set_Innate_Soldier_Home_Location )( GameObject * obj, const Vector3& home_pos, float home_radius );
 	void	(* Set_Innate_Aggressiveness )( GameObject * obj, float aggressiveness );
 	void	(* Set_Innate_Take_Cover_Probability )( GameObject * obj, float probability );
 	void	(* Set_Innate_Is_Stationary )( GameObject * obj, bool stationary );
@@ -350,7 +337,7 @@ typedef struct {
 	void	(* Set_Objective_HUD_Info_Position)( int id, float priority, const char * texture_name, int message_id, const Vector3 & position );
 
 	// Camaera Shakes
-	void	(* Shake_Camera)( const Vector3 & pos, float radius DEF_ARG_DEFAULT, float intensity DEF_ARG_FLOAT0, float duration DEF_ARG_FLOAT0 );
+	void	(* Shake_Camera)( const Vector3 & pos, float radius, float intensity, float duration );
 
 	// Spawners
 	void	(* Enable_Spawner)( int id, bool enable );
@@ -372,10 +359,10 @@ typedef struct {
 	void	(* Attach_To_Object_Bone)( GameObject * object, GameObject * host_object, const char * bone_name );
 
 	// Conversation
-	int	(* Create_Conversation)( const char *conversation_name, int priority DEF_ARG_DEFAULT, float max_dist DEF_ARG_FLOAT0, bool is_interruptable DEF_ARG_DEFAULT );
-	void	(* Join_Conversation)( GameObject * object, int active_conversation_id, bool allow_move DEF_ARG_DEFAULT, bool allow_head_turn DEF_ARG_DEFAULT, bool allow_face DEF_ARG_DEFAULT );
+	int	(* Create_Conversation)( const char *conversation_name, int priority, float max_dist, bool is_interruptable );
+	void	(* Join_Conversation)( GameObject * object, int active_conversation_id, bool allow_move, bool allow_head_turn, bool allow_face );
 	void	(* Join_Conversation_Facing)( GameObject * object, int active_conversation_id, int obj_id_to_face );
-	void	(* Start_Conversation)( int active_conversation_id, int action_id DEF_ARG_DEFAULT );
+	void	(* Start_Conversation)( int active_conversation_id, int action_id );
 	void	(* Monitor_Conversation)( GameObject * object, int active_conversation_id );
 	void	(* Start_Random_Conversation)( GameObject * object );
 	void	(* Stop_Conversation)( int active_conversation_id );
@@ -386,7 +373,7 @@ typedef struct {
 	void	(* Unlock_Soldier_Facing)( GameObject * object );
 
 	// Apply Damage
-	void	(* Apply_Damage)( GameObject * object, float amount, const char * warhead_name, GameObject * damager DEF_ARG_NULL );
+	void	(* Apply_Damage)( GameObject * object, float amount, const char * warhead_name, GameObject * damager );
 
 	// Soldier
 	void	(* Set_Loiters_Allowed)( GameObject * object, bool allowed );

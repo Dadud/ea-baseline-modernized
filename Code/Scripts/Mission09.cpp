@@ -1191,13 +1191,13 @@ DECLARE_SCRIPT (M09_Mobius_Follow, "")  //Mobius (Pre-Suit): 2000010
 		if (action_id == ELEV_WAYPOINT && reason == ACTION_COMPLETE_NORMAL)
 		{
 			Commands->Set_Innate_Is_Stationary ( obj, true );
-			Commands->Send_Custom_Event( obj, Commands->Find_Object (elev_num), SET_MOBIUS, 0);
+			Commands->Send_Custom_Event( obj, Commands->Find_Object (elev_num), SET_MOBIUS, 0, 0);
 		}
 
 		if (action_id == ELEV_WAYPOINT2 && reason == ACTION_COMPLETE_NORMAL)
 		{
 			Commands->Set_Innate_Is_Stationary ( obj, true );
-			Commands->Send_Custom_Event( obj, Commands->Find_Object (elev_num), SET_MOBIUS, 0);
+			Commands->Send_Custom_Event( obj, Commands->Find_Object (elev_num), SET_MOBIUS, 0, 0);
 		}		
 	}
 	
@@ -3310,7 +3310,7 @@ DECLARE_SCRIPT (M09_Elevator_All_Zone, "Controller_num:int")
 		if (enterer == STAR)
 		{
 			star_in_zone = true;
-			Commands->Send_Custom_Event(obj, Commands->Find_Object(Get_Int_Parameter("Controller_num")), SET_STAR, ENTER);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object(Get_Int_Parameter("Controller_num")), SET_STAR, ENTER, 0);
 		}		
 	}
 
@@ -3319,7 +3319,7 @@ DECLARE_SCRIPT (M09_Elevator_All_Zone, "Controller_num:int")
 		if (exiter == STAR)
 		{
 			star_in_zone = false;
-			Commands->Send_Custom_Event(obj, Commands->Find_Object(Get_Int_Parameter("Controller_num")), SET_STAR, EXIT);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object(Get_Int_Parameter("Controller_num")), SET_STAR, EXIT, 0);
 		}		
 	}
 };
@@ -3400,12 +3400,12 @@ DECLARE_SCRIPT (M09_Elevator_All_Controller, "Waypoint_num:int, Elev_obj_num:int
 
 		if (type == CHECK_STAR)
 		{
-			Commands->Send_Custom_Event(obj, sender, STAR_STATUS, star_in_zone);
+			Commands->Send_Custom_Event(obj, sender, STAR_STATUS, star_in_zone, 0);
 		}
 
 		if (type == CHECK_MOBIUS)
 		{
-			Commands->Send_Custom_Event(obj, sender, CHECK_MOBIUS, mobius_in_zone);
+			Commands->Send_Custom_Event(obj, sender, CHECK_MOBIUS, mobius_in_zone, 0);
 		}
 
 		if (type == STAR_STATUS)
@@ -3414,12 +3414,12 @@ DECLARE_SCRIPT (M09_Elevator_All_Controller, "Waypoint_num:int, Elev_obj_num:int
 			{
 				if (Get_Int_Parameter("Direction") == 0)
 				{
-					Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), ELEVATOR, (Get_Int_Parameter("Waypoint_num")));
+					Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), ELEVATOR, (Get_Int_Parameter("Waypoint_num")), 0);
 				}
 
 				if (Get_Int_Parameter("Direction") == 1)
 				{
-					Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), ELEVATOR_DOWN, (Get_Int_Parameter("Waypoint_num")));
+					Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), ELEVATOR_DOWN, (Get_Int_Parameter("Waypoint_num")), 0);
 				}
 			}
 		}
@@ -3433,12 +3433,12 @@ DECLARE_SCRIPT (M09_Elevator_All_Controller, "Waypoint_num:int, Elev_obj_num:int
 
 				if (Get_Int_Parameter("Direction") == 0)
 				{
-					Commands->Send_Custom_Event( obj, obj, ACTIVATE, 0);
+					Commands->Send_Custom_Event( obj, obj, ACTIVATE, 0, 0);
 				}
 
 				if (Get_Int_Parameter("Direction") == 1)
 				{
-					Commands->Send_Custom_Event( obj, obj, ACTIVATEDOWN, 0);
+					Commands->Send_Custom_Event( obj, obj, ACTIVATEDOWN, 0, 0);
 				}
 			}			
 		}
@@ -3453,23 +3453,23 @@ DECLARE_SCRIPT (M09_Elevator_All_Controller, "Waypoint_num:int, Elev_obj_num:int
 				{
 					if (Get_Int_Parameter("Direction") == 0)
 					{
-						Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), ELEVATOR, (Get_Int_Parameter("Waypoint_num")));
+						Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), ELEVATOR, (Get_Int_Parameter("Waypoint_num")), 0);
 					}
 
 					if (Get_Int_Parameter("Direction") == 1)
 					{
-						Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), ELEVATOR_DOWN, (Get_Int_Parameter("Waypoint_num")));
+						Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), ELEVATOR_DOWN, (Get_Int_Parameter("Waypoint_num")), 0);
 					}
 				}
 
 				if ((Commands->Get_ID (obj)) == 2000607)
 				{
-					Commands->Send_Custom_Event(obj, Commands->Find_Object (2000599), CHECK_STAR, 0);
+					Commands->Send_Custom_Event(obj, Commands->Find_Object (2000599), CHECK_STAR, 0, 0);
 				}
 
 				if ((Commands->Get_ID (obj)) == 2000599)
 				{
-					Commands->Send_Custom_Event(obj, Commands->Find_Object (2000607), CHECK_STAR, 0);
+					Commands->Send_Custom_Event(obj, Commands->Find_Object (2000607), CHECK_STAR, 0, 0);
 				}
 
 			}
@@ -3477,7 +3477,7 @@ DECLARE_SCRIPT (M09_Elevator_All_Controller, "Waypoint_num:int, Elev_obj_num:int
 			if (param == EXIT)
 			{
 				star_in_zone = false;
-				//Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), FOLLOW, Get_Int_Parameter("Mobius_exit_goto"));
+				//Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), FOLLOW, Get_Int_Parameter("Mobius_exit_goto"), 0);
 			}
 		}
 		
@@ -3592,7 +3592,7 @@ DECLARE_SCRIPT (M09_Waypath_Run, "Waypath_num:int, Attacker_num:int, Controller_
 		Commands->Innate_Disable(obj);
 
 		attackee_id = Commands->Get_ID(obj);
-		Commands->Send_Custom_Event(obj, Commands->Find_Object (Get_Int_Parameter("Controller_num")), MUTANT_ATTACKEE, attackee_id);
+		Commands->Send_Custom_Event(obj, Commands->Find_Object (Get_Int_Parameter("Controller_num")), MUTANT_ATTACKEE, attackee_id, 0);
 
 		Commands->Start_Timer (obj, this, 1.0f, START);
 		
@@ -3640,7 +3640,7 @@ DECLARE_SCRIPT (M09_Waypath_Run, "Waypath_num:int, Attacker_num:int, Controller_
 
 	void Killed(GameObject * obj, GameObject *killer )
 	{
-		Commands->Send_Custom_Event(obj, (Commands->Find_Object (mutant_id)), ATTACK_STAR, 0);
+		Commands->Send_Custom_Event(obj, (Commands->Find_Object (mutant_id)), ATTACK_STAR, 0, 0);
 	}
 
 	void Custom(GameObject * obj, int type, int param, GameObject * sender)
@@ -3661,7 +3661,7 @@ DECLARE_SCRIPT (M09_Waypath_Run, "Waypath_num:int, Attacker_num:int, Controller_
 		
 		if(timer_id == START)
 		{
-			Commands->Send_Custom_Event(obj, Commands->Find_Object (Get_Int_Parameter("Controller_num")), ATTACKER_CHECK, 0);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object (Get_Int_Parameter("Controller_num")), ATTACKER_CHECK, 0, 0);
 		}
 	}
 
@@ -3692,12 +3692,12 @@ DECLARE_SCRIPT (M09_Mutant_Encounter_Controller, "")
 
 		if (type == ATTACKER_CHECK)
 		{
-			Commands->Send_Custom_Event(obj, sender, ATTACKER_CHECK, mutant_id);
+			Commands->Send_Custom_Event(obj, sender, ATTACKER_CHECK, mutant_id, 0);
 		}
 
 		if (type == ATTACKEE_CHECK)
 		{
-			Commands->Send_Custom_Event(obj, sender, ATTACKEE_CHECK, attackee_id);
+			Commands->Send_Custom_Event(obj, sender, ATTACKEE_CHECK, attackee_id, 0);
 		}
 	}
 };
@@ -4323,7 +4323,7 @@ DECLARE_SCRIPT (M09_Destroy_Self_Zone, "")
 		{
 			already_entered = true;
 
-			Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), NO_FOLLOW, ON);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), NO_FOLLOW, ON, 0);
 
 			const char *conv_name = ("IDS_M09_D13");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
@@ -4564,7 +4564,7 @@ DECLARE_SCRIPT (M09_Innate_Activate, "Target0=0:int, Target1=0:int, Target2=0:in
 			{
 				if (target [x] != 0)
 				{
-					Commands->Send_Custom_Event(obj, Commands->Find_Object(target [x]), M09_INNATE_ENABLE, 0);
+					Commands->Send_Custom_Event(obj, Commands->Find_Object(target [x]), M09_INNATE_ENABLE, 0, 0);
 				}
 			}
 		}
@@ -4659,7 +4659,7 @@ DECLARE_SCRIPT(M09_Elevator_Exit, "Mobius_exit_goto:int")
 	{
 		//already_entered = true;
 
-		Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), ELEVATOR_EXIT, Get_Int_Parameter("Mobius_exit_goto"));
+		Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), ELEVATOR_EXIT, Get_Int_Parameter("Mobius_exit_goto"), 0);
 	}
 };
 
@@ -4680,7 +4680,7 @@ DECLARE_SCRIPT(M09_Mobius_OnFollow, "")
 {
 	void Entered (GameObject * obj, GameObject * enterer)
 	{
-		Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), NO_FOLLOW, OFF);
+		Commands->Send_Custom_Event(obj, Commands->Find_Object (2000010), NO_FOLLOW, OFF, 0);
 	}
 };
 
