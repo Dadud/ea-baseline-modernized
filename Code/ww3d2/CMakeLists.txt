@@ -272,16 +272,24 @@ ea_vc6_static_library(ww3d2
     NDEBUG
     PARAM_EDITING_ON
     VIEW_COMPRESSED
-    WIN32
-    WIN32_LEAN_AND_MEAN
-    WINVER=0x400
     WWDEBUG
     _DEBUG
     _USE_INTEL_COMPILER
-    _WINDOWS
   LINK_LIBRARIES
     wwdebug
     wwlib
     wwmath
     wwsaveload
 )
+
+# WIN32-only compile definitions: these are only meaningful on Windows builds
+# where the real DirectX 8 SDK and Windows SDK headers are available.
+# On non-WIN32 (Linux), the DX8 backend sources are already excluded above,
+# and the remaining headers should not assert WIN32/_WINDOWS preprocessor guards.
+if(WIN32)
+  target_compile_definitions(ww3d2 PRIVATE
+    WIN32
+    WIN32_LEAN_AND_MEAN
+    _WINDOWS
+  )
+endif()

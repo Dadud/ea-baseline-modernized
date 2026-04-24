@@ -1282,7 +1282,7 @@ return;
 	int count=datasize/sizeof(float);
 	for (int i=0;i<count;i++) {
 		float value=Data[i];
-		if (_isnan(value)) value=0.0f;
+		if (isnan(value)) value=0.0f;
 		if (value>100000.0f) value=0.0f;
 		if (value<-100000.0f) value=0.0f;
 		Data[i]=value;
@@ -1303,7 +1303,7 @@ return;
 		inv_scale=1.0f/ValueScale;
 	}
 	inv_scale*=65535.0f;
-	for (i=0;i<count;++i) {
+	for (int i=0;i<count;++i) {
 		float value=Data[i];
 		value-=ValueOffset;
 		value*=inv_scale;
