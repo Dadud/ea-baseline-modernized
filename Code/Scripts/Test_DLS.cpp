@@ -3215,7 +3215,7 @@ DECLARE_SCRIPT (MX0_Plant_Ion_Beacon_DLS, "")
 		ActionParamsStruct params;
 
 		Commands->Give_PowerUp(obj, "POW_IonCannonBeacon_Ai" );
-		Commands->Select_Weapon(obj, "Weapon_IonCannonBeacon_Ai" , false);
+		Commands->Select_Weapon(obj, "Weapon_IonCannonBeacon_Ai" ,;
 
 		params.Set_Basic( this, INNATE_PRIORITY_ENEMY_SEEN + 5, 10 );
 		params.Set_Attack (Commands->Get_Position(obj), 5.0f, 0.0f, 1);

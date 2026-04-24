@@ -893,7 +893,7 @@ DECLARE_SCRIPT(M06_GDI_Prisoner, "")
 			Commands->Set_Innate_Is_Stationary(obj, false);
 			Commands->Set_Player_Type(obj, SCRIPT_PLAYERTYPE_GDI );
 			Commands->Give_PowerUp(obj, "POW_Chaingun_AI", true);
-			Commands->Select_Weapon(obj, "Weapon_Chaingun_Ai" , false);
+			Commands->Select_Weapon(obj, "Weapon_Chaingun_Ai" ,;
 
 			Commands->Grant_Key (obj, 1, true);
 			Commands->Grant_Key (obj, 2, true);
