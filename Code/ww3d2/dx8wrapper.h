@@ -838,11 +838,6 @@ not_changed:
 #endif
 }
 
-		mov	col,eax
-	}
-	return col;
-}
-
 // ----------------------------------------------------------------------------
 //
 // Clamp color vertor to [0...1] range
@@ -913,8 +908,6 @@ WWINLINE void DX8Wrapper::Clamp_Color(Vector4& color)
 	}
 #endif
 }
-
-
 
 // ----------------------------------------------------------------------------
 //
