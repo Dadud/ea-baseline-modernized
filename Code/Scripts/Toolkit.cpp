@@ -673,7 +673,7 @@ DECLARE_SCRIPT(M00_ChainRxn_Barrel_JDG, "Controller_ID :int")
 				8,//8
 			};
 
-			Commands->Set_Animation ( obj, barrels_animations[number], false, NULL, 0, barrels_endframe[number] );
+			Commands->Set_Animation ( obj, barrels_animations[number], false, NULL, 0, barrels_endframe[number] , true);
 			Commands->Set_Health ( obj, 0.25f );
 
 			GameObject * controller = Commands->Find_Object ( controller_id );
