@@ -588,7 +588,7 @@ void GeometryExportTaskClass::Optimize_Geometry
 			** Add to the mesh array, remove from the tasks array
 			*/			
 			meshes.Add((MeshGeometryExportTaskClass *)(tasks[i]));
-			tasks.Delete(i);
+			tasks.DeleteIndex(i);
 		} else {
 
 			/*

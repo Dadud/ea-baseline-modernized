@@ -2392,7 +2392,7 @@ int HLodClass::Remove_Sub_Object(RenderObjClass * removeme)
 			if (Lod[lod][model].Model == removeme) {
 
 				// remove the model from the array.
-				Lod[lod].Delete(model);
+				Lod[lod].DeleteIndex(model);
 
 				// record that we found it
 				found = true;
@@ -2406,7 +2406,7 @@ int HLodClass::Remove_Sub_Object(RenderObjClass * removeme)
 
 	for (int model = 0; (model < AdditionalModels.Count()) && (!found); model++) {
 		if (AdditionalModels[model].Model == removeme) {
-			AdditionalModels.Delete(model);
+			AdditionalModels.DeleteIndex(model);
 			found = true;
 			iscurrent = true;
 		}

@@ -384,7 +384,7 @@ void ServerControlClass::Remove_Remote_Control(unsigned long ip, unsigned short 
 		control = RemoteControllers[i];
 		if (control->IP == ip && control->Port == port) {
 			delete control;
-			RemoteControllers.Delete(i);
+			RemoteControllers.DeleteIndex(i);
 			break;
 		}
 	}

@@ -184,7 +184,7 @@ int HermiteSpline3DClass::Add_Key(const Vector3 & point,float t)
 
 void HermiteSpline3DClass::Remove_Key(int i)
 {
-	Tangents.Delete(i);
+	Tangents.DeleteIndex(i);
 	Curve3DClass::Remove_Key(i);
 	TangentsDirty = true;
 }
@@ -346,7 +346,7 @@ int HermiteSpline1DClass::Add_Key(float point,float t,unsigned int extra)
 
 void HermiteSpline1DClass::Remove_Key(int i)
 {
-	Tangents.Delete(i);
+	Tangents.DeleteIndex(i);
 	Curve1DClass::Remove_Key(i);
 	TangentsDirty = true;
 }

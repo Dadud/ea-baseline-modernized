@@ -147,7 +147,7 @@ void SegmentedLineClass::Add_Point(const Vector3 & location)
 void SegmentedLineClass::Delete_Point(unsigned int point_idx)
 {
 	if (point_idx < (unsigned int)PointLocations.Count()) {
-		PointLocations.Delete(point_idx);
+		PointLocations.DeleteIndex(point_idx);
 	}
 }
 

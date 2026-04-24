@@ -313,7 +313,7 @@ bool PhysDecalSysClass::internal_remove_decal(uint32 id,MeshClass * deleted_mesh
 				** its decals since it is telling us that it has been deleted already.
 				*/
 				if (deleted_mesh != NULL) {
-					decal->Meshes.Delete(deleted_mesh);
+					decal->Meshes.DeleteIndex(deleted_mesh);
 				}
 
 				/*
@@ -336,7 +336,7 @@ bool PhysDecalSysClass::internal_remove_decal(uint32 id,MeshClass * deleted_mesh
 		WWASSERT(id < (uint32)TempDecals.Length());
 
 		if (deleted_mesh != NULL) {
-			TempDecals[id].Meshes.Delete(deleted_mesh);
+			TempDecals[id].Meshes.DeleteIndex(deleted_mesh);
 		}
 
 		TempDecals[id].Reset();

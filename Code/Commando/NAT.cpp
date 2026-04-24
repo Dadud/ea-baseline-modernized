@@ -2356,7 +2356,7 @@ bool FirewallHelperClass::Remove_Player_From_Negotiation_Queue(char *player_name
 		if (stricmp(clientptr->Name, player_name) == 0) {
 			WWDEBUG_SAY(("FirewallHelper - Removed %s from ClientQueue\n", clientptr->Name));
 			delete clientptr;
-			ClientQueue.Delete(i);
+			ClientQueue.DeleteIndex(i);
 			i--;
 			retcode = true;
 		}

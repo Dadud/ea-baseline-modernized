@@ -445,7 +445,7 @@ void WW3DAssetManager::Free_Assets(void)
 	while (count-- > 0) {
 
 		PrototypeClass * proto = Prototypes[count];
-		Prototypes.Delete(count);
+		Prototypes.DeleteIndex(count);
 
 		if (proto != NULL) {
 			delete proto;

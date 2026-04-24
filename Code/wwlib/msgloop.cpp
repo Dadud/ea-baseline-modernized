@@ -247,7 +247,7 @@ void Remove_Accelerator(HACCEL accelerator)
 {
 	for (int index = 0; index < _Accelerators.Count(); index++) {
 		if (_Accelerators[index].Accelerator == accelerator) {
-			_Accelerators.Delete(index);
+			_Accelerators.DeleteIndex(index);
 			break;
 		}
 	}

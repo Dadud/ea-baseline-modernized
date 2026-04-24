@@ -1701,7 +1701,7 @@ bool Is_Options_Spammer(char *user_name, int &count)
 		for (int i=OptionsTracking.Count() - 1 ; i >= 0 ; i--) {
 			if (OptionsTracking[i]->Times.Count() == 0) {
 				delete OptionsTracking[i];
-				OptionsTracking.Delete(i);
+				OptionsTracking.DeleteIndex(i);
 				index = i;
 				break;
 			}

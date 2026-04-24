@@ -519,7 +519,7 @@ class DynamicVectorClass : public VectorClass<T>
 		bool Delete(T const & object);
 
 		// Delete object at this vector index.
-		bool Delete(int index);
+		bool DeleteIndex(int index);
 
 		// Deletes all objects in the vector.
 		void Delete_All(void);
@@ -848,7 +848,7 @@ bool DynamicVectorClass<T>::Delete(T const & object)
  *   03/10/1995 JLB : Created.                                                                 *
  *=============================================================================================*/
 template<class T>
-bool DynamicVectorClass<T>::Delete(int index)
+bool DynamicVectorClass<T>::DeleteIndex(int index)
 {
 	if (index < ActiveCount) {
 		ActiveCount--;

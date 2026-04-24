@@ -672,7 +672,7 @@ bool RigidDecalMeshClass::Delete_Decal(uint32 id)
 		Decals[di].FaceStartIndex -= decal->FaceCount;
 		Decals[di].VertexStartIndex -= decal->VertexCount;
 	}
-	Decals.Delete(decal_index);
+	Decals.DeleteIndex(decal_index);
 
 #ifdef WWDEBUG	
 	/*
@@ -1088,7 +1088,7 @@ bool SkinDecalMeshClass::Delete_Decal(uint32 id)
 		Decals[di].FaceStartIndex -= decal->FaceCount;
 		Decals[di].VertexStartIndex -= decal->VertexCount;
 	}
-	Decals.Delete(decal_index);
+	Decals.DeleteIndex(decal_index);
 
 #ifdef WWDEBUG	
 	/*
