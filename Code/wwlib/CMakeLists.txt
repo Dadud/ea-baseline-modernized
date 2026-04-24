@@ -339,3 +339,7 @@ ea_vc6_static_library(wwlib
   DEFINES
     WWDEBUG
 )
+
+if(RENEGADE_USE_SDL3)
+  target_link_libraries(wwlib PUBLIC PkgConfig::SDL3)
+endif()

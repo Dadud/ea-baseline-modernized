@@ -124,7 +124,34 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 019 — automation tooling and multi-target probe
+### Latest batch completed: Batch 023 — opt-in SDL3 thread seam for `wwlib`
+
+Batch 023 starts the SDL3 platform replay using the SDL3 work found in the wider OpenW3D fork ecosystem, especially w3dhub PRs #105 and #107. This first bounded batch intentionally adopts only the highest-confidence seam: `Code/wwlib/thread.h` and `Code/wwlib/thread.cpp` now support an opt-in SDL3-backed non-Windows thread path under `RENEGADE_USE_SDL3=ON`, while preserving the original Windows path and the existing `ThreadClass` interface shape.
+
+CMake now exposes:
+
+- `RENEGADE_USE_SDL3=ON` — opt-in SDL3-backed platform seam pieces where implemented
+- `PkgConfig::SDL3` wiring for `wwlib`
+
+Verified result:
+
+```bash
+cmake -S . -B build/cmake-scaffold-sdl3 \
+  -DRENEGADE_USE_SDL3=ON \
+  -DRENEGADE_BUILD_FOUNDATION_LIBS=ON \
+  -DRENEGADE_BUILD_PLATFORM_LIBS=ON
+cmake --build build/cmake-scaffold-sdl3 --target wwlib -j4
+```
+
+with final output including:
+
+```text
+[100%] Built target wwlib
+```
+
+This batch does **not** yet claim full SDL3 filesystem/resource integration. `rawfile.cpp`, `rcfile.*`, and broader SDL3 helper adoption remain separate follow-on work.
+
+### Previous batch completed: Batch 019 — automation tooling and multi-target probe
 
 Batch 019 does not add a new source target. It adds two automation scripts and runs the first structured multi-target probe across all unmapped subsystems.
 

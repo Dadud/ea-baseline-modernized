@@ -37,6 +37,16 @@ cmake_minimum_required(VERSION 3.20)
 
 project(CnC_Renegade_EA_Baseline LANGUAGES CXX)
 
+option(RENEGADE_USE_SDL3 "Enable SDL3-backed platform seam pieces where implemented" OFF)
+
+if(RENEGADE_USE_SDL3)
+  find_package(PkgConfig REQUIRED)
+  pkg_check_modules(SDL3 REQUIRED IMPORTED_TARGET sdl3)
+  add_compile_definitions(OPENW3D_SDL3=1)
+elseif(WIN32)
+  add_compile_definitions(OPENW3D_WIN32=1)
+endif()
+
 include(cmake/EAProject.cmake)
 
 # =============================================================================

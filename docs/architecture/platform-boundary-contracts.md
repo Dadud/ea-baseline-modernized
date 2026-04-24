@@ -75,9 +75,9 @@ public:
 };
 ```
 
-**Current implementation:** `Code/wwlib/thread.cpp` provides minimal non-Windows fallbacks. On Windows, native CRITICAL_SECTION and EVENT are used.
+**Current implementation:** `Code/wwlib/thread.cpp` now has an opt-in SDL3-backed non-Windows thread path when `RENEGADE_USE_SDL3=ON`. On Windows, native thread APIs remain in place.
 
-**Deferred work:** Thread priority mapping on Linux (pthread priority is non-trivial), stack size guarantees, thread affinity.
+**Deferred work:** Thread priority mapping on Linux is still approximate, event/mutex modernization is separate work, and broader platform synchronization cleanup still remains.
 
 ---
 

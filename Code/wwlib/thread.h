@@ -31,6 +31,9 @@
 
 struct _EXCEPTION_POINTERS;
 
+#if defined(OPENW3D_SDL3)
+#include <SDL3/SDL_thread.h>
+#endif
 
 // ****************************************************************************
 //
@@ -98,8 +101,13 @@ protected:
 	ExceptionHandlerType ExceptionHandler;
 
 private:
+#if defined(OPENW3D_SDL3)
+	static int SDLCALL Internal_Thread_Function(void *params);
+	SDL_Thread *handle;
+#else
 	static void __cdecl Internal_Thread_Function(void*);
 	volatile unsigned long handle;
+#endif
 	int thread_priority;
 };
 
