@@ -824,7 +824,7 @@ bool DynamicVectorClass<T>::Delete(T const & object)
 {
 	int id = ID(object);
 	if (id != -1) {
-		return(Delete(id));
+		return(DeleteIndex(id));
 	}
 	return(false);
 }
