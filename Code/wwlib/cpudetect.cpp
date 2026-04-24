@@ -153,20 +153,26 @@ static unsigned Calculate_Processor_Speed(__int64& ticks_per_second)
 		unsigned timer1_l;
 	} Time;
 
+#if !defined(_M_X64)
 	__asm {
 		ASM_RDTSC;
 		mov Time.timer0_h,eax
 		mov Time.timer0_l,edx
 	}
+#else
+	unsigned __int64 _t0 = __rdtsc();
+	Time.timer0_l = (unsigned)(_t0 & 0xFFFFFFFF);
+	Time.timer0_h = (unsigned)(_t0 >> 32);
+#endif
 
 	unsigned start=TIMEGETTIME();
 	unsigned elapsed;
 	while ((elapsed=TIMEGETTIME()-start)<200) {
-		__asm {
-			ASM_RDTSC;
-			mov Time.timer1_h,eax
-			mov Time.timer1_l,edx
-		}
+#else
+		unsigned __int64 _t1 = __rdtsc();
+		Time.timer1_l = (unsigned)(_t1 & 0xFFFFFFFF);
+		Time.timer1_h = (unsigned)(_t1 >> 32);
+#endif
 	}
 
 	__int64 t=*(__int64*)&Time.timer1_h-*(__int64*)&Time.timer0_h;
@@ -827,6 +833,7 @@ void CPUDetectClass::Init_Processor_String()
 
 void CPUDetectClass::Init_CPUID_Instruction()
 {
+#if !defined(_M_X64)
 	unsigned long cpuid_available=0;
 
    // The pushfd/popfd commands are done using emits
@@ -854,6 +861,10 @@ done:
 		pop ebx
 	}
 	HasCPUIDInstruction=!!cpuid_available;
+#else
+	// CPUID is always available on x64
+	HasCPUIDInstruction = true;
+#endif
 }
 
 void CPUDetectClass::Init_Processor_Features()
@@ -922,6 +933,7 @@ bool CPUDetectClass::CPUID(
 	unsigned u_ecx;
 	unsigned u_edx;
 
+#if !defined(_M_X64)
 	__asm
 	{
 		pushad
@@ -936,6 +948,14 @@ bool CPUDetectClass::CPUID(
 		mov		[u_edx],edx
 		popad
 	}
+#else
+	int info[4];
+	__cpuid(info, cpuid_type);
+	u_eax = (unsigned)info[0];
+	u_ebx = (unsigned)info[1];
+	u_ecx = (unsigned)info[2];
+	u_edx = (unsigned)info[3];
+#endif
 
 	u_eax_=u_eax;
 	u_ebx_=u_ebx;
