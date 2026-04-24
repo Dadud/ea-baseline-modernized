@@ -42,7 +42,68 @@
 #ifndef __VERCHK_H
 #define __VERCHK_H
 
+#if defined(_WIN32)
 #include <windows.h>
+#else
+#include "bittype.h"
+
+typedef void * HINSTANCE;
+
+typedef struct _FILETIME {
+	DWORD dwLowDateTime;
+	DWORD dwHighDateTime;
+} FILETIME;
+
+typedef struct tagVS_FIXEDFILEINFO {
+	DWORD dwSignature;
+	DWORD dwStrucVersion;
+	DWORD dwFileVersionMS;
+	DWORD dwFileVersionLS;
+	DWORD dwProductVersionMS;
+	DWORD dwProductVersionLS;
+	DWORD dwFileFlagsMask;
+	DWORD dwFileFlags;
+	DWORD dwFileOS;
+	DWORD dwFileType;
+	DWORD dwFileSubtype;
+	DWORD dwFileDateMS;
+	DWORD dwFileDateLS;
+} VS_FIXEDFILEINFO;
+
+#pragma pack(push, 1)
+typedef struct _IMAGE_DOS_HEADER {
+	WORD   e_magic;
+	WORD   e_cblp;
+	WORD   e_cp;
+	WORD   e_crlc;
+	WORD   e_cparhdr;
+	WORD   e_minalloc;
+	WORD   e_maxalloc;
+	WORD   e_ss;
+	WORD   e_sp;
+	WORD   e_csum;
+	WORD   e_ip;
+	WORD   e_cs;
+	WORD   e_lfarlc;
+	WORD   e_ovno;
+	WORD   e_res[4];
+	WORD   e_oemid;
+	WORD   e_oeminfo;
+	WORD   e_res2[10];
+	long   e_lfanew;
+} IMAGE_DOS_HEADER;
+
+typedef struct _IMAGE_FILE_HEADER {
+	WORD  Machine;
+	WORD  NumberOfSections;
+	DWORD TimeDateStamp;
+	DWORD PointerToSymbolTable;
+	DWORD NumberOfSymbols;
+	WORD  SizeOfOptionalHeader;
+	WORD  Characteristics;
+} IMAGE_FILE_HEADER;
+#pragma pack(pop)
+#endif
 
 // Obtain version information from the specified file.
 bool GetVersionInfo(char* filename, VS_FIXEDFILEINFO* fileInfo);

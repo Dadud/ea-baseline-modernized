@@ -331,8 +331,10 @@ if(UNIX)
     list(REMOVE_ITEM WWLIB_SOURCES
       ./rawfile.cpp
       ./rcfile.cpp
+      ./verchk.cpp
       ./rawfile.cpp
       ./rcfile.cpp
+      ./verchk.cpp
     )
   endif()
 endif()

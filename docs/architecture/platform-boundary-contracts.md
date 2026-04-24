@@ -264,9 +264,9 @@ bool RegistryWriteDWORD(RegistryKey key, const char* value_name, uint32_t value)
 // Config file fallback: on non-Windows platforms, registry calls can transparently fall back to an ini file or XML store.
 ```
 
-**Current implementation:** `Code/wwlib/registry.cpp` uses native Win32 registry APIs. Non-Windows has no implementation.
+**Current implementation:** `Code/wwlib/registry.cpp` still uses native Win32 registry APIs. `Code/wwlib/verchk.cpp` now has an opt-in SDL3/non-Windows buildable path that can compare PE image timestamps and synthesize `FILETIME` values from host file metadata, but full file-version resource extraction remains Windows-only semantics for now.
 
-**Deferred work:** A portable config/key-value store abstraction that works on both Windows (using registry) and Linux (using config files or a portable key-value store like libconfig).
+**Deferred work:** A portable config/key-value store abstraction that works on both Windows (using registry) and Linux (using config files or a portable key-value store like libconfig). The version/resource half still needs a documented policy for non-Windows creation-time semantics and any future portable PE version-resource reader.
 
 ---
 

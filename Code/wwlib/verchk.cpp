@@ -36,8 +36,16 @@
 
 
 #include "verchk.h"
+#if defined(_WIN32)
 #include <windows.h>
 #include <winnt.h>
+#else
+#include <errno.h>
+#include <limits.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#endif
 #include "rawfile.h"
 #include "ffactory.h"
 
@@ -58,7 +66,35 @@
 *     Success - True if successful in obtaining version information.
 *
 ******************************************************************************/
+#if !defined(_WIN32)
+static unsigned long long Unix_Time_To_FileTime_100ns(time_t unix_time)
+{
+	return (static_cast<unsigned long long>(unix_time) * 10000000ULL) + 116444736000000000ULL;
+}
+
+static bool Get_Current_Executable_Path(char *buffer, size_t size)
+{
+	if (buffer == NULL || size == 0) {
+		return false;
+	}
+
+	ssize_t length = readlink("/proc/self/exe", buffer, size - 1);
+	if (length < 0 || static_cast<size_t>(length) >= size) {
+		buffer[0] = 0;
+		return false;
+	}
+
+	buffer[length] = 0;
+	return true;
+}
+#endif
+
 bool GetVersionInfo(char* filename, VS_FIXEDFILEINFO* fileInfo) {
+	if (fileInfo == NULL) {
+		return false;
+	}
+
+#if defined(_WIN32)
 	//
 	// Get the version information for this file
 	//
@@ -86,6 +122,10 @@ bool GetVersionInfo(char* filename, VS_FIXEDFILEINFO* fileInfo) {
 		pblock = NULL;
 	}
 	return verok;
+#else
+	memset(fileInfo, 0, sizeof(VS_FIXEDFILEINFO));
+	return false;
+#endif
 }
 
 
@@ -95,6 +135,7 @@ bool GetFileCreationTime(char* filename, FILETIME* createTime)
 		{
 		createTime->dwLowDateTime = 0;
 		createTime->dwHighDateTime = 0;
+#if defined(_WIN32)
 		FileClass* file = _TheFileFactory->Get_File(filename);
 
 		if (file && file->Open())
@@ -109,6 +150,21 @@ bool GetFileCreationTime(char* filename, FILETIME* createTime)
 					}
 				}
 			}
+#else
+		struct stat file_status;
+		if (stat(filename, &file_status) == 0)
+			{
+#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
+			time_t timestamp = file_status.st_birthtime;
+#else
+			time_t timestamp = file_status.st_mtime;
+#endif
+			unsigned long long filetime = Unix_Time_To_FileTime_100ns(timestamp);
+			createTime->dwLowDateTime = static_cast<DWORD>(filetime & 0xFFFFFFFFULL);
+			createTime->dwHighDateTime = static_cast<DWORD>(filetime >> 32);
+			return true;
+			}
+#endif
 		}
 
 	return false;
@@ -171,6 +227,7 @@ Get_Image_File_Header (HINSTANCE app_instance, IMAGE_FILE_HEADER *file_header)
 {
 	bool retval = false;
 
+#if defined(_WIN32)
 	//
 	//	Read the dos header (all PE exectuable files begin with this)
 	//
@@ -190,6 +247,12 @@ Get_Image_File_Header (HINSTANCE app_instance, IMAGE_FILE_HEADER *file_header)
 						sizeof (IMAGE_FILE_HEADER));		
 		retval = true;
 	}
+#else
+	char current_executable[PATH_MAX];
+	if (Get_Current_Executable_Path(current_executable, sizeof(current_executable))) {
+		retval = Get_Image_File_Header(current_executable, file_header);
+	}
+#endif
 	
 
 	return retval;

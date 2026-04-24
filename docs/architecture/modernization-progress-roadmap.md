@@ -124,7 +124,27 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 025 — opt-in SDL3 resource-file seam for `wwlib`
+### Latest batch completed: Batch 026 — opt-in SDL3 version/file metadata seam for `wwlib`
+
+Batch 026 extends the first SDL3 platform replay into `Code/wwlib/verchk.h` and `Code/wwlib/verchk.cpp`. The seam is intentionally partial: when `RENEGADE_USE_SDL3=ON`, `verchk.cpp` now builds on non-Windows with portable PE image-header timestamp comparison and host-file `FILETIME` synthesis, while preserving the original Win32 path for real PE version-resource extraction.
+
+This batch does **not** claim full parity for Win32 version/resource semantics. `GetVersionInfo()` still returns no version-resource data on non-Windows, and `GetFileCreationTime()` may fall back to file modification time on platforms without birth-time metadata. The purpose of this batch is to make the version/file-metadata seam compile and become explicitly documented, not to overclaim finished parity.
+
+CMake now also re-enables `verchk.cpp` in the UNIX `wwlib` build only when `RENEGADE_USE_SDL3=ON`.
+
+Verified result:
+
+```bash
+cmake --build build/cmake-scaffold-sdl3 --target wwlib -j4
+```
+
+with final output including:
+
+```text
+[100%] Built target wwlib
+```
+
+### Previous batch completed: Batch 025 — opt-in SDL3 resource-file seam for `wwlib`
 
 Batch 025 continues the SDL3 platform replay from the wider OpenW3D fork ecosystem by adapting the `rcfile.*` donor seam into a baseline-friendly form. `Code/wwlib/rcfile.h` and `Code/wwlib/rcfile.cpp` now support an opt-in SDL3-ready non-Windows `ResourceFileClass` path under `RENEGADE_USE_SDL3=ON`, while preserving the original Windows PE-resource path.
 
