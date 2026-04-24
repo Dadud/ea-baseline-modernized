@@ -247,10 +247,10 @@ typedef struct {
 	void	( * Enable_Enemy_Seen)( GameObject * obj, bool enable );
 
 	// Display Text
-	void	(*	Set_Display_Color )( unsigned char red = 255, unsigned char green = 255, unsigned char blue = 255 );
+	void	(*	Set_Display_Color )( unsigned char red, unsigned char green, unsigned char blue );
 	void	(*	Display_Text )( int string_id );
-	void	(*	Display_Float )( float value, const char * format = "%f" );
-	void	(*	Display_Int )( int value, const char * format = "%d" );
+	void	(*	Display_Float )( float value, const char * format );
+	void	(*	Display_Int )( int value, const char * format );
 
 	// SaveLoad
 	void	(*	Save_Data )( ScriptSaver & saver, int id, int size, void * data );
@@ -309,7 +309,7 @@ typedef struct {
 	bool	(* Innate_Soldier_Enable_Footsteps_Heard )( GameObject * obj, bool state );
 	bool	(* Innate_Soldier_Enable_Bullet_Heard )( GameObject * obj, bool state );
 	bool	(* Innate_Soldier_Enable_Actions )( GameObject * obj, bool state );
-	void	(* Set_Innate_Soldier_Home_Location )( GameObject * obj, const Vector3& home_pos, float home_radius = 999999 );
+	void	(* Set_Innate_Soldier_Home_Location )( GameObject * obj, const Vector3& home_pos, float home_radius );
 	void	(* Set_Innate_Aggressiveness )( GameObject * obj, float aggressiveness );
 	void	(* Set_Innate_Take_Cover_Probability )( GameObject * obj, float probability );
 	void	(* Set_Innate_Is_Stationary )( GameObject * obj, bool stationary );
