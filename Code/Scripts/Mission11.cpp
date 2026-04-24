@@ -5344,7 +5344,7 @@ DECLARE_SCRIPT(M11_CeilingRepellers_Controller_JDG, "")//M11_FIRSTFLOOR_REPELER_
 					GameObject *controller = Commands->Create_Object("Invisible_Object", ropeA_v3);
 					Commands->Set_Facing ( controller, 75 );
 					Commands->Attach_Script(controller, "Test_Cinematic", "X11D_Repel_Part2.txt");
-					Commands->Set_Animation ( rope_A, "X11D_Rope.X11D_Rope_L", false);
+					Commands->Set_Animation ( rope_A, "X11D_Rope.X11D_Rope_L", false, NULL, 0.0f, -1.0f, true);
 
 					spawned_units++;
 
@@ -5360,7 +5360,7 @@ DECLARE_SCRIPT(M11_CeilingRepellers_Controller_JDG, "")//M11_FIRSTFLOOR_REPELER_
 					GameObject *controller = Commands->Create_Object("Invisible_Object", ropeB_v3);
 					Commands->Set_Facing ( controller, -10 );
 					Commands->Attach_Script(controller, "Test_Cinematic", "X11D_Repel_Part2.txt");
-					Commands->Set_Animation ( rope_B, "X11D_Rope.X11D_Rope_L", true);
+					Commands->Set_Animation ( rope_B, "X11D_Rope.X11D_Rope_L", true, NULL, 0.0f, -1.0f, true);
 
 					spawned_units++;
 
@@ -5373,7 +5373,7 @@ DECLARE_SCRIPT(M11_CeilingRepellers_Controller_JDG, "")//M11_FIRSTFLOOR_REPELER_
 				GameObject * rope_A = Commands->Find_Object ( rope_A_id );
 				if (rope_A != NULL)
 				{
-					Commands->Set_Animation ( rope_A, "X11D_Rope.X11D_Rope_Z", true);
+					Commands->Set_Animation ( rope_A, "X11D_Rope.X11D_Rope_Z", true, NULL, 0.0f, -1.0f, true);
 				}
 			}
 
@@ -5382,7 +5382,7 @@ DECLARE_SCRIPT(M11_CeilingRepellers_Controller_JDG, "")//M11_FIRSTFLOOR_REPELER_
 				GameObject * rope_B = Commands->Find_Object ( rope_B_id );
 				if (rope_B != NULL)
 				{
-					Commands->Set_Animation ( rope_B, "X11D_Rope.X11D_Rope_Z", true);
+					Commands->Set_Animation ( rope_B, "X11D_Rope.X11D_Rope_Z", true, NULL, 0.0f, -1.0f, true);
 				}
 			}
 
@@ -5827,7 +5827,7 @@ DECLARE_SCRIPT(M11_Temple_Hologram_01_JDG, "")//100252
 {
 	void Created( GameObject * obj ) 
 	{
-		Commands->Set_Animation (obj, "DSP_HOLO_BIG.DSP_HOLO_BIG", true);
+		Commands->Set_Animation (obj, "DSP_HOLO_BIG.DSP_HOLO_BIG", true, NULL, 0.0f, -1.0f, true);
 	}
 };
 
@@ -5998,7 +5998,7 @@ DECLARE_SCRIPT(M11_KaneRoom_KaneEncounter_Hologram_JDG, "")//101226
 {
 	void Created( GameObject * obj ) 
 	{
-		Commands->Set_Animation (obj, "DSP_HOLO.DSP_HOLO", true);
+		Commands->Set_Animation (obj, "DSP_HOLO.DSP_HOLO", true, NULL, 0.0f, -1.0f, true);
 	}
 };
 
@@ -6883,7 +6883,7 @@ DECLARE_SCRIPT(M11_Sydney_SandM_Machine_Script_JDG, "")//157366
 	void Created( GameObject * obj ) 
 	{
 		Commands->Enable_Cinematic_Freeze( obj, false );
-		Commands->Set_Animation ( obj, "DSP_TORTURE.DSP_TORTURE_01", true );
+		Commands->Set_Animation ( obj, "DSP_TORTURE.DSP_TORTURE_01", true , NULL, 0.0f, -1.0f, true);
 	}
 
 	void Custom( GameObject * obj, int type, int param, GameObject * sender ) 
@@ -6894,7 +6894,7 @@ DECLARE_SCRIPT(M11_Sydney_SandM_Machine_Script_JDG, "")//157366
 			{
 				Commands->Enable_Hibernation( obj, false );
 				Commands->Enable_Cinematic_Freeze( obj, false );
-				Commands->Set_Animation ( obj, "DSP_TORTURE.DSP_TORTURE_02", false );
+				Commands->Set_Animation ( obj, "DSP_TORTURE.DSP_TORTURE_02", false , NULL, 0.0f, -1.0f, true);
 			}
 		}
 	}
@@ -6916,7 +6916,7 @@ DECLARE_SCRIPT(M11_Sydney_SandM_Chair_Script_JDG, "")//101606
 			{
 				Commands->Enable_Hibernation( obj, false );
 				Commands->Enable_Cinematic_Freeze( obj, false );
-				Commands->Set_Animation ( obj, "DSP_TORTURE_TBL.DSP_TORTURE_T01", false );
+				Commands->Set_Animation ( obj, "DSP_TORTURE_TBL.DSP_TORTURE_T01", false , NULL, 0.0f, -1.0f, true);
 			}
 		}
 	}
@@ -6952,28 +6952,28 @@ DECLARE_SCRIPT(M11_Sydney_SandM_Sydney_Bone_JDG, "")
 			{
 				Commands->Enable_Hibernation( obj, false  );
 				Commands->Debug_Message ( "**********************Sydney bone custom received....going to anim A\n" );
-				Commands->Set_Animation ( obj, "X11C_BN_Sydney.X11C_SYD_A", false);
+				Commands->Set_Animation ( obj, "X11C_BN_Sydney.X11C_SYD_A", false, NULL, 0.0f, -1.0f, true);
 			}
 
 			else if (param == M01_MODIFY_YOUR_ACTION_02_JDG)//play animation B
 			{
 				Commands->Enable_Hibernation( obj, false  );
 				Commands->Debug_Message ( "**********************Sydney bone custom received....going to anim B\n" );
-				Commands->Set_Animation ( obj, "X11C_BN_Sydney.X11C_SYD_B", false);
+				Commands->Set_Animation ( obj, "X11C_BN_Sydney.X11C_SYD_B", false, NULL, 0.0f, -1.0f, true);
 			}
 
 			else if (param == M01_MODIFY_YOUR_ACTION_03_JDG)//play animation c
 			{
 				Commands->Enable_Hibernation( obj, false  );
 				Commands->Debug_Message ( "**********************Sydney bone custom received....going to anim C\n" );
-				Commands->Set_Animation ( obj, "X11C_BN_Sydney.X11C_SYD_C", false);
+				Commands->Set_Animation ( obj, "X11C_BN_Sydney.X11C_SYD_C", false, NULL, 0.0f, -1.0f, true);
 			}
 
 			else if (param == M01_MODIFY_YOUR_ACTION_04_JDG)//play animation d
 			{
 				Commands->Enable_Hibernation( obj, false  );
 				Commands->Debug_Message ( "**********************Sydney bone custom received....going to anim D\n" );
-				Commands->Set_Animation ( obj, "X11C_BN_Sydney.X11C_SYD_D", false);
+				Commands->Set_Animation ( obj, "X11C_BN_Sydney.X11C_SYD_D", false, NULL, 0.0f, -1.0f, true);
 			}
 		}
 	}
@@ -7021,7 +7021,7 @@ DECLARE_SCRIPT(M11_SimpleSydney_Script_JDG, "")//M11_SIMPLE_SYDNEY_MOBIUS_JDG	10
 				{
 					Commands->Debug_Message ( "**********************Sydney anim D sending custom to bone\n" );
 					Commands->Send_Custom_Event ( obj, troopbone, 0, M01_MODIFY_YOUR_ACTION_04_JDG, 0 );
-					Commands->Set_Animation ( obj, "S_B_HUMAN.H_B_X11C_SYD_D", false);
+					Commands->Set_Animation ( obj, "S_B_HUMAN.H_B_X11C_SYD_D", false, NULL, 0.0f, -1.0f, true);
 				}
 
 				else
@@ -7037,7 +7037,7 @@ DECLARE_SCRIPT(M11_SimpleSydney_Script_JDG, "")//M11_SIMPLE_SYDNEY_MOBIUS_JDG	10
 				{
 					Commands->Debug_Message ( "**********************Sydney anim A sending custom to bone\n" );
 					Commands->Send_Custom_Event ( obj, troopbone, 0, M01_MODIFY_YOUR_ACTION_JDG, 0 );
-					Commands->Set_Animation ( obj, "S_B_HUMAN.H_B_X11C_SYD_A", false);
+					Commands->Set_Animation ( obj, "S_B_HUMAN.H_B_X11C_SYD_A", false, NULL, 0.0f, -1.0f, true);
 				}
 
 				else
@@ -7053,7 +7053,7 @@ DECLARE_SCRIPT(M11_SimpleSydney_Script_JDG, "")//M11_SIMPLE_SYDNEY_MOBIUS_JDG	10
 				{
 					Commands->Debug_Message ( "**********************Sydney anim B sending custom to bone\n" );
 					Commands->Send_Custom_Event ( obj, troopbone, 0, M01_MODIFY_YOUR_ACTION_02_JDG, 0 );
-					Commands->Set_Animation ( obj, "S_B_HUMAN.H_B_X11C_SYD_B", false);
+					Commands->Set_Animation ( obj, "S_B_HUMAN.H_B_X11C_SYD_B", false, NULL, 0.0f, -1.0f, true);
 				}
 
 				else
@@ -7069,7 +7069,7 @@ DECLARE_SCRIPT(M11_SimpleSydney_Script_JDG, "")//M11_SIMPLE_SYDNEY_MOBIUS_JDG	10
 				{
 					Commands->Debug_Message ( "**********************Sydney anim C sending custom to bone\n" );
 					Commands->Send_Custom_Event ( obj, troopbone, 0, M01_MODIFY_YOUR_ACTION_03_JDG, 0 );
-					Commands->Set_Animation ( obj, "S_B_HUMAN.H_B_X11C_SYD_C", false);
+					Commands->Set_Animation ( obj, "S_B_HUMAN.H_B_X11C_SYD_C", false, NULL, 0.0f, -1.0f, true);
 				}
 
 				else
@@ -10396,7 +10396,7 @@ DECLARE_SCRIPT(M11_ForthFloor_Elevator_Switch_Script_JDG, "")//101689 101651 101
 		{
 			if (type == 0)//elevator is moving--flash lights
 			{
-				Commands->Set_Animation ( obj, "DSP_DOORSWITCH.DSP_DOORSWITCH", true);
+				Commands->Set_Animation ( obj, "DSP_DOORSWITCH.DSP_DOORSWITCH", true, NULL, 0.0f, -1.0f, true);
 			}
 
 			else if (type == 1)//elevator is at top--goto green
@@ -10462,7 +10462,7 @@ DECLARE_SCRIPT(M11_ThirdFloor_Elevator_Switch_Script_JDG, "")//101692 101693 101
 		{
 			if (type == 0)//elevator is moving--flash lights
 			{
-				Commands->Set_Animation ( obj, "DSP_DOORSWITCH.DSP_DOORSWITCH", true);
+				Commands->Set_Animation ( obj, "DSP_DOORSWITCH.DSP_DOORSWITCH", true, NULL, 0.0f, -1.0f, true);
 			}
 
 			else if (type == 1)//elevator is at top--goto green
@@ -10529,7 +10529,7 @@ DECLARE_SCRIPT(M11_SecondFloor_Elevator_Switch_Script_JDG, "")//101717 101718 10
 		{
 			if (type == 0)//elevator is moving--flash lights
 			{
-				Commands->Set_Animation ( obj, "DSP_DOORSWITCH.DSP_DOORSWITCH", true);
+				Commands->Set_Animation ( obj, "DSP_DOORSWITCH.DSP_DOORSWITCH", true, NULL, 0.0f, -1.0f, true);
 			}
 
 			else if (type == 1)//elevator is at top--goto green
@@ -10595,7 +10595,7 @@ DECLARE_SCRIPT(M11_FirstFloor_Elevator_Switch_Script_JDG, "")//101721 101722 101
 		{
 			if (type == 0)//elevator is moving--flash lights
 			{
-				Commands->Set_Animation ( obj, "DSP_DOORSWITCH.DSP_DOORSWITCH", true);
+				Commands->Set_Animation ( obj, "DSP_DOORSWITCH.DSP_DOORSWITCH", true, NULL, 0.0f, -1.0f, true);
 			}
 
 			else if (type == 1)//elevator is at top--goto green
@@ -11186,7 +11186,7 @@ DECLARE_SCRIPT(M11_CeilingRepellers_Controller2_JDG, "")//106908
 					GameObject *controller = Commands->Create_Object("Invisible_Object", ropeC_v3);
 					//Commands->Set_Facing ( controller, 75 );
 					Commands->Attach_Script(controller, "Test_Cinematic", "X11D_Repel_Part4.txt");
-					Commands->Set_Animation ( rope_C, "X11D_Rope.X11D_Rope_L", false);
+					Commands->Set_Animation ( rope_C, "X11D_Rope.X11D_Rope_L", false, NULL, 0.0f, -1.0f, true);
 
 					spawned_units++;
 
@@ -11200,7 +11200,7 @@ DECLARE_SCRIPT(M11_CeilingRepellers_Controller2_JDG, "")//106908
 				GameObject * rope_C = Commands->Find_Object ( rope_C_id );
 				if (rope_C != NULL)
 				{
-					Commands->Set_Animation ( rope_C, "X11D_Rope.X11D_Rope_Z", true);
+					Commands->Set_Animation ( rope_C, "X11D_Rope.X11D_Rope_Z", true, NULL, 0.0f, -1.0f, true);
 				}
 			}
 

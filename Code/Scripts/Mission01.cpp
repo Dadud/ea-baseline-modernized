@@ -4445,7 +4445,7 @@ DECLARE_SCRIPT(M01_Tiberium_Cave_Helicopter_JDG, "")
 
 			params.Set_Attack (STAR, 100, 0, true);	
 			
-			Commands->Modify_Action (obj, M01_START_ACTING_JDG, params);
+			Commands->Modify_Action (obj, M01_START_ACTING_JDG, params, true, true);
 
 			float delayTimer = Commands->Get_Random ( 1, 2 );
 			Commands->Send_Custom_Event( obj, obj, 0, M01_MODIFY_YOUR_ACTION_02_JDG, delayTimer );
@@ -7708,7 +7708,7 @@ DECLARE_SCRIPT(M01_HarvesterScript_New_JDG, "")
 		if (action_id == M01_WALKING_WAYPATH_01_JDG)
 		{
 			animation_count = 0;
-			Commands->Set_Animation(obj, "V_NOD_HRVSTR.V_NOD_HRVSTR", false);
+			Commands->Set_Animation(obj, "V_NOD_HRVSTR.V_NOD_HRVSTR", false, NULL, 0.0f, -1.0f, true);
 		}
 	}
 
@@ -7716,7 +7716,7 @@ DECLARE_SCRIPT(M01_HarvesterScript_New_JDG, "")
 	{
 		if (animation_count <= 2)
 		{
-			Commands->Set_Animation(obj, "V_NOD_HRVSTR.V_NOD_HRVSTR", false);
+			Commands->Set_Animation(obj, "V_NOD_HRVSTR.V_NOD_HRVSTR", false, NULL, 0.0f, -1.0f, true);
 			animation_count++;
 		} 
 
@@ -7756,9 +7756,9 @@ DECLARE_SCRIPT(M01_TibField_Guard01_New_JDG, "")
 					if (chemGuy03 != NULL)
 					{
 						int tibFieldConv = Commands->Create_Conversation( "M01_TiberiumField_Conversation", 80, 25, true);
-						Commands->Join_Conversation( chemGuy01, tibFieldConv);
-						Commands->Join_Conversation( chemGuy02, tibFieldConv);
-						Commands->Join_Conversation( chemGuy03, tibFieldConv);
+						Commands->Join_Conversation( chemGuy01, tibFieldConv, true, true, false);
+						Commands->Join_Conversation( chemGuy02, tibFieldConv, true, true, false);
+						Commands->Join_Conversation( chemGuy03, tibFieldConv, true, true, false);
 						Commands->Start_Conversation( tibFieldConv,  tibFieldConv );
 					}
 				}
@@ -8306,7 +8306,7 @@ DECLARE_SCRIPT(M01_DetentionCiv_Air_Evac_Waypath_JDG, "")
 	{
 		if (stricmp(anim, "XG_TransprtBone.XG_EV1_PathA") == 0)
 		{
-			Commands->Set_Animation ( obj, "XG_TransprtBone.XG_EV1_Pathloop", true );
+			Commands->Set_Animation ( obj, "XG_TransprtBone.XG_EV1_Pathloop", true , NULL, 0.0f, -1.0f, true);
 		}
 
 		else if (stricmp(anim, "XG_TransprtBone.XG_EV1_PathZ") == 0)
@@ -8321,7 +8321,7 @@ DECLARE_SCRIPT(M01_DetentionCiv_Air_Evac_Waypath_JDG, "")
 		{
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
-					Commands->Set_Animation ( obj, "XG_TransprtBone.XG_EV1_PathZ", false );
+					Commands->Set_Animation ( obj, "XG_TransprtBone.XG_EV1_PathZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -8348,7 +8348,7 @@ DECLARE_SCRIPT(M01_DetentionCiv_Air_Evac_Chopper_JDG, "")
 	{
 		if (stricmp(anim, "v_GDI_trnspt.XG_EV1_trnsA") == 0)
 		{
-			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV1_trnsloop", true );
+			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV1_trnsloop", true , NULL, 0.0f, -1.0f, true);
 
 			Commands->Send_Custom_Event ( obj, obj, 0, M01_DO_END_MISSION_CHECK_JDG, 2 );
 
@@ -8384,7 +8384,7 @@ DECLARE_SCRIPT(M01_DetentionCiv_Air_Evac_Chopper_JDG, "")
 		{
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
-					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV1_trnsz", false );
+					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV1_trnsz", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 
@@ -8473,7 +8473,7 @@ DECLARE_SCRIPT(M01_DetentionGDI_Air_Evac_Waypath_JDG, "")
 	{
 		if (stricmp(anim, "XG_TransprtBone.XG_EV1_PathA") == 0)
 		{
-			Commands->Set_Animation ( obj, "XG_TransprtBone.XG_EV1_Pathloop", true );
+			Commands->Set_Animation ( obj, "XG_TransprtBone.XG_EV1_Pathloop", true , NULL, 0.0f, -1.0f, true);
 		}
 
 		else if (stricmp(anim, "XG_TransprtBone.XG_EV1_PathZ") == 0)
@@ -8488,7 +8488,7 @@ DECLARE_SCRIPT(M01_DetentionGDI_Air_Evac_Waypath_JDG, "")
 		{
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
-					Commands->Set_Animation ( obj, "XG_TransprtBone.XG_EV1_PathZ", false );
+					Commands->Set_Animation ( obj, "XG_TransprtBone.XG_EV1_PathZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -8515,7 +8515,7 @@ DECLARE_SCRIPT(M01_DetentionGDI_Air_Evac_Chopper_JDG, "")
 	{
 		if (stricmp(anim, "v_GDI_trnspt.XG_EV1_trnsA") == 0)
 		{
-			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV1_trnsloop", true );
+			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV1_trnsloop", true , NULL, 0.0f, -1.0f, true);
 
 			Commands->Send_Custom_Event ( obj, obj, 0, M01_DO_END_MISSION_CHECK_JDG, 2 );
 
@@ -8551,7 +8551,7 @@ DECLARE_SCRIPT(M01_DetentionGDI_Air_Evac_Chopper_JDG, "")
 		{
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
-					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV1_trnsz", false );
+					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV1_trnsz", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 
@@ -10623,7 +10623,7 @@ DECLARE_SCRIPT(M01_PaintballRoom_ChatterController_JDG, "")//107554
 				if (nodguy01 != NULL)
 				{
 					int paintball_alert_conv = Commands->Create_Conversation( "M01_Paintball_Intruder_Conversation_02", 95, 20, true);
-					Commands->Join_Conversation( nodguy01, paintball_alert_conv);
+					Commands->Join_Conversation( nodguy01, paintball_alert_conv, true, true, false);
 					Commands->Start_Conversation( paintball_alert_conv,  paintball_alert_conv );
 				}
 			}
@@ -10634,7 +10634,7 @@ DECLARE_SCRIPT(M01_PaintballRoom_ChatterController_JDG, "")//107554
 				if (nodguy02 != NULL)
 				{
 					int paintball_alert_conv = Commands->Create_Conversation( "M01_Paintball_Intruder_Conversation_02", 95, 20, true);
-					Commands->Join_Conversation( nodguy02, paintball_alert_conv);
+					Commands->Join_Conversation( nodguy02, paintball_alert_conv, true, true, false);
 					Commands->Start_Conversation( paintball_alert_conv,  paintball_alert_conv );
 				}
 			}
@@ -10645,7 +10645,7 @@ DECLARE_SCRIPT(M01_PaintballRoom_ChatterController_JDG, "")//107554
 				if (nodguy03 != NULL)
 				{
 					int paintball_alert_conv = Commands->Create_Conversation( "M01_Paintball_Intruder_Conversation_01", 95, 20, true);
-					Commands->Join_Conversation( nodguy03, paintball_alert_conv);
+					Commands->Join_Conversation( nodguy03, paintball_alert_conv, true, true, false);
 					Commands->Start_Conversation( paintball_alert_conv,  paintball_alert_conv );
 				}
 			}
@@ -10656,7 +10656,7 @@ DECLARE_SCRIPT(M01_PaintballRoom_ChatterController_JDG, "")//107554
 				if (nodguy04 != NULL)
 				{
 					int paintball_alert_conv = Commands->Create_Conversation( "M01_Paintball_Intruder_Conversation_01", 95, 20, true);
-					Commands->Join_Conversation( nodguy04, paintball_alert_conv);
+					Commands->Join_Conversation( nodguy04, paintball_alert_conv, true, true, false);
 					Commands->Start_Conversation( paintball_alert_conv,  paintball_alert_conv );
 				}
 			}
@@ -10667,7 +10667,7 @@ DECLARE_SCRIPT(M01_PaintballRoom_ChatterController_JDG, "")//107554
 				if (nodguy05 != NULL)
 				{
 					int paintball_alert_conv = Commands->Create_Conversation( "M01_Paintball_Intruder_Conversation_03", 95, 20, true);
-					Commands->Join_Conversation( nodguy05, paintball_alert_conv);
+					Commands->Join_Conversation( nodguy05, paintball_alert_conv, true, true, false);
 					Commands->Start_Conversation( paintball_alert_conv,  paintball_alert_conv );
 				}
 			}
@@ -10678,7 +10678,7 @@ DECLARE_SCRIPT(M01_PaintballRoom_ChatterController_JDG, "")//107554
 				if (nodguy06 != NULL)
 				{
 					int paintball_alert_conv = Commands->Create_Conversation( "M01_Paintball_Intruder_Conversation_03", 95, 20, true);
-					Commands->Join_Conversation( nodguy06, paintball_alert_conv);
+					Commands->Join_Conversation( nodguy06, paintball_alert_conv, true, true, false);
 					Commands->Start_Conversation( paintball_alert_conv,  paintball_alert_conv );
 				}
 			}
@@ -11875,14 +11875,14 @@ DECLARE_SCRIPT(M01_Church_EvacController_JDG, "")//103394
 			Commands->Attach_To_Object_Bone( sender, troopbone, "Troop_L" );
 			if(troopbone)
 			{
-				Commands->Set_Animation ( troopbone, "XG_EV5_troopBN.XG_EV5_troopBN", false);
+				Commands->Set_Animation ( troopbone, "XG_EV5_troopBN.XG_EV5_troopBN", false, NULL, 0.0f, -1.0f, true);
 			}
 			else
 			{
 				Commands->Debug_Message("troopbone not created yet");
 			}
 			
-			Commands->Set_Animation ( sender, "S_A_Human.XG_EV5_troop", false );
+			Commands->Set_Animation ( sender, "S_A_Human.XG_EV5_troop", false , NULL, 0.0f, -1.0f, true);
 		}
 	}
 
@@ -11939,7 +11939,7 @@ DECLARE_SCRIPT(M01_ChurchArea_Air_Evac_Rope_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************rope has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeZ", false );
+					Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -11973,7 +11973,7 @@ DECLARE_SCRIPT(M01_ChurchArea_Air_Evac_Waypath_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************waypath has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathZ", false );
+					Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -11984,7 +11984,7 @@ DECLARE_SCRIPT(M01_ChurchArea_Air_Evac_Chopper_JDG, "")
 {
 	void Created( GameObject * obj ) 
 	{
-		Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsA", false );
+		Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsA", false , NULL, 0.0f, -1.0f, true);
 		Commands->Debug_Message ( "**********************script attached to evac chopper\n" );
 		Commands->Set_Shield_Type ( obj, "Blamo" );
 		Commands->Enable_Hibernation( obj, false );
@@ -12010,7 +12010,7 @@ DECLARE_SCRIPT(M01_ChurchArea_Air_Evac_Chopper_JDG, "")
 		{
 			Commands->Debug_Message ( "**********************chopper has finished entry anim\n" );
 			Vector3 evacLocation = Commands->Get_Position ( obj );
-			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsL", true );
+			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsL", true , NULL, 0.0f, -1.0f, true);
 
 			GameObject * loveshackNun = Commands->Find_Object ( M01_CHURCH_LOVESHACK_NUN_ID ); 
 			GameObject * churchNun = Commands->Find_Object ( M01_CHURCH_INTERIOR_NUN_ID );
@@ -12047,7 +12047,7 @@ DECLARE_SCRIPT(M01_ChurchArea_Air_Evac_Chopper_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************helicopter has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsz", false );
+					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsz", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 
@@ -12604,7 +12604,7 @@ DECLARE_SCRIPT(M01_BarnArea_Air_Evac_Rope_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************rope has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeZ", false );
+					Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -12638,7 +12638,7 @@ DECLARE_SCRIPT(M01_BarnArea_Air_Evac_Waypath_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************waypath has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathZ", false );
+					Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -12649,7 +12649,7 @@ DECLARE_SCRIPT(M01_BarnArea_Air_Evac_Chopper_JDG, "")
 {
 	void Created( GameObject * obj ) 
 	{
-		Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsA", false );
+		Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsA", false , NULL, 0.0f, -1.0f, true);
 		Commands->Debug_Message ( "**********************script attached to evac chopper\n" );
 		Commands->Set_Shield_Type ( obj, "Blamo" );
 		Commands->Enable_Hibernation( obj, false );
@@ -12694,7 +12694,7 @@ DECLARE_SCRIPT(M01_BarnArea_Air_Evac_Chopper_JDG, "")
 		{
 			Commands->Debug_Message ( "**********************chopper has finished entry anim\n" );
 			Vector3 evacLocation = Commands->Get_Position ( obj );
-			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsL", true );
+			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsL", true , NULL, 0.0f, -1.0f, true);
 
 			GameObject * barnCiv01 = Commands->Find_Object ( M01_BARN_PRISONER_01_ID );
 			GameObject * barnCiv02 = Commands->Find_Object ( M01_BARN_PRISONER_02_ID );
@@ -12731,7 +12731,7 @@ DECLARE_SCRIPT(M01_BarnArea_Air_Evac_Chopper_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************helicopter has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsz", false );
+					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsz", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 
@@ -13314,7 +13314,7 @@ DECLARE_SCRIPT(M01_GDIBasePOW_Air_Evac_Rope_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************rope has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeZ", false );
+					Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -13350,7 +13350,7 @@ DECLARE_SCRIPT(M01_GDIBasePOW_Air_Evac_Waypath_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************waypath has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathZ", false );
+					Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -13404,7 +13404,7 @@ DECLARE_SCRIPT(M01_GDIBaseCommander_Air_Evac_Waypath_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************waypath has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathZ", false );
+					Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -13439,7 +13439,7 @@ DECLARE_SCRIPT(M01_GDIBaseCommander_Air_Evac_Rope_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************rope has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeZ", false );
+					Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -15248,7 +15248,7 @@ DECLARE_SCRIPT(M01_GDIBase_LightTank_JDG, "")//M01_TAILGUNAREA_NOD_LIGHTTANK_JDG
 					params.Set_Attack( STAR, tankRange, tankAccuracy, true );
 					params.AttackActive = true;
 
-					Commands->Modify_Action ( obj, M01_WALKING_WAYPATH_02_JDG, params );
+					Commands->Modify_Action ( obj, M01_WALKING_WAYPATH_02_JDG, params , true, true);
 				}
 				break;
 		}
@@ -15565,14 +15565,14 @@ DECLARE_SCRIPT(M01_BarnArea_EvacMonitor_JDG, "")//M01_BARNAREA_EVAC_MONITOR_JDG
 			Commands->Attach_To_Object_Bone( sender, troopbone, "Troop_L" );
 			if(troopbone)
 			{
-				Commands->Set_Animation ( troopbone, "XG_EV5_troopBN.XG_EV5_troopBN", false);
+				Commands->Set_Animation ( troopbone, "XG_EV5_troopBN.XG_EV5_troopBN", false, NULL, 0.0f, -1.0f, true);
 			}
 			else
 			{
 				Commands->Debug_Message("troopbone not created yet");
 			}
 			
-			Commands->Set_Animation ( sender, "S_A_Human.XG_EV5_troop", false );
+			Commands->Set_Animation ( sender, "S_A_Human.XG_EV5_troop", false , NULL, 0.0f, -1.0f, true);
 		}
 
 		else if (param == M01_SEND_BARN_CIVILIANS_RESCUE_CHINOOK_JDG)//a gdi guy is waiting for evac--call in a helicopter
@@ -17497,7 +17497,7 @@ DECLARE_SCRIPT(M01_GDIBaseCommander_Air_Evac_Chopper_JDG, "")
 {
 	void Created( GameObject * obj ) 
 	{
-		Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsA", false );
+		Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsA", false , NULL, 0.0f, -1.0f, true);
 		Commands->Debug_Message ( "**********************script attached to evac chopper\n" );
 		Commands->Set_Shield_Type ( obj, "Blamo" );
 		Commands->Enable_Hibernation( obj, false );
@@ -17523,7 +17523,7 @@ DECLARE_SCRIPT(M01_GDIBaseCommander_Air_Evac_Chopper_JDG, "")
 		{
 			Commands->Debug_Message ( "**********************chopper has finished entry anim\n" );
 			Vector3 evacLocation = Commands->Get_Position ( obj );
-			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsL", true );
+			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsL", true , NULL, 0.0f, -1.0f, true);
 
 			GameObject * gdiBaseCommander = Commands->Find_Object ( 106050 );
 			if (gdiBaseCommander != NULL)
@@ -17559,7 +17559,7 @@ DECLARE_SCRIPT(M01_GDIBaseCommander_Air_Evac_Chopper_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************helicopter has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsz", false );
+					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsz", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 
@@ -17708,14 +17708,14 @@ DECLARE_SCRIPT(M01_GDIBaseCommander_EvacController_JDG, "")//106694
 				Commands->Attach_To_Object_Bone( sender, troopbone, "Troop_L" );
 				if(troopbone)
 				{
-					Commands->Set_Animation ( troopbone, "XG_EV5_troopBN.XG_EV5_troopBN", false);
+					Commands->Set_Animation ( troopbone, "XG_EV5_troopBN.XG_EV5_troopBN", false, NULL, 0.0f, -1.0f, true);
 				}
 				else
 				{
 					Commands->Debug_Message("troopbone not created yet");
 				}
 				
-				Commands->Set_Animation ( sender, "S_A_Human.XG_EV5_troop", false );
+				Commands->Set_Animation ( sender, "S_A_Human.XG_EV5_troop", false , NULL, 0.0f, -1.0f, true);
 			}
 		}
 	}
@@ -17838,14 +17838,14 @@ DECLARE_SCRIPT(M01_GDIBase_POWEncounter02_Controller_JDG, "")//M01_GDIBASE_POWSC
 			Commands->Attach_To_Object_Bone( sender, troopbone, "Troop_L" );
 			if(troopbone)
 			{
-				Commands->Set_Animation ( troopbone, "XG_EV5_troopBN.XG_EV5_troopBN", false);
+				Commands->Set_Animation ( troopbone, "XG_EV5_troopBN.XG_EV5_troopBN", false, NULL, 0.0f, -1.0f, true);
 			}
 			else
 			{
 				Commands->Debug_Message("troopbone not created yet");
 			}
 			
-			Commands->Set_Animation ( sender, "S_A_Human.XG_EV5_troop", false );
+			Commands->Set_Animation ( sender, "S_A_Human.XG_EV5_troop", false , NULL, 0.0f, -1.0f, true);
 		}
 
 		else if (param == M01_MODIFY_YOUR_ACTION_JDG)//a gdi guy is waiting for evac--call in a helicopter
@@ -17892,7 +17892,7 @@ DECLARE_SCRIPT(M01_GDIBasePOW_Air_Evac_Chopper_JDG, "")
 {
 	void Created( GameObject * obj ) 
 	{
-		Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsA", false );
+		Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsA", false , NULL, 0.0f, -1.0f, true);
 		Commands->Debug_Message ( "**********************script attached to evac chopper\n" );
 		Commands->Set_Shield_Type ( obj, "Blamo" );
 		Commands->Enable_Hibernation( obj, false );
@@ -17918,7 +17918,7 @@ DECLARE_SCRIPT(M01_GDIBasePOW_Air_Evac_Chopper_JDG, "")
 		{
 			Commands->Debug_Message ( "**********************chopper has finished entry anim\n" );
 			Vector3 evacLocation = Commands->Get_Position ( obj );
-			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsL", true );
+			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsL", true , NULL, 0.0f, -1.0f, true);
 
 			GameObject * gdiGuy01 = Commands->Find_Object ( M01_GDIBASE_POWSCENE02_POWGUY01_JDG );
 			GameObject * gdiGuy02 = Commands->Find_Object ( M01_GDIBASE_POWSCENE02_POWGUY02_JDG );
@@ -17949,7 +17949,7 @@ DECLARE_SCRIPT(M01_GDIBasePOW_Air_Evac_Chopper_JDG, "")
 			case M01_MODIFY_YOUR_ACTION_JDG: 
 				{
 					Commands->Debug_Message ( "*******************************helicopter has received custom to goto exit anim\n" );
-					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsz", false );
+					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsz", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 
@@ -18549,7 +18549,7 @@ DECLARE_SCRIPT(M01_Initial_Gunboat_Script_JDG, "")//M01_TURRETBEACH_GUNBOAT_ID	1
 
 			params.AttackActive		= true;
 			params.AttackCheckBlocked = false;
-			Commands->Modify_Action (obj, M01_WALKING_WAYPATH_02_JDG, params);
+			Commands->Modify_Action (obj, M01_WALKING_WAYPATH_02_JDG, params, true, true);
 
 			float delayTimer = Commands->Get_Random ( 4, 6 );
 			Commands->Send_Custom_Event( obj, obj, 0, M01_MODIFY_YOUR_ACTION_03_JDG, delayTimer );
@@ -18564,7 +18564,7 @@ DECLARE_SCRIPT(M01_Initial_Gunboat_Script_JDG, "")//M01_TURRETBEACH_GUNBOAT_ID	1
 			//params.WaypathID = 101497;
 			params.AttackActive	= false;
 
-			Commands->Modify_Action (obj, M01_WALKING_WAYPATH_02_JDG, params);
+			Commands->Modify_Action (obj, M01_WALKING_WAYPATH_02_JDG, params, true, true);
 
 			float delayTimer = Commands->Get_Random ( 0, 2 );
 			Commands->Send_Custom_Event( obj, obj, 0, M01_MODIFY_YOUR_ACTION_03_JDG, delayTimer );

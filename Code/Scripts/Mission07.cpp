@@ -2184,7 +2184,7 @@ DECLARE_SCRIPT(M07_Inn_Apache, "")
 			params.Set_Attack (enemy, 250.0f, 0.0f, 1);
 			params.WaypathID = 100687;
 			params.MovePathfind = false;
-			Commands->Modify_Action (obj, INN_PATROL, params);
+			Commands->Modify_Action (obj, INN_PATROL, params, true, true);
 
 			Commands->Start_Timer(obj, this, 6.0f, ATTACK_OVER);
 		}
@@ -2596,7 +2596,7 @@ DECLARE_SCRIPT(M07_Mobile_Radar, "")
 
 	void Created (GameObject * obj)
 	{
-		Commands->Set_Animation(obj, "v_nod_radar.v_nod_radar", true);
+		Commands->Set_Animation(obj, "v_nod_radar.v_nod_radar", true, NULL, 0.0f, -1.0f, true);
 	}
 
 	void Damaged(GameObject * obj, GameObject * damager, float amount)
@@ -4645,7 +4645,7 @@ DECLARE_SCRIPT(M07_Triangle_Apache, "")
 			params.Set_Movement( Vector3(0,0,0), RUN, 1.5f );
 			params.Set_Attack (enemy, 250.0f, 0.0f, 1);
 			params.WaypathID = curr_waypath;
-			Commands->Modify_Action (obj, TRIANGLE_PATROL, params);
+			Commands->Modify_Action (obj, TRIANGLE_PATROL, params, true, true);
 
 			Commands->Start_Timer(obj, this, 6.0f, ATTACK_OVER);
 		}
@@ -5356,7 +5356,7 @@ DECLARE_SCRIPT(M07_E10_Tank, "")
 			params.Set_Attack(Commands->Find_Object(m07_player_vehicle_id), 40.0f, 1.0f, true);
 			params.AttackCheckBlocked = false;
 			params.MoveFollow = true;
-			Commands->Modify_Action (obj, GO_PLAYER_VEHICLE, params);
+			Commands->Modify_Action (obj, GO_PLAYER_VEHICLE, params, true, true);
 		}
 	}
 
@@ -5967,13 +5967,13 @@ DECLARE_SCRIPT(M07_Inn_Evac, "")//104496
 			Commands->Attach_Script(evacWaypath, "M07_Inn_Evac_Trajectory", "");
 			Commands->Set_Model ( evacWaypath, "XG_EV5_Path" );
 			Commands->Set_Facing ( evacWaypath, evacFacing );
-			Commands->Set_Animation ( evacWaypath, "XG_EV5_Path.XG_EV5_PathA", false );
+			Commands->Set_Animation ( evacWaypath, "XG_EV5_Path.XG_EV5_PathA", false , NULL, 0.0f, -1.0f, true);
 			Commands->Start_Timer (obj, this, 130.0f/30.0f, LOWER_ROPE);
 			evac_waypath_id = Commands->Get_ID(evacWaypath);
 			
 			GameObject *evacChopper = Commands->Create_Object_At_Bone( evacWaypath, "GDI_Transport_Helicopter_Flyover", "BN_Trajectory" );
 			Commands->Attach_Script(evacChopper, "M07_Inn_Evac_Helicopter", "");
-			Commands->Set_Animation ( evacChopper, "v_GDI_trnspt.XG_EV5_trnsA", false );
+			Commands->Set_Animation ( evacChopper, "v_GDI_trnspt.XG_EV5_trnsA", false , NULL, 0.0f, -1.0f, true);
 			Commands->Attach_To_Object_Bone( evacChopper, evacWaypath, "BN_Trajectory" );
 			evac_helicopter_id = Commands->Get_ID ( evacChopper );
 
@@ -6018,7 +6018,7 @@ DECLARE_SCRIPT(M07_Inn_Evac, "")//104496
 			Commands->Attach_Script(evacRope, "M07_Inn_Evac_Rope", "");
 			Commands->Set_Model ( evacRope, "XG_EV5_rope" );
 			Commands->Set_Facing ( evacRope, evacFacing );
-			Commands->Set_Animation ( evacRope, "XG_EV5_rope.XG_EV5_ropeA", false );
+			Commands->Set_Animation ( evacRope, "XG_EV5_rope.XG_EV5_ropeA", false , NULL, 0.0f, -1.0f, true);
 			evac_rope_id = Commands->Get_ID ( evacRope );
 		}
 
@@ -6063,7 +6063,7 @@ DECLARE_SCRIPT(M07_Inn_Evac_Climb, "Dead6_ID=0:int")
 		GameObject * dead6 = Commands->Find_Object(dead6_id);
 		Commands->Attach_Script(dead6, "M07_Climb_Rope", "");
 		Commands->Attach_To_Object_Bone(dead6, obj, "Troop_L" );
-		Commands->Set_Animation ( obj, "XG_EV5_troopBN.XG_EV5_troopBN", false );
+		Commands->Set_Animation ( obj, "XG_EV5_troopBN.XG_EV5_troopBN", false , NULL, 0.0f, -1.0f, true);
 	}
 
 	void Animation_Complete(GameObject * obj, const char *anim)
@@ -6108,7 +6108,7 @@ DECLARE_SCRIPT(M07_Inn_Evac_Rope, "")
 	{
 		if (stricmp(anim, "XG_EV5_rope.XG_EV5_ropeA") == 0)
 		{
-			Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeL", true );
+			Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeL", true , NULL, 0.0f, -1.0f, true);
 		}
 
 		else if (stricmp(anim, "XG_EV5_rope.XG_EV5_ropeZ") == 0)
@@ -6123,7 +6123,7 @@ DECLARE_SCRIPT(M07_Inn_Evac_Rope, "")
 		{
 			case M07_INN_HELICOPTER_OUT: 
 				{
-					Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeZ", false );
+					Commands->Set_Animation ( obj, "XG_EV5_rope.XG_EV5_ropeZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -6136,7 +6136,7 @@ DECLARE_SCRIPT(M07_Inn_Evac_Trajectory, "")
 	{
 		if (stricmp(anim, "XG_EV5_Path.XG_EV5_PathA") == 0)
 		{
-			Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathL", true );
+			Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathL", true , NULL, 0.0f, -1.0f, true);
 		}
 
 		else if (stricmp(anim, "XG_EV5_Path.XG_EV5_PathZ") == 0)
@@ -6151,7 +6151,7 @@ DECLARE_SCRIPT(M07_Inn_Evac_Trajectory, "")
 		{
 			case M07_INN_HELICOPTER_OUT: 
 				{
-					Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathZ", false );
+					Commands->Set_Animation ( obj, "XG_EV5_Path.XG_EV5_PathZ", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 		}
@@ -6171,7 +6171,7 @@ DECLARE_SCRIPT(M07_Inn_Evac_Helicopter, "")
 	{
 		if (stricmp(anim, "v_GDI_trnspt.XG_EV5_trnsA") == 0)
 		{
-			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsL", true );
+			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsL", true , NULL, 0.0f, -1.0f, true);
 			Commands->Enable_Collisions ( obj );
 
 			
@@ -6190,7 +6190,7 @@ DECLARE_SCRIPT(M07_Inn_Evac_Helicopter, "")
 			case M07_INN_HELICOPTER_OUT: 
 				{
 					Commands->Disable_Physical_Collisions ( obj );
-					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsz", false );
+					Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV5_trnsz", false , NULL, 0.0f, -1.0f, true);
 				}
 				break;
 
@@ -6314,7 +6314,7 @@ DECLARE_SCRIPT(M07_Alley_Vehicle, "Waypath_ID=0:int")
 			params.Set_Movement( Vector3(0,0,0), 0.0f, 1.5f );
 			params.Set_Attack (enemy, 250.0f, 0.0f, 0);
 			params.WaypathID = waypath_id;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 
 			Commands->Start_Timer (obj, this, 5.0f, ATTACK_OVER);
 		}
@@ -6338,7 +6338,7 @@ DECLARE_SCRIPT(M07_Alley_Vehicle, "Waypath_ID=0:int")
 			params.Set_Movement( Vector3(0,0,0), 0.0f, 1.5f );
 			params.Set_Attack (damager, 250.0f, 0.0f, 0);
 			params.WaypathID = waypath_id;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 
 			Commands->Start_Timer (obj, this, 5.0f, ATTACK_OVER);
 		}
@@ -6355,7 +6355,7 @@ DECLARE_SCRIPT(M07_Alley_Vehicle, "Waypath_ID=0:int")
 			params.Set_Basic( this, INNATE_PRIORITY_ENEMY_SEEN + 5, WAYPATH );
 			params.Set_Movement( Vector3(0,0,0), 1.0f, 1.5f );
 			params.WaypathID = waypath_id;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 
 		}
 		
@@ -6461,7 +6461,7 @@ DECLARE_SCRIPT(M07_Bridge_Overlook_Apache, "")
 			params.Set_Movement( Vector3(0,0,0), RUN, 1.5f );
 			params.Set_Attack (enemy, 250.0f, 0.0f, 1);
 			params.WaypathID = 109151;
-			Commands->Modify_Action (obj, INN_PATROL, params);
+			Commands->Modify_Action (obj, INN_PATROL, params, true, true);
 
 			Commands->Start_Timer(obj, this, 6.0f, ATTACK_OVER);
 		}

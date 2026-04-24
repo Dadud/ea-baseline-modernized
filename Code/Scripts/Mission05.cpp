@@ -2295,7 +2295,7 @@ DECLARE_SCRIPT(M05_Chateau_Escapee, "")
 		ActionParamsStruct params;
 
 		Commands->Innate_Disable(obj);
-		Commands->Set_Animation ( obj, "S_A_HUMAN.H_A_601A", true );
+		Commands->Set_Animation ( obj, "S_A_HUMAN.H_A_601A", true , NULL, 0.0f, -1.0f, true);
 		Commands->Set_Player_Type(obj, SCRIPT_PLAYERTYPE_GDI );
 	}
 
@@ -2303,7 +2303,7 @@ DECLARE_SCRIPT(M05_Chateau_Escapee, "")
 	{
 		if (type == M05_CUSTOM_ACTIVATE)
 		{
-			Commands->Set_Animation ( obj, "S_A_HUMAN.H_A_7002", true );
+			Commands->Set_Animation ( obj, "S_A_HUMAN.H_A_7002", true , NULL, 0.0f, -1.0f, true);
 
 			Vector3 myPosition = Commands->Get_Position ( obj );
 			Commands->Create_Object ( "Visceroid", myPosition );
@@ -2492,7 +2492,7 @@ DECLARE_SCRIPT(M05_Escapee_Windows, "")
 			params.Set_Basic( this, INNATE_PRIORITY_ENEMY_SEEN, DESTROY_WINDOWS );
 			params.Set_Attack (window2, 250.0f, 0.0f, 1);
 			params.AttackCheckBlocked = false;
-			Commands->Modify_Action (obj, DESTROY_WINDOWS, params);
+			Commands->Modify_Action (obj, DESTROY_WINDOWS, params, true, true);
 
 			Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(window2), nullptr);
 		}
@@ -3070,7 +3070,7 @@ DECLARE_SCRIPT(M05_Park_Apache, "")
 			params.Set_Movement( Vector3(0,0,0), RUN, 1.5f );
 			params.Set_Attack (enemy, 250.0f, 0.0f, 1);
 			params.WaypathID = 100722;
-			Commands->Modify_Action (obj, WAYPATH, params);
+			Commands->Modify_Action (obj, WAYPATH, params, true, true);
 
 			Commands->Start_Timer(obj, this, 6.0f, ATTACK_OVER);
 		}
@@ -6210,7 +6210,7 @@ DECLARE_SCRIPT(M05_Cathedral_Apache, "Apache_ID=0:int")  // 100287
 			params.Set_Attack (Commands->Find_Object(fire_loc[random]), 100, 0.5f, true);
 			params.WaypathID = 100300;
 			params.AttackCheckBlocked = false;
-			Commands->Modify_Action (obj, 10, params);
+			Commands->Modify_Action (obj, 10, params, true, true);
 		}
 		if(timer_id == 2)
 		{
@@ -6219,7 +6219,7 @@ DECLARE_SCRIPT(M05_Cathedral_Apache, "Apache_ID=0:int")  // 100287
 			params.Set_Attack (Commands->Find_Object(fire_loc[random]), 100, 0.5f, true);
 			params.WaypathID = 100310;
 			params.AttackCheckBlocked = false;
-			Commands->Modify_Action (obj, 10, params);
+			Commands->Modify_Action (obj, 10, params, true, true);
 		}
 
 		Commands->Start_Timer(obj, this, 6.0f, apache_id);
@@ -6252,7 +6252,7 @@ DECLARE_SCRIPT(M05_Cathedral_Apache, "Apache_ID=0:int")  // 100287
 					params.Set_Attack (enemy, 100, 0.5f, true);
 					params.WaypathID = 100300;
 					params.AttackCheckBlocked = false;
-					Commands->Modify_Action (obj, 10, params);
+					Commands->Modify_Action (obj, 10, params, true, true);
 				}
 				break;
 			case 2:
@@ -6262,7 +6262,7 @@ DECLARE_SCRIPT(M05_Cathedral_Apache, "Apache_ID=0:int")  // 100287
 					params.Set_Attack (enemy, 100, 0.5f, true);
 					params.WaypathID = 100310;
 					params.AttackCheckBlocked = false;
-					Commands->Modify_Action (obj, 10, params);
+					Commands->Modify_Action (obj, 10, params, true, true);
 				}
 				break;
 			}
@@ -6438,7 +6438,7 @@ DECLARE_SCRIPT(M05_Vehicle_Dec, "")
 
 			params.Set_Basic( this, INNATE_PRIORITY_ENEMY_SEEN + 5, ATTACKING );
 			params.Set_Attack (NULL, 250.0f, 0.0f, 1);
-			Commands->Modify_Action (obj, ATTACKING, params);
+			Commands->Modify_Action (obj, ATTACKING, params, true, true);
 			
 		}
 		
@@ -6680,7 +6680,7 @@ DECLARE_SCRIPT(M05_Explode_Debris, "")
 	//	params.Set_Basic(this, 100, 10);
 	//	params.Set_Animation("X5A_Debris.X5A_Debris_Boom", true);
 	//	Commands->Action_Play_Animation(obj, params);
-		Commands->Set_Animation(obj, "X5A_Debris.X5A_Debris_Boom", false);
+		Commands->Set_Animation(obj, "X5A_Debris.X5A_Debris_Boom", false, NULL, 0.0f, -1.0f, true);
 		
 		Commands->Start_Timer (obj, this, 1.0f, 10);
 		Commands->Create_Sound("Medium Explosion Sound Twiddler", Commands->Get_Position(obj), obj);
@@ -7520,7 +7520,7 @@ DECLARE_SCRIPT(M05_APC_Deploy, "Preset:string, Soldier_Qty=0:int, Fire_Gun=1:int
 
 	void Deploy_Soldiers(GameObject * obj)
 	{
-		Commands->Set_Animation(obj, "V_NOD_APC.V_NOD_APC", 0);
+		Commands->Set_Animation(obj, "V_NOD_APC.V_NOD_APC", 0, NULL, 0.0f, -1.0f, true);
 		int soldier_qty = Get_Int_Parameter("Soldier_Qty");
 		if(soldier_qty > 0)
 		{
@@ -7598,7 +7598,7 @@ DECLARE_SCRIPT(M05_APC_Deploy_Soldier, "APC_ID=0:int")
 	
 	void Created (GameObject * obj)
 	{
-		Commands->Set_Animation(obj, "S_A_Human.H_A_XG_NAPC_OUT", 0);
+		Commands->Set_Animation(obj, "S_A_Human.H_A_XG_NAPC_OUT", 0, NULL, 0.0f, -1.0f, true);
 		Commands->Enable_Hibernation (obj, false);		
 	}
 	

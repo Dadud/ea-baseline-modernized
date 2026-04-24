@@ -7981,7 +7981,7 @@ DECLARE_SCRIPT(M04_MissileRoom_Target01_JDG, "")//100420
 				Commands->Monitor_Sound ( obj, sabotageSound );
 				Commands->Enable_HUD_Pokable_Indicator ( obj, false );
 				poked_yet = true;
-				Commands->Set_Animation ( obj, "DSP_L4MISSRACK.DSP_L4MISSRACK", false);
+				Commands->Set_Animation ( obj, "DSP_L4MISSRACK.DSP_L4MISSRACK", false, NULL, 0.0f, -1.0f, true);
 				Commands->Send_Custom_Event( obj, Commands->Find_Object (M04_OBJECTIVE_CONTROLLER_JDG), 0, 100, 0 );
 
 				Commands->Send_Custom_Event( obj, obj, 0, M01_MODIFY_YOUR_ACTION_JDG, 0 );//104693
@@ -8072,7 +8072,7 @@ DECLARE_SCRIPT(M04_MissileRoom_Target02_JDG, "")//100421
 				Commands->Monitor_Sound ( obj, sabotageSound );
 				Commands->Enable_HUD_Pokable_Indicator ( obj, false );
 				poked_yet = true;
-				Commands->Set_Animation ( obj, "DSP_L4MISSRACK.DSP_L4MISSRACK", false);
+				Commands->Set_Animation ( obj, "DSP_L4MISSRACK.DSP_L4MISSRACK", false, NULL, 0.0f, -1.0f, true);
 				Commands->Send_Custom_Event( obj, Commands->Find_Object (M04_OBJECTIVE_CONTROLLER_JDG), 0, 110, 0 );
 
 				Commands->Send_Custom_Event( obj, obj, 0, M01_MODIFY_YOUR_ACTION_JDG, 0 );
@@ -8163,7 +8163,7 @@ DECLARE_SCRIPT(M04_MissileRoom_Target03_JDG, "")//100422
 				Commands->Monitor_Sound ( obj, sabotageSound );
 				Commands->Enable_HUD_Pokable_Indicator ( obj, false );
 				poked_yet = true;
-				Commands->Set_Animation ( obj, "DSP_L4MISSRACK.DSP_L4MISSRACK", false);
+				Commands->Set_Animation ( obj, "DSP_L4MISSRACK.DSP_L4MISSRACK", false, NULL, 0.0f, -1.0f, true);
 				Commands->Send_Custom_Event( obj, Commands->Find_Object (M04_OBJECTIVE_CONTROLLER_JDG), 0, 120, 0 );
 
 				Commands->Send_Custom_Event( obj, obj, 0, M01_MODIFY_YOUR_ACTION_JDG, 0 );
@@ -8254,7 +8254,7 @@ DECLARE_SCRIPT(M04_MissileRoom_Target04_JDG, "")//100423
 				Commands->Monitor_Sound ( obj, sabotageSound );
 				Commands->Enable_HUD_Pokable_Indicator ( obj, false );
 				poked_yet = true;
-				Commands->Set_Animation ( obj, "DSP_L4MISSRACK.DSP_L4MISSRACK", false);
+				Commands->Set_Animation ( obj, "DSP_L4MISSRACK.DSP_L4MISSRACK", false, NULL, 0.0f, -1.0f, true);
 				Commands->Send_Custom_Event( obj, Commands->Find_Object (M04_OBJECTIVE_CONTROLLER_JDG), 0, 130, 0 );
 
 				Commands->Send_Custom_Event( obj, obj, 0, M01_MODIFY_YOUR_ACTION_JDG, 0 );
@@ -9577,7 +9577,7 @@ DECLARE_SCRIPT(M04_TorpedoRoom_Target01_JDG, "")//DSP_L4TORPEDO
 
 			else
 			{
-				Commands->Set_Animation ( obj, "DSP_L4TORPEDO.DSP_L4TORPEDO", false);
+				Commands->Set_Animation ( obj, "DSP_L4TORPEDO.DSP_L4TORPEDO", false, NULL, 0.0f, -1.0f, true);
 				
 			}
 		}
@@ -9593,7 +9593,7 @@ DECLARE_SCRIPT(M04_TorpedoRoom_Target01_JDG, "")//DSP_L4TORPEDO
 				Commands->Enable_HUD_Pokable_Indicator ( obj, false );
 				poked_yet = true;
 
-				Commands->Set_Animation ( obj, "DSP_L4TORPEDO.DSP_L4TORPEDO", false);
+				Commands->Set_Animation ( obj, "DSP_L4TORPEDO.DSP_L4TORPEDO", false, NULL, 0.0f, -1.0f, true);
 				Commands->Send_Custom_Event( obj, Commands->Find_Object (M04_OBJECTIVE_CONTROLLER_JDG), 0, 200, 0 );
 
 				Commands->Send_Custom_Event( obj, obj, 0, M01_MODIFY_YOUR_ACTION_JDG, 0 );
@@ -9643,7 +9643,7 @@ DECLARE_SCRIPT(M04_TorpedoRoom_Target02_JDG, "")//DSP_L4TORPEDOR
 
 			else
 			{
-				Commands->Set_Animation ( obj, "DSP_L4TORPEDOR.DSP_L4TORPEDOR", false);
+				Commands->Set_Animation ( obj, "DSP_L4TORPEDOR.DSP_L4TORPEDOR", false, NULL, 0.0f, -1.0f, true);
 			}
 		}
 	}
@@ -9658,7 +9658,7 @@ DECLARE_SCRIPT(M04_TorpedoRoom_Target02_JDG, "")//DSP_L4TORPEDOR
 				Commands->Enable_HUD_Pokable_Indicator ( obj, false );
 				poked_yet = true;
 
-				Commands->Set_Animation ( obj, "DSP_L4TORPEDOR.DSP_L4TORPEDOR", false);
+				Commands->Set_Animation ( obj, "DSP_L4TORPEDOR.DSP_L4TORPEDOR", false, NULL, 0.0f, -1.0f, true);
 				Commands->Send_Custom_Event( obj, Commands->Find_Object (M04_OBJECTIVE_CONTROLLER_JDG), 0, 210, 0 );
 
 				Commands->Send_Custom_Event( obj, obj, 0, M01_MODIFY_YOUR_ACTION_JDG, 0 );

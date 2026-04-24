@@ -64,8 +64,8 @@ DECLARE_SCRIPT(MDD_Objective_Controller, "")
 			Commands->Attach_Script(camera, "Test_Cinematic", "XG_DemoCam.txt");
 		}
 		int id = Commands->Create_Conversation("Demo_Intro", 50, 500.0f, true);
-		Commands->Join_Conversation(NULL, id);
-		Commands->Join_Conversation(STAR, id);
+		Commands->Join_Conversation(NULL, id, true, true, false);
+		Commands->Join_Conversation(STAR, id, true, true, false);
 		Commands->Start_Conversation(id, 0);
 
 		//DEMO

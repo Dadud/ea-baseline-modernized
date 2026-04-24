@@ -434,7 +434,7 @@ DECLARE_SCRIPT (M09_Mobius_Suit_Objective, "")
 		{
 			GameObject *mobius = Commands->Find_Object (2000010);
 
-			Commands->Set_Animation ( mobius, "h_a_a0a0_l26db", true);
+			Commands->Set_Animation ( mobius, "h_a_a0a0_l26db", true, NULL, 0.0f, -1.0f, true);
 
 			const char *conv_name = ("IDS_M09_D11");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
@@ -454,14 +454,14 @@ DECLARE_SCRIPT (M09_Mobius_Suit_Objective, "")
 			Commands->Give_PowerUp(mobius, "POW_LaserChaingun_AI");
 			Commands->Select_Weapon (mobius, "Weapon_LaserChaingun_Ai" );*/
 			
-			//Commands->Set_Animation ( mobius, "h_a_a0a0_l26da", false);			
+			//Commands->Set_Animation ( mobius, "h_a_a0a0_l26da", false, NULL, 0.0f, -1.0f, true);			
 		}
 
 		if(action_id == 901 && reason == ACTION_COMPLETE_CONVERSATION_ENDED)
 		{
 			GameObject *mobius = Commands->Find_Object (2000010);
 
-			Commands->Set_Animation ( mobius, "h_a_a0a0_l26dc", false);
+			Commands->Set_Animation ( mobius, "h_a_a0a0_l26dc", false, NULL, 0.0f, -1.0f, true);
 
 			Commands->Send_Custom_Event (obj, Commands->Find_Object(2000071), 902, 3, 0.0f);
 		}
@@ -1742,7 +1742,7 @@ DECLARE_SCRIPT (M09_Vehicle_Attack_01, "")
 				params.Set_Attack(STAR, 100.0f, 5.0f, true);
 				params.AttackCheckBlocked = false;
 				params.AttackActive = true;
-				Commands->Modify_Action(obj, 10, params);
+				Commands->Modify_Action(obj, 10, params, true, true);
 				
 				Commands->Start_Timer(obj, this, 5.0f, ATTACK_OVER);
 				
@@ -2311,10 +2311,10 @@ DECLARE_SCRIPT(M09_Chinook_ParaDrop, "Preset:string")
 		GameObject *chinook_rail = Commands->Create_Object("Generic_Cinematic", loc);
 		Commands->Set_Model(chinook_rail, "X5D_Chinookfly");
 		Commands->Set_Facing(chinook_rail, facing);
-		Commands->Set_Animation(chinook_rail, "X5D_Chinookfly.X5D_Chinookfly", false);
+		Commands->Set_Animation(chinook_rail, "X5D_Chinookfly.X5D_Chinookfly", false, NULL, 0.0f, -1.0f, true);
 		GameObject *chinook = Commands->Create_Object("Nod_Chinook", loc);
 		Commands->Set_Facing(chinook, facing);
-		Commands->Set_Animation(chinook, "v_nod_chinook.vf_nod_chinook", true);
+		Commands->Set_Animation(chinook, "v_nod_chinook.vf_nod_chinook", true, NULL, 0.0f, -1.0f, true);
 		Commands->Attach_To_Object_Bone(chinook, chinook_rail, "BN_Chinook_1");
 
 		dead = false;
@@ -2359,7 +2359,7 @@ DECLARE_SCRIPT(M09_Chinook_ParaDrop, "Preset:string")
 				para1 = Commands->Create_Object("Generic_Cinematic", loc);
 				Commands->Set_Facing(para1, facing);
 				Commands->Set_Model(para1, "X5D_Parachute");
-				Commands->Set_Animation(para1, "X5D_Parachute.X5D_ParaC_1", false);
+				Commands->Set_Animation(para1, "X5D_Parachute.X5D_ParaC_1", false, NULL, 0.0f, -1.0f, true);
 				Commands->Create_3D_Sound_At_Bone("parachute_open", para1, "ROOTTRANSFORM");
 				Commands->Attach_Script(para1, "M03_No_More_Parachute", "");
 			}
@@ -2371,7 +2371,7 @@ DECLARE_SCRIPT(M09_Chinook_ParaDrop, "Preset:string")
 				para2 = Commands->Create_Object("Generic_Cinematic", loc);
 				Commands->Set_Facing(para2, facing);
 				Commands->Set_Model(para2, "X5D_Parachute");
-				Commands->Set_Animation(para2, "X5D_Parachute.X5D_ParaC_2", false);
+				Commands->Set_Animation(para2, "X5D_Parachute.X5D_ParaC_2", false, NULL, 0.0f, -1.0f, true);
 				Commands->Create_3D_Sound_At_Bone("parachute_open", para2, "ROOTTRANSFORM");
 				Commands->Attach_Script(para2, "M03_No_More_Parachute", "");
 			}
@@ -2383,7 +2383,7 @@ DECLARE_SCRIPT(M09_Chinook_ParaDrop, "Preset:string")
 				para3 = Commands->Create_Object("Generic_Cinematic", loc);
 				Commands->Set_Facing(para3, facing);
 				Commands->Set_Model(para3, "X5D_Parachute");
-				Commands->Set_Animation(para3, "X5D_Parachute.X5D_ParaC_3", false);
+				Commands->Set_Animation(para3, "X5D_Parachute.X5D_ParaC_3", false, NULL, 0.0f, -1.0f, true);
 				Commands->Create_3D_Sound_At_Bone("parachute_open", para3, "ROOTTRANSFORM");
 				Commands->Attach_Script(para3, "M03_No_More_Parachute", "");
 			}
@@ -2395,7 +2395,7 @@ DECLARE_SCRIPT(M09_Chinook_ParaDrop, "Preset:string")
 			GameObject *box1 = Commands->Create_Object("Generic_Cinematic", loc);
 			Commands->Set_Model(box1, "X5D_Box01");
 			Commands->Set_Facing(box1, facing);
-			Commands->Set_Animation(box1, "X5D_Box01.X5D_Box01", false);
+			Commands->Set_Animation(box1, "X5D_Box01.X5D_Box01", false, NULL, 0.0f, -1.0f, true);
 
 			GameObject *soldier1;
 			soldier1 = Commands->Create_Object_At_Bone(box1, preset, "Box01");
@@ -2405,7 +2405,7 @@ DECLARE_SCRIPT(M09_Chinook_ParaDrop, "Preset:string")
 			Commands->Attach_Script(soldier1, "M09_CheckpointA_Counter", "");
 
 			Commands->Attach_To_Object_Bone( soldier1, box1, "Box01" );
-			Commands->Set_Animation(soldier1, "s_a_human.H_A_X5D_ParaT_1", false);
+			Commands->Set_Animation(soldier1, "s_a_human.H_A_X5D_ParaT_1", false, NULL, 0.0f, -1.0f, true);
 			out++;
 			if ((out - 1) == DIFFICULTY)
 			{
@@ -2421,7 +2421,7 @@ DECLARE_SCRIPT(M09_Chinook_ParaDrop, "Preset:string")
 			GameObject *box2 = Commands->Create_Object("Generic_Cinematic", loc);
 			Commands->Set_Model(box2, "X5D_Box02");
 			Commands->Set_Facing(box2, facing);
-			Commands->Set_Animation(box2, "X5D_Box02.X5D_Box02", false);
+			Commands->Set_Animation(box2, "X5D_Box02.X5D_Box02", false, NULL, 0.0f, -1.0f, true);
 
 			GameObject *soldier2;
 			soldier2 = Commands->Create_Object_At_Bone(box2, preset, "Box02");
@@ -2430,7 +2430,7 @@ DECLARE_SCRIPT(M09_Chinook_ParaDrop, "Preset:string")
 
 			Commands->Attach_Script(soldier2, "M09_CheckpointA_Counter", "");
 
-			Commands->Set_Animation(soldier2, "s_a_human.H_A_X5D_ParaT_2", false);
+			Commands->Set_Animation(soldier2, "s_a_human.H_A_X5D_ParaT_2", false, NULL, 0.0f, -1.0f, true);
 			Commands->Attach_To_Object_Bone( soldier2, box2, "Box02" );
 			out++;
 			if ((out - 1) == DIFFICULTY)
@@ -2447,7 +2447,7 @@ DECLARE_SCRIPT(M09_Chinook_ParaDrop, "Preset:string")
 			GameObject *box3 = Commands->Create_Object("Generic_Cinematic", loc);
 			Commands->Set_Model(box3, "X5D_Box03");
 			Commands->Set_Facing(box3, facing);
-			Commands->Set_Animation(box3, "X5D_Box03.X5D_Box03", false);
+			Commands->Set_Animation(box3, "X5D_Box03.X5D_Box03", false, NULL, 0.0f, -1.0f, true);
 
 			GameObject *soldier3;
 			soldier3 = Commands->Create_Object_At_Bone(box3, preset, "Box03");
@@ -2456,7 +2456,7 @@ DECLARE_SCRIPT(M09_Chinook_ParaDrop, "Preset:string")
 
 			Commands->Attach_Script(soldier3, "M09_CheckpointA_Counter", "");
 
-			Commands->Set_Animation(soldier3, "s_a_human.H_A_X5D_ParaT_3", false);
+			Commands->Set_Animation(soldier3, "s_a_human.H_A_X5D_ParaT_3", false, NULL, 0.0f, -1.0f, true);
 			Commands->Attach_To_Object_Bone( soldier3, box3, "Box03" );
 			out++;
 			if ((out - 1) == DIFFICULTY)
@@ -3924,7 +3924,7 @@ DECLARE_SCRIPT(M09_Evac_Transport, "")  //2000969
 			Commands->Set_Facing(bone, facing);
 			Commands->Attach_Script(bone, "M09_Evac_Bone", "");
 			Commands->Set_Model ( bone, "XG_TransprtBone" );
-			Commands->Set_Animation ( bone, "XG_TransprtBone.XG_EV2_PathA", false );
+			Commands->Set_Animation ( bone, "XG_TransprtBone.XG_EV2_PathA", false , NULL, 0.0f, -1.0f, true);
 			
 			GameObject * chinook = Commands->Create_Object_At_Bone( bone, "GDI_Transport_Helicopter", "XG_TransprtBone" );
 			GameObject * troop = Commands->Create_Object_At_Bone( bone, "GDI_RocketSoldier_2SF", "SPAWNER" );
@@ -3936,7 +3936,7 @@ DECLARE_SCRIPT(M09_Evac_Transport, "")  //2000969
 			Commands->Set_Facing(chinook, facing);
 			Commands->Attach_Script(chinook, "M09_Evac_Helicopter", param1);
 			Commands->Attach_To_Object_Bone ( chinook, bone, "BN_Trajectory" );
-			Commands->Set_Animation ( chinook, "v_GDI_trnspt.XG_EV2_trnsA", false );
+			Commands->Set_Animation ( chinook, "v_GDI_trnspt.XG_EV2_trnsA", false , NULL, 0.0f, -1.0f, true);
 						
 			Commands->Attach_Script(troop, "M09_Gunner", "");
 			Commands->Attach_Script(chinook, "M09_No_Obj_Damage", "");
@@ -3953,7 +3953,7 @@ DECLARE_SCRIPT(M09_Evac_Bone, "")
 	{
 		if (stricmp(anim, "XG_TransprtBone.XG_EV2_PathA") == 0)
 		{
-			Commands->Set_Animation ( obj, "XG_TransprtBone.XG_EV2_Pathloop", true );
+			Commands->Set_Animation ( obj, "XG_TransprtBone.XG_EV2_Pathloop", true , NULL, 0.0f, -1.0f, true);
 		}
 
 	}
@@ -3971,7 +3971,7 @@ DECLARE_SCRIPT(M09_Evac_Helicopter, "Gunner:int")
 			Commands->Start_Timer (obj, this, 3.0f, COLLISION);
 
 			Commands->Send_Custom_Event (obj, Commands->Find_Object(gunner_id), GO, 0, 0.0f);
-			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV2_trnsloop", true );
+			Commands->Set_Animation ( obj, "v_GDI_trnspt.XG_EV2_trnsloop", true , NULL, 0.0f, -1.0f, true);
 		}
 	}
 
@@ -4027,7 +4027,7 @@ DECLARE_SCRIPT(M09_Gunner, "")
 		params.AttackCheckBlocked = true;
 		params.AttackActive = true;
 		
-		Commands->Modify_Action(obj, 10, params);				
+		Commands->Modify_Action(obj, 10, params, true, true);				
 	}
 
 	void Damaged( GameObject * obj, GameObject * damager, float amount )

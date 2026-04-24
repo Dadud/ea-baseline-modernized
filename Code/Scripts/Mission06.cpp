@@ -3485,7 +3485,7 @@ DECLARE_SCRIPT(M06_Resistance_Raider_DLS, "")
 	{
 		Commands->Set_Innate_Is_Stationary(obj, true);
 
-		Commands->Set_Animation(obj, "S_A_HUMAN.H_A_601A", true);
+		Commands->Set_Animation(obj, "S_A_HUMAN.H_A_601A", true, NULL, 0.0f, -1.0f, true);
 
 		Commands->Apply_Damage( obj, 25.0f, "STEEL", nullptr);
 		talking = false;
@@ -5374,11 +5374,11 @@ DECLARE_SCRIPT(M06_Collapse_Zone, "Zone_ID=0:int")
 
 					GameObject * l6_fallfire01 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_fallfire01, "L6_fallfire01" );
-					Commands->Set_Animation(l6_fallfire01, "L6_Fallfire01.L6_Fallfire01", true);
+					Commands->Set_Animation(l6_fallfire01, "L6_Fallfire01.L6_Fallfire01", true, NULL, 0.0f, -1.0f, true);
 
 					GameObject * l6_floorfire01 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_floorfire01, "L6_floorfire01" );
-					Commands->Set_Animation(l6_floorfire01, "L6_floorfire01.L6_floorfire01", true);
+					Commands->Set_Animation(l6_floorfire01, "L6_floorfire01.L6_floorfire01", true, NULL, 0.0f, -1.0f, true);
 				}
 				break;
 			// Staircase leading out of crypt and hallway immediately up that staircase
@@ -5392,11 +5392,11 @@ DECLARE_SCRIPT(M06_Collapse_Zone, "Zone_ID=0:int")
 
 					GameObject * l6_fallfire02 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_fallfire02, "L6_fallfire02" );
-					Commands->Set_Animation(l6_fallfire02, "L6_Fallfire02.L6_Fallfire02", true);
+					Commands->Set_Animation(l6_fallfire02, "L6_Fallfire02.L6_Fallfire02", true, NULL, 0.0f, -1.0f, true);
 
 					GameObject * l6_floorfire02 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_floorfire02, "L6_floorfire02" );
-					Commands->Set_Animation(l6_floorfire02, "L6_floorfire02.L6_floorfire02", true);					
+					Commands->Set_Animation(l6_floorfire02, "L6_floorfire02.L6_floorfire02", true, NULL, 0.0f, -1.0f, true);					
 
 					GameObject * l6_falldust04 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_falldust04, "L6_falldust04" );
@@ -5452,7 +5452,7 @@ DECLARE_SCRIPT(M06_Collapse_Zone, "Zone_ID=0:int")
 
 					GameObject * l6_fallfire03 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_fallfire03, "L6_fallfire03" );
-					Commands->Set_Animation(l6_fallfire03, "L6_Fallfire03.L6_Fallfire03", true);
+					Commands->Set_Animation(l6_fallfire03, "L6_Fallfire03.L6_Fallfire03", true, NULL, 0.0f, -1.0f, true);
 
 					GameObject * l6_falldust09 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_falldust09, "L6_falldust09" );
@@ -5481,7 +5481,7 @@ DECLARE_SCRIPT(M06_Collapse_Zone, "Zone_ID=0:int")
 
 					GameObject * l6_floorfire06 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_floorfire06, "L6_floorfire06" );
-					Commands->Set_Animation(l6_floorfire06, "L6_floorfire06.L6_floorfire06", true);					
+					Commands->Set_Animation(l6_floorfire06, "L6_floorfire06.L6_floorfire06", true, NULL, 0.0f, -1.0f, true);					
 
 					GameObject * l6_falldust18 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_falldust18, "L6_falldust18" );
@@ -5504,18 +5504,18 @@ DECLARE_SCRIPT(M06_Collapse_Zone, "Zone_ID=0:int")
 
 					GameObject * l6_floorfire04 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_floorfire04, "L6_floorfire04" );
-					Commands->Set_Animation(l6_floorfire04, "L6_floorfire04.L6_floorfire04", true);					
+					Commands->Set_Animation(l6_floorfire04, "L6_floorfire04.L6_floorfire04", true, NULL, 0.0f, -1.0f, true);					
 
 					GameObject * l6_floorfire05 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_floorfire05, "L6_floorfire05" );
-					Commands->Set_Animation(l6_floorfire05, "L6_floorfire04.L6_floorfire05", true);
+					Commands->Set_Animation(l6_floorfire05, "L6_floorfire04.L6_floorfire05", true, NULL, 0.0f, -1.0f, true);
 					
 					GameObject * l6_falldust15 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_falldust15, "L6_falldust15" );
 
 					GameObject * l6_fallfire05 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_fallfire05, "L6_fallfire05" );
-					Commands->Set_Animation(l6_fallfire05, "L6_Fallfire05.L6_Fallfire05", true);
+					Commands->Set_Animation(l6_fallfire05, "L6_Fallfire05.L6_Fallfire05", true, NULL, 0.0f, -1.0f, true);
 
 					GameObject * l6_falldust14 = Commands->Create_Object("Invisible_Object", Vector3(0.0f, 0.0f, 0.0f) );
 					Commands->Set_Model ( l6_falldust14, "L6_falldust14" );

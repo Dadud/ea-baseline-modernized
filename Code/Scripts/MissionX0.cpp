@@ -2359,7 +2359,7 @@ DECLARE_SCRIPT ( MX0_A03_NOD_HARVESTER, "" )
 	{
 		if ( obj )
 		{
-			Commands->Set_Animation( obj, "V_NOD_HRVSTR.V_NOD_HRVSTR", false);
+			Commands->Set_Animation( obj, "V_NOD_HRVSTR.V_NOD_HRVSTR", false, NULL, 0.0f, -1.0f, true);
 		}
 	}
 
