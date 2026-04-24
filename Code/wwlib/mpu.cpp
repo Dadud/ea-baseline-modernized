@@ -40,6 +40,7 @@
 #include	"mpu.h"
 #include "math.h"
 #include <assert.h>
+#include <intrin.h>
 
 typedef union {
 	LARGE_INTEGER LargeInt;
@@ -86,6 +87,7 @@ unsigned long Get_CPU_Rate(unsigned long & high)
 
 unsigned long Get_CPU_Clock(unsigned long & high)
 {
+#if !defined(_M_X64)
 	int h;
 	int l;
 	__asm {
@@ -96,6 +98,11 @@ unsigned long Get_CPU_Clock(unsigned long & high)
 	}
 	high = h;
 	return(l);
+#else
+	unsigned __int64 t = __rdtsc();
+	high = (unsigned long)(t >> 32);
+	return (unsigned long)(t & 0xFFFFFFFF);
+#endif
 }
 
 
@@ -126,12 +133,18 @@ static unsigned long TSC_High;
 
 void RDTSC(void)
 {
+#if !defined(_M_X64)
     _asm
     {
         ASM_RDTSC;
         mov     TSC_Low, eax
         mov     TSC_High, edx
     }
+#else
+    unsigned __int64 t = __rdtsc();
+    TSC_Low = (unsigned long)(t & 0xFFFFFFFF);
+    TSC_High = (unsigned long)(t >> 32);
+#endif
 }
 
 
@@ -197,8 +210,13 @@ int Get_RDTSC_CPU_Speed(void)
 			QueryPerformanceCounter(&t1);
 		}
 
+#if !defined(_M_X64)
 		ASM_RDTSC;
 		_asm	mov	stamp0, EAX
+#else
+		unsigned __int64 _t0 = __rdtsc();
+		stamp0 = (unsigned long)(_t0 & 0xFFFFFFFF);
+#endif
 
 		t0.LowPart = t1.LowPart;		// Reset Initial Time
 		t0.HighPart = t1.HighPart;
@@ -211,8 +229,13 @@ int Get_RDTSC_CPU_Speed(void)
 			QueryPerformanceCounter(&t1);
 		}
 
+#if !defined(_M_X64)
 		ASM_RDTSC;
 		_asm	mov	stamp1, EAX
+#else
+		unsigned __int64 _t1 = __rdtsc();
+		stamp1 = (unsigned long)(_t1 & 0xFFFFFFFF);
+#endif
 
 
 		cycles = stamp1 - stamp0;					// # of cycles passed between reads
