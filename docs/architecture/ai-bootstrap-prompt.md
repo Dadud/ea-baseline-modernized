@@ -1,5 +1,7 @@
 # AI Bootstrap Prompt — EA-Baseline Modernization
 
+> **Status:** compact legacy bootstrap note. Prefer `docs/architecture/ai-handoff-guide.md` + `docs/architecture/agentic-workflow.md` for current truth.
+
 Use this when starting a fresh AI session on this repo.
 
 ```text
@@ -8,8 +10,10 @@ You are continuing the EA-baseline-first modernization of Renegade/OpenW3D.
 Primary repo (truth): <EA_BASELINE_REPO_ROOT>
 Donor/reference repo: <DONOR_OPENW3D_REPO_ROOT>
 Active branch: main
-Latest known documentation handoff commit: 3e60dbb docs: add compact AI bootstrap prompt
-Latest known implementation seam commit: 75bf5df build: add opt-in SDL3 mutex seam for wwlib
+Do not trust hard-coded commit IDs here as current state. Discover current repo state live with:
+- `git rev-parse --show-toplevel`
+- `git branch --show-current`
+- `git rev-parse --short HEAD`
 
 Path discovery rules:
 - Do not assume `/tmp` or any fixed directory layout.
@@ -41,20 +45,20 @@ First commands to run:
 4. cmake --build build/cmake-scaffold -j4
 5. cmake --build build/cmake-scaffold-sdl3 --target wwlib -j4
 
-Mandatory reading order:
+Preferred reading order:
 1. docs/architecture/ai-handoff-guide.md
-2. docs/architecture/modernization-progress-roadmap.md
-3. docs/architecture/modernization-strategy-v2.md
-4. docs/parity/target-status.md
-5. docs/architecture/deferred-source-ledger.md
-6. docs/architecture/platform-boundary-contracts.md
-7. docs/architecture/project-scaffold-status.md
-8. build-manifests/vc6-projects.json
-9. docs/build/project-ingestion-and-probe-workflow.md
-10. .hermes/plans/2026-04-23_093416-modernization-progress-review-and-next-plan.md
-11. .hermes/plans/2026-04-23_101900-commando-dependency-prep.md
-12. .hermes/plans/2026-04-23_102700-batch-forecast-roadmap.md
-13. docs/architecture/w3dhub-port-evaluation.md
+2. docs/architecture/agentic-workflow.md
+3. docs/architecture/modernization-progress-roadmap.md
+4. docs/architecture/modernization-strategy-v2.md
+5. docs/parity/target-status.md
+6. docs/architecture/deferred-source-ledger.md
+7. docs/architecture/platform-boundary-contracts.md
+8. docs/architecture/project-scaffold-status.md
+9. build-manifests/vc6-projects.json
+10. docs/build/project-ingestion-and-probe-workflow.md
+11. docs/architecture/w3dhub-port-evaluation.md
+
+Older `.hermes/plans/` notes are historical context only and may be superseded by the roadmap.
 
 Current default green scaffold targets:
 - wwdebug
@@ -95,9 +99,9 @@ Key current open platform items in wwlib:
 - full non-Windows PE version-resource extraction in verchk.cpp
 - generated embedded-resource population for rcfile.cpp
 
-Best next recommended batch:
-- Batch 028: audit cpudetect.cpp / mpu.cpp as the next CPU/platform seam decision.
-- Determine whether either file has a safe portable subset, should remain deferred, or can be re-enabled in a bounded way.
+Current CPU/platform decision:
+- `cpudetect.cpp` and `mpu.cpp` were audited and should remain deferred.
+- Treat them as future `platform CPU capabilities` boundary work, not current scaffold blockers.
 
 Required verification before committing any new batch:
 - git diff --check
@@ -110,6 +114,7 @@ Required docs to sync whenever seam state changes:
 - docs/architecture/platform-boundary-contracts.md
 - docs/architecture/project-scaffold-status.md
 - docs/architecture/modernization-progress-roadmap.md
+- docs/architecture/agentic-workflow.md (if execution guidance changed)
 
 If unsure whether a change is too broad, choose the smaller batch.
 ```

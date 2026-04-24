@@ -30,10 +30,10 @@ This workflow standardizes how original EA Renegade VC6 projects are added to th
 ## Standard commands
 
 ```bash
-cd /tmp/openw3d-ea-baseline
+git rev-parse --show-toplevel
 python3 scripts/projects/parse_vc6_workspace.py --root . --output build-manifests/vc6-projects.json
 python3 scripts/projects/write_project_inventory.py build-manifests/vc6-projects.json --output build-manifests/vc6-projects.md
-cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
+cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 cmake --build build/cmake-scaffold --target TARGET_NAME -j4
 ```
 
@@ -50,7 +50,7 @@ Full verification:
 
 ```bash
 git diff --check
-cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
+cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 cmake --build build/cmake-scaffold -j4
 ```
 

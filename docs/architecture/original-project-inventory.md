@@ -8,8 +8,8 @@ Baseline:
 
 ```text
 ea/main @ 3e00c3a1b97381bb28be89a35b856375e0629a08
-branch: ea-baseline-modernized
-worktree: /tmp/openw3d-ea-baseline
+active modernization branch: main
+worktree: machine-local; discover with git rev-parse --show-toplevel
 ```
 
 ## Workspace files discovered

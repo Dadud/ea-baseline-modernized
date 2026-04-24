@@ -37,10 +37,11 @@ Do **not** revert to patching the OpenW3D fork first.
 - Recommended symbolic name in this guide: `<EA_BASELINE_REPO_ROOT>`
 - Expected branch: `main`
 - Expected remote: `origin`
-- Latest known documentation handoff commit:
-  - `3e60dbb docs: add compact AI bootstrap prompt`
-- Latest known implementation seam commit:
-  - `75bf5df build: add opt-in SDL3 mutex seam for wwlib`
+- Do not treat hard-coded commit IDs in this guide as authoritative current state.
+- Discover current repo state live with:
+  - `git rev-parse --show-toplevel`
+  - `git branch --show-current`
+  - `git rev-parse --short HEAD`
 
 ### Donor/reference repo
 - Canonical role: **OpenW3D donor/reference tree**
@@ -187,30 +188,30 @@ If you are starting fresh, read these in this order.
 
 ### First: strategy / current truth
 1. `docs/architecture/ai-handoff-guide.md`  ← this file
-2. `docs/architecture/modernization-progress-roadmap.md`
-3. `docs/architecture/modernization-strategy-v2.md`
-4. `docs/parity/target-status.md`
+2. `docs/architecture/agentic-workflow.md`
+3. `docs/architecture/upstream-convergence-plan.md`
+4. `docs/architecture/near-term-batch-roadmap.md`
+5. `docs/architecture/modernization-progress-roadmap.md`
+6. `docs/architecture/modernization-strategy-v2.md`
+7. `docs/parity/target-status.md`
 
 ### Second: architecture contracts and ledgers
-5. `docs/architecture/deferred-source-ledger.md`
-6. `docs/architecture/platform-boundary-contracts.md`
-7. `docs/architecture/artifact-parity.md`
-8. `docs/architecture/current-to-future-bucket-map.md`
-9. `docs/architecture/9-bucket-architecture-map.md`
+8. `docs/architecture/deferred-source-ledger.md`
+9. `docs/architecture/platform-boundary-contracts.md`
+10. `docs/architecture/artifact-parity.md`
+11. `docs/architecture/current-to-future-bucket-map.md`
+12. `docs/architecture/9-bucket-architecture-map.md`
 
 ### Third: baseline and project graph
-10. `docs/architecture/upstream-baseline-selection.md`
-11. `docs/architecture/ea-baseline-contract.md`
-12. `docs/architecture/original-project-inventory.md`
-13. `docs/architecture/project-scaffold-status.md`
-14. `docs/architecture/original-project-scaffold-status.md`
-15. `build-manifests/vc6-projects.json`
+13. `docs/architecture/upstream-baseline-selection.md`
+14. `docs/architecture/ea-baseline-contract.md`
+15. `docs/architecture/original-project-inventory.md`
+16. `docs/architecture/project-scaffold-status.md`
+17. `docs/architecture/original-project-scaffold-status.md`
+18. `build-manifests/vc6-projects.json`
 
-### Fourth: process / scripts / prior planning
-16. `docs/build/project-ingestion-and-probe-workflow.md`
-17. `.hermes/plans/2026-04-23_093416-modernization-progress-review-and-next-plan.md`
-18. `.hermes/plans/2026-04-23_101900-commando-dependency-prep.md`
-19. `.hermes/plans/2026-04-23_102700-batch-forecast-roadmap.md`
+### Fourth: process / scripts
+19. `docs/build/project-ingestion-and-probe-workflow.md`
 
 ### Fifth: donor/replay guidance
 20. `docs/architecture/w3dhub-port-evaluation.md`
@@ -353,23 +354,27 @@ For exact status wording, always consult:
 
 ## 10. Recommended next work
 
-At handoff time, the most natural next bounded batch is:
+At handoff time, the previously recommended Batch 028 audit has now been completed.
 
-## Batch 028 — CPU/platform seam audit
-Focus:
+## Batch 028 — CPU/platform seam audit result
+Audited files:
 - `Code/wwlib/cpudetect.cpp`
 - `Code/wwlib/mpu.cpp`
 
-The next AI should determine:
-1. whether either file has a safe portable/buildable subset
-2. whether either should remain deferred as a CPU-policy seam
-3. whether one can be re-enabled under `RENEGADE_USE_SDL3=ON` or another narrow non-Windows path without broad redesign
+Conclusion:
+1. neither file has a safe narrow portable subset worth enabling immediately
+2. both should remain deferred as **platform CPU capability / timing-policy** seams
+3. neither is a current default-scaffold blocker
+4. future work should start with a real `platform CPU capabilities` boundary contract, not a one-off fallback
 
-### Why this is the right next step
-The current `wwlib` SDL3/platform slice is now coherent enough that the next sensible question is:
-> where does platform capability / CPU policy belong, and can any of it be safely made real?
+### Why this matters
+The current `wwlib` SDL3/platform slice is coherent enough to classify these honestly without pretending they are the next build target. The right outcome was a defer/classification decision, not forced code motion.
 
-This is a better next step than jumping sideways into random product glue.
+### Better next-step direction
+Prefer one of these next:
+- land and maintain the doc-only Batch 028 defer/classification updates cleanly
+- pick the next highest-leverage green-path unblocker
+- continue current-truth doc cleanup where older notes still point at stale paths, branches, or batch state
 
 ---
 
@@ -449,14 +454,14 @@ If you are a fresh AI and only read one minute of context, retain this:
 
 - Work in `<EA_BASELINE_REPO_ROOT>`
 - `main` is the active branch
-- latest handoff commit is `75bf5df`
+- discover the current commit live instead of trusting a stale handoff hash
 - EA baseline is truth; `<DONOR_OPENW3D_REPO_ROOT>` is donor/reference only
 - default scaffold is green
 - SDL3 `wwlib` seams now include thread/rawfile/rcfile/verchk(partial)/mutex
+- `cpudetect.cpp` / `mpu.cpp` were audited and remain honest defers
 - do not overclaim parity
 - do not add fake SDK/platform stubs
-- read the roadmap, strategy v2, deferred ledger, platform boundary contracts, parity target status, and plans before changing direction
-- best next likely batch is `cpudetect.cpp` / `mpu.cpp` audit
+- read the workflow doc, roadmap, strategy v2, deferred ledger, platform boundary contracts, and parity target status before changing direction
 
 ---
 

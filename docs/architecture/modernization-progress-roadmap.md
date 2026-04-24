@@ -4,25 +4,17 @@
 
 The modernization has successfully pivoted from mixed-history Linux build firefighting to an EA-baseline-first program.
 
-Current baseline worktree:
+Current working reality should be discovered live from the checkout in front of you, not inferred from older path assumptions.
+
+Current repo facts in the maintained workspace at the time of this cleanup:
 
 ```text
-/tmp/openw3d-ea-baseline
+repo root: /home/dadud/.openclaw/workspace/ea-baseline-modernized
+branch: main
+HEAD: 36f221f build: fix baseline compiler-compat issues in wwlib
 ```
 
-Current branch and remote target:
-
-```text
-ea-baseline-modernized -> ea-modernized/main
-```
-
-Current latest reviewed commit before Batch 007:
-
-```text
-43b647c build: classify support source islands
-```
-
-Batch 007 then models `BinkMovie` as the next small media/content seam, compiling its subtitle data/parser island while documenting deferred RAD/Bink and renderer glue islands.
+This roadmap should be read as the durable batch history and execution direction, not as a substitute for `git rev-parse`, `git branch --show-current`, or current build verification.
 
 ## What is now solid
 
@@ -62,10 +54,10 @@ cmake -S . -B build/cmake-scaffold -DRENEGADE_BUILD_FOUNDATION_LIBS=ON
 cmake --build build/cmake-scaffold -j4
 ```
 
-Current successful result:
+Current successful result has more recently been observed with final output including:
 
 ```text
-[100%] Built target SControl
+[100%] Built target wwnet
 ```
 
 ### Architecture findings
@@ -124,7 +116,7 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 027 — opt-in SDL3 mutex/synchronization seam for `wwlib`
+### Latest completed code batch: Batch 027 — opt-in SDL3 mutex/synchronization seam for `wwlib`
 
 Batch 027 extends the SDL3 platform replay into `Code/wwlib/mutex.cpp`, preserving the original Windows implementation while adding a real non-Windows path under `RENEGADE_USE_SDL3=ON`. On the SDL3 path, both `MutexClass` and `CriticalSectionClass` now use SDL recursive mutexes so the historical lock/unlock semantics continue to build without a broad header redesign.
 
@@ -143,6 +135,38 @@ with final output including:
 ```text
 [100%] Built target wwlib
 ```
+
+### Post-Batch-027 compatibility follow-up
+
+After Batch 027, an additional bounded compiler-compatibility cleanup landed for the current scaffold:
+
+```text
+36f221f build: fix baseline compiler-compat issues in wwlib
+```
+
+This follow-up fixed modern compiler compatibility issues in:
+- `Code/wwlib/FastAllocator.cpp`
+- `Code/wwlib/FastAllocator.h`
+- `Code/wwlib/multilist.h`
+- `Code/wwlib/random.cpp`
+- `Code/wwlib/random.h`
+- `Code/wwlib/point.h`
+
+The result is that the default scaffold build and the SDL3-enabled `wwlib` build both succeed in the current local setup.
+
+### Batch 028 decision status
+
+The next bounded architecture decision around:
+- `Code/wwlib/cpudetect.cpp`
+- `Code/wwlib/mpu.cpp`
+
+has now been audited.
+
+Current conclusion:
+- both files are honest **platform CPU capability** defers
+- neither is a current default-scaffold blocker
+- both are already excluded from the current UNIX `wwlib` build
+- any future work should begin with a real `platform CPU capabilities` boundary contract, not an ad hoc fallback
 
 ### Previous batch completed: Batch 026 — opt-in SDL3 version/file metadata seam for `wwlib`
 

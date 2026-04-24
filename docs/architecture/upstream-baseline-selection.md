@@ -13,13 +13,13 @@ Baseline commit:
 Local worktree:
 
 ```text
-/tmp/openw3d-ea-baseline
+machine-local; discover from the active checkout with git rev-parse --show-toplevel
 ```
 
-Local branch:
+Active modernization branch in the maintained workspace:
 
 ```text
-ea-baseline-modernized
+main
 ```
 
 ## Why this baseline

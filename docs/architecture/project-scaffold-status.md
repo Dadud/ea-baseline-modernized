@@ -2,7 +2,7 @@
 
 
 
-> **Last updated:** Batch 026 (2026-04-23)
+> **Last updated:** post-Batch-027 cleanup state (2026-04-24)
 
 > **Source:** `build-manifests/vc6-projects.json` + probe results
 
@@ -45,7 +45,7 @@
 | `BandTest` | Win32 (x86) Dynamic-Link Library | online_services | ❌ Deferred — entire target: WinSock2 bandwidth tester | ❌ Deferred — entire target: WinSock2 bandwidth tester |
 | `BinkMovie` | Win32 (x86) Static Library | engine_asset_content | ✅ Built (filtered) — subtitle data/parser; RAD/decode deferred | ✅ Built (filtered) — subtitle data/parser; RAD/decode deferred |
 | `Combat` | Win32 (x86) Static Library | engine_runtime | ❌ Blocked — 67/265 sources need ww3d2 math types | ❌ Blocked — 67/265 sources need ww3d2 math types |
-| `commando` | Win32 (x86) Application | — | 🔶 Not yet probed or modeled | 🔶 Not yet probed or modeled |
+| `commando` | Win32 (x86) Application | products | ❌ Blocked (all seams) — opt-in product-shell seam map exists; mixed client/FDS/online/config/render ownership remains unresolved | ❌ Blocked (all seams) — opt-in product-shell seam map exists; mixed client/FDS/online/config/render ownership remains unresolved |
 | `Installer` | Win32 (x86) Application | products/installer | ❌ Deferred — not probed | ❌ Deferred — not probed |
 | `launcher` | Win32 (x86) Application | products/launcher | ❌ Deferred — not probed | ❌ Deferred — not probed |
 | `SControl` | Win32 (x86) Static Library | input_and_control | ✅ Built — console/script control | ✅ Built — console/script control |

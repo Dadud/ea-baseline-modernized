@@ -1,5 +1,10 @@
 # Original Project Scaffold Status Matrix
 
+> **Historical planning snapshot:** this document preserves an older broad matrix view and contains stale wording from earlier batch phases. For current truth, prefer:
+> - `docs/parity/target-status.md`
+> - `docs/architecture/project-scaffold-status.md`
+> - `docs/architecture/modernization-progress-roadmap.md`
+
 This matrix summarizes the generated VC6 project manifest after Batch 005. It is a planning aid for deciding what to model next; it is not a physical move list.
 
 | Project | Type | VC6 project | Scaffold status | Likely future bucket |
