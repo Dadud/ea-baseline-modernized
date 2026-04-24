@@ -759,6 +759,7 @@ WWINLINE unsigned int DX8Wrapper::Convert_Color(const Vector4& color)
 
 WWINLINE unsigned int DX8Wrapper::Convert_Color(const Vector3& color,float alpha)
 {
+#ifdef _M_IX86
 	const float scale = 255.0;
 	unsigned int col;
 
@@ -827,6 +828,19 @@ not_changed:
 		mov	col,eax
 	}
 	return col;
+#else
+	// MSVC x64: no inline assembly — use float-to-int truncation
+	unsigned int b = static_cast<unsigned int>(static_cast<int>(color[2] * 255.0f));
+	unsigned int g = static_cast<unsigned int>(static_cast<int>(color[1] * 255.0f));
+	unsigned int r = static_cast<unsigned int>(static_cast<int>(color[0] * 255.0f));
+	unsigned int a = static_cast<unsigned int>(static_cast<int>(alpha * 255.0f));
+	return (a << 24) | (r << 16) | (g << 8) | b;
+#endif
+}
+
+		mov	col,eax
+	}
+	return col;
 }
 
 // ----------------------------------------------------------------------------
@@ -845,6 +859,7 @@ WWINLINE void DX8Wrapper::Clamp_Color(Vector4& color)
 		return;
 	}
 
+#ifdef _M_IX86
 	__asm
 	{
 		mov	esi,dword ptr color
@@ -887,7 +902,19 @@ WWINLINE void DX8Wrapper::Clamp_Color(Vector4& color)
 		cmovnb edi,edx
 		mov dword ptr[esi+12],edi
 	}
+#else
+	// MSVC x64: no inline assembly — use portable scalar clamping
+	for (int i = 0; i < 4; ++i) {
+		if (color[i] < 0.0f) {
+			color[i] = 0.0f;
+		} else if (color[i] > 1.0f) {
+			color[i] = 1.0f;
+		}
+	}
+#endif
 }
+
+
 
 // ----------------------------------------------------------------------------
 //
