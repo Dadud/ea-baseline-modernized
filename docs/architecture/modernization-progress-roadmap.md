@@ -168,6 +168,27 @@ Current conclusion:
 - both are already excluded from the current UNIX `wwlib` build
 - any future work should begin with a real `platform CPU capabilities` boundary contract, not an ad hoc fallback
 
+### Batch 031 completed — `mesh.h` shared header-surface leak reduction
+
+Batch 031 lands the first more-ambitious shared-boundary cut in `ww3d2` by removing the circular include between `mesh.h` and `dx8polygonrenderer.h`.
+
+Changes landed:
+- `mesh.h` no longer includes `dx8polygonrenderer.h`
+- `dx8polygonrenderer.h` no longer includes `mesh.h`
+- both headers now rely on forward declarations where header-level pointer/friend/list usage is sufficient
+- dead `meshmdl.h` header inclusion was removed from `dx8polygonrenderer.h`
+
+Why this matters:
+- it reduces a high-value shared DX8 include leak identified in Batch 029
+- it pushes a real renderer dependency back into implementation space instead of public header surface
+- it raises batch ambition without pretending that deeper renderer disentangling is already done
+
+Primary output:
+- `docs/build/foundation-portability-batch-031.md`
+
+Notably deferred:
+- `dynamesh.h` remains deferred because its DX8 dependency is in inline code logic, not just include structure
+
 ### Batch 030 completed — first leakage-cut implementation slice
 
 Batch 030 turns the Batch 029 inventory into the first small implementation cuts.

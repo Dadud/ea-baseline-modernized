@@ -47,7 +47,6 @@
 #include "rendobj.h"
 #include "bittype.h"
 #include "w3derr.h"
-#include "dx8polygonrenderer.h"
 
 class MeshBuilderClass;
 class HModelClass;
@@ -68,6 +67,7 @@ struct W3dTexCoordStruct;
 class TextureClass;
 class VertexMaterialClass;
 struct VertexFormatXYZNDUV2;
+class DX8PolygonRendererClass;
 class DX8FVFCategoryContainer;
 
 /**
