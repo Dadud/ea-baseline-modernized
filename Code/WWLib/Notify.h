@@ -1,21 +1,12 @@
 /*
 ** MISSING_FROM_EA_BASELINE stub.
 ** WWLib/Notify.h - Static Observer registration pattern.
-** Referenced by: playermanager.h, DlgMPTeamSelect.h, natter.h, AutoStart.h, wolgmode.h
 ** Status: MISSING_FROM_EA_BASELINE
-**
-** This stub provides a minimal static Observer<T>::NotifyMe() / StopObserving()
-** registration system sufficient to unblock product-shell compilation.
-** Full event dispatch semantics not implemented.
 */
 
 #ifndef WWLIB_NOTIFY_H
 #define WWLIB_NOTIFY_H
 
-/*
-** Forward declarations for WWOnline event types.
-** These event classes carry data for Observer notifications.
-*/
 namespace WWOnline {
 	class Session;
 	class UserData;
@@ -41,10 +32,13 @@ class LadderInfoEvent;
 class GameOptionsMessage;
 
 /*
-** Minimal Observer<T> registration system (stub).
+** Minimal Observer<T> / Notifier<T> registration system (stub).
 ** Real Notifier<T>/Observer<T> pattern from wwlib/Notify.h.
 ** Stub: registration is a no-op; HandleNotification is a no-op.
 */
+template<typename T>
+class Notifier;  // Forward declaration
+
 template<typename T>
 class Observer
 {
@@ -79,7 +73,6 @@ public:
 
 /*
 ** Minimal Signaler<T> base for event broadcasting.
-** Used throughout Renegade's event-driven online service layer.
 ** This is a no-op stub.
 */
 template<typename T>
@@ -91,3 +84,9 @@ public:
 };
 
 #endif // WWLIB_NOTIFY_H
+
+//! Declare notifier interface for an event type (stub)
+#define DECLARE_NOTIFIER(Event) \
+	virtual void NotifyObservers(Event& /*event*/) {} \
+	virtual void AddObserver(Observer<Event>& /*observer*/) {} \
+	virtual void RemoveObserver(Observer<Event>& /*observer*/) {}
