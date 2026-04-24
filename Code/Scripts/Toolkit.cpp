@@ -1785,8 +1785,8 @@ DECLARE_SCRIPT(M00_SSM_DLS, "")
 	{
 		if(type == M00_LAUNCH_SSM)
 		{
-			Commands->Set_Animation(obj, "V_NOD_SSM.V_NOD_SSM", 0);
-			Commands->Set_Animation(Commands->Find_Object(ssm_missile_id), "v_nod_ssm_Missl.v_nod_ssm_Missl", 0);
+			Commands->Set_Animation(obj, "V_NOD_SSM.V_NOD_SSM", 0, NULL, 0.0f, -1.0f, true);
+			Commands->Set_Animation(Commands->Find_Object(ssm_missile_id), "v_nod_ssm_Missl.v_nod_ssm_Missl", 0, NULL, 0.0f, -1.0f, true);
 
 			Commands->Start_Timer(obj, this, 7.0f, 66000);
 		}

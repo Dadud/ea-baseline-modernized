@@ -6252,7 +6252,7 @@ DECLARE_SCRIPT(M08_Facility_Scientist, "Loc1_ID=0:int, Loc2_ID=0:int, Loc3_ID=0:
 		{
 			// Help!  Intruder!  Help!\n
 			const char *conv_name = ("M08_CON008");
-			int conv_id = Commands->Create_Conversation (conv_name);
+			int conv_id = Commands->Create_Conversation (conv_name, 100, 200.0f, false);
 			Commands->Join_Conversation(obj, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 1010211);
 

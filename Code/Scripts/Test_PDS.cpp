@@ -204,7 +204,7 @@ DECLARE_SCRIPT(PDS_Test_Conversation, "Conversation Name=:string,Soldier1_ID=0:i
 		//	Just for kicks, make the unit crouch
 		//
 		if (action_id == 778) {
-			Commands->Set_Animation (game_obj, "S_A_HUMAN.H_A_A0A0_L08", true);
+			Commands->Set_Animation (game_obj, "S_A_HUMAN.H_A_A0A0_L08", true, NULL, 0.0f, -1.0f, true);
 		}
 
 		return ;
@@ -243,7 +243,7 @@ DECLARE_SCRIPT(PDS_Test_Conversation, "Conversation Name=:string,Soldier1_ID=0:i
 		//
 		//	Create the conversation
 		//
-		int conv_id = Commands->Create_Conversation (conv_name);
+		int conv_id = Commands->Create_Conversation (conv_name, 100, 200.0f, false);
 		if (conv_id != -1) {
 
 			int soldier1_id = Get_Int_Parameter (1);

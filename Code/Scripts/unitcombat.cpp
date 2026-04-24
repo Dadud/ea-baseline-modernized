@@ -270,7 +270,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 		} 
 		else
 		{
-			Commands->Set_Animation( obj,NULL,0);
+			Commands->Set_Animation( obj,NULL,0, NULL, 0.0f, -1.0f, true);
 			if ( script_override > 0 )
 			{
 				GameObject *controller = Commands->Find_Object(controller_id);
@@ -820,17 +820,17 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 		{
 			state = STATE_SEARCH;
 			function = FUNC_PANIC;
-			Commands->Set_Animation( obj, NULL, 0);
+			Commands->Set_Animation( obj, NULL, 0, NULL, 0.0f, -1.0f, true);
 			if ( Commands->Get_Random( 0.0f, 1.0f) < 0.5f )
 			{
-				Commands->Set_Animation( obj, "human.j21c01",0);
+				Commands->Set_Animation( obj, "human.j21c01",0, NULL, 0.0f, -1.0f, true);
 			}
 		}
 	}
 
 	void Function_Play_Idle_Anim(GameObject * obj)
 	{
-		Commands->Set_Animation( obj, NULL, 0);
+		Commands->Set_Animation( obj, NULL, 0, NULL, 0.0f, -1.0f, true);
 		float animnum = Commands->Get_Random(0,90);
 		if (animnum <= 10)
 		{anim_script = "human.j03c01";}else
@@ -851,13 +851,13 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 		if (animnum <= 90)
 		{anim_script = "human.j20c01";}
 		state = STATE_IDLE_ANIMATION;
-		Commands->Set_Animation( obj, anim_script, 0);
+		Commands->Set_Animation( obj, anim_script, 0, NULL, 0.0f, -1.0f, true);
 	}
 
 /*
 	void Function_Play_Knockdown_Anim( GameObject * obj )
 	{
-		Commands->Set_Animation( obj, NULL, 0);
+		Commands->Set_Animation( obj, NULL, 0, NULL, 0.0f, -1.0f, true);
 		const char * damaged_bone = Commands->Get_Damage_Bone_Name();
 		bool direction = Commands->Get_Damage_Bone_Direction();
 
@@ -956,13 +956,13 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 			anim_script ="human.622a";
 		}
 
-		Commands->Set_Animation( obj, anim_script, 0);
+		Commands->Set_Animation( obj, anim_script, 0, NULL, 0.0f, -1.0f, true);
 	}
 */
 
 	void Function_Play_Search_Anim( GameObject * obj )
 	{
-		Commands->Set_Animation( obj, NULL, 0);
+		Commands->Set_Animation( obj, NULL, 0, NULL, 0.0f, -1.0f, true);
 		float animnum = Commands->Get_Random(0,30);
 		if ( animnum <= 10 )
 		{anim_script = "human.j09c01";}
@@ -971,7 +971,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 		else if( animnum <= 30 )
 		{anim_script = "human.j11c01";}
 
-		Commands->Set_Animation( obj, anim_script, 0);
+		Commands->Set_Animation( obj, anim_script, 0, NULL, 0.0f, -1.0f, true);
 	}
 
 
@@ -1278,7 +1278,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 		state = STATE_CRITICAL;
 		Commands->Action_Movement_Stop( obj );
 		Commands->Action_Attack_Stop( obj );
-		Commands->Set_Animation( obj, NULL, 0);
+		Commands->Set_Animation( obj, NULL, 0, NULL, 0.0f, -1.0f, true);
 		Commands->Enable_Enemy_Seen( obj, false);
 //		Commands->Enable_Sound_Heard( Me, false);
 	}

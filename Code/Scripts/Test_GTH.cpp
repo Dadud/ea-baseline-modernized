@@ -360,7 +360,7 @@ DECLARE_SCRIPT(GTH_Speed_Controlled_Anim,"Stop_Speed=0.1:float,StopAnim=none:str
 			};
 
 			if (anim != NULL) {
-				Commands->Set_Animation( obj, anim, true );
+				Commands->Set_Animation( obj, anim, true , NULL, 0.0f, -1.0f, true);
 			}
 		}
 	}

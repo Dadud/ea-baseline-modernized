@@ -351,7 +351,7 @@ DECLARE_SCRIPT(DLS_Test_NULL, "Debug_Mode=0:int")
 	void Poked(GameObject * obj, GameObject * poker)
 	{
 		const char *conv_name = ("IDS_M06_D05");
-		int conv_id = Commands->Create_Conversation (conv_name);
+		int conv_id = Commands->Create_Conversation (conv_name, 100, 200.0f, false);
 		Commands->Join_Conversation(NULL, conv_id, false, true, false);
 		Commands->Start_Conversation (conv_id, 1);
 		Commands->Monitor_Conversation (obj, conv_id);	
@@ -980,10 +980,10 @@ DECLARE_SCRIPT(M00_C130_ParaDrop, "Preset:string")
 		GameObject *chinook_rail = Commands->Create_Object("Generic_Cinematic", loc);
 		Commands->Set_Model(chinook_rail, "X5D_Chinookfly");
 		Commands->Set_Facing(chinook_rail, facing);
-		Commands->Set_Animation(chinook_rail, "X5D_Chinookfly.X5D_Chinookfly", false);
+		Commands->Set_Animation(chinook_rail, "X5D_Chinookfly.X5D_Chinookfly", false, NULL, 0.0f, -1.0f, true);
 		GameObject *chinook = Commands->Create_Object("Nod_Cargo_Plane", loc);
 		Commands->Set_Facing(chinook, facing);
-		Commands->Set_Animation(chinook, "vf_nod c-130.vf_nod c130", true);
+		Commands->Set_Animation(chinook, "vf_nod c-130.vf_nod c130", true, NULL, 0.0f, -1.0f, true);
 		Commands->Attach_To_Object_Bone(chinook, chinook_rail, "BN_Chinook_1");
 
 		dead = false;
@@ -1028,7 +1028,7 @@ DECLARE_SCRIPT(M00_C130_ParaDrop, "Preset:string")
 				para1 = Commands->Create_Object("Generic_Cinematic", loc);
 				Commands->Set_Facing(para1, facing);
 				Commands->Set_Model(para1, "X5D_Parachute");
-				Commands->Set_Animation(para1, "X5D_Parachute.X5D_ParaC_1", false);
+				Commands->Set_Animation(para1, "X5D_Parachute.X5D_ParaC_1", false, NULL, 0.0f, -1.0f, true);
 				Commands->Create_3D_Sound_At_Bone("parachute_open", para1, "ROOTTRANSFORM");
 				Commands->Attach_Script(para1, "M03_No_More_Parachute", "");
 			}
@@ -1040,7 +1040,7 @@ DECLARE_SCRIPT(M00_C130_ParaDrop, "Preset:string")
 				para2 = Commands->Create_Object("Generic_Cinematic", loc);
 				Commands->Set_Facing(para2, facing);
 				Commands->Set_Model(para2, "X5D_Parachute");
-				Commands->Set_Animation(para2, "X5D_Parachute.X5D_ParaC_2", false);
+				Commands->Set_Animation(para2, "X5D_Parachute.X5D_ParaC_2", false, NULL, 0.0f, -1.0f, true);
 				Commands->Create_3D_Sound_At_Bone("parachute_open", para2, "ROOTTRANSFORM");
 				Commands->Attach_Script(para2, "M03_No_More_Parachute", "");
 			}
@@ -1052,7 +1052,7 @@ DECLARE_SCRIPT(M00_C130_ParaDrop, "Preset:string")
 				para3 = Commands->Create_Object("Generic_Cinematic", loc);
 				Commands->Set_Facing(para3, facing);
 				Commands->Set_Model(para3, "X5D_Parachute");
-				Commands->Set_Animation(para3, "X5D_Parachute.X5D_ParaC_3", false);
+				Commands->Set_Animation(para3, "X5D_Parachute.X5D_ParaC_3", false, NULL, 0.0f, -1.0f, true);
 				Commands->Create_3D_Sound_At_Bone("parachute_open", para3, "ROOTTRANSFORM");
 				Commands->Attach_Script(para3, "M03_No_More_Parachute", "");
 			}
@@ -1064,13 +1064,13 @@ DECLARE_SCRIPT(M00_C130_ParaDrop, "Preset:string")
 			GameObject *box1 = Commands->Create_Object("Generic_Cinematic", loc);
 			Commands->Set_Model(box1, "X5D_Box01");
 			Commands->Set_Facing(box1, facing);
-			Commands->Set_Animation(box1, "X5D_Box01.X5D_Box01", false);
+			Commands->Set_Animation(box1, "X5D_Box01.X5D_Box01", false, NULL, 0.0f, -1.0f, true);
 
 			GameObject *soldier1;
 			soldier1 = Commands->Create_Object_At_Bone(box1, preset, "Box01");
 			Commands->Set_Facing(soldier1, facing);
 			Commands->Attach_To_Object_Bone( soldier1, box1, "Box01" );
-			Commands->Set_Animation(soldier1, "s_a_human.H_A_X5D_ParaT_1", false);
+			Commands->Set_Animation(soldier1, "s_a_human.H_A_X5D_ParaT_1", false, NULL, 0.0f, -1.0f, true);
 			out++;
 			if ((out - 1) == DIFFICULTY)
 			{
@@ -1086,12 +1086,12 @@ DECLARE_SCRIPT(M00_C130_ParaDrop, "Preset:string")
 			GameObject *box2 = Commands->Create_Object("Generic_Cinematic", loc);
 			Commands->Set_Model(box2, "X5D_Box02");
 			Commands->Set_Facing(box2, facing);
-			Commands->Set_Animation(box2, "X5D_Box02.X5D_Box02", false);
+			Commands->Set_Animation(box2, "X5D_Box02.X5D_Box02", false, NULL, 0.0f, -1.0f, true);
 
 			GameObject *soldier2;
 			soldier2 = Commands->Create_Object_At_Bone(box2, preset, "Box02");
 			Commands->Set_Facing(soldier2, facing);
-			Commands->Set_Animation(soldier2, "s_a_human.H_A_X5D_ParaT_2", false);
+			Commands->Set_Animation(soldier2, "s_a_human.H_A_X5D_ParaT_2", false, NULL, 0.0f, -1.0f, true);
 			Commands->Attach_To_Object_Bone( soldier2, box2, "Box02" );
 			out++;
 			if ((out - 1) == DIFFICULTY)
@@ -1108,12 +1108,12 @@ DECLARE_SCRIPT(M00_C130_ParaDrop, "Preset:string")
 			GameObject *box3 = Commands->Create_Object("Generic_Cinematic", loc);
 			Commands->Set_Model(box3, "X5D_Box03");
 			Commands->Set_Facing(box3, facing);
-			Commands->Set_Animation(box3, "X5D_Box03.X5D_Box03", false);
+			Commands->Set_Animation(box3, "X5D_Box03.X5D_Box03", false, NULL, 0.0f, -1.0f, true);
 
 			GameObject *soldier3;
 			soldier3 = Commands->Create_Object_At_Bone(box3, preset, "Box03");
 			Commands->Set_Facing(soldier3, facing);
-			Commands->Set_Animation(soldier3, "s_a_human.H_A_X5D_ParaT_3", false);
+			Commands->Set_Animation(soldier3, "s_a_human.H_A_X5D_ParaT_3", false, NULL, 0.0f, -1.0f, true);
 			Commands->Attach_To_Object_Bone( soldier3, box3, "Box03" );
 			out++;
 			if ((out - 1) == DIFFICULTY)
@@ -1171,7 +1171,7 @@ DECLARE_SCRIPT(DLS_Test_Conversation, "Debug_Mode=0:int")
 	{
 	
 		const char *conv_name = ("IDS_M00_Test");
-		int conv_id = Commands->Create_Conversation (conv_name);
+		int conv_id = Commands->Create_Conversation (conv_name, 100, 200.0f, false);
 		Commands->Join_Conversation(Commands->Get_A_Star(Commands->Get_Position(obj)), conv_id, false, true, false);
 		Commands->Join_Conversation(obj, conv_id, false, true, false);
 		Commands->Start_Conversation (conv_id, 300001);
@@ -1485,8 +1485,8 @@ DECLARE_SCRIPT(DLS_SSM_Test, "")
 
 	void Damaged( GameObject * obj, GameObject * damager )
 	{
-		Commands->Set_Animation(obj, "V_NOD_SSM.V_NOD_SSM", 0);
-		Commands->Set_Animation(Commands->Find_Object(ssm_missile_id), "v_nod_ssm_Missl.v_nod_ssm_Missl", 0);
+		Commands->Set_Animation(obj, "V_NOD_SSM.V_NOD_SSM", 0, NULL, 0.0f, -1.0f, true);
+		Commands->Set_Animation(Commands->Find_Object(ssm_missile_id), "v_nod_ssm_Missl.v_nod_ssm_Missl", 0, NULL, 0.0f, -1.0f, true);
 	}
 };
 
@@ -1702,7 +1702,7 @@ DECLARE_SCRIPT(DLS_Test_Evac, "")  // Deadeye2
 
 	void Created(GameObject * obj)
 	{
-		Commands->Set_Animation ( obj, "S_A_Human.XG_EV5_troop", true );
+		Commands->Set_Animation ( obj, "S_A_Human.XG_EV5_troop", true , NULL, 0.0f, -1.0f, true);
 		Commands->Enable_Hibernation(obj, false);
 		ActionParamsStruct params;
 

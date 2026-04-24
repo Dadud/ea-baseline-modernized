@@ -843,7 +843,7 @@ DECLARE_SCRIPT (MX0_A02_Controller, "")
 				GameObject * debris = Commands->Find_Object (MX0_A02_BLOCKAGE_ID);
 				if (debris)
 				{
-					Commands->Create_Explosion ("Ground Explosion 01 - Harmless", Vector3(-71.233f, -41.517f, 0.181f), NULL);					Commands->Set_Animation (debris, "AG_L0_BLOCKAGE1.AG_L0_BLOCKAGE1", false);
+					Commands->Create_Explosion ("Ground Explosion 01 - Harmless", Vector3(-71.233f, -41.517f, 0.181f), NULL);					Commands->Set_Animation (debris, "AG_L0_BLOCKAGE1.AG_L0_BLOCKAGE1", false, NULL, 0.0f, -1.0f, true);
 					Commands->Start_Timer (obj, this, 2.0f, MX0_A02_TIMER_DESTROY_RUBBLE);
 				}
 				GameObject * soldier = Commands->Find_Object (MX0_A02_UNIT_ID[1]);

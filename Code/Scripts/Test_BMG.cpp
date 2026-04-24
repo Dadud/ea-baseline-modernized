@@ -567,7 +567,7 @@ DECLARE_SCRIPT( BMG_Test_Animation, "" )
 		params.Set_Basic( this, 190, 0 );
 		params.Set_Animation( "S_A_HUMAN.H_A_611A", false );
 //		Commands->Action_Play_Animation( obj, params );
-		Commands->Set_Animation( obj, "S_A_HUMAN.H_A_611A", true );
+		Commands->Set_Animation( obj, "S_A_HUMAN.H_A_611A", true , NULL, 0.0f, -1.0f, true);
 	}
 };
 
@@ -981,7 +981,7 @@ DECLARE_SCRIPT(BMG_Test_Cinematic, "ScriptName=:string")
 	void Created(GameObject* obj)
 	{
 		Commands->Debug_Message("BMG Cinematic\n");
-		Commands->Set_Animation (obj, Get_Parameter("ScriptName"), 1);
+		Commands->Set_Animation (obj, Get_Parameter("ScriptName"), 1, NULL, 0.0f, -1.0f, true);
 
 		Commands->Start_Timer( obj, 5, 0 );
 
@@ -1003,7 +1003,7 @@ DECLARE_SCRIPT(BMG_Test_C130_DropOff_Cinematic, "ObjToCreate=:string")
 	void Created(GameObject* obj)
 	{
 		Commands->Debug_Message("BMG_Test_C130_DropOff_Cinematic\n");
-		Commands->Set_Animation (obj, "v_nod_c-130e3.m_cargo-drop", 0);
+		Commands->Set_Animation (obj, "v_nod_c-130e3.m_cargo-drop", 0, NULL, 0.0f, -1.0f, true);
 		float drop_frame = 446;
 		float drop_time = drop_frame / 30;	// find the time assumeing 30fps
 		Commands->Start_Timer( obj, drop_time, 0 );
@@ -1149,7 +1149,7 @@ DECLARE_SCRIPT(BMG_Test_Anim, "")
 	void Timer_Expired (GameObject* obj, int timer_id)
 	{
 		Commands->Start_Timer( obj, 0.001f, 0 );
-		Commands->Set_Animation( obj, "S_A_HUMAN.H_A_J99C", true );
+		Commands->Set_Animation( obj, "S_A_HUMAN.H_A_J99C", true , NULL, 0.0f, -1.0f, true);
 	}
 };
 
