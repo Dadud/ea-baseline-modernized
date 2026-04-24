@@ -43,7 +43,7 @@ ea_vc6_static_library(BinkMovie
     ${BINKMOVIE_SOURCES}
   INCLUDE_DIRS
     ..//
-    ../DirectX/Include
+    ../DirectX/Inc
     ../ww3d2
     ../wwdebug
     ../wwlib
