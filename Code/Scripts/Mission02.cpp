@@ -136,7 +136,7 @@ DECLARE_SCRIPT(M02_Objective_Controller, "")
 						int id = Commands->Create_Conversation ("M02_SECONDARY_09_FINISH", 100, 300, true);
 						Commands->Join_Conversation (NULL, id);
 						Commands->Join_Conversation (STAR, id, true, false, false);
-						Commands->Start_Conversation (id);
+						Commands->Start_Conversation (id, 0);
 					}
 					break;
 				}
@@ -168,7 +168,7 @@ DECLARE_SCRIPT(M02_Objective_Controller, "")
 									int id = Commands->Create_Conversation("M02_MORE_ROCKET_SOLDIERS", 100, 300, true);
 									Commands->Join_Conversation(NULL, id);
 									Commands->Join_Conversation (STAR, id, true, false, false);
-									Commands->Start_Conversation(id);
+									Commands->Start_Conversation(id, 0);
 								}
 							}
 						}
@@ -336,7 +336,7 @@ DECLARE_SCRIPT(M02_Objective_Controller, "")
 		{
 			Commands->Join_Conversation(NULL, id);
 			Commands->Join_Conversation (STAR, id, true, false, false);
-			Commands->Start_Conversation(id);
+			Commands->Start_Conversation(id, 0);
 		}
 	}
 
@@ -557,7 +557,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 						int id = Commands->Create_Conversation("M02_BAY_DOOR_WARNING", 100, 300, true);
 						Commands->Join_Conversation(NULL, id);
 						Commands->Join_Conversation (STAR, id, true, false, false);
-						Commands->Start_Conversation(id);
+						Commands->Start_Conversation(id, 0);
 						destroy_zone = true;
 					}
 					break;
@@ -568,7 +568,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					int id = Commands->Create_Conversation("M02_PRIMARY_03_GUIDE", 100, 300, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation(id);
+					Commands->Start_Conversation(id, 0);
 					destroy_zone = true;
 					break;
 				}
@@ -580,7 +580,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 						int id = Commands->Create_Conversation("MX2DSGN_DSGN0001", 100, 300, true);
 						Commands->Join_Conversation(NULL, id);
 						Commands->Join_Conversation (STAR, id, true, false, false);
-						Commands->Start_Conversation(id);
+						Commands->Start_Conversation(id, 0);
 						Commands->Set_HUD_Help_Text(IDS_M02DSGN_DSGN0186I1DSGN_TXT, TEXT_COLOR_OBJECTIVE_PRIMARY);
 					}
 					break;
@@ -1012,7 +1012,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					int id = Commands->Create_Conversation("M02_PRIMARY_01_GUIDE", 100, 300, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation(id);
+					Commands->Start_Conversation(id, 0);
 
 					destroy_zone = true;
 					break;
@@ -1571,7 +1571,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 							int id = Commands->Create_Conversation("M02_SECONDARY_01_GUIDE", 100, 300, true);
 							Commands->Join_Conversation(NULL, id);
 							Commands->Join_Conversation (STAR, id, true, false, false);
-							Commands->Start_Conversation(id);
+							Commands->Start_Conversation(id, 0);
 						}
 					}
 
@@ -1602,7 +1602,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 							int id = Commands->Create_Conversation("M02_SECONDARY_01_GUIDE", 100, 300, true);
 							Commands->Join_Conversation(NULL, id);
 							Commands->Join_Conversation (STAR, id, true, false, false);
-							Commands->Start_Conversation(id);
+							Commands->Start_Conversation(id, 0);
 						}
 					}
 
@@ -1633,7 +1633,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					int id = Commands->Create_Conversation("M02_SECONDARY_14_GUIDE", 100, 300, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation(id);
+					Commands->Start_Conversation(id, 0);
 
 					dual_zone = 401187;
 					destroy_zone = true;
@@ -1651,7 +1651,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					int id = Commands->Create_Conversation("M02_SECONDARY_14_GUIDE", 100, 300, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation(id);
+					Commands->Start_Conversation(id, 0);
 
 					dual_zone = 401186;
 					destroy_zone = true;
@@ -1694,7 +1694,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					int id = Commands->Create_Conversation("M02_SECONDARY_13_START", 100, 300, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation(id);
+					Commands->Start_Conversation(id, 0);
 
 					// Fly the Lear Jet over
 
@@ -1712,7 +1712,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					int id = Commands->Create_Conversation("M02_OBELISK_APPROACH", 100, 300, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation(id);
+					Commands->Start_Conversation(id, 0);
 					destroy_zone = true;
 					break;
 				}
@@ -1722,7 +1722,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					int id = Commands->Create_Conversation("M02_PRIMARY_02_REMIND", 100, 300, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation(id);
+					Commands->Start_Conversation(id, 0);
 					destroy_zone = true;
 					break;
 				}
@@ -1737,7 +1737,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					int id = Commands->Create_Conversation("M02_SECONDARY_03_START", 100, 300, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation(id);
+					Commands->Start_Conversation(id, 0);
 					destroy_zone = true;
 					break;
 				}
@@ -1761,7 +1761,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					int id = Commands->Create_Conversation("M02_SECONDARY_11_START", 100, 300, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation(id);
+					Commands->Start_Conversation(id, 0);
 
 					Commands->Start_Timer (obj, this, 6.0f, 12);
 					destroy_zone = true;
@@ -1888,7 +1888,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					int id = Commands->Create_Conversation ("MX2DSGN_DSGN0009", 100, 300, true);
 					Commands->Join_Conversation (NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation (id);
+					Commands->Start_Conversation (id, 0);
 				}
 				else
 				{
@@ -1904,7 +1904,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 				int id = Commands->Create_Conversation ("MX2DSGN_DSGN0010", 100, 300, true);
 				Commands->Join_Conversation (NULL, id);
 				Commands->Join_Conversation (STAR, id, true, false, false);
-				Commands->Start_Conversation (id);
+				Commands->Start_Conversation (id, 0);
 			}
 		}
 		else if (timer_id == 12)
@@ -1915,7 +1915,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 				int id = Commands->Create_Conversation ("MX2DSGN_DSGN0011", 100, 300, true);
 				Commands->Join_Conversation (NULL, id);
 				Commands->Join_Conversation (STAR, id, true, false, false);
-				Commands->Start_Conversation (id);
+				Commands->Start_Conversation (id, 0);
 			}
 		}
 	}
@@ -1958,7 +1958,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 			int id = Commands->Create_Conversation("M02_EVAG_SECURE_WARNING", 100, 300, true);
 			Commands->Join_Conversation(NULL, id);
 			Commands->Join_Conversation (STAR, id, true, false, false);
-			Commands->Start_Conversation(id);
+			Commands->Start_Conversation(id, 0);
 		}
 	}
 
@@ -3244,7 +3244,7 @@ DECLARE_SCRIPT (M02_Respawn_Controller, "")
 				int id = Commands->Create_Conversation("M02_HIDDEN_02_FINISH", 100, 300, true);
 				Commands->Join_Conversation(NULL, id);
 				Commands->Join_Conversation (STAR, id, true, false, false);
-				Commands->Start_Conversation(id);
+				Commands->Start_Conversation(id, 0);
 			}
 		}
 	}
@@ -3556,7 +3556,7 @@ DECLARE_SCRIPT (M02_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 					bool visibility = Commands->Is_Object_Visible(star_obj, obj);
 					if (!visibility)
 					{
-						Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+						Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 					}
 					else
 					{
@@ -3624,7 +3624,7 @@ DECLARE_SCRIPT (M02_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 				{
 				case (0):
 					{
-						GameObject *nearsoldier = Commands->Find_Closest_Soldier (myloc, 1.0f, 50.0f);
+						GameObject *nearsoldier = Commands->Find_Closest_Soldier (myloc, 1.0f, 50.0f, false);
 						if ((nearsoldier) && (nearsoldier != STAR))
 						{
 							ActionParamsStruct params;
@@ -3666,7 +3666,7 @@ DECLARE_SCRIPT (M02_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 		}
 		else if (timer_id == 6)
 		{
-			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 		}
 		else if (timer_id == 7)
 		{
@@ -3720,7 +3720,7 @@ DECLARE_SCRIPT (M02_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 				int id = Commands->Create_Conversation ("MX2DSGN_DSGN0014", 100, 300, true);
 				Commands->Join_Conversation (NULL, id);
 				Commands->Join_Conversation (STAR, id, true, false, false);
-				Commands->Start_Conversation (id);
+				Commands->Start_Conversation (id, 0);
 				Commands->Start_Timer (obj, this, 3.0f, 11);
 			}
 			else
@@ -3733,7 +3733,7 @@ DECLARE_SCRIPT (M02_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 			int id = Commands->Create_Conversation ("MX2DSGN_DSGN0015", 100, 300, true);
 			Commands->Join_Conversation (NULL, id);
 			Commands->Join_Conversation (STAR, id, true, false, false);
-			Commands->Start_Conversation (id);
+			Commands->Start_Conversation (id, 0);
 		}
 	}
 
@@ -3918,7 +3918,7 @@ DECLARE_SCRIPT(M02_Obelisk, "")
 					int id = Commands->Create_Conversation("M02_EVA_OBELISK_REPAIR", 100, 300, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation(id);
+					Commands->Start_Conversation(id, 0);
 				}
 			}
 		}
@@ -3992,7 +3992,7 @@ DECLARE_SCRIPT (M02_Power_Plant, "")
 				int id = Commands->Create_Conversation("M02_EVA_POWER_REPAIR", 100, 300, true);
 				Commands->Join_Conversation(NULL, id);
 				Commands->Join_Conversation (STAR, id, true, false, false);
-				Commands->Start_Conversation(id);
+				Commands->Start_Conversation(id, 0);
 			}
 		}
 	}
@@ -4289,7 +4289,7 @@ DECLARE_SCRIPT (M02_GDI_Soldier, "Area_ID:int, Soldier_Type=0:int")
 						{
 							int id = Commands->Create_Conversation("M02_GOMG_RADIO_01", 99, 20, true);
 							Commands->Join_Conversation (obj, id, true, true, true);
-							Commands->Start_Conversation(id);
+							Commands->Start_Conversation(id, 0);
 							shout_count++;
 							break;
 						}
@@ -4297,7 +4297,7 @@ DECLARE_SCRIPT (M02_GDI_Soldier, "Area_ID:int, Soldier_Type=0:int")
 						{
 							int id = Commands->Create_Conversation("M02_GOMG_RADIO_02", 99, 20, true);
 							Commands->Join_Conversation (obj, id, true, true, true);
-							Commands->Start_Conversation(id);
+							Commands->Start_Conversation(id, 0);
 							shout_count++;
 							break;
 						}
@@ -4305,7 +4305,7 @@ DECLARE_SCRIPT (M02_GDI_Soldier, "Area_ID:int, Soldier_Type=0:int")
 						{
 							int id = Commands->Create_Conversation("M02_GOMG_RADIO_03", 99, 20, true);
 							Commands->Join_Conversation (obj, id, true, true, true);
-							Commands->Start_Conversation(id);
+							Commands->Start_Conversation(id, 0);
 							shout_count++;
 							break;
 						}
@@ -4329,7 +4329,7 @@ DECLARE_SCRIPT (M02_GDI_Soldier, "Area_ID:int, Soldier_Type=0:int")
 			int id = Commands->Create_Conversation("M02_GOMG_CONVERSATION", 99, 10, true);
 			Commands->Join_Conversation (obj, id, true, true, true);
 			Commands->Join_Conversation(STAR, id, true, true, false);
-			Commands->Start_Conversation(id);
+			Commands->Start_Conversation(id, 0);
 		}
 	}
 
@@ -4412,7 +4412,7 @@ DECLARE_SCRIPT (M02_GDI_Soldier, "Area_ID:int, Soldier_Type=0:int")
 						int id = Commands->Create_Conversation("M02_GERS_COVER_01", 99, 50, true);
 						Commands->Join_Conversation (obj, id, true, true, false);
 						Commands->Join_Conversation(STAR, id, true, true, false);
-						Commands->Start_Conversation(id);
+						Commands->Start_Conversation(id, 0);
 						break;
 					}
 				case (4): // Grenadier
@@ -4420,7 +4420,7 @@ DECLARE_SCRIPT (M02_GDI_Soldier, "Area_ID:int, Soldier_Type=0:int")
 						int id = Commands->Create_Conversation("M02_GEGR_COVER_01", 99, 50, true);
 						Commands->Join_Conversation (obj, id, true, true, false);
 						Commands->Join_Conversation(STAR, id, true, true, false);
-						Commands->Start_Conversation(id);
+						Commands->Start_Conversation(id, 0);
 						break;
 					}
 				default:
@@ -4463,7 +4463,7 @@ DECLARE_SCRIPT (M02_Stationary_Vehicle,"Area_ID:int")
 				int id = Commands->Create_Conversation ("MX2DSGN_DSGN0008", 100, 300, true);
 				Commands->Join_Conversation (NULL, id);
 				Commands->Join_Conversation (STAR, id, true, false, false);
-				Commands->Start_Conversation (id);
+				Commands->Start_Conversation (id, 0);
 			}
 			else if (my_id == 401167)
 			{
@@ -4473,7 +4473,7 @@ DECLARE_SCRIPT (M02_Stationary_Vehicle,"Area_ID:int")
 					int id = Commands->Create_Conversation ("MX2DSGN_DSGN0007", 100, 300, true);
 					Commands->Join_Conversation (tank, id);
 					Commands->Join_Conversation (STAR, id, true, false, false);
-					Commands->Start_Conversation (id);
+					Commands->Start_Conversation (id, 0);
 				}
 			}
 		}
@@ -4525,7 +4525,7 @@ DECLARE_SCRIPT (M02_Stationary_Vehicle,"Area_ID:int")
 	{
 		if (timer_id == 1)
 		{
-			Commands->Apply_Damage (obj, 10000.0f, "Blamokiller");
+			Commands->Apply_Damage (obj, 10000.0f, "Blamokiller", nullptr);
 		}
 		else if (timer_id == 2)
 		{
@@ -4683,7 +4683,7 @@ DECLARE_SCRIPT (M02_Nod_Apache, "Area_ID:int")
 				distance = Commands->Get_Distance (myloc, starloc);
 				if (distance > 300.0f)
 				{
-					Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+					Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 				}
 			}
 			Commands->Start_Timer(obj, this, 15.0f, 3);
@@ -4785,7 +4785,7 @@ DECLARE_SCRIPT (M02_Nod_Vehicle, "Area_ID:int")
 				distance = Commands->Get_Distance (myloc, starloc);
 				if (distance > 300.0f)
 				{
-					Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+					Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 				}
 			}
 			Commands->Start_Timer(obj, this, 15.0f, 1);
@@ -4829,7 +4829,7 @@ DECLARE_SCRIPT (M02_Player_Vehicle, "Area_ID:int")
 
 				if (distance > 300.0f)
 				{
-					Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+					Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 				}
 			}
 			Commands->Start_Timer(obj, this, 15.0f, 1);
@@ -4925,7 +4925,7 @@ DECLARE_SCRIPT (M02_Nod_Sakura, "Area_ID:int")
 				distance = Commands->Get_Distance (myloc, starloc);
 				if (distance > 300.0f)
 				{
-					Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+					Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 				}
 			}
 			Commands->Start_Timer(obj, this, 15.0f, 1);
@@ -5003,7 +5003,7 @@ DECLARE_SCRIPT (M02_Approach_Vehicle, "Area_ID:int")
 
 	void Timer_Expired(GameObject * obj, int timer_id)
 	{
-		Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+		Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 	}
 };
 
@@ -5033,7 +5033,7 @@ DECLARE_SCRIPT (M02_Destroy_Vehicle, "")
 		}
 		else if (timer_id == 2)
 		{
-			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 		}
 	}
 
@@ -5041,7 +5041,7 @@ DECLARE_SCRIPT (M02_Destroy_Vehicle, "")
 	{
 		if (damager != STAR)
 		{
-			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 		}
 	}
 
@@ -5125,7 +5125,7 @@ DECLARE_SCRIPT (M02_Mendoza, "")
 				Commands->Join_Conversation (obj, id, true, false, false);
 				Commands->Join_Conversation (STAR, id, true, false, false);
 				Commands->Join_Conversation (NULL, id);
-				Commands->Start_Conversation (id);
+				Commands->Start_Conversation (id, 0);
 			}
 		}
 		else if (action_id == 2)
@@ -5189,7 +5189,7 @@ DECLARE_SCRIPT (M02_Mendoza, "")
 			}
 			Commands->Join_Conversation (obj, id, true, false, false);
 			Commands->Join_Conversation (STAR, id, true, false, false);
-			Commands->Start_Conversation (id);
+			Commands->Start_Conversation (id, 0);
 			Commands->Start_Timer (obj, this, 7.0f, 1);
 
 			if (!move_toggle)

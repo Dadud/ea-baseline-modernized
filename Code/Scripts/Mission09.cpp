@@ -438,8 +438,8 @@ DECLARE_SCRIPT (M09_Mobius_Suit_Objective, "")
 
 			const char *conv_name = ("IDS_M09_D11");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(mobius, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(mobius, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 901);
 			Commands->Monitor_Conversation (obj, conv_id);			
 		}
@@ -781,8 +781,8 @@ DECLARE_SCRIPT (M09_LabRoom_Controller, "")
 				
 				const char *conv_name = ("M09CON014");
 				int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-				Commands->Join_Conversation(mobius, conv_id, true, true);
-				Commands->Join_Conversation(STAR, conv_id, true, true);
+				Commands->Join_Conversation(mobius, conv_id, true, true, false);
+				Commands->Join_Conversation(STAR, conv_id, true, true, false);
 				Commands->Start_Conversation (conv_id, 904);
 				Commands->Monitor_Conversation (mobius, conv_id);
 			}
@@ -822,8 +822,8 @@ DECLARE_SCRIPT (M09_Mobius_Initial_Conversation, "")
 		{	
 			const char *conv_name = ("IDS_M09_D07");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(obj, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(obj, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 900);
 			Commands->Monitor_Conversation (obj, conv_id);
 		}
@@ -845,8 +845,8 @@ DECLARE_SCRIPT (M09_Mobius_Initial_Conversation, "")
 		{
 			const char *conv_name = ("IDS_M09_P01");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(obj, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(obj, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 903);
 			Commands->Monitor_Conversation (obj, conv_id);
 		}
@@ -872,8 +872,8 @@ DECLARE_SCRIPT (M09_Mobius_Initial_Conversation, "")
 			*/
 			const char *conv_name = ("IDS_M09_D07");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(obj, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(obj, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 902);
 			Commands->Monitor_Conversation (obj, conv_id);
 		}
@@ -882,8 +882,8 @@ DECLARE_SCRIPT (M09_Mobius_Initial_Conversation, "")
 		{
 			const char *conv_name = ("IDS_M09_P01");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(obj, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(obj, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 903);
 			Commands->Monitor_Conversation (obj, conv_id);
 		}
@@ -1176,8 +1176,8 @@ DECLARE_SCRIPT (M09_Mobius_Follow, "")  //Mobius (Pre-Suit): 2000010
 
 			const char *conv_name = ("IDS_M09_D17");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(obj, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(obj, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 952);
 			Commands->Monitor_Conversation (obj, conv_id);
 		}*/
@@ -1212,8 +1212,8 @@ DECLARE_SCRIPT (M09_Mobius_Follow, "")  //Mobius (Pre-Suit): 2000010
 				Commands->Set_Innate_Is_Stationary ( obj, true );
 
 				const char *conv_name = ("IDS_M09_D03");
-				int conv_id = Commands->Create_Conversation (conv_name);
-				Commands->Join_Conversation(obj, conv_id, false, true);
+				int conv_id = Commands->Create_Conversation (conv_name, 50, 500.0f, true);
+				Commands->Join_Conversation(obj, conv_id, false, true, false);
 				Commands->Start_Conversation (conv_id, 1);
 				Commands->Monitor_Conversation (obj, conv_id);
 
@@ -1232,8 +1232,8 @@ DECLARE_SCRIPT (M09_Mobius_Follow, "")  //Mobius (Pre-Suit): 2000010
 				Commands->Set_Innate_Is_Stationary ( obj, false );
 
 				const char *conv_name = ("IDS_M09_D04");
-				int conv_id = Commands->Create_Conversation (conv_name);
-				Commands->Join_Conversation(obj, conv_id, false, true);
+				int conv_id = Commands->Create_Conversation (conv_name, 50, 500.0f, true);
+				Commands->Join_Conversation(obj, conv_id, false, true, false);
 				Commands->Start_Conversation (conv_id, 1);
 				Commands->Monitor_Conversation (obj, conv_id);
 
@@ -1308,8 +1308,8 @@ DECLARE_SCRIPT (M09_Mobius_Follow, "")  //Mobius (Pre-Suit): 2000010
 				if(distance_to_star > 15.0f)
 				{
 					const char *conv_name = ("IDS_M09_D01");
-					int conv_id = Commands->Create_Conversation (conv_name);
-					Commands->Join_Conversation(obj, conv_id, false, true);
+					int conv_id = Commands->Create_Conversation (conv_name, 50, 500.0f, true);
+					Commands->Join_Conversation(obj, conv_id, false, true, false);
 					Commands->Start_Conversation (conv_id, 1);
 					Commands->Monitor_Conversation (obj, conv_id);
 
@@ -1326,8 +1326,8 @@ DECLARE_SCRIPT (M09_Mobius_Follow, "")  //Mobius (Pre-Suit): 2000010
 				if(distance_to_star > 15.0f)
 				{
 					const char *conv_name = ("IDS_M09_D02");
-					int conv_id = Commands->Create_Conversation (conv_name);
-					Commands->Join_Conversation(obj, conv_id, false, true);
+					int conv_id = Commands->Create_Conversation (conv_name, 50, 500.0f, true);
+					Commands->Join_Conversation(obj, conv_id, false, true, false);
 					Commands->Start_Conversation (conv_id, 1);
 					Commands->Monitor_Conversation (obj, conv_id);
 
@@ -3053,8 +3053,8 @@ DECLARE_SCRIPT (M09_Key_Box, "")
 
 			const char *conv_name = ("IDS_M09_D18");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(mobius, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(mobius, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 999);
 			Commands->Monitor_Conversation (obj, conv_id);			
 		}		
@@ -3088,8 +3088,8 @@ DECLARE_SCRIPT (M09_Key_Box, "")
 
 					const char *conv_name = ("IDS_M09_D19");
 					int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-					Commands->Join_Conversation(mobius, conv_id, false, false);
-					Commands->Join_Conversation(STAR, conv_id, false, false);
+					Commands->Join_Conversation(mobius, conv_id, false, false, false);
+					Commands->Join_Conversation(STAR, conv_id, false, false, false);
 					Commands->Start_Conversation (conv_id, 900);
 					Commands->Monitor_Conversation (obj, conv_id);
 
@@ -3145,7 +3145,7 @@ DECLARE_SCRIPT (M09_MrShuman_Zone, "")
 					int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
 					Commands->Join_Conversation(shuman, conv_id, false, true, true);
 					Commands->Join_Conversation(mobius, conv_id, false, true, true);
-					Commands->Join_Conversation(STAR, conv_id, false, false);
+					Commands->Join_Conversation(STAR, conv_id, false, false, false);
 					Commands->Start_Conversation (conv_id, 954);
 					Commands->Monitor_Conversation (obj, conv_id);
 				}
@@ -3188,9 +3188,9 @@ DECLARE_SCRIPT (M09_MrShuman_Zone, "")
 
 			const char *conv_name = ("IDS_M09_D14");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(shuman, conv_id, false, false);
-			Commands->Join_Conversation(mobius, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(shuman, conv_id, false, false, false);
+			Commands->Join_Conversation(mobius, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 954);
 			Commands->Monitor_Conversation (obj, conv_id);
 		}
@@ -4270,7 +4270,7 @@ DECLARE_SCRIPT (M09_Ambient_Clutter, "")
 			exp_point [4] = 2006124;
 
 			int exp_num = Commands->Get_Random_Int (0, 5);
-			Commands->Create_Explosion("Air Explosions Twiddler", Commands->Get_Position (Commands->Find_Object (exp_point [exp_num])));
+			Commands->Create_Explosion("Air Explosions Twiddler", Commands->Get_Position (Commands->Find_Object (exp_point [exp_num])), nullptr);
 
 			float delayTimer = Commands->Get_Random ( 1, 5 );
 			Commands->Start_Timer(obj, this, (8.0f + delayTimer), AMB_EXPLOSION);
@@ -4327,9 +4327,9 @@ DECLARE_SCRIPT (M09_Destroy_Self_Zone, "")
 
 			const char *conv_name = ("IDS_M09_D13");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(NULL, conv_id, false, false);
-			Commands->Join_Conversation(mobius, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(NULL, conv_id, false, false, false);
+			Commands->Join_Conversation(mobius, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 900);
 			Commands->Monitor_Conversation (obj, conv_id);
 		}
@@ -4420,9 +4420,9 @@ DECLARE_SCRIPT (M09_KeyCard_Zone, "")
 
 				/*const char *conv_name = ("IDS_M09_D13");
 				int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-				Commands->Join_Conversation(NULL, conv_id, false, false);
-				Commands->Join_Conversation(mobius, conv_id, false, false);
-				Commands->Join_Conversation(STAR, conv_id, false, false);
+				Commands->Join_Conversation(NULL, conv_id, false, false, false);
+				Commands->Join_Conversation(mobius, conv_id, false, false, false);
+				Commands->Join_Conversation(STAR, conv_id, false, false, false);
 				Commands->Start_Conversation (conv_id, 900);
 				Commands->Monitor_Conversation (obj, conv_id);*/
 			}
@@ -4433,8 +4433,8 @@ DECLARE_SCRIPT (M09_KeyCard_Zone, "")
 				
 				const char *conv_name = ("IDS_M09_D15");
 				int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-				Commands->Join_Conversation(mobius, conv_id, false, false);
-				Commands->Join_Conversation(STAR, conv_id, false, false);
+				Commands->Join_Conversation(mobius, conv_id, false, false, false);
+				Commands->Join_Conversation(STAR, conv_id, false, false, false);
 				Commands->Start_Conversation (conv_id, 905);
 				Commands->Monitor_Conversation (obj, conv_id);			
 			}
@@ -4447,8 +4447,8 @@ DECLARE_SCRIPT (M09_KeyCard_Zone, "")
 							
 				const char *conv_name = ("IDS_M09_D18");
 				int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-				Commands->Join_Conversation(mobius, conv_id, false, false);
-				Commands->Join_Conversation(STAR, conv_id, false, false);
+				Commands->Join_Conversation(mobius, conv_id, false, false, false);
+				Commands->Join_Conversation(STAR, conv_id, false, false, false);
 				Commands->Start_Conversation (conv_id, 910);
 				Commands->Monitor_Conversation (obj, conv_id);
 
@@ -4465,8 +4465,8 @@ DECLARE_SCRIPT (M09_KeyCard_Zone, "")
 		{
 			const char *conv_name = ("IDS_M09_D13");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(mobius, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(mobius, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 950);
 			Commands->Monitor_Conversation (obj, conv_id);
 
@@ -4479,8 +4479,8 @@ DECLARE_SCRIPT (M09_KeyCard_Zone, "")
 		{
 			const char *conv_name = ("IDS_M09_D13");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(mobius, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(mobius, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 908);
 			Commands->Monitor_Conversation (obj, conv_id);
 
@@ -4491,8 +4491,8 @@ DECLARE_SCRIPT (M09_KeyCard_Zone, "")
 		{
 			const char *conv_name = ("IDS_M09_D15");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(mobius, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(mobius, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 909);
 			Commands->Monitor_Conversation (obj, conv_id);
 
@@ -4503,8 +4503,8 @@ DECLARE_SCRIPT (M09_KeyCard_Zone, "")
 		{
 			const char *conv_name = ("IDS_M09_D16");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
-			Commands->Join_Conversation(mobius, conv_id, false, false);
-			Commands->Join_Conversation(STAR, conv_id, false, false);
+			Commands->Join_Conversation(mobius, conv_id, false, false, false);
+			Commands->Join_Conversation(STAR, conv_id, false, false, false);
 			Commands->Start_Conversation (conv_id, 910);
 			Commands->Monitor_Conversation (obj, conv_id);
 		}

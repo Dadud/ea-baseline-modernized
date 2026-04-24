@@ -288,10 +288,10 @@ DECLARE_SCRIPT(M07_Objective_Controller, "") // 100657
 			// How are Dr. Mobius and Sydney?\n
 			const char *conv_name = ("M07_CON001");
 			int conv_id = Commands->Create_Conversation (conv_name, INNATE_PRIORITY_ENEMY_SEEN - 5, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(GUNNER, conv_id, true, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(GUNNER, conv_id, true, true, false);
 			Commands->Start_Conversation (conv_id, 300701);
 			Commands->Monitor_Conversation (obj, conv_id);	
 		}
@@ -365,7 +365,7 @@ DECLARE_SCRIPT(M07_Havoc_DLS, "")
 		{
 			if(nuke_blast)
 			{
-				Commands->Apply_Damage( obj, 10000.0f, "DEATH");
+				Commands->Apply_Damage( obj, 10000.0f, "DEATH", nullptr);
 			}
 		} 
 	}
@@ -377,7 +377,7 @@ DECLARE_SCRIPT(M07_Havoc_DLS, "")
 			// You've got to be kidding.\n
 			const char *conv_name = ("M07_CON015");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300707);
 			Commands->Monitor_Conversation (obj, conv_id);
 		}
@@ -439,7 +439,7 @@ DECLARE_SCRIPT(M07_Dead6_Minigunner, "")  // Deadeye
 		}
 		if ( type == M07_GO_EVAC_SITE ) 
 		{
-			Commands->Apply_Damage( obj, -10000.0f, "DEATH");
+			Commands->Apply_Damage( obj, -10000.0f, "DEATH", nullptr);
 
 			Commands->Set_Innate_Is_Stationary(obj, false);
 			params.Set_Basic (this, (INNATE_PRIORITY_ENEMY_SEEN - 5), M07_GO_EVAC_SITE);
@@ -475,7 +475,7 @@ DECLARE_SCRIPT(M07_Dead6_Minigunner, "")  // Deadeye
 	{
 		if (action_id == M07_GO_EVAC_SITE && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(obj));
+			Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(obj), 50.0f);
 		}
 		if (action_id == M07_GO_EVAC_SITE && reason == ACTION_COMPLETE_LOW_PRIORITY)
 		{
@@ -493,7 +493,7 @@ DECLARE_SCRIPT(M07_Dead6_Minigunner, "")  // Deadeye
 		{
 			if(nuke_blast)
 			{
-				Commands->Apply_Damage( obj, 10000.0f, "STEEL");
+				Commands->Apply_Damage( obj, 10000.0f, "STEEL", nullptr);
 			}
 		}
 	}
@@ -571,7 +571,7 @@ DECLARE_SCRIPT(M07_Dead6_Rocket_Soldier, "")  // Gunner
 		}
 		if ( type == M07_CAPTURE_SAM ) 
 		{
-			Commands->Apply_Damage( obj, -10000.0f, "DEATH");
+			Commands->Apply_Damage( obj, -10000.0f, "DEATH", nullptr);
 
 			params.Set_Basic (this, (INNATE_PRIORITY_ENEMY_SEEN + 5), M07_CAPTURE_SAM);
 			params.Set_Movement (Commands->Find_Object(100681), RUN, 3.0f);
@@ -596,7 +596,7 @@ DECLARE_SCRIPT(M07_Dead6_Rocket_Soldier, "")  // Gunner
 	{
 		if (action_id == M07_GO_EVAC_SITE && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(obj));
+			Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(obj), 50.0f);
 		}
 		if (action_id == M07_GO_EVAC_SITE && reason == ACTION_COMPLETE_LOW_PRIORITY)
 		{
@@ -614,7 +614,7 @@ DECLARE_SCRIPT(M07_Dead6_Rocket_Soldier, "")  // Gunner
 		{
 			if(nuke_blast)
 			{
-				Commands->Apply_Damage( obj, 10000.0f, "STEEL");
+				Commands->Apply_Damage( obj, 10000.0f, "STEEL", nullptr);
 			}
 		}
 	}
@@ -681,7 +681,7 @@ DECLARE_SCRIPT(M07_Dead6_Grenadier, "")  // Patch
 		}
 		if ( type == M07_GO_EVAC_SITE ) 
 		{
-			Commands->Apply_Damage( obj, -10000.0f, "DEATH");
+			Commands->Apply_Damage( obj, -10000.0f, "DEATH", nullptr);
 
 			Commands->Set_Innate_Is_Stationary(obj, false);
 			params.Set_Basic (this, (INNATE_PRIORITY_ENEMY_SEEN - 5), M07_GO_EVAC_SITE);
@@ -725,7 +725,7 @@ DECLARE_SCRIPT(M07_Dead6_Grenadier, "")  // Patch
 	{
 		if (action_id == M07_GO_EVAC_SITE && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(obj));
+			Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(obj), 50.0f);
 		}
 		if (action_id == M07_GO_EVAC_SITE && reason == ACTION_COMPLETE_LOW_PRIORITY)
 		{
@@ -743,7 +743,7 @@ DECLARE_SCRIPT(M07_Dead6_Grenadier, "")  // Patch
 		{
 			if(nuke_blast)
 			{
-				Commands->Apply_Damage( obj, 10000.0f, "STEEL");
+				Commands->Apply_Damage( obj, 10000.0f, "STEEL", nullptr);
 			}
 		}
 	}
@@ -1039,7 +1039,7 @@ DECLARE_SCRIPT(M07_Dead6_Engineer, "")  // Hotwire
 		}
 		if ( type == M07_GO_EVAC_SITE ) 
 		{
-			Commands->Apply_Damage( obj, -10000.0f, "DEATH");
+			Commands->Apply_Damage( obj, -10000.0f, "DEATH", nullptr);
 
 			Commands->Set_Innate_Is_Stationary(obj, false);
 			params.Set_Basic (this, (INNATE_PRIORITY_ENEMY_SEEN - 5), M07_GO_EVAC_SITE);
@@ -1078,7 +1078,7 @@ DECLARE_SCRIPT(M07_Dead6_Engineer, "")  // Hotwire
 				Commands->Action_Goto( obj, params );
 
 				GameObject * inn_loc = Commands->Find_Object(100718);
-				Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(inn_loc));
+				Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(inn_loc), 50.0f);
 			}
 
 			else if(Commands->Find_Object(100673))
@@ -1090,7 +1090,7 @@ DECLARE_SCRIPT(M07_Dead6_Engineer, "")  // Hotwire
 				Commands->Action_Goto( obj, params );
 
 				GameObject * inn_loc = Commands->Find_Object(100718);
-				Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(inn_loc));
+				Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(inn_loc), 50.0f);
 			}
 		}
 
@@ -1181,7 +1181,7 @@ DECLARE_SCRIPT(M07_Dead6_Engineer, "")  // Hotwire
 		if (action_id == M07_GO_EVAC_SITE && reason == ACTION_COMPLETE_NORMAL && !evac)
 		{
 			go_evac_site = true;
-			Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(obj));
+			Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(obj), 50.0f);
 		}
 		if (action_id == M07_GO_EVAC_SITE && reason == ACTION_COMPLETE_LOW_PRIORITY && !evac)
 		{
@@ -1236,7 +1236,7 @@ DECLARE_SCRIPT(M07_Dead6_Engineer, "")  // Hotwire
 		{
 			if(nuke_blast)
 			{
-				Commands->Apply_Damage( obj, 10000.0f, "STEEL");
+				Commands->Apply_Damage( obj, 10000.0f, "STEEL", nullptr);
 			}
 		}
 	}
@@ -1332,7 +1332,7 @@ DECLARE_SCRIPT(M07_Sydney, "")
 		}
 		if (action_id == M07_GO_EVAC_SITE && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(obj));
+			Commands->Set_Innate_Soldier_Home_Location(obj, Commands->Get_Position(obj), 50.0f);
 		}
 		if (action_id == M07_GO_EVAC_SITE && reason == ACTION_COMPLETE_LOW_PRIORITY)
 		{
@@ -1347,7 +1347,7 @@ DECLARE_SCRIPT(M07_Sydney, "")
 		{
 			if(nuke_blast)
 			{
-				Commands->Apply_Damage( obj, 10000.0f, "STEEL");
+				Commands->Apply_Damage( obj, 10000.0f, "STEEL", nullptr);
 			}
 		}
 	}
@@ -1414,7 +1414,7 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 			// Impact: 2 Minutes.\n
 			const char *conv_name = ("M07_CON003");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			Commands->Start_Timer(obj, this, 60.0f, TWO_MIN);
@@ -1428,7 +1428,7 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 			// Impact: 1 Minute.\n
 			const char *conv_name = ("M07_CON004");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			Commands->Start_Timer(obj, this, 30.0f, ONE_MIN);
@@ -1438,7 +1438,7 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 			// Impact: 30 seconds.\n
 			const char *conv_name = ("M07_CON005");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			Commands->Start_Timer(obj, this, 10.0f, THIRTY);
@@ -1448,7 +1448,7 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 			// Impact: 20 seconds.\n
 			const char *conv_name = ("M07_CON006");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			Commands->Start_Timer(obj, this, 10.0f, TWENTY);
@@ -1458,7 +1458,7 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 			// Impact: 10 seconds.\n
 			const char *conv_name = ("M07_CON007");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			Commands->Start_Timer(obj, this, 5.0f, TEN);
@@ -1468,7 +1468,7 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 			// Impact: 5 seconds.\n
 			const char *conv_name = ("M07_CON008");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			Commands->Start_Timer(obj, this, 1.0f, FIVE);
@@ -1481,7 +1481,7 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 			// 4 seconds.\n
 			const char *conv_name = ("M07_CON009");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			Commands->Start_Timer(obj, this, 1.0f, FOUR);
@@ -1491,7 +1491,7 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 			// 3 seconds.\n
 			const char *conv_name = ("M07_CON010");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			Commands->Start_Timer(obj, this, 1.0f, THREE);
@@ -1501,7 +1501,7 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 			// 2 seconds.\n
 			const char *conv_name = ("M07_CON011");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			Commands->Start_Timer(obj, this, 1.0f, TWO);
@@ -1513,7 +1513,7 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 			// 1 seconds.\n
 			const char *conv_name = ("M07_CON012");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			Commands->Start_Timer(obj, this, 1.0f, ONE);
@@ -1534,10 +1534,10 @@ DECLARE_SCRIPT(M07_Cathedral_Controller, "")  // 100663
 		}
 		if(timer_id == NUKEBITS)
 		{
-			Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(Commands->Find_Object(119890))); 
-			Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(Commands->Find_Object(119891))); 
-			Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(Commands->Find_Object(119892))); 
-			Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(Commands->Find_Object(119893))); 
+			Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(Commands->Find_Object(119890)), nullptr); 
+			Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(Commands->Find_Object(119891)), nullptr); 
+			Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(Commands->Find_Object(119892)), nullptr); 
+			Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(Commands->Find_Object(119893)), nullptr); 
 			GameObject * nukebits = Commands->Create_Object("M07_Nukebits", Vector3(-128.295f, 71.892f, 26.754f));
 			Commands->Set_Facing( nukebits, -10.000f );
 			Commands->Start_Timer(obj, this, 3.0f, ESCAPED);
@@ -1608,7 +1608,7 @@ DECLARE_SCRIPT(M07_In_Nuke_Blast, "")
 			// Warning - Your are within the Nuclear Strike blast radius. Evacuate immediately.\n
 			const char *conv_name = ("M07_CON013");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 		}
 
@@ -1666,7 +1666,7 @@ DECLARE_SCRIPT(M07_Out_Nuke_Blast, "")
 			// Minimum safe distance achieved.\n
 			const char *conv_name = ("M07_CON014");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 10);
 
 			// Send custom to in blast script to let it know player is out of blast
@@ -1790,11 +1790,11 @@ DECLARE_SCRIPT(M07_Evac_Site_Controller, "")  // 100664
 			// Locke, what's my evac status?\n
 			const char *conv_name = ("M07_CON002");
 			int conv_id = Commands->Create_Conversation (conv_name, INNATE_PRIORITY_ENEMY_SEEN + 5, 2000.0f, false);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(GUNNER, conv_id, false, true);
-			Commands->Join_Conversation(HOTWIRE, conv_id, false, true);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(GUNNER, conv_id, false, true, false);
+			Commands->Join_Conversation(HOTWIRE, conv_id, false, true, false);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300702);
 			Commands->Monitor_Conversation (obj, conv_id);
 		}
@@ -1926,7 +1926,7 @@ DECLARE_SCRIPT(M07_Activate_Hotwire, "")
 			// Keep those Nod forces off my back, Havoc.  I'll crack these SAM's in no time.\n
 			const char *conv_name = ("M07_CON016");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(HOTWIRE, conv_id, true, true);
+			Commands->Join_Conversation(HOTWIRE, conv_id, true, true, false);
 			Commands->Start_Conversation (conv_id, HOTWIRE_CAPTURE_SAMS);
 			Commands->Monitor_Conversation(obj, conv_id);
 		}
@@ -2010,7 +2010,7 @@ DECLARE_SCRIPT(M07_SAM_Truck_100680, "")
 
 	void Killed(GameObject * obj, GameObject * killer)
 	{
-		Commands->Apply_Damage( Commands->Find_Object(100680), 10000.0f, "DEATH");
+		Commands->Apply_Damage( Commands->Find_Object(100680), 10000.0f, "DEATH", nullptr);
 		
 	}
 };
@@ -2055,7 +2055,7 @@ DECLARE_SCRIPT(M07_SAM_Truck_100679, "")
 
 	void Killed(GameObject * obj, GameObject * killer)
 	{
-		Commands->Apply_Damage( Commands->Find_Object(100679), 10000.0f, "DEATH");
+		Commands->Apply_Damage( Commands->Find_Object(100679), 10000.0f, "DEATH", nullptr);
 	
 	}
 };
@@ -2229,8 +2229,8 @@ DECLARE_SCRIPT(M07_Activate_Objective_704, "")
 			// Attention GDI, this is Resistance Radio. Nod's aerial reinforcements are coordinated from mobile radar stations in the Town Square.  We need those radar dishes destroyed.\n
 			const char *conv_name = ("M07_CON018");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300704);
 			Commands->Monitor_Conversation (obj, conv_id);
 
@@ -2279,8 +2279,8 @@ DECLARE_SCRIPT(M07_Activate_Objective_705, "")
 			// This is Resistance Radio, I have reports of captured resistance fighters west of your position.  Can anyone assist?\n
 			const char *conv_name = ("M07_CON019");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300705);
 			Commands->Monitor_Conversation (obj, conv_id);
 
@@ -2325,8 +2325,8 @@ DECLARE_SCRIPT(M07_Activate_Objective_706, "")
 			// Havoc, we've spotted an SSM napalm stockpile to your west.\n
 			const char *conv_name = ("M07_CON020");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300706);
 			Commands->Monitor_Conversation (obj, conv_id);
 
@@ -2371,7 +2371,7 @@ DECLARE_SCRIPT(M07_Activate_Objective_707, "")
 			// Those must be the SSMs. Time to get to work.\n
 			const char *conv_name = ("M07_CON021");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300707);
 			Commands->Monitor_Conversation (obj, conv_id);
 
@@ -2416,8 +2416,8 @@ DECLARE_SCRIPT(M07_Activate_Objective_708, "")
 			// \\Warning - Nod Obelisk detected.\n
 			const char *conv_name = ("M07_CON022");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300708);
 			Commands->Monitor_Conversation (obj, conv_id);
 
@@ -2614,7 +2614,7 @@ DECLARE_SCRIPT(M07_Mobile_Radar, "")
 
 	void Killed(GameObject * obj, GameObject * killer)
 	{
-		Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(obj)); 
+		Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(obj), nullptr); 
 		Commands->Send_Custom_Event(obj, Commands->Find_Object(100746), M07_RADAR_KILLED, 0, 0.0f);
 	}
 };
@@ -2953,8 +2953,8 @@ DECLARE_SCRIPT(M07_Activate_Present, "")
 			// Havoc, got a present for ya.\n
 			const char *conv_name = ("M07_CON023");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300700);
 						
 			GameObject * chinook_obj1 = Commands->Create_Object ( "Invisible_Object", Vector3(-446.944f, -25.105f, 14.134f));
@@ -3047,8 +3047,8 @@ DECLARE_SCRIPT(M07_Vehicle_Drop_Controller, "")
 				// Havoc!  Taking missile fire over the park.  Launcher is unseen.  Repeat, launcher is unseen.\n
 				const char *conv_name = ("M07_CON024");
 				int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-				Commands->Join_Conversation(NULL, conv_id, false, true);
-				Commands->Join_Conversation(STAR, conv_id, false, true);
+				Commands->Join_Conversation(NULL, conv_id, false, true, false);
+				Commands->Join_Conversation(STAR, conv_id, false, true, false);
 				Commands->Start_Conversation (conv_id, 300700);
 			}
 			else
@@ -3067,7 +3067,7 @@ DECLARE_SCRIPT(M07_Vehicle_Drop_Controller, "")
 					// Got you another ride, inbound now!\n
 					const char *conv_name = ("M07_CON025");
 					int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-					Commands->Join_Conversation(NULL, conv_id, false, true);
+					Commands->Join_Conversation(NULL, conv_id, false, true, false);
 					Commands->Start_Conversation (conv_id, 300700);
 
 					GameObject * drop_loc = Commands->Find_Object(vehicle_drop[drop_zone]);
@@ -3082,8 +3082,8 @@ DECLARE_SCRIPT(M07_Vehicle_Drop_Controller, "")
 					// Complements of the local resistance.\n
 					const char *conv_name = ("M07_CON026");
 					int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-					Commands->Join_Conversation(NULL, conv_id, false, true);
-					Commands->Join_Conversation(STAR, conv_id, false, true);
+					Commands->Join_Conversation(NULL, conv_id, false, true, false);
+					Commands->Join_Conversation(STAR, conv_id, false, true, false);
 					Commands->Start_Conversation (conv_id, 300700);
 
 					GameObject * drop_loc = Commands->Find_Object(vehicle_drop[drop_zone]);
@@ -3101,8 +3101,8 @@ DECLARE_SCRIPT(M07_Vehicle_Drop_Controller, "")
 				// Last one, Captain.  Recon show Nod's pulling back to the park.\n
 				const char *conv_name = ("M07_CON027");
 				int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-				Commands->Join_Conversation(NULL, conv_id, false, true);
-				Commands->Join_Conversation(STAR, conv_id, false, true);
+				Commands->Join_Conversation(NULL, conv_id, false, true, false);
+				Commands->Join_Conversation(STAR, conv_id, false, true, false);
 				Commands->Start_Conversation (conv_id, 300700);
 
 				GameObject * drop_loc = Commands->Find_Object(vehicle_drop[drop_zone]);
@@ -3173,7 +3173,7 @@ DECLARE_SCRIPT(M07_Biohazard_Barrel, "")
 
 	void Killed(GameObject * obj, GameObject * killer)
 	{
-		Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(obj));
+		Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(obj), nullptr);
 		
 		Commands->Send_Custom_Event(obj, Commands->Find_Object(100781), M07_EXPLODE_BARRELS, 1, 0);
 
@@ -3204,7 +3204,7 @@ DECLARE_SCRIPT(M07_Stockpile_Object, "")
 	{
 		if (sound.Type == M07_EXPLODE_BARRELS)
 		{
-			Commands->Apply_Damage( obj, 100000.0f, "STEEL");
+			Commands->Apply_Damage( obj, 100000.0f, "STEEL", nullptr);
 		}
 	}
 
@@ -4370,7 +4370,7 @@ DECLARE_SCRIPT(M07_V01_Destroyed_Flame_Tank, "")
 
 		if(type == M07_ACTIVATE_V01)
 		{
-			Commands->Apply_Damage( obj, 10000.0f, "DEATH");
+			Commands->Apply_Damage( obj, 10000.0f, "DEATH", nullptr);
 
 		}
 	}
@@ -4926,7 +4926,7 @@ DECLARE_SCRIPT(M07_Fuel_Barrel, "")
 
 	void Killed(GameObject * obj, GameObject * killer)
 	{
-		Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(obj));
+		Commands->Create_Explosion("Ground Explosions Twiddler", Commands->Get_Position(obj), nullptr);
 		
 		Commands->Send_Custom_Event(obj, Commands->Find_Object(101059), M07_EXPLODE_BARRELS, 1, 0);
 
@@ -4960,13 +4960,13 @@ DECLARE_SCRIPT(M07_Hostage_Controller, "")
 		{
 			destroy_stockpile = true;
 			
-			Commands->Apply_Damage( Commands->Find_Object(101060), 10000.0f, "STEEL");
-			Commands->Apply_Damage( Commands->Find_Object(101061), 10000.0f, "STEEL");
-			Commands->Apply_Damage( Commands->Find_Object(101062), 10000.0f, "STEEL");
-			Commands->Apply_Damage( Commands->Find_Object(101063), 10000.0f, "STEEL");
-			Commands->Apply_Damage( Commands->Find_Object(101064), 10000.0f, "STEEL");
-			Commands->Apply_Damage( Commands->Find_Object(101065), 10000.0f, "STEEL");
-			Commands->Apply_Damage( Commands->Find_Object(101084), 10000.0f, "STEEL");
+			Commands->Apply_Damage( Commands->Find_Object(101060), 10000.0f, "STEEL", nullptr);
+			Commands->Apply_Damage( Commands->Find_Object(101061), 10000.0f, "STEEL", nullptr);
+			Commands->Apply_Damage( Commands->Find_Object(101062), 10000.0f, "STEEL", nullptr);
+			Commands->Apply_Damage( Commands->Find_Object(101063), 10000.0f, "STEEL", nullptr);
+			Commands->Apply_Damage( Commands->Find_Object(101064), 10000.0f, "STEEL", nullptr);
+			Commands->Apply_Damage( Commands->Find_Object(101065), 10000.0f, "STEEL", nullptr);
+			Commands->Apply_Damage( Commands->Find_Object(101084), 10000.0f, "STEEL", nullptr);
 			
 			
 		}
@@ -5949,10 +5949,10 @@ DECLARE_SCRIPT(M07_Inn_Evac, "")//104496
 				// This is Resistance Radio.  Nod SSM deployment confirmed.  All available personnel to the park.\n
 				const char *conv_name = ("M07_CON017");
 				int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-				Commands->Join_Conversation(NULL, conv_id, false, true);
-				Commands->Join_Conversation(STAR, conv_id, false, true);
-				Commands->Join_Conversation(NULL, conv_id, false, true);
-				Commands->Join_Conversation(NULL, conv_id, false, true);
+				Commands->Join_Conversation(NULL, conv_id, false, true, false);
+				Commands->Join_Conversation(STAR, conv_id, false, true, false);
+				Commands->Join_Conversation(NULL, conv_id, false, true, false);
+				Commands->Join_Conversation(NULL, conv_id, false, true, false);
 				Commands->Start_Conversation (conv_id, 300703);
 				Commands->Monitor_Conversation (obj, conv_id);
 				
@@ -6605,7 +6605,7 @@ DECLARE_SCRIPT(M07_SSM_Crate, "")
 
 	void Killed (GameObject * obj, GameObject * killer)
 	{
-		Commands->Create_Explosion("Explosion_Rocket_SSM", Commands->Get_Position(obj)); 
+		Commands->Create_Explosion("Explosion_Rocket_SSM", Commands->Get_Position(obj), nullptr); 
 		Commands->Send_Custom_Event(obj, Commands->Find_Object(100781), M07_SSM_CRATE_KILLED, 1, 0.0f);
 	}
 };
@@ -6664,7 +6664,7 @@ DECLARE_SCRIPT(M07_Hotwire_Help, "")
 				// Hotwire here, I need help!  Now!  Anyone!?
 				const char *conv_name = ("M07_CON028");
 				int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-				Commands->Join_Conversation(NULL, conv_id, false, true);
+				Commands->Join_Conversation(NULL, conv_id, false, true, false);
 				Commands->Start_Conversation (conv_id, 100658);
 				
 			}
@@ -6704,7 +6704,7 @@ DECLARE_SCRIPT(M07_Hotwire_Dead, "")
 				// This is Hotwire, I can't hold this position! Requesting - oh great! <gunfire and static>
 				const char *conv_name = ("M07_CON029");
 				int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-				Commands->Join_Conversation(NULL, conv_id, false, true);
+				Commands->Join_Conversation(NULL, conv_id, false, true, false);
 				Commands->Start_Conversation (conv_id, 100658);
 				Commands->Monitor_Conversation (obj, conv_id);	
 			}

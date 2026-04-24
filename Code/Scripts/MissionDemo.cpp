@@ -63,10 +63,10 @@ DECLARE_SCRIPT(MDD_Objective_Controller, "")
 		{
 			Commands->Attach_Script(camera, "Test_Cinematic", "XG_DemoCam.txt");
 		}
-		int id = Commands->Create_Conversation("Demo_Intro");
+		int id = Commands->Create_Conversation("Demo_Intro", 50, 500.0f, true);
 		Commands->Join_Conversation(NULL, id);
 		Commands->Join_Conversation(STAR, id);
-		Commands->Start_Conversation(id);
+		Commands->Start_Conversation(id, 0);
 
 		//DEMO
 		// Set up the expected number of convoy trucks for the objective.
@@ -901,7 +901,7 @@ DECLARE_SCRIPT (MDD_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 					bool visibility = Commands->Is_Object_Visible(star_obj, obj);
 					if (!visibility)
 					{
-						Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+						Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 					}
 					else
 					{
@@ -969,7 +969,7 @@ DECLARE_SCRIPT (MDD_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 				{
 				case (0):
 					{
-						GameObject *nearsoldier = Commands->Find_Closest_Soldier (myloc, 1.0f, 50.0f);
+						GameObject *nearsoldier = Commands->Find_Closest_Soldier (myloc, 1.0f, 50.0f, false);
 						if ((nearsoldier) && (nearsoldier != STAR))
 						{
 							ActionParamsStruct params;
@@ -1011,7 +1011,7 @@ DECLARE_SCRIPT (MDD_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 		}
 		else if (timer_id == 6)
 		{
-			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 		}
 		else if (timer_id == 7)
 		{
@@ -1256,7 +1256,7 @@ DECLARE_SCRIPT (MDD_GDI_Soldier, "Area_ID:int, Soldier_Type=0:int")
 			int type = Get_Int_Parameter("Soldier_Type");
 			if (type < 12)
 			{
-				Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+				Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 			}
 			if (!stop_following)
 			{
@@ -1435,7 +1435,7 @@ DECLARE_SCRIPT (MDD_Stationary_Vehicle,"Area_ID:int")
 	{
 		if (timer_id == 1)
 		{
-			Commands->Apply_Damage (obj, 10000.0f, "Blamokiller");
+			Commands->Apply_Damage (obj, 10000.0f, "Blamokiller", nullptr);
 		}
 		else if (timer_id == 2)
 		{
@@ -1598,7 +1598,7 @@ DECLARE_SCRIPT (MDD_Nod_Apache, "Area_ID:int")
 				if (distance > 3000.0f)
 				//DEMO
 				{
-					Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+					Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 				}
 			}
 			Commands->Start_Timer(obj, this, 15.0f, 3);
@@ -1762,7 +1762,7 @@ DECLARE_SCRIPT (MDD_Flying_Vehicle, "Unit_ID:int")
 		}
 		else
 		{
-			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 		}
 	}
 

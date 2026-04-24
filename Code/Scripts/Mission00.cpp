@@ -2324,12 +2324,12 @@ DECLARE_SCRIPT (MTU_Tutorial_Instructor, "")
 					GameObject * course_gate = Commands->Find_Object (MTU_GATE_01);
 					if (course_gate)
 					{
-						Commands->Set_Animation (course_gate, "CHT_JAIL.CHT_JAIL", false, NULL, 0.0f, 2.0f);
+						Commands->Set_Animation (course_gate, "CHT_JAIL.CHT_JAIL", false, NULL, 0.0f, 2.0f, true);
 					}
 					course_gate = Commands->Find_Object (MTU_GATE_02);
 					if (course_gate)
 					{
-						Commands->Set_Animation (course_gate, "CHT_JAIL.CHT_JAIL", false, NULL, 0.0f, 2.0f);
+						Commands->Set_Animation (course_gate, "CHT_JAIL.CHT_JAIL", false, NULL, 0.0f, 2.0f, true);
 					}
 					break;
 				}
@@ -2341,7 +2341,7 @@ DECLARE_SCRIPT (MTU_Tutorial_Instructor, "")
 					/*GameObject * course_gate = Commands->Find_Object (MTU_GATE_02);
 					if (course_gate)
 					{
-						Commands->Set_Animation (course_gate, "CHT_JAIL.CHT_JAIL", false, NULL, 0.0f, 2.0f);
+						Commands->Set_Animation (course_gate, "CHT_JAIL.CHT_JAIL", false, NULL, 0.0f, 2.0f, true);
 					}*/
 					break;
 				}
@@ -2366,7 +2366,7 @@ DECLARE_SCRIPT (MTU_Tutorial_Instructor, "")
 					GameObject * course_gate = Commands->Find_Object (MTU_GATE_03);
 					if (course_gate)
 					{
-						Commands->Set_Animation (course_gate, "CHT_JAIL.CHT_JAIL", false, NULL, 0.0f, 2.0f);
+						Commands->Set_Animation (course_gate, "CHT_JAIL.CHT_JAIL", false, NULL, 0.0f, 2.0f, true);
 					}
 					break;
 				}
@@ -3272,8 +3272,8 @@ DECLARE_SCRIPT (MTU_GDI_Soldier, "")
 			Commands->Select_Weapon (STAR, NULL);
 			gate_guard_opened = true;
 			int conversation = Commands->Create_Conversation ("MTU_GDI_POKE", 100.0f, 300.0f, true);
-			Commands->Join_Conversation(obj, conversation, false, true);
-			Commands->Join_Conversation(STAR, conversation, false, true);
+			Commands->Join_Conversation(obj, conversation, false, true, false);
+			Commands->Join_Conversation(STAR, conversation, false, true, false);
 			Commands->Start_Conversation (conversation, MTU_SPEECH_GATEGUARD_POKE);
 			Commands->Monitor_Conversation (obj, conversation);
 		}
@@ -3763,7 +3763,7 @@ DECLARE_SCRIPT (MTU_Building_Controller, "Building_ID:int")
 		else if (type == MTU_TYPE_BUILDING_DESTROY)
 		{
 			can_be_damaged = true;
-			Commands->Apply_Damage (obj, 10000.0f, "Blamokiller");
+			Commands->Apply_Damage (obj, 10000.0f, "Blamokiller", nullptr);
 		}
 	}
 };
@@ -3827,7 +3827,7 @@ DECLARE_SCRIPT (MTU_Nod_Soldier, "Soldier_ID:int")
 	{
 		if (timer_id == MTU_TIMER_NOD_SOLDIER_REMOVAL)
 		{
-			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller");
+			Commands->Apply_Damage(obj, 10000.0f, "Blamokiller", nullptr);
 		}
 	}
 };

@@ -494,7 +494,7 @@ DECLARE_SCRIPT(M03_Objective_Controller, "")  //1100004
 		int id = Commands->Create_Conversation("SAM_Objective_1_Complete", 0, 2000, false);
 		Commands->Join_Conversation(NULL, id);
 		Commands->Join_Conversation(star, id);
-		Commands->Start_Conversation(id);*/
+		Commands->Start_Conversation(id, 0);*/
 	}
 
 	void Sam_Sites_2_Complete_Dialog(void)
@@ -503,7 +503,7 @@ DECLARE_SCRIPT(M03_Objective_Controller, "")  //1100004
 		int id = Commands->Create_Conversation("SAM_Objective_2_Complete", 0, 2000, false);
 		Commands->Join_Conversation(NULL, id);
 		Commands->Join_Conversation(star, id);
-		Commands->Start_Conversation(id);*/
+		Commands->Start_Conversation(id, 0);*/
 	}
 	
 	void Complete_Mission_Objective(int id)
@@ -705,10 +705,10 @@ DECLARE_SCRIPT(RMV_Test_Big_Gun_Turning, "")
 
 		Commands->Send_Custom_Event (obj, Commands->Find_Object(1100003), CANNON_KILLED, 0, 0.0f);
 
-		/*int id = Commands->Create_Conversation("IDS_M03_D01");
+		/*int id = Commands->Create_Conversation("IDS_M03_D01", 50, 500.0f, true);
 		Commands->Join_Conversation(NULL, id);
 		Commands->Join_Conversation(STAR, id);
-		Commands->Start_Conversation(id);*/
+		Commands->Start_Conversation(id, 0);*/
 	}		
 
 	void Sound_Heard(GameObject * obj, const CombatSound & sound)
@@ -723,10 +723,10 @@ DECLARE_SCRIPT(RMV_Test_Big_Gun_Turning, "")
 				if (random < 2)
 				{
 					gunboat_warned = true;
-					/*int id = Commands->Create_Conversation("Gunboat_Warn_Big_Gun");
+					/*int id = Commands->Create_Conversation("Gunboat_Warn_Big_Gun", 50, 500.0f, true);
 					Commands->Join_Conversation(NULL, id);
 					Commands->Join_Conversation(STAR, id);
-					Commands->Start_Conversation(id);*/
+					Commands->Start_Conversation(id, 0);*/
 				}
 			}
 		}
@@ -956,10 +956,10 @@ DECLARE_SCRIPT(M03_Gunboat_Controller_RMV, "Receive_Type:int, Receive_Param_For_
 					{
 						had_conv = true;
 						
-						/*int id = Commands->Create_Conversation("Gunboat_To_Inlet");
+						/*int id = Commands->Create_Conversation("Gunboat_To_Inlet", 50, 500.0f, true);
 						Commands->Join_Conversation(NULL, id);
 						Commands->Join_Conversation(STAR, id);
-						Commands->Start_Conversation(id);*/
+						Commands->Start_Conversation(id, 0);*/
 					}
 					break;
 					}
@@ -1068,20 +1068,20 @@ DECLARE_SCRIPT(M03_Gunboat_Controller_RMV, "Receive_Type:int, Receive_Param_For_
 		if (!warning_2_given && last_health <= 0.25f * Commands->Get_Max_Health(Owner()))
 		{
 			warning_2_given = true;
-			/*int id = Commands->Create_Conversation("Gunboat_Near_Death");
+			/*int id = Commands->Create_Conversation("Gunboat_Near_Death", 50, 500.0f, true);
 			Commands->Join_Conversation(NULL, id);
 			Commands->Join_Conversation(STAR, id);
-			Commands->Start_Conversation(id);*/
+			Commands->Start_Conversation(id, 0);*/
 			return;
 		}
 
 		if (!warning_1_given && last_health <= 0.5f * Commands->Get_Max_Health(Owner()))
 		{
 			warning_1_given = true;
-			/*int id = Commands->Create_Conversation("Gunboat_Damaged");
+			/*int id = Commands->Create_Conversation("Gunboat_Damaged", 50, 500.0f, true);
 			Commands->Join_Conversation(NULL, id);
 			Commands->Join_Conversation(STAR, id);
-			Commands->Start_Conversation(id);*/
+			Commands->Start_Conversation(id, 0);*/
 		}
 	}
 	
@@ -1134,7 +1134,7 @@ DECLARE_SCRIPT(M03_Gunboat_Controller_RMV, "Receive_Type:int, Receive_Param_For_
 		
 		if (killer == Commands->Find_Object (1100002))
 		{
-			int id = Commands->Create_Conversation("M03CON031");
+			int id = Commands->Create_Conversation("M03CON031", 50, 500.0f, true);
 			Commands->Join_Conversation(NULL, id);
 			Commands->Start_Conversation(id, 100031);
 			Commands->Monitor_Conversation(obj, id);
@@ -1147,7 +1147,7 @@ DECLARE_SCRIPT(M03_Gunboat_Controller_RMV, "Receive_Type:int, Receive_Param_For_
 
 		if (killer != Commands->Find_Object (1100002))
 		{
-			int id = Commands->Create_Conversation("M03CON018");
+			int id = Commands->Create_Conversation("M03CON018", 50, 500.0f, true);
 			Commands->Join_Conversation(NULL, id);
 			Commands->Join_Conversation(NULL, id);
 			Commands->Join_Conversation(STAR, id);
@@ -3876,10 +3876,10 @@ DECLARE_SCRIPT(M03_Alternate_Sam_Site, "Chinook_Controller_ID:int")
 				/*if (!spoke)
 				{
 					spoke = true;
-					int id = Commands->Create_Conversation("Chinook_Fodder_Dead");
+					int id = Commands->Create_Conversation("Chinook_Fodder_Dead", 50, 500.0f, true);
 					Commands->Join_Conversation(NULL, id);
-					Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0,0,0)), id);
-					Commands->Start_Conversation(id);
+					Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0,0,0)), id, false);
+					Commands->Start_Conversation(id, 0);
 				}*/
 				ActionParamsStruct params;
 				params.Set_Basic(this, 99, 0);
@@ -3965,10 +3965,10 @@ DECLARE_SCRIPT(M03_Destroyed_Chinook, "Controller_ID:int, Simple_ID:int")
 {
 	void Killed(GameObject * obj, GameObject * killer)
 	{
-		/*int id = Commands->Create_Conversation("Chinook_Fodder_Scream", 100);
+		/*int id = Commands->Create_Conversation("Chinook_Fodder_Scream", 100, 500.0f, true);
 		Commands->Join_Conversation(NULL, id);
 		Commands->Join_Conversation(STAR, id);
-		Commands->Start_Conversation(id);*/
+		Commands->Start_Conversation(id, 0);*/
 		
 		GameObject *con = Commands->Find_Object(Get_Int_Parameter("Controller_ID"));
 		GameObject *sim = Commands->Find_Object(Get_Int_Parameter("Simple_ID"));
@@ -4521,10 +4521,10 @@ DECLARE_SCRIPT(M03_Reinforce_Area, "")
 			if ((beach_active && target_killed[0] != 1000) || (inlet_active && target_killed[1] != 1000) || (base_active && target_killed[2] != 1000))
 			{
 				forced = true;
-				/*int id = Commands->Create_Conversation("Nod_Reinforcements", 100);
+				/*int id = Commands->Create_Conversation("Nod_Reinforcements", 100, 500.0f, true);
 				Commands->Join_Conversation(NULL, id);
-				Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0,0,0)), id);
-				Commands->Start_Conversation(id);*/
+				Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0,0,0)), id, false);
+				Commands->Start_Conversation(id, 0);*/
 				Commands->Start_Timer(obj, this, 3.0f, 0);
 			}
 		}
@@ -4571,10 +4571,10 @@ DECLARE_SCRIPT(M03_Reinforce_Area, "")
 			if ((beach_active && count >= target_killed[0]) || (inlet_active && count >= target_killed[1]) || (base_active && count >= target_killed[2]))
 			{
 				forced = false;
-				/*int id = Commands->Create_Conversation("Nod_Reinforcements", 100);
+				/*int id = Commands->Create_Conversation("Nod_Reinforcements", 100, 500.0f, true);
 				Commands->Join_Conversation(NULL, id);
-				Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0,0,0)), id);
-				Commands->Start_Conversation(id);*/
+				Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0,0,0)), id, false);
+				Commands->Start_Conversation(id, 0);*/
 				Commands->Start_Timer(obj, this, 3.0f, 0);
 				count = 0;
 			}
@@ -4894,7 +4894,7 @@ DECLARE_SCRIPT(M03_Staged_Conversation_1, "Soldier_1_ID:int, Soldier_2_ID:int")
 				/*int id = Commands->Create_Conversation("Volcano", INNATE_PRIORITY_ENEMY_SEEN - 1, 20.0f, true);
 				Commands->Join_Conversation(soldier1, id);
 				Commands->Join_Conversation(soldier2, id);
-				Commands->Start_Conversation(id);
+				Commands->Start_Conversation(id, 0);
 				Commands->Monitor_Conversation(obj, id);*/
 			}
 		}
@@ -5120,10 +5120,10 @@ DECLARE_SCRIPT(M03_Destroyed_Turret, "")
 		}
 		else if (timer_id == 1)
 		{
-			/*int id = Commands->Create_Conversation("Turret_Destroyed");
+			/*int id = Commands->Create_Conversation("Turret_Destroyed", 50, 500.0f, true);
 			Commands->Join_Conversation(NULL, id);
 			Commands->Join_Conversation(STAR, id);
-			Commands->Start_Conversation(id);*/
+			Commands->Start_Conversation(id, 0);*/
 		}
 	}
 };
@@ -5736,10 +5736,10 @@ DECLARE_SCRIPT(M03_Beach_Radio, "")
 			conv[2] = "M03CON046";
 			
 
-			conv_id = Commands->Create_Conversation(conv[conv_count++]);
+			conv_id = Commands->Create_Conversation(conv[conv_count++], 50, 500.0f, true);
 			Commands->Join_Conversation(NULL, conv_id);
 			Commands->Join_Conversation(poker, conv_id);
-			Commands->Start_Conversation(conv_id);
+			Commands->Start_Conversation(conv_id, 0);
 			Commands->Monitor_Conversation(obj, conv_id);
 			conv_active = true;
 		}
@@ -5779,9 +5779,9 @@ DECLARE_SCRIPT(M03_Protect_The_MCT, "Building:int")
 		{
 			Vector3 mct_pos;
 
-			/*int id = Commands->Create_Conversation("Protect_The_MCT");
+			/*int id = Commands->Create_Conversation("Protect_The_MCT", 50, 500.0f, true);
 			Commands->Join_Conversation(obj, id);
-			Commands->Start_Conversation(id);*/
+			Commands->Start_Conversation(id, 0);*/
 			
 			switch (Get_Int_Parameter("Building"))
 			{

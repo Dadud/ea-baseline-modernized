@@ -1398,7 +1398,7 @@ DECLARE_SCRIPT(M10_Apache, "Area:int")
 			pad_destroyed = true;
 			if (on_pad)
 			{
-				Commands->Apply_Damage(obj, 10000.0f, "EXPLOSIVE");
+				Commands->Apply_Damage(obj, 10000.0f, "EXPLOSIVE", nullptr);
 			}
 			else 
 			{

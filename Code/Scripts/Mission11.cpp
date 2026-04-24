@@ -279,9 +279,9 @@ DECLARE_SCRIPT(M11_Mission_Controller_JDG, "")
 						{
 							//Commands->Attach_Script(STAR, "M11_Havocs_Script_JDG", "");
 							missionIntroConv = Commands->Create_Conversation( "M11_Level_Intro_Conversation", 100, 1000, false);
-							Commands->Join_Conversation( NULL, missionIntroConv, false, false );
-							Commands->Join_Conversation( STAR, missionIntroConv, false, false );
-							//Commands->Join_Conversation( NULL, missionIntroConv, false, false );
+							Commands->Join_Conversation( NULL, missionIntroConv, false, false , false);
+							Commands->Join_Conversation( STAR, missionIntroConv, false, false , false);
+							//Commands->Join_Conversation( NULL, missionIntroConv, false, false , false);
 							Commands->Start_Conversation( missionIntroConv,  missionIntroConv );
 							Commands->Monitor_Conversation (obj, missionIntroConv);
 						}
@@ -298,9 +298,9 @@ DECLARE_SCRIPT(M11_Mission_Controller_JDG, "")
 						if (STAR)
 						{
 							missionIntroConv02 = Commands->Create_Conversation( "M11_Level_Intro_Conversation02", 100, 1000, false);
-							Commands->Join_Conversation( NULL, missionIntroConv02, false, false );
-							Commands->Join_Conversation( NULL, missionIntroConv02, false, false );
-							//Commands->Join_Conversation( STAR, missionIntroConv02, false, false );
+							Commands->Join_Conversation( NULL, missionIntroConv02, false, false , false);
+							Commands->Join_Conversation( NULL, missionIntroConv02, false, false , false);
+							//Commands->Join_Conversation( STAR, missionIntroConv02, false, false , false);
 							Commands->Start_Conversation( missionIntroConv02,  missionIntroConv02 );
 							Commands->Monitor_Conversation (obj, missionIntroConv02);
 
@@ -339,7 +339,7 @@ DECLARE_SCRIPT(M11_Mission_Controller_JDG, "")
 						//Commands->Send_Custom_Event ( obj, obj, 0, M11_ADD_SECOND_OBJECTIVE_JDG, 5 );
 
 						evaPingedSydneyConv = Commands->Create_Conversation( "M11_EVA_SydneyPinged_Conversation", 100, 1000, false);
-						Commands->Join_Conversation( NULL, evaPingedSydneyConv, false, false );;
+						Commands->Join_Conversation( NULL, evaPingedSydneyConv, false, false , false);;
 						Commands->Start_Conversation( evaPingedSydneyConv,  evaPingedSydneyConv );
 						Commands->Monitor_Conversation (obj, evaPingedSydneyConv);
 
@@ -379,7 +379,7 @@ DECLARE_SCRIPT(M11_Mission_Controller_JDG, "")
 						Commands->Send_Custom_Event( obj, obj, 0, M11_ADD_FORTH_OBJECTIVE_JDG, 5 );
 
 						//nukeIntroConv = Commands->Create_Conversation( "M11_EVA_Activate_Nuke_Conversation", 100, 1000, false);
-						//Commands->Join_Conversation( NULL, nukeIntroConv, false, false );
+						//Commands->Join_Conversation( NULL, nukeIntroConv, false, false , false);
 						//Commands->Start_Conversation( nukeIntroConv,  nukeIntroConv );
 						//Commands->Monitor_Conversation (obj, nukeIntroConv);
 					}
@@ -440,7 +440,7 @@ DECLARE_SCRIPT(M11_Mission_Controller_JDG, "")
 				case M11_ADD_FIFTH_OBJECTIVE_JDG: //player's fifth objective is to sabotage the nuclear missle  
 					{
 						evaNukeConv = Commands->Create_Conversation( "M11_EVA_Activate_Nuke_Conversation", 100, 1000, false);
-						Commands->Join_Conversation( NULL, evaNukeConv, false, false );;
+						Commands->Join_Conversation( NULL, evaNukeConv, false, false , false);;
 						Commands->Start_Conversation( evaNukeConv,  evaNukeConv );
 						Commands->Monitor_Conversation (obj, evaNukeConv);
 					}
@@ -1175,7 +1175,7 @@ DECLARE_SCRIPT(M11_ExternalArtillery_Controller_JDG, "")
 				Vector3 explosion_location = sound_location;
 				
 				explosion_location.Z -= 10;
-				Commands->Create_Explosion("Ground Explosions Twiddler", explosion_location);
+				Commands->Create_Explosion("Ground Explosions Twiddler", explosion_location, nullptr);
 
 				float delayTimer = Commands->Get_Random ( delayTimerMin, delayTimerMax );
 				Commands->Send_Custom_Event( obj, obj, 0, M01_PICK_A_NEW_LOCATION_JDG, delayTimer );
@@ -3377,7 +3377,7 @@ DECLARE_SCRIPT(M11_Mutant_TrajectoryBone_JDG, "")//
 	void Created( GameObject * obj ) 
 	{
 		Commands->Enable_Hibernation(obj, false );
-		Commands->Set_Animation ( obj, "X11E_Trajectory.X11E_Trajectory", false, NULL, 0, 120 );
+		Commands->Set_Animation ( obj, "X11E_Trajectory.X11E_Trajectory", false, NULL, 0, 120 , true);
 	}
 
 	void Animation_Complete(GameObject * obj, const char *anim)
@@ -3395,7 +3395,7 @@ DECLARE_SCRIPT(M11_Mutant_ShatterGlass_JDG, "")
 	void Created( GameObject * obj ) 
 	{
 		Commands->Enable_Hibernation(obj, false );
-		Commands->Set_Animation ( obj, "X11E_Shatter.X11E_Shatter", false, NULL, 0, 120 );
+		Commands->Set_Animation ( obj, "X11E_Shatter.X11E_Shatter", false, NULL, 0, 120 , true);
 	}
 
 	void Animation_Complete(GameObject * obj, const char *anim)
@@ -3419,7 +3419,7 @@ DECLARE_SCRIPT(M11_Cryochamber_DestroyedSimple_JDG, "")
 
 	void Damaged( GameObject * obj, GameObject * damager, float amount ) 
 	{
-		Commands->Set_Animation ( obj, "DSP_CRYOBIGD.DSP_CRYOBIGD", false, NULL, 0, 5 );
+		Commands->Set_Animation ( obj, "DSP_CRYOBIGD.DSP_CRYOBIGD", false, NULL, 0, 5 , true);
 		Commands->Set_Health ( obj, 0.25f );	
 	}
 };
@@ -4836,7 +4836,7 @@ DECLARE_SCRIPT(M11_Start_Third_Objective_Zone_JDG, "")//player's third objective
 		{
 			entered = true;
 			addThirdObjectiveConv = Commands->Create_Conversation( "M11_Add_Third_Objective_Conversation", 100, 1000, false);
-			Commands->Join_Conversation( NULL, addThirdObjectiveConv, false, false );;
+			Commands->Join_Conversation( NULL, addThirdObjectiveConv, false, false , false);;
 			Commands->Start_Conversation( addThirdObjectiveConv,  addThirdObjectiveConv );
 			Commands->Monitor_Conversation (obj, addThirdObjectiveConv);	
 		}
@@ -4916,7 +4916,7 @@ DECLARE_SCRIPT(M11_End_Mission_Switch_JDG, "")//this guys ID is M11_END_MISSION_
 	{
 		if (param == M01_START_ACTING_JDG)
 		{
-			Commands->Set_Animation ( obj, "DSP_MINICONSEL.DSP_MINICONSEL", false, NULL, 0, 13 );
+			Commands->Set_Animation ( obj, "DSP_MINICONSEL.DSP_MINICONSEL", false, NULL, 0, 13 , true);
 		}
 	}
 };
@@ -5265,8 +5265,8 @@ DECLARE_SCRIPT(M11_Seths_Room_Conversation_Zone_JDG, "")//101103
 		if (enterer == STAR)
 		{
 			int sethConv = Commands->Create_Conversation( "M11_Kane_Regarding_Seth_Conversation", 100, 1000, false);
-			Commands->Join_Conversation( NULL, sethConv, false, false );
-			Commands->Join_Conversation( STAR, sethConv, false, false );
+			Commands->Join_Conversation( NULL, sethConv, false, false , false);
+			Commands->Join_Conversation( STAR, sethConv, false, false , false);
 			Commands->Start_Conversation( sethConv,  sethConv );
 
 			Commands->Destroy_Object ( obj );
@@ -5961,7 +5961,7 @@ DECLARE_SCRIPT(M11_KaneRoom_KaneEncounter_Kane_JDG, "")//M11_KanesRoom_Kane_Conv
 		{
 			kane_conversation02 = Commands->Create_Conversation( "M11_KanesRoom_Kane_Conversation", 100, 1000, false);
 			Commands->Join_Conversation( obj, kane_conversation02, false, true, true );
-			Commands->Join_Conversation( STAR, kane_conversation02, false, false );
+			Commands->Join_Conversation( STAR, kane_conversation02, false, false , false);
 			Commands->Start_Conversation( kane_conversation02,  kane_conversation02 );
 
 			Commands->Monitor_Conversation( obj, kane_conversation02 );
@@ -8431,7 +8431,7 @@ DECLARE_SCRIPT(M11_Cryochamber_Simple_JDG, "chamber_number:int")
 				Vector3 myPosition = Commands->Get_Position ( obj );
 				float myFacing = Commands->Get_Facing ( obj );
 				Commands->Create_Explosion ( "Explosion_Barrel_Toxic", myPosition, NULL );
-				Commands->Set_Animation ( obj, "DSP_CRYOBIG2.DSP_CRYOBIG2", false, NULL, 0, 15 );
+				Commands->Set_Animation ( obj, "DSP_CRYOBIG2.DSP_CRYOBIG2", false, NULL, 0, 15 , true);
 				Commands->Send_Custom_Event ( obj, Commands->Find_Object ( M11_LABORATORY_MUTANT_CONTROLLER_JDG ), M01_IVE_BEEN_KILLED_JDG, my_number, 0 );
 				Commands->Set_Health ( obj, 1 );
 
@@ -8464,12 +8464,12 @@ DECLARE_SCRIPT(M11_Cryochamber_Simple_JDG, "chamber_number:int")
 
 		if (myHealthPercentage > 25 && destroyed == false)
 		{
-			Commands->Set_Animation ( obj, "DSP_CRYOBIG2.DSP_CRYOBIG2", false, NULL, 0, 9 );
+			Commands->Set_Animation ( obj, "DSP_CRYOBIG2.DSP_CRYOBIG2", false, NULL, 0, 9 , true);
 		}
 
 		else if (destroyed == true)
 		{
-			Commands->Set_Animation ( obj, "DSP_CRYOBIG2.DSP_CRYOBIG2", false, NULL, 12, 15 );
+			Commands->Set_Animation ( obj, "DSP_CRYOBIG2.DSP_CRYOBIG2", false, NULL, 12, 15 , true);
 			Commands->Set_Health ( obj, 1 );
 		}
 
@@ -8479,7 +8479,7 @@ DECLARE_SCRIPT(M11_Cryochamber_Simple_JDG, "chamber_number:int")
 			Vector3 myPosition = Commands->Get_Position ( obj );
 			float myFacing = Commands->Get_Facing ( obj );
 			Commands->Create_Explosion ( "Explosion_Barrel_Toxic", myPosition, NULL );
-			Commands->Set_Animation ( obj, "DSP_CRYOBIG2.DSP_CRYOBIG2", false, NULL, 0, 15 );
+			Commands->Set_Animation ( obj, "DSP_CRYOBIG2.DSP_CRYOBIG2", false, NULL, 0, 15 , true);
 			Commands->Send_Custom_Event ( obj, Commands->Find_Object ( M11_LABORATORY_MUTANT_CONTROLLER_JDG ), M01_IVE_BEEN_KILLED_JDG, my_number, 0 );
 			Commands->Set_Health ( obj, 1 );
 
@@ -8593,7 +8593,7 @@ DECLARE_SCRIPT(M11_LabMutant_Simple_JDG, "")
 				if (obj)
 				{
 					Commands->Attach_To_Object_Bone( obj, cryoTrajectory_00, "BN_Trajectory" );
-					Commands->Set_Animation ( obj, "S_C_Human.H_C_X11E_Escape", false, NULL, 0, 120 );
+					Commands->Set_Animation ( obj, "S_C_Human.H_C_X11E_Escape", false, NULL, 0, 120 , true);
 					freed = true;
 				}
 			}
@@ -8606,7 +8606,7 @@ DECLARE_SCRIPT(M11_LabMutant_Simple_JDG, "")
 				sabotaged = true;
 				freed = true;
 				//Commands->Apply_Damage( obj, 10000, "BlamoKiller", NULL );
-				Commands->Set_Animation ( obj, "S_C_Human.H_C_Tubedie", false, NULL, 0, 22 );
+				Commands->Set_Animation ( obj, "S_C_Human.H_C_Tubedie", false, NULL, 0, 22 , true);
 			}
 		}
 	}
@@ -10020,7 +10020,7 @@ DECLARE_SCRIPT(M11_Sydney_Script_JDG, "")//M11_REAL_SYDNEY_MOBIUS_JDG 100644
 						}
 
 						missionEndConv = Commands->Create_Conversation( "M11_End_Mission_Conversation", 100, 1000, false);
-						Commands->Join_Conversation( STAR, missionEndConv, false, false );
+						Commands->Join_Conversation( STAR, missionEndConv, false, false , false);
 						Commands->Join_Conversation( obj, missionEndConv, false, false, true );
 						Commands->Start_Conversation( missionEndConv,  missionEndConv );
 						Commands->Monitor_Conversation (obj, missionEndConv);
