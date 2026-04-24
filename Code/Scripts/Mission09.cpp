@@ -417,8 +417,7 @@ DECLARE_SCRIPT (M09_Mobius_Suit_Objective, "")
 				
 				Commands->Set_Model ( mobius, "c_ag_gdi_pmob" );
 				Commands->Give_PowerUp(mobius, "POW_LaserChaingun_AI", true);
-				Commands->Select_Weapon (mobius, "Weapon_LaserChaingun_Ai" ;
-
+				Commands->Select_Weapon (mobius, "Weapon_LaserChaingun_Ai" );
 				Commands->Send_Custom_Event (obj, Commands->Find_Object(2000071), 901, 1, 0.0f);
 				Commands->Send_Custom_Event (obj, Commands->Find_Object(2000071), 902, 3, 0.0f);
 
@@ -897,7 +896,7 @@ DECLARE_SCRIPT (M09_Mobius_Initial_Conversation, "")
 			Commands->Send_Custom_Event( obj, Commands->Find_Object (2000010), FOLLOW, 2001012, 1.0f );
 
 			Commands->Give_PowerUp(obj, "POW_Pistol_AI", true);
-			Commands->Select_Weapon (obj, "Weapon_Pistol_Ai" ;
+			Commands->Select_Weapon (obj, "Weapon_Pistol_Ai" );
 		}
 	}
 };

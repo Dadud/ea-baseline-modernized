@@ -62,7 +62,7 @@ DECLARE_SCRIPT(BMG_Test_Script, "" )
 		if ( star ) {
 			Commands->Clear_Weapons( star );
 			Commands->Give_PowerUp(star, "POW_LaserRifle_Player");
-			Commands->Select_Weapon(star, "Weapon_LaserRifle_Player" ;
+			Commands->Select_Weapon(star, "Weapon_LaserRifle_Player" );
 		}
 	}
 

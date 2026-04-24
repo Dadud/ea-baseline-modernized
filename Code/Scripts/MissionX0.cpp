@@ -58,7 +58,7 @@ DECLARE_SCRIPT(MX0_MissionStart_DME, "") //1200001
 
 	void Created (GameObject * obj)
 	{
-		Commands->Select_Weapon (STAR, NULL ;
+		Commands->Select_Weapon (STAR, NULL );
 		engineer1 = engineer2 = eng_num = count = sniper_1 = sniper_2 = curr_conv7 = 0;
 		SniperNotify = false;
 
@@ -170,8 +170,7 @@ DECLARE_SCRIPT(MX0_MissionStart_DME, "") //1200001
 			Commands->Set_Background_Music ( "Level0_pt1_music.mp3" );
 			Commands->Give_PowerUp (STAR, "POW_AutoRifle_Player", false);
 			Commands->Give_PowerUp (STAR, "POW_AutoRifle_Player", false);
-			Commands->Select_Weapon (STAR, "Weapon_AutoRifle_Player" ;
-
+			Commands->Select_Weapon (STAR, "Weapon_AutoRifle_Player" );
 			Commands->Attach_Script(STAR, "Havoc_Script", "");
 		}
 	}
