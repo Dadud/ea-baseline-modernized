@@ -11,7 +11,7 @@ Current repo facts in the maintained workspace at the time of this cleanup:
 ```text
 repo root: /home/dadud/.openclaw/workspace/ea-baseline-modernized
 branch: main
-HEAD: 36f221f build: fix baseline compiler-compat issues in wwlib
+HEAD: be9af16 build: formconv portability cut + fix wwphys duplicate staticanimphys entry
 ```
 
 This roadmap should be read as the durable batch history and execution direction, not as a substitute for `git rev-parse`, `git branch --show-current`, or current build verification.
@@ -196,6 +196,21 @@ Changes landed:
 
 Primary output:
 - `docs/build/foundation-portability-batch-031.md`
+
+### Combined interim batch — formconv portability + wwphys CMake cleanup
+
+Two independent portable fixes landed in one commit:
+
+**formconv.h/cpp:**
+- Removed `#include <d3d8.h>` from public header
+- Replaced `D3DFORMAT` in public function signatures with `unsigned` (portable)
+- Moved DX8-specific conversion arrays and implementation to `.cpp` (Windows-only detail)
+- `WW3DFormat_To_D3DFormat()`: returns `WW3DFormat` in both paths (not `D3DFORMAT`)
+- `D3DFormat_To_WW3DFormat()`: takes `unsigned` on public interface, casts to `D3DFORMAT` internally in `.cpp`
+
+**wwphys/CMakeLists.txt:**
+- Fixed duplicate `staticanimphys.cpp/.h` entry (was in both `WWPHYS_RUNTIME_SIM_SOURCES` and `WWPHYS_SCENE_RENDER_GLUE_SOURCES`)
+- Now correctly in `WWPHYS_SCENE_RENDER_GLUE_SOURCES` only
 
 ### Batch 030 completed — first leakage-cut implementation slice
 
