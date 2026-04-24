@@ -178,13 +178,13 @@ DECLARE_SCRIPT(M09_Objective_Controller, "") // Object Controller id: 2000071
 		// New Hidden Mission Objective: Comandeer the NOD Stealth Tank.
 		case 905: 
 			{
-				Commands->Add_Objective(905, OBJECTIVE_TYPE_TERTIARY, OBJECTIVE_STATUS_HIDDEN, IDS_M09_T02, NULL);
+				Commands->Add_Objective(905, OBJECTIVE_TYPE_TERTIARY, OBJECTIVE_STATUS_HIDDEN, IDS_M09_T02, NULL, NULL, 0);
 			}
 			break;
 		// New Hidden Mission Objective: Comandeer the NOD Stealth Tank.
 		case 906: 
 			{
-				Commands->Add_Objective(906, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, IDS_M09_P05, NULL);
+				Commands->Add_Objective(906, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, IDS_M09_P05, NULL, NULL, 0);
 			}
 			break;*/
 		case 1000:
