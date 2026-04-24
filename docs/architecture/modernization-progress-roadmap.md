@@ -212,6 +212,19 @@ Two independent portable fixes landed in one commit:
 - Fixed duplicate `staticanimphys.cpp/.h` entry (was in both `WWPHYS_RUNTIME_SIM_SOURCES` and `WWPHYS_SCENE_RENDER_GLUE_SOURCES`)
 - Now correctly in `WWPHYS_SCENE_RENDER_GLUE_SOURCES` only
 
+### Batch 032 completed — Combat datasafe typedef shim
+
+Removed `#include "../Commando/datasafe.h"` from three Combat headers using a typedef shim approach:
+
+- `damage.h`: Added `using safe_float = float;`, `using safe_int = int;`, `using safe_unsigned_int = unsigned int;` locally. `SafeArmorType`/`SafeWarheadType` resolve via shim → `unsigned int`. Struct fields unchanged.
+- `playerdata.h`: Added shim, removed datasafe include. `Score`/`Money` fields unchanged.
+- `weaponmanager.h`: Added shim, removed datasafe include. All `WeaponDefinitionClass`/`AmmoDefinitionClass` fields unchanged.
+
+This is semantically zero-change: struct layouts, save format, and hot-path casts are all unaffected. The datasafe public-header dependency chain into the product layer is broken at three points.
+
+Primary output:
+- `docs/build/foundation-portability-batch-032.md`
+
 ### Batch 030 completed — first leakage-cut implementation slice
 
 Batch 030 turns the Batch 029 inventory into the first small implementation cuts.

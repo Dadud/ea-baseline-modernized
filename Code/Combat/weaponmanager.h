@@ -49,8 +49,12 @@
 	#include "definition.h"
 #endif
 
+// Compatibility shim: these were in ../Commando/datasafe.h
+// Removed to break the datasafe public header dependency.
+// Struct field declarations are unchanged; safe_float=float etc. via these aliases.
 #ifndef	_DATASAFE_H
-	#include	"../Commando/datasafe.h"
+using safe_float = float;
+using safe_int = int;
 #endif		//_DATASAFE_H
 
 class		WeaponClass;
