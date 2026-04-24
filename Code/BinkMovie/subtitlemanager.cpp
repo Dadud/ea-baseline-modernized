@@ -319,7 +319,7 @@ void SubTitleManagerClass::Draw_Sub_Title(const SubTitleClass* subtitle)
 	int w,h,bits;
 	bool windowed;
 	WW3D::Get_Device_Resolution(w,h,bits,windowed);
-	Vector2 extents=Renderer.Get_Text_Extents( string );
+	Vector2 extents=Renderer.Get_Text_Extents( (const WCHAR *)string );
 
 	// Assume left justification
 	int xPos = 0;
@@ -336,7 +336,7 @@ void SubTitleManagerClass::Draw_Sub_Title(const SubTitleClass* subtitle)
 	}
 
 	Renderer.Set_Location(Vector2(xPos,yPos));
-	Renderer.Build_Sentence(string);
+	Renderer.Build_Sentence( (const WCHAR *)string );
 
 	// Set font color
 	unsigned long rgbColor = subtitle->Get_RGB_Color()|0xff000000;
