@@ -40,7 +40,7 @@
 // Default argument macro: provides default values for function pointer args on MSVC x64.
 // MSVC x64 does not allow default arguments in function pointer declarations.
 // Non-MSVC platforms see no defaults; MSVC x64 sees = 0 / = NULL / = 0.0f.
-#if defined(_MSC_VER) && defined(_M_X64)
+#if _WIN64
 #define	DEF_ARG_DEFAULT	= 0
 #define	DEF_ARG_NULL	= NULL
 #define	DEF_ARG_FLOAT0	= 0.0f
