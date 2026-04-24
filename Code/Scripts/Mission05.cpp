@@ -480,7 +480,7 @@ DECLARE_SCRIPT(M05_Activate_Objective_502, "")
 			const char *conv_name = ("M05_CON004");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
 			Commands->Join_Conversation(NULL, conv_id, false, true, false);
-			Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0.0f,0.0f,0.0f)), conv_id, false, true);
+			Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0.0f,0.0f,0.0f)), conv_id, false, true true);
 			Commands->Start_Conversation (conv_id, 300502);
 			Commands->Monitor_Conversation (obj, conv_id);	
 		
@@ -799,7 +799,7 @@ DECLARE_SCRIPT(M05_Activate_Objective_510, "")
 			const char *conv_name = ("M05_CON008");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
 			Commands->Join_Conversation(NULL, conv_id, false, true, false);
-			Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0.0f,0.0f,0.0f)), conv_id, false, true);
+			Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0.0f,0.0f,0.0f)), conv_id, false, true true);
 			Commands->Start_Conversation (conv_id, 300510);
 			Commands->Monitor_Conversation (obj, conv_id);	
 		
@@ -880,7 +880,7 @@ DECLARE_SCRIPT(M05_DEAD6_Engineer, "") // first hotwire
 					const char *conv_name = ("M05_CON009");
 					int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
 					Commands->Join_Conversation(obj, conv_id, false, true, false);
-					Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0.0f,0.0f,0.0f)), conv_id, false, true);
+					Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0.0f,0.0f,0.0f)), conv_id, false, true true);
 					Commands->Start_Conversation (conv_id, 300551);
 					Commands->Monitor_Conversation (obj, conv_id);	
 
