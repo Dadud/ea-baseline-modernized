@@ -522,3 +522,32 @@ Those remain high-coupling buckets and should wait until the product-shell bound
 - How much of `Commando` runtime orchestration can move below the product shell once `datasafe.h` ownership is classified?
 - Should the next bounded seam be `BandTest` as a dedicated-server-adjacent DLL/service step or a small tools pilot target?
 - What is the minimum useful artifact parity check for the first product build attempt?
+
+## Batch 033 (2026-04-24): ww3d2 SDK probe + code bug fixes
+
+### What was done
+- SSH access established to Windows machine via Tailscale IP `100.91.75.113`
+- DirectX SDK headers copied from `C:\MsSdkTmp\DXF\include` → `Code/DirectX/Inc/`
+- Windows 10 SDK `um/` and `shared/` headers pulled from `C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\`
+- Linux probe configured: `cmake -B build/test-ww3d2 -DRENEGADE_BUILD_RENDERER_SEAMS=ON`
+- Multiple rounds of SDK header adaptation: COM macros, type stubs, architecture defines
+- DirectX SDK headers restored to original state (they are the real Windows build assets)
+- Case-sensitivity symlinks created: `D3dx8core.h→d3dx8core.h`, `targa.h→TARGA.H`
+
+### Key findings
+**SDK gap (structural):** The DX8 SDK headers (`d3d8.h`, `d3d8types.h`, etc.) are the actual Windows build assets. The include chain (`d3d8.h` → `objbase.h` → `rpc.h` → `rpcndr.h`) requires old Platform SDK types (`interface`, `DECLARE_INTERFACE_`, `STDMETHOD`, `THIS`, `GUID`, `CLSID`) that are not available in the Windows 10 SDK. A proper Linux probe of `ww3d2` requires either the original Platform SDK headers or a complete DX8 SDK stub library — not the Windows 10 SDK headers.
+
+**Real code bugs found in ww3d2:**
+- `stripoptimizer.cpp` lines 204, 291, 719: `i` loop variable declared outside for-loop scope (MSVC old-C behavior)
+- `prim_anim.h` lines 185, 347, 356, 360, 361: missing `typename` in template dependent scope (C++ standard compliance)
+- `lightenvironment.cpp`: implicit old-C-style static variable declarations
+
+**Fixed in this batch:**
+- `motchan.cpp` line 1311: `static_cast<unsigned short>(ivalue)`
+- `meshbuild.cpp` line 312: `int pass` declaration
+- `distlod.cpp` line 122: `int i` declaration
+- `hmorphanim.cpp` line 282: `char* entry` declaration
+- `ww3d2/CMakeLists.txt`: added `../DirectX/Inc/um` + `../DirectX/Inc/shared` include paths; added `_M_AMD64` define
+
+### Next real gate for ww3d2 on Linux
+Full Linux compilation requires a DX8 SDK stub library or the original Platform SDK headers. Alternatively, a minimal COM/Win32 stub layer specifically for ww3d2's use of DX8 would unblock the probe.
