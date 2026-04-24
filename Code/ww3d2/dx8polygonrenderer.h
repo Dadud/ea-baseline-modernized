@@ -48,7 +48,6 @@
 #include "always.h"
 #include "dx8list.h"
 #include "sortingrenderer.h"
-#include "dx8wrapper.h"
 
 class MeshClass;
 class DX8PolygonRendererClass;
@@ -100,60 +99,5 @@ public:
 
 // ----------------------------------------------------------------------------
 
-inline void DX8PolygonRendererClass::Set_Vertex_Index_Range(unsigned min_vertex_index_,unsigned vertex_index_range_)
-{
-//	WWDEBUG_SAY(("Set_Vertex_Index_Range - min: %d, range: %d\n",min_vertex_index_,vertex_index_range_));
-//	if (vertex_index_range_>30000) {
-//		int a=0;
-//		a++;
-//	}
-	min_vertex_index=min_vertex_index_;
-	vertex_index_range=vertex_index_range_;
-}
-
-// ----------------------------------------------------------------------------
-
-inline void DX8PolygonRendererClass::Render(/*const Matrix3D & tm,*/int base_vertex_offset)
-{
-//	DX8Wrapper::Set_Transform(D3DTS_WORLD,tm);
-//	SNAPSHOT_SAY(("Set_Transform\n"));
-	SNAPSHOT_SAY(("Set_Index_Buffer_Index_Offset(%d)\n",base_vertex_offset));
-
-	DX8Wrapper::Set_Index_Buffer_Index_Offset(base_vertex_offset);
-	if (strip) {
-		SNAPSHOT_SAY(("Draw_Strip(%d,%d,%d,%d)\n",index_offset,index_count-2,min_vertex_index,vertex_index_range));
-		DX8Wrapper::Draw_Strip(
-			index_offset,
-			index_count-2,
-			min_vertex_index,
-			vertex_index_range);
-	}
-	else {
-		SNAPSHOT_SAY(("Draw_Triangles(%d,%d,%d,%d)\n",index_offset,index_count-2,min_vertex_index,vertex_index_range));
-		DX8Wrapper::Draw_Triangles(
-			index_offset,
-			index_count/3,
-			min_vertex_index,
-			vertex_index_range);
-	}
-}
-
-inline void DX8PolygonRendererClass::Render_Sorted(/*const Matrix3D & tm,*/int base_vertex_offset,const SphereClass & bounding_sphere)
-{
-	WWASSERT(!strip);	// Strips can't be sorted for now
-//	DX8Wrapper::Set_Transform(D3DTS_WORLD,tm);
-//	SNAPSHOT_SAY(("Set_Transform\n"));
-	SNAPSHOT_SAY(("Set_Index_Buffer_Index_Offset(%d)\n",base_vertex_offset));
-	SNAPSHOT_SAY(("Insert_Sorting_Triangles(%d,%d,%d,%d)\n",index_offset,index_count-2,min_vertex_index,vertex_index_range));
-
-	DX8Wrapper::Set_Index_Buffer_Index_Offset(base_vertex_offset);
-	SortingRendererClass::Insert_Triangles(
-		bounding_sphere,
-		index_offset,
-		index_count/3,
-		min_vertex_index,
-		vertex_index_range);
-
-}
 
 #endif

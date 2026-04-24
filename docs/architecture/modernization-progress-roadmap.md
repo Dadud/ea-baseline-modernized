@@ -168,31 +168,31 @@ Current conclusion:
 - both are already excluded from the current UNIX `wwlib` build
 - any future work should begin with a real `platform CPU capabilities` boundary contract, not an ad hoc fallback
 
-### Batch 031 completed — ww3d2 header surface reduction (mesh.h + dynamesh.h)
+### Batch 031 completed — ww3d2 header surface reduction (mesh.h + dynamesh.h + dx8polygonrenderer.h)
 
-Two independent cuts to break the DX8 header chain from `ww3d2` public headers:
+Three cuts to break the DX8 header chain from `ww3d2` public headers:
 
 **Cut 1 — mesh.h:**
-- Prior partial fix removed `dx8polygonrenderer.h` from `mesh.h` but forgot to add the replacement include
 - Added `#include "dx8list.h"` — provides `DX8PolygonRendererList` typedef without any DX8 SDK dependency
-- `mesh.h` now has zero DX8 SDK exposure in its public include surface
+- Completes a prior partial fix that removed `dx8polygonrenderer.h` but forgot the replacement include
 
 **Cut 2 — dynamesh.h:**
-- `dynamesh.h` included `dx8wrapper.h` for one pure-math utility: `DX8Wrapper::Convert_Color_Clamp()`
 - Extracted `Color_Convert_Clamp(const Vector4&)` as a standalone inline helper in `WWMath/vector4.h`
-- Replaced all 3 calls in `dynamesh.h` with the local helper
+- Replaced all 3 `DX8Wrapper::Convert_Color_Clamp` calls with the local helper
 - Removed `dx8wrapper.h` include from `dynamesh.h`, replaced with `vector4.h`
-- `dynamesh.cpp` still includes `dx8wrapper.h` directly (legitimate DX8 API usage)
 
-Why this matters:
-- two independent header cuts that each break the `d3d8.h` chain from public ww3d2 headers
-- `Color_Convert_Clamp` is pure C, portable, no inline asm — suitable for all platforms
-- raises batch ambition by tackling inline-logic coupling (dynamesh.h), not just include structure
+**Cut 3 — dx8polygonrenderer.h (source-level fix):**
+- Moved `Set_Vertex_Index_Range()`, `Render()`, `Render_Sorted()` from inline in `.h` to non-inline in `.cpp`
+- Removed `#include "dx8wrapper.h"` from `dx8polygonrenderer.h`
+- Added `#include "dx8wrapper.h"` to `dx8polygonrenderer.cpp`
+- Header is now a pure interface — no DX8 SDK exposure at the source of the include chain
 
 Changes landed:
-- `Code/ww3d2/mesh.h` — added `#include "dx8list.h"`
-- `Code/ww3d2/dynamesh.h` — replaced `#include "dx8wrapper.h"` with `#include "vector4.h"`, replaced 3 calls
-- `Code/WWMath/vector4.h` — added `Color_Convert_Clamp()` inline helper
+- `Code/ww3d2/mesh.h`
+- `Code/ww3d2/dynamesh.h`
+- `Code/WWMath/vector4.h`
+- `Code/ww3d2/dx8polygonrenderer.h`
+- `Code/ww3d2/dx8polygonrenderer.cpp`
 
 Primary output:
 - `docs/build/foundation-portability-batch-031.md`
