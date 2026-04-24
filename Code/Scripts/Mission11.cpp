@@ -3605,7 +3605,7 @@ DECLARE_SCRIPT(M11_MutantCrypt_Spawner06_Guy_JDG, "")//this one has been fixed f
 
 	void Created( GameObject * obj ) 
 	{
-		Commands->Select_Weapon(obj, NULL ,;
+		Commands->Select_Weapon(obj, NULL ;
 		myState = IDLE;
 		float delayTimer = Commands->Get_Random ( 10, 20 );
 		Commands->Send_Custom_Event ( obj, obj, 0, M01_START_ACTING_JDG, delayTimer );
@@ -3793,7 +3793,7 @@ DECLARE_SCRIPT(M11_MutantCrypt_Spawner05_Guy_JDG, "")
 
 	void Created( GameObject * obj ) 
 	{
-		Commands->Select_Weapon(obj, NULL ,;
+		Commands->Select_Weapon(obj, NULL ;
 		myState = IDLE;
 		float delayTimer = Commands->Get_Random ( 10, 20 );
 		Commands->Send_Custom_Event ( obj, obj, 0, M01_START_ACTING_JDG, delayTimer );
@@ -3986,7 +3986,7 @@ DECLARE_SCRIPT(M11_MutantCrypt_Spawner04_Guy_JDG, "")
 
 	void Created( GameObject * obj ) 
 	{
-		Commands->Select_Weapon(obj, NULL ,;
+		Commands->Select_Weapon(obj, NULL ;
 		myState = IDLE;
 		float delayTimer = Commands->Get_Random ( 10, 20 );
 		Commands->Send_Custom_Event ( obj, obj, 0, M01_START_ACTING_JDG, delayTimer );
@@ -4129,7 +4129,7 @@ DECLARE_SCRIPT(M11_MutantCrypt_Spawner03_Guy_JDG, "")
 
 	void Created( GameObject * obj ) 
 	{
-		Commands->Select_Weapon(obj, NULL ,;
+		Commands->Select_Weapon(obj, NULL ;
 		myState = IDLE;
 		float delayTimer = Commands->Get_Random ( 10, 20 );
 		Commands->Send_Custom_Event ( obj, obj, 0, M01_START_ACTING_JDG, delayTimer );
@@ -4326,7 +4326,7 @@ DECLARE_SCRIPT(M11_MutantCrypt_Spawner02_Guy_JDG, "")//this script goes on mutan
 
 	void Created( GameObject * obj ) 
 	{
-		Commands->Select_Weapon(obj, NULL ,;
+		Commands->Select_Weapon(obj, NULL ;
 		myState = IDLE;
 		float delayTimer = Commands->Get_Random ( 10, 20 );
 		Commands->Send_Custom_Event ( obj, obj, 0, M01_START_ACTING_JDG, delayTimer );
@@ -6273,7 +6273,7 @@ DECLARE_SCRIPT(M11_Petrova_Script_JDG, "")//Petrova's ID is M11_MUTANT_PETROVA_J
 
 	void Created (GameObject *obj) 
 	{
-		Commands->Select_Weapon ( obj, NULL ,;
+		Commands->Select_Weapon ( obj, NULL ;
 		midtro01_over = false;
 		CurrentLocation = UNDEFINED_LOCATION;
 		Commands->Innate_Disable (obj);
@@ -6378,7 +6378,7 @@ DECLARE_SCRIPT(M11_Petrova_Script_JDG, "")//Petrova's ID is M11_MUTANT_PETROVA_J
 
 					midtro01_over = true;
 					Commands->Enable_Stealth (obj, true);
-					Commands->Select_Weapon ( obj, "Weapon_TiberiumAutoRifle_Ai" ,;
+					Commands->Select_Weapon ( obj, "Weapon_TiberiumAutoRifle_Ai" ;
 					const float priority			 = 100.0f;
 					const float normalizedspeed = 2.0f;		// Maximum speed.
 
@@ -6865,7 +6865,7 @@ DECLARE_SCRIPT(M11_Cinematic_Havoc_Script_JDG, "")
 {
 	void Created( GameObject * obj ) 
 	{
-		Commands->Select_Weapon ( obj, NULL ,;
+		Commands->Select_Weapon ( obj, NULL ;
 	}
 };
 
@@ -6874,7 +6874,7 @@ DECLARE_SCRIPT(M11_Cinematic_Petrova_Script_JDG, "")
 	void Created( GameObject * obj ) 
 	{
 		Commands->Enable_Stealth (obj, false);
-		Commands->Select_Weapon ( obj, NULL ,;
+		Commands->Select_Weapon ( obj, NULL ;
 	}
 };
 
@@ -8509,7 +8509,7 @@ DECLARE_SCRIPT(M11_LabMutant_Simple_JDG, "")
 		freed = false;
 		Commands->Innate_Disable(obj);
 		Commands->Set_Loiters_Allowed( obj, false );
-		Commands->Select_Weapon ( obj, NULL ,;
+		Commands->Select_Weapon ( obj, NULL ;
 		Commands->Set_Animation_Frame ( obj, "S_A_HUMAN.H_A_822A", 15 );
 	}
 
@@ -8617,7 +8617,7 @@ DECLARE_SCRIPT(M11_LabMutant_Simple_JDG, "")
 		{
 			Commands->Enable_Hibernation(obj, true );
 
-			Commands->Select_Weapon ( obj, "Weapon_TiberiumAutoRifle_Ai" ,;
+			Commands->Select_Weapon ( obj, "Weapon_TiberiumAutoRifle_Ai" ;
 			Commands->Innate_Enable(obj);
 			ActionParamsStruct params;
 			params.Set_Basic( this, 85, M01_HUNT_THE_PLAYER_JDG );

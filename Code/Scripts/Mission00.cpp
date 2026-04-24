@@ -2382,7 +2382,7 @@ DECLARE_SCRIPT (MTU_Tutorial_Instructor, "")
 			case (MTU_SPEECH_LOGAN_POKE): // Logan finished explaining poke command, enable commando control.
 				{
 					Commands->Set_HUD_Help_Text(IDS_MTUDSGN_DSGN0385I1DSGN_TXT, TEXT_COLOR_OBJECTIVE_PRIMARY);
-					Commands->Select_Weapon (STAR, "Weapon_Pistol_Player",;
+					Commands->Select_Weapon (STAR, "Weapon_Pistol_Player";
 					Commands->Send_Custom_Event(obj, STAR, MTU_TYPE_STAR, MTU_PARAM_CONTROL_ENABLE, 0);
 					break;
 				}
@@ -3269,7 +3269,7 @@ DECLARE_SCRIPT (MTU_GDI_Soldier, "")
 		}
 		else if (timer_id == MTU_TIMER_POKE_DELAY)
 		{
-			Commands->Select_Weapon (STAR, NULL,;
+			Commands->Select_Weapon (STAR, NULL;
 			gate_guard_opened = true;
 			int conversation = Commands->Create_Conversation ("MTU_GDI_POKE", 100.0f, 300.0f, true);
 			Commands->Join_Conversation(obj, conversation, false, true, false);
@@ -3354,7 +3354,7 @@ DECLARE_SCRIPT (MTU_Commando, "")
 	void Created (GameObject * obj)
 	{
 		Commands->Reveal_Encyclopedia_Weapon (14);
-		Commands->Select_Weapon (obj, NULL,;
+		Commands->Select_Weapon (obj, NULL;
 		sydney_shot = false;
 	}
 

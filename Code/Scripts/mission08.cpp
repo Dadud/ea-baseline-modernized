@@ -5575,7 +5575,7 @@ DECLARE_SCRIPT(M08_Unarmed_Prisoner, "Exit_Cell_ID=0:int, Weapon_Loc_ID=0:int")
 		if(action_id == WEAPONS && reason == ACTION_COMPLETE_NORMAL)
 		{
 			Commands->Give_PowerUp(obj, "POW_Chaingun_AI");
-			Commands->Select_Weapon(obj, "Weapon_Chaingun_Ai" ,;
+			Commands->Select_Weapon(obj, "Weapon_Chaingun_Ai" ;
 		}
 		if(action_id == EXIT_CELL && reason == ACTION_COMPLETE_NORMAL)
 		{
@@ -5631,7 +5631,7 @@ DECLARE_SCRIPT(M08_Unarmed_Prisoner, "Exit_Cell_ID=0:int, Weapon_Loc_ID=0:int")
 		if (Commands->Is_A_Star(poker))
 		{
 			Commands->Give_PowerUp(obj, "POW_Chaingun_AI");
-			Commands->Select_Weapon(obj, "Weapon_Chaingun_Ai" ,;
+			Commands->Select_Weapon(obj, "Weapon_Chaingun_Ai" ;
 		}
 	}
 
