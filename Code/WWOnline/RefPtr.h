@@ -61,7 +61,9 @@ private:
 /*
 ** IUnknown-style AddRef/Release for RefPtr.
 ** Stub: actual reference counting not implemented.
+** Skip if RefCounted.h (with AddReference/ReleaseReference) is already included.
 */
+#ifndef __REFCOUNTED_H__
 class RefCounted
 {
 public:
@@ -74,5 +76,6 @@ public:
 protected:
 	int refcount_;
 };
+#endif
 
 #endif // WWONLINE_REFPTR_H
