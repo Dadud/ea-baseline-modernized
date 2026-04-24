@@ -1459,7 +1459,7 @@ DECLARE_SCRIPT(M06_Alarm_Controller, "")
 				const char *conv_name = ("M06_CON018");
 				int conv_id = Commands->Create_Conversation (conv_name, 50, 500.0f, true);
 				Commands->Join_Conversation(NULL, conv_id, false, true, false);
-				Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0.0f,0.0f,0.0f)), conv_id, false, true true);
+				Commands->Join_Conversation(Commands->Get_A_Star(Vector3(0.0f,0.0f,0.0f)), conv_id, false, true, false);
 				Commands->Start_Conversation (conv_id, 300000);
 				Commands->Monitor_Conversation (obj, conv_id);
 			}
