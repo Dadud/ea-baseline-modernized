@@ -195,6 +195,7 @@ int LCW_Uncomp(void const * source, void * dest, unsigned long )
  *   05/20/1997 JLB : Created.                                                                 * 
  *=============================================================================================*/
 /*ARGSUSED*/
+#if !defined(_M_X64)
 int LCW_Comp(void const * source, void * dest, int datasize)
 {
 	int retval = 0;
@@ -439,6 +440,7 @@ outofhere:
 #endif
 	return(retval);
 }
+#endif
 #endif
 
 
