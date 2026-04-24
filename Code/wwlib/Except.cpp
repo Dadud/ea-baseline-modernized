@@ -177,7 +177,11 @@ int __cdecl _purecall(void)
 	** Use int3 to cause an exception.
 	*/
 	WWDEBUG_SAY(("Pure Virtual Function call. Oh No!\n"));
+#if defined(_MSC_VER) && defined(_M_X64)
+	__debugbreak();
+#elif defined(_MSC_VER)
 	_asm int 0x03;
+#endif
 #endif	//_DEBUG_ASSERT
 
 	return(return_code);
@@ -417,6 +421,16 @@ void Dump_Exception_Info(EXCEPTION_POINTERS *e_info)
 	*/
 	CONTEXT *context = e_info->ContextRecord;
 
+#if defined(_MSC_VER) && defined(_M_X64)
+	DWORD64 reg_pc = context->Rip;
+	DWORD64 reg_sp = context->Rsp;
+	DWORD64 reg_bp = context->Rbp;
+#else
+	DWORD reg_pc = reg_pc;
+	DWORD reg_sp = reg_sp;
+	DWORD reg_bp = reg_bp;
+#endif
+
 	/*
 	** The following are set for access violation only
 	*/
@@ -434,7 +448,8 @@ void Dump_Exception_Info(EXCEPTION_POINTERS *e_info)
 	/*
 	** Match the exception type with the error string and print it out
 	*/
-	for (int i=0 ; _codes[i] != 0xffffffff ; i++) {
+	int i;
+	for (i=0 ; _codes[i] != 0xffffffff ; i++) {
 		if (_codes[i] == e_info->ExceptionRecord->ExceptionCode) {
 			DebugString("Exception Handler: Found exception description\n");
 			break;
@@ -465,20 +480,20 @@ void Dump_Exception_Info(EXCEPTION_POINTERS *e_info)
 	symptr->SizeOfStruct = sizeof (IMAGEHLP_SYMBOL);
 	symptr->MaxNameLength = 256-sizeof (IMAGEHLP_SYMBOL);
 	symptr->Size = 0;
-	symptr->Address = context->Eip;
+	symptr->Address = reg_pc;
 
-	if (!IsBadCodePtr((FARPROC)context->Eip)) {
-		if (_SymGetSymFromAddr != NULL && _SymGetSymFromAddr (GetCurrentProcess(), context->Eip, &displacement, symptr)) {
-			sprintf (scrap, "Exception occurred at %08X - %s + %08X\r\n", context->Eip, symptr->Name, displacement);
+	if (!IsBadCodePtr((FARPROC)reg_pc)) {
+		if (_SymGetSymFromAddr != NULL && _SymGetSymFromAddr (GetCurrentProcess(), reg_pc, &displacement, symptr)) {
+			sprintf (scrap, "Exception occurred at %08X - %s + %08X\r\n", reg_pc, symptr->Name, displacement);
 		} else {
 			DebugString ("Exception Handler: Failed to get symbol for EIP\r\n");
 			if (_SymGetSymFromAddr != NULL) {
 				DebugString ("Exception Handler: SymGetSymFromAddr failed with code %d - %s\n", GetLastError(), Last_Error_Text());
 			}
-			sprintf (scrap, "Exception occurred at %08X\r\n", context->Eip);
+			sprintf (scrap, "Exception occurred at %08X\r\n", reg_pc);
 		}
 	} else {
-		DebugString ("Exception Handler: context->Eip is bad code pointer\n");
+		DebugString ("Exception Handler: reg_pc is bad code pointer\n");
 	}
 
 	Add_Txt (scrap);
@@ -581,7 +596,17 @@ void Dump_Exception_Info(EXCEPTION_POINTERS *e_info)
 	/*
 	** Dump the registers.
 	*/
-	sprintf(scrap, "Eip:%08X\tEsp:%08X\tEbp:%08X\r\n", context->Eip, context->Esp, context->Ebp);
+#if defined(_MSC_VER) && defined(_M_X64)
+	sprintf(scrap, "Rip:%08llX\tRsp:%08llX\tRbp:%08llX\r\n", reg_pc, reg_sp, reg_bp);
+	Add_Txt(scrap);
+	sprintf(scrap, "Rax:%08llX\tRbx:%08llX\tRcx:%08llX\r\n", (unsigned long long)0, (unsigned long long)0, (unsigned long long)0);
+	Add_Txt(scrap);
+	sprintf(scrap, "Rdx:%08llX\tRsi:%08llX\tRdi:%08llX\r\n", (unsigned long long)0, (unsigned long long)0, (unsigned long long)0);
+	Add_Txt(scrap);
+	sprintf(scrap, "RFlags:%08llX \r\n", (unsigned long long)0);
+	Add_Txt(scrap);
+#else
+	sprintf(scrap, "Eip:%08X\tEsp:%08X\tEbp:%08X\r\n", reg_pc, reg_sp, reg_bp);
 	Add_Txt(scrap);
 	sprintf(scrap, "Eax:%08X\tEbx:%08X\tEcx:%08X\r\n", context->Eax, context->Ebx, context->Ecx);
 	Add_Txt(scrap);
@@ -591,12 +616,16 @@ void Dump_Exception_Info(EXCEPTION_POINTERS *e_info)
 	Add_Txt(scrap);
 	sprintf(scrap, "CS:%04x  SS:%04x  DS:%04x  ES:%04x  FS:%04x  GS:%04x\r\n", context->SegCs, context->SegSs, context->SegDs, context->SegEs, context->SegFs, context->SegGs);
 	Add_Txt(scrap);
+#endif
 
 
 	/*
 	** Now the FP registers.
 	*/
 	Add_Txt("\r\nFloating point status\r\n");
+#if defined(_MSC_VER) && defined(_M_X64)
+	Add_Txt("  (x64 - no x87 FPU, XMM registers used instead)\r\n");
+#else
 	sprintf(scrap, "     Control word: %08x\r\n", context->FloatSave.ControlWord);
 	Add_Txt(scrap);
 	sprintf(scrap, "      Status word: %08x\r\n", context->FloatSave.StatusWord);
@@ -622,12 +651,16 @@ void Dump_Exception_Info(EXCEPTION_POINTERS *e_info)
 			Add_Txt(scrap);
 		}
 
-		void *fp_data_ptr = (void*)(&context->FloatSave.RegisterArea[fp*10]);
+			void *fp_data_ptr = (void*)(&context->FloatSave.RegisterArea[fp*10]);
 		double fp_value;
 
 		/*
 		** Convert FP dump from temporary real value (10 bytes) to double (8 bytes).
 		*/
+#if defined(_MSC_VER) && defined(_M_X64)
+		/* x64 has no x87 FPU - stub with zeros */
+		fp_value = 0.0;
+#elif defined(_MSC_VER)
 		_asm {
 			push	eax
 			mov	eax,fp_data_ptr
@@ -635,17 +668,20 @@ void Dump_Exception_Info(EXCEPTION_POINTERS *e_info)
 			fstp	qword ptr [fp_value]
 			pop	eax
 		}
+#endif
 		sprintf(scrap, "   %+#.17e\r\n", fp_value);
 		Add_Txt(scrap);
 	}
+
+#endif  // closes the #else from line 628 / #if _M_X64
 
 	/*
 	** Dump the bytes at EIP. This will make it easier to match the crash address with later versions of the game.
 	*/
 	DebugString("EIP bytes dump...\n");
-	sprintf(scrap, "\r\nBytes at CS:EIP (%08X)  : ", context->Eip);
+	sprintf(scrap, "\r\nBytes at CS:EIP (%08X)  : ", reg_pc);
 
-	unsigned char *eip_ptr = (unsigned char *) (context->Eip);
+	unsigned char *eip_ptr = (unsigned char *) (reg_pc);
 	char bytestr[32];
 
 	for (int c = 0 ; c < 32 ; c++) {
@@ -666,7 +702,7 @@ void Dump_Exception_Info(EXCEPTION_POINTERS *e_info)
 	*/
 	DebugString("Stack dump...\n");
 	Add_Txt("Stack dump (* indicates possible code address) :\r\n");
-	unsigned long *stackptr = (unsigned long*) context->Esp;
+	unsigned long *stackptr = (unsigned long*) reg_sp;
 
 	for (int j=0 ; j<2048 ; j++) {
 		if (IsBadReadPtr(stackptr, 4)) {
@@ -1228,8 +1264,15 @@ int Stack_Walk(unsigned long *return_addresses, int num_addresses, CONTEXT *cont
 	STACKFRAME stack_frame;
 	memset(&stack_frame, 0, sizeof(stack_frame));
 
+#if defined(_MSC_VER) && defined(_M_X64)
+	unsigned long long reg_eip = 0, reg_ebp = 0, reg_esp = 0;
+	/* x64: use intrinsics to capture return address if no context */
+	if (!context) {
+		reg_eip = (unsigned long long)_ReturnAddress();
+		reg_esp = (unsigned long long)_AddressOfReturnAddress();
+	}
+#elif defined(_MSC_VER)
 	unsigned long reg_eip, reg_ebp, reg_esp;
-
 	__asm {
 here:
 		lea	eax,here
@@ -1237,21 +1280,30 @@ here:
 		mov	reg_ebp,ebp
 		mov	reg_esp,esp
 	}
+#else
+	unsigned long reg_eip = 0, reg_ebp = 0, reg_esp = 0;
+#endif
 
 	stack_frame.AddrPC.Mode = AddrModeFlat;
-	stack_frame.AddrPC.Offset = reg_eip;
+	stack_frame.AddrPC.Offset = context ? 0 : reg_eip;
 	stack_frame.AddrStack.Mode = AddrModeFlat;
-	stack_frame.AddrStack.Offset = reg_esp;
+	stack_frame.AddrStack.Offset = context ? 0 : reg_esp;
 	stack_frame.AddrFrame.Mode = AddrModeFlat;
-	stack_frame.AddrFrame.Offset = reg_ebp;
+	stack_frame.AddrFrame.Offset = context ? 0 : reg_ebp;
 
 	/*
 	** Use the context struct if it was provided.
 	*/
 	if (context) {
-		stack_frame.AddrPC.Offset = context->Eip;
-		stack_frame.AddrStack.Offset = context->Esp;
-		stack_frame.AddrFrame.Offset = context->Ebp;
+#if defined(_MSC_VER) && defined(_M_X64)
+		stack_frame.AddrPC.Offset = context->Rip;
+		stack_frame.AddrStack.Offset = context->Rsp;
+		stack_frame.AddrFrame.Offset = context->Rbp;
+#else
+		stack_frame.AddrPC.Offset = reg_pc;
+		stack_frame.AddrStack.Offset = reg_sp;
+		stack_frame.AddrFrame.Offset = reg_bp;
+#endif
 	}
 
 	int pointer_index = 0;
