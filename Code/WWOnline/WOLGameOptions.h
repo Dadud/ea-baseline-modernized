@@ -40,7 +40,7 @@
 
 namespace WOL
 {
-#include >wolapi.h"
+#include "wolapi.h"
 }
 
 #ifdef _MSC_VER
