@@ -37,10 +37,30 @@
 
 #include "rcfile.h"
 #include <stdlib.h>
+#include <string.h>
 
-const char * RESOURCE_FILE_TYPE_NAME = "File";
+#ifdef _WIN32
+static const char * RESOURCE_FILE_TYPE_NAME = "File";
+#endif
 
+#ifdef OPENW3D_SDL3
+ResourceFileClass::ResourceFileClass(char const *filename) :
+	ResourceName(NULL),
+	FileBytes(NULL),
+	FilePtr(NULL),
+	EndOfFile(NULL)
+{
+	Set_Name(filename);
+	std::map<std::string, StaticResourceFileClass>::const_iterator it = GetStaticResources().find(ResourceName);
+	if (it != GetStaticResources().end()) {
+		FileBytes = static_cast<const unsigned char *>(it->second.data);
+		FilePtr = FileBytes;
+		EndOfFile = FileBytes + it->second.size;
+	}
+}
+#endif
 
+#ifdef _WIN32
 ResourceFileClass::ResourceFileClass(HMODULE hmodule, char const *filename) :
 	ResourceName(NULL),
 	hModule(NULL),
@@ -49,12 +69,12 @@ ResourceFileClass::ResourceFileClass(HMODULE hmodule, char const *filename) :
 	EndOfFile(NULL)
 {
 	Set_Name(filename);
-	HRSRC hresource = FindResource(hmodule,ResourceName,RESOURCE_FILE_TYPE_NAME);	
+	HRSRC hresource = FindResourceA(hmodule,ResourceName,RESOURCE_FILE_TYPE_NAME);
 
 	if (hresource) {
 		HGLOBAL hglob = LoadResource(hmodule,hresource);
 		if (hglob) {
-			FileBytes = (unsigned char *)LockResource(hglob);
+			FileBytes = (const unsigned char *)LockResource(hglob);
 			if (FileBytes) {
 				FilePtr = FileBytes;
 				EndOfFile = FileBytes + SizeofResource(hmodule,hresource);
@@ -62,11 +82,12 @@ ResourceFileClass::ResourceFileClass(HMODULE hmodule, char const *filename) :
 		}
 	}
 }
+#endif
 
-ResourceFileClass::~ResourceFileClass(void)									
-{ 
-	if (ResourceName) 
-		free(ResourceName); 
+ResourceFileClass::~ResourceFileClass(void)
+{
+	if (ResourceName)
+		free(ResourceName);
 }
 
 char const * ResourceFileClass::Set_Name(char const *filename)

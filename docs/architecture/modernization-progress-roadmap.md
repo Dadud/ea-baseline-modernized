@@ -124,7 +124,29 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 024 — opt-in SDL3 raw file seam for `wwlib`
+### Latest batch completed: Batch 025 — opt-in SDL3 resource-file seam for `wwlib`
+
+Batch 025 continues the SDL3 platform replay from the wider OpenW3D fork ecosystem by adapting the `rcfile.*` donor seam into a baseline-friendly form. `Code/wwlib/rcfile.h` and `Code/wwlib/rcfile.cpp` now support an opt-in SDL3-ready non-Windows `ResourceFileClass` path under `RENEGADE_USE_SDL3=ON`, while preserving the original Windows PE-resource path.
+
+This batch intentionally does **not** adopt the full generated embedding pipeline from the donor branch. Instead, it introduces a conservative C++98-friendly static in-memory registry (`std::map<std::string, StaticResourceFileClass>`) so the seam builds cleanly now and can be populated by later batches.
+
+CMake now also re-enables `rcfile.cpp` in the UNIX `wwlib` build only when `RENEGADE_USE_SDL3=ON`.
+
+Verified result:
+
+```bash
+cmake --build build/cmake-scaffold-sdl3 --target wwlib -j4
+```
+
+with final output including:
+
+```text
+[100%] Built target wwlib
+```
+
+This batch still does **not** claim generated embedded-resource population, `embed.py` / `embed.cmake` integration, or product-level resource registration units.
+
+### Previous batch completed: Batch 024 — opt-in SDL3 raw file seam for `wwlib`
 
 Batch 024 continues the SDL3 platform replay from the wider OpenW3D fork ecosystem, again using w3dhub PRs #105 and #107 as the donor reference. This batch implements the filesystem half of the first SDL3 platform seam: `Code/wwlib/wwfile.h`, `Code/wwlib/rawfile.h`, and `Code/wwlib/rawfile.cpp` now support an opt-in SDL3-backed non-Windows raw file path under `RENEGADE_USE_SDL3=ON`, while preserving the existing Windows path and the legacy non-SDL3 UNIX fallback code.
 

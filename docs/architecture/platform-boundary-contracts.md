@@ -143,9 +143,9 @@ bool DirectoryRead(DirectoryHandle dir, DirectoryEntry* out_entry);
 void DirectoryClose(DirectoryHandle dir);
 ```
 
-**Current implementation:** `Code/wwlib/rawfile.cpp` now has an opt-in SDL3-backed non-Windows file I/O path when `RENEGADE_USE_SDL3=ON`, while `Code/wwtranslatedb/translatedb.cpp` still uses its narrow local compatibility path. `Code/wwlib/mixfile.cpp` remains the compatibility-sensitive archive layer.
+**Current implementation:** `Code/wwlib/rawfile.cpp` now has an opt-in SDL3-backed non-Windows file I/O path when `RENEGADE_USE_SDL3=ON`, while `Code/wwtranslatedb/translatedb.cpp` still uses its narrow local compatibility path. `Code/wwlib/rcfile.cpp` also now has an opt-in SDL3-ready resource-file path that builds against an empty static in-memory registry, and `Code/wwlib/mixfile.cpp` remains the compatibility-sensitive archive layer.
 
-**Deferred work:** Win32 FindFirstFile/FindNextFile is still used throughout the codebase. A portable `DirectoryOpen/Read/Close` interface is still needed. Resource-backed file access (`rcfile.*`) and MIX archive parity remain separate follow-on work.
+**Deferred work:** Win32 FindFirstFile/FindNextFile is still used throughout the codebase. A portable `DirectoryOpen/Read/Close` interface is still needed. SDL3 embedded-resource population/generation (for example generated resource registration units) and MIX archive parity remain separate follow-on work.
 
 ---
 

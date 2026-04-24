@@ -330,7 +330,9 @@ if(UNIX)
   if(NOT RENEGADE_USE_SDL3)
     list(REMOVE_ITEM WWLIB_SOURCES
       ./rawfile.cpp
+      ./rcfile.cpp
       ./rawfile.cpp
+      ./rcfile.cpp
     )
   endif()
 endif()

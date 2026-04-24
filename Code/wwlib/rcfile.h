@@ -45,19 +45,29 @@
 #include "wwfile.h"
 #include "win.h"
 
+#ifdef OPENW3D_SDL3
+#include <cstdint>
+#include <map>
+#include <string>
+#endif
+
 /*
 ** ResourceFileClass
 ** This is a file class which allows you to read from a binary file that you have
-** imported into your resources.  Just import the file as a custom resource of the
-** type "File".  Replace the "id" of the resource with its filename (change
-** IDR_FILE1 to "MyFile.w3d") and then you will be able to access it by using this
-** class.
+** imported into your resources.
+** - Win32: uses native PE resources of type "File".
+** - SDL3 path: uses a static in-memory resource registry that later batches can populate.
 */
 class ResourceFileClass : public FileClass
 {
 	public:
 
+#ifdef OPENW3D_SDL3
+		ResourceFileClass(char const *filename);
+#endif
+#ifdef _WIN32
 		ResourceFileClass(HMODULE hmodule, char const *filename);
+#endif
 		virtual ~ResourceFileClass(void);
 		
 		virtual char const * File_Name(void) const					{ return ResourceName; }
@@ -78,19 +88,32 @@ class ResourceFileClass : public FileClass
 		virtual void Error(int error, int canretry = false, char const * filename=NULL);
 		virtual void Bias(int start, int length=-1) {}
 
-		virtual unsigned char *Peek_Data(void) const					{ return FileBytes; }
+		virtual const unsigned char *Peek_Data(void) const					{ return FileBytes; }
 
 	protected:
 
 		char *				ResourceName;
 
+#ifdef _WIN32
 		HMODULE				hModule;
-		
-		unsigned char *	FileBytes;
-		unsigned char *	FilePtr;
-		unsigned char *	EndOfFile;
+#endif
+		const unsigned char *	FileBytes;
+		const unsigned char *	FilePtr;
+		const unsigned char *	EndOfFile;
 
 };
 
+#ifdef OPENW3D_SDL3
+struct StaticResourceFileClass {
+	const char *filename;
+	const std::uint8_t *data;
+	size_t size;
+};
+
+inline std::map<std::string, StaticResourceFileClass>& GetStaticResources() {
+	static std::map<std::string, StaticResourceFileClass> map;
+	return map;
+}
+#endif
 
 #endif
