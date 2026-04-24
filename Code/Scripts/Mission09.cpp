@@ -2600,7 +2600,7 @@ DECLARE_SCRIPT (M09_Explosion_Zone_Lab01, "")
 		{
 			already_entered = true;
 			
-			Commands->Create_Explosion("Ground Explosions Twiddler", Vector3 (-102.560f, 483.462f ,-155.543f));
+			Commands->Create_Explosion("Ground Explosions Twiddler", Vector3 (-102.560f, 483.462f ,-155.543f), nullptr);
 			Commands->Start_Timer (obj, this, 1.0f, 100);
 		}
 	}
@@ -2609,7 +2609,7 @@ DECLARE_SCRIPT (M09_Explosion_Zone_Lab01, "")
 	{
 		if (timer_id == 100)
 		{
-			/*Commands->Create_Explosion("Ground Explosions Twiddler", Vector3 (-102.560f, 483.462f ,-155.543f));
+			/*Commands->Create_Explosion("Ground Explosions Twiddler", Vector3 (-102.560f, 483.462f ,-155.543f), nullptr);
 			GameObject *blocker;
 			blocker = Commands->Create_Object ( "M08_Rubble_Stub", Vector3 (-102.560f, 483.462f ,-155.543f));*/
 		}
@@ -2640,7 +2640,7 @@ DECLARE_SCRIPT (M09_Explosion_Zone_Lab02, "")
 		{
 			already_entered = true;
 			
-			Commands->Create_Explosion("Ground Explosions Twiddler", Vector3 (-6.151f, 494.846f ,-151.888f));
+			Commands->Create_Explosion("Ground Explosions Twiddler", Vector3 (-6.151f, 494.846f ,-151.888f), nullptr);
 			GameObject *blocker1;
 			blocker1 = Commands->Create_Object ( "M08_Rubble_Stub", Vector3 (-6.151f, 494.846f ,-151.888f));
 			Commands->Set_Facing ( blocker1, 60.0f );
@@ -2674,7 +2674,7 @@ DECLARE_SCRIPT (M09_Explosion_Zone_Tunnel01, "")
 			
 			Commands->Send_Custom_Event (obj, Commands->Find_Object(2000071), SPAWN_LOC, INCREMENT, 0.0f);
 
-			Commands->Create_Explosion("Ground Explosions Twiddler", Vector3 (-70.356f, 475.905f ,-63.233f));
+			Commands->Create_Explosion("Ground Explosions Twiddler", Vector3 (-70.356f, 475.905f ,-63.233f), nullptr);
 			GameObject *blocker1;
 			blocker1 = Commands->Create_Object ( "M08_Rubble_Stub", Vector3 (-74.290f, 474.747f, -64.022f));
 			Commands->Set_Facing(blocker1, 90.0f);
