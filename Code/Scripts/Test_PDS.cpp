@@ -253,31 +253,31 @@ DECLARE_SCRIPT(PDS_Test_Conversation, "Conversation Name=:string,Soldier1_ID=0:i
 			//
 			//	Have the participants join the conversation
 			//
-			Commands->Join_Conversation (game_obj, conv_id, true, true);
+			Commands->Join_Conversation (game_obj, conv_id, true, true, false);
 
 			if (soldier1_id == -1) {
 				GameObject *soldier = Commands->Get_The_Star ();
 				if (soldier != NULL) {
-					Commands->Join_Conversation (soldier, conv_id, true, true);
+					Commands->Join_Conversation (soldier, conv_id, true, true, false);
 				}
 			} else if (soldier1_id != 0) {
 				GameObject *soldier = Commands->Find_Object (soldier1_id);
 				if (soldier != NULL) {
-					Commands->Join_Conversation (soldier, conv_id, true, true);
+					Commands->Join_Conversation (soldier, conv_id, true, true, false);
 				}
 			}
 			
 			if (soldier2_id != 0) {
 				GameObject *soldier = Commands->Find_Object (soldier2_id);
 				if (soldier != NULL) {
-					Commands->Join_Conversation (soldier, conv_id, true, true);
+					Commands->Join_Conversation (soldier, conv_id, true, true, false);
 				}
 			}
 			
 			if (soldier3_id != 0) {
 				GameObject *soldier = Commands->Find_Object (soldier3_id);
 				if (soldier != NULL) {
-					Commands->Join_Conversation (soldier, conv_id, true, true);
+					Commands->Join_Conversation (soldier, conv_id, true, true, false);
 				}
 			}
 

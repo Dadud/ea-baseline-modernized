@@ -526,7 +526,7 @@ DECLARE_SCRIPT (DME_Test_Worker_Wander, "Work_Area=3:int")
 				
 				const char *conv_name = ("IDS_M06_DME");
 				int conv_id = Commands->Create_Conversation (conv_name);
-				Commands->Join_Conversation(obj, conv_id, false, false);
+				Commands->Join_Conversation(obj, conv_id, false, false, false);
 				Commands->Start_Conversation (conv_id, 1);
 				
 				
@@ -559,7 +559,7 @@ DECLARE_SCRIPT (DME_Test_Worker_Wander, "Work_Area=3:int")
 					
 					const char *conv_name = ("IDS_M06_DME02");
 					int conv_id = Commands->Create_Conversation (conv_name);
-					Commands->Join_Conversation(obj, conv_id, false, false);
+					Commands->Join_Conversation(obj, conv_id, false, false, false);
 					Commands->Start_Conversation (conv_id, 1);
 					Commands->Create_Logical_Sound(obj, SOUND_TYPE_GUNSHOT, Commands->Get_Position(obj), 75.0f);
 
@@ -574,7 +574,7 @@ DECLARE_SCRIPT (DME_Test_Worker_Wander, "Work_Area=3:int")
 					
 					const char *conv_name = ("IDS_M06_D05");
 					int conv_id = Commands->Create_Conversation (conv_name);
-					Commands->Join_Conversation(obj, conv_id, false, false);
+					Commands->Join_Conversation(obj, conv_id, false, false, false);
 					Commands->Start_Conversation (conv_id, 1);
 
 				
@@ -596,7 +596,7 @@ DECLARE_SCRIPT (DME_Test_Worker_Wander, "Work_Area=3:int")
 
 						const char *conv_name = ("IDS_M06_DME3");				//starts conversation.
 						int conv_id = Commands->Create_Conversation (conv_name);
-						Commands->Join_Conversation(obj, conv_id, false, false);
+						Commands->Join_Conversation(obj, conv_id, false, false, false);
 						Commands->Start_Conversation (conv_id, 1);
 
 						
@@ -987,7 +987,7 @@ DECLARE_SCRIPT (M05_Tech_Wander_DME, "Work_Area=1:int")
 				
 				const char *conv_name = ("IDS_M06_DME");
 				int conv_id = Commands->Create_Conversation (conv_name);
-				Commands->Join_Conversation(obj, conv_id, false, false);
+				Commands->Join_Conversation(obj, conv_id, false, false, false);
 				Commands->Start_Conversation (conv_id, 1);
 				
 				

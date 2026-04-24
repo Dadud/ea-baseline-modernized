@@ -357,8 +357,8 @@ DECLARE_SCRIPT(M08_Activate_Objective_802, "")
 			// Nick, Those scientists you've been digging for are being held in a Nod Research Facility at the far end of the canyon. Figure'd you might want to know.\n
 			const char *conv_name = ("M08_CON001");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300502);
 			Commands->Monitor_Conversation (obj, conv_id);	
 
@@ -416,8 +416,8 @@ DECLARE_SCRIPT(M08_Activate_Objective_803, "")
 			// Nick, we're going to lose contact when you head inside, there's no radio communication possible due to jamming signals.\n
 			const char *conv_name = ("M08_CON002");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300803);
 			Commands->Monitor_Conversation (obj, conv_id);	
 		
@@ -476,8 +476,8 @@ DECLARE_SCRIPT(M08_Activate_Objective_804, "")
 			// Don't know if you care, hon, but there's a Nod Helipad in back of the Prison Facility. Might help if you blow it up.\n
 			const char *conv_name = ("M08_CON003");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300804);
 			Commands->Monitor_Conversation (obj, conv_id);	
 		
@@ -536,7 +536,7 @@ DECLARE_SCRIPT(M08_Activate_Objective_806, "")
 			// Disable Research Station Alpha.\n
 			const char *conv_name = ("M08_CON004");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(STAR, conv_id, false, true);
+			Commands->Join_Conversation(STAR, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300806);
 			Commands->Monitor_Conversation (obj, conv_id);	
 
@@ -3084,7 +3084,7 @@ DECLARE_SCRIPT(M08_Warden_Announcement1, "")
 			// This is the warden, we have a probable escape situation in solitary. Full lockdown, all personnel initiate response protocols.\n
 			const char *conv_name = ("M08_CON006");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300502);
 			Commands->Monitor_Conversation (obj, conv_id);	
 
@@ -3121,7 +3121,7 @@ DECLARE_SCRIPT(M08_Warden_Announcement2, "")
 			// This is the warden, we have a confirmed prison break, repeat, confirmed prison break! Assume all GDI as hostile, kill every last one of them!\n
 			const char *conv_name = ("M08_CON007");
 			int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-			Commands->Join_Conversation(NULL, conv_id, false, true);
+			Commands->Join_Conversation(NULL, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 300502);
 			Commands->Monitor_Conversation (obj, conv_id);	
 
@@ -6253,7 +6253,7 @@ DECLARE_SCRIPT(M08_Facility_Scientist, "Loc1_ID=0:int, Loc2_ID=0:int, Loc3_ID=0:
 			// Help!  Intruder!  Help!\n
 			const char *conv_name = ("M08_CON008");
 			int conv_id = Commands->Create_Conversation (conv_name);
-			Commands->Join_Conversation(obj, conv_id, false, true);
+			Commands->Join_Conversation(obj, conv_id, false, true, false);
 			Commands->Start_Conversation (conv_id, 1010211);
 
 			// Assume hands over head anim
@@ -6862,7 +6862,7 @@ DECLARE_SCRIPT(M08_Prisoner_Conversation, "Orator_ID=0:int, Captive=0:int")
 					// Save us!\n
 					const char *conv_name = ("M08_CON010");
 					int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-					Commands->Join_Conversation(Commands->Find_Object(orator_id), conv_id, false, true);
+					Commands->Join_Conversation(Commands->Find_Object(orator_id), conv_id, false, true, false);
 					Commands->Start_Conversation (conv_id, 2);
 					
 				}
@@ -6871,7 +6871,7 @@ DECLARE_SCRIPT(M08_Prisoner_Conversation, "Orator_ID=0:int, Captive=0:int")
 					// It's the Commando!\n
 					const char *conv_name = ("M08_CON009");
 					int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-					Commands->Join_Conversation(Commands->Find_Object(orator_id), conv_id, false, true);
+					Commands->Join_Conversation(Commands->Find_Object(orator_id), conv_id, false, true, false);
 					Commands->Start_Conversation (conv_id, 2);
 				}
 			}
@@ -7066,7 +7066,7 @@ DECLARE_SCRIPT(M08_Prisoner_Poke_Conversation, "")
 	{
 		const char *conv_name = Prisoner_Conv_Table[Index(Min, Max)];
 		int conv_id = Commands->Create_Conversation (conv_name, 100.0f, 200.0f, false);
-		Commands->Join_Conversation(obj, conv_id, false, true);
+		Commands->Join_Conversation(obj, conv_id, false, true, false);
 		Commands->Start_Conversation (conv_id, 0);
 	}
 
@@ -7135,8 +7135,8 @@ DECLARE_SCRIPT(M08_KaneHead, "")
 		//  Parker!  Your interference is becoming troublesome.   
 		const char *conv_name = ("M08_CON041");
 		int conv_id = Commands->Create_Conversation (conv_name, INNATE_PRIORITY_ENEMY_SEEN + 5);
-		Commands->Join_Conversation(obj, conv_id, false, true);
-		Commands->Join_Conversation(STAR, conv_id, false, true);
+		Commands->Join_Conversation(obj, conv_id, false, true, false);
+		Commands->Join_Conversation(STAR, conv_id, false, true, false);
 		Commands->Start_Conversation (conv_id, 300123);
 		Commands->Monitor_Conversation (obj, conv_id);	
 	}
