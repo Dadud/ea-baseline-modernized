@@ -1913,12 +1913,12 @@ DECLARE_SCRIPT(MPR_A06_Final_Zone_Trigger_RMV, "")
 			if (apache1 != NULL)
 			{
 				Vector3 explosion1 = Commands->Get_Bone_Position( apache1, "SEAT" );
-				Commands->Create_Explosion( "Generic Air 02", explosion1 );
+				Commands->Create_Explosion( "Generic Air 02", explosion1 , nullptr);
 			}
 			if (apache2 != NULL)
 			{
 				Vector3 explosion2 = Commands->Get_Bone_Position( apache2, "SEAT" );
-				Commands->Create_Explosion( "Generic Air 02", explosion2 );
+				Commands->Create_Explosion( "Generic Air 02", explosion2 , nullptr);
 			}
 		}
 		if (timer_id == end_of_demo)

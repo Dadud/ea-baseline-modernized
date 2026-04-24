@@ -2480,7 +2480,7 @@ DECLARE_SCRIPT(M08_Tiberium_Cultivation_MCT, "")
 	}
 	void Killed (GameObject * obj, GameObject * killer)
 	{
-		Commands->Create_Explosion("Explosion_Mine_Remote_01", Commands->Get_Position(obj)); 
+		Commands->Create_Explosion("Explosion_Mine_Remote_01", Commands->Get_Position(obj), nullptr); 
 
 		Vector3 myPositon = Commands->Get_Position ( obj );
 		float myFacing  = Commands->Get_Facing ( obj );
@@ -2510,7 +2510,7 @@ DECLARE_SCRIPT(M08_Research_Station_A, "")
 
 	void Killed (GameObject * obj, GameObject * killer)
 	{
-		Commands->Create_Explosion("Explosion_Mine_Remote_01", Commands->Get_Position(obj)); 
+		Commands->Create_Explosion("Explosion_Mine_Remote_01", Commands->Get_Position(obj), nullptr); 
 
 		Vector3 myPositon = Commands->Get_Position ( obj );
 		float myFacing  = Commands->Get_Facing ( obj );
@@ -2540,7 +2540,7 @@ DECLARE_SCRIPT(M08_Research_Station_B, "")
 
 	void Killed (GameObject * obj, GameObject * killer)
 	{
-		Commands->Create_Explosion("Explosion_Mine_Remote_01", Commands->Get_Position(obj)); 
+		Commands->Create_Explosion("Explosion_Mine_Remote_01", Commands->Get_Position(obj), nullptr); 
 
 		Vector3 myPositon = Commands->Get_Position ( obj );
 		float myFacing  = Commands->Get_Facing ( obj );
@@ -7134,7 +7134,7 @@ DECLARE_SCRIPT(M08_KaneHead, "")
 	{
 		//  Parker!  Your interference is becoming troublesome.   
 		const char *conv_name = ("M08_CON041");
-		int conv_id = Commands->Create_Conversation (conv_name, INNATE_PRIORITY_ENEMY_SEEN + 5);
+		int conv_id = Commands->Create_Conversation (conv_name, INNATE_PRIORITY_ENEMY_SEEN + 5, 100.0f, false);
 		Commands->Join_Conversation(obj, conv_id, false, true, false);
 		Commands->Join_Conversation(STAR, conv_id, false, true, false);
 		Commands->Start_Conversation (conv_id, 300123);
