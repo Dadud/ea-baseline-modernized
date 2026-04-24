@@ -57,6 +57,7 @@
 #include <Notify.h>
 #include	<wwonline/wolsession.h>
 #include	<wwonline/woluser.h>
+#include	<wwonline/wolgameoptions.h>
 #include	<combat/combat.h>
 #include	<wwnet/wwpacket.h>
 

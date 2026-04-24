@@ -13,6 +13,15 @@
 #include "RefPtr.h"
 
 namespace WWOnline {
+
+    // Connection status enum (used by SessionClass and WOLConnect)
+    enum ConnectionStatus {
+        ConnectionDisconnected = 0,
+        ConnectionConnecting   = 1,
+        ConnectionConnected   = 2,
+        ConnectionDisconnecting = 3
+    };
+
     // Forward declarations for WWOnline session types
     class SessionClass;
     class UserManager;
