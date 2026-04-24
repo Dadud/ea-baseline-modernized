@@ -196,7 +196,7 @@ DECLARE_SCRIPT(BMG_Test_Misc_Script, "" )
 //		Action_Complete( obj, 1, (ActionCompleteReason)0 );
 
 /*		Commands->Debug_Message("Objective Created\n");
-		Commands->Add_Objective( 300, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, 1000 );
+		Commands->Add_Objective( 300, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, 1000 , "", 0);
 		Commands->Set_Objective_Radar_Blip_Object( 300, obj );*/
 	}
 
@@ -266,7 +266,7 @@ DECLARE_SCRIPT(BMG_Spray_Shooter, "" )
 //		Action_Complete( obj, 1, (ActionCompleteReason)0 );
 
 /*		Commands->Debug_Message("Objective Created\n");
-		Commands->Add_Objective( 300, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, 1000 );
+		Commands->Add_Objective( 300, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, 1000 , "", 0);
 		Commands->Set_Objective_Radar_Blip_Object( 300, obj );*/
 	}
 
@@ -424,7 +424,7 @@ DECLARE_SCRIPT(BMG_Test_Objective, "" )
 	void Created(GameObject* obj)
 	{
 		Commands->Debug_Message("Objective Created\n");
-		Commands->Add_Objective( 300, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, 1000 );
+		Commands->Add_Objective( 300, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, 1000 , "", 0);
 		Commands->Set_Objective_Radar_Blip_Object( 300, obj );
 		Commands->Start_Timer( obj, this, 6, 0);
 	}
@@ -524,7 +524,7 @@ DECLARE_SCRIPT( BMG_Test_Radar, "" )
 				break;
 			case 3:
 				Commands->Debug_Message("BMG Test Radar : Create Objective\n");
-				Commands->Add_Objective( 6, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, IDS_M04_RescuePrisoners );
+				Commands->Add_Objective( 6, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, IDS_M04_RescuePrisoners , "", 0);
 				break;
 			case 4:
 				Commands->Debug_Message("BMG Test Radar : Make Objective Blip\n");

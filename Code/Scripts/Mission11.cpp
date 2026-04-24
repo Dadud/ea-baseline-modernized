@@ -349,7 +349,7 @@ DECLARE_SCRIPT(M11_Mission_Controller_JDG, "")
 				case M11_ADD_SECOND_OBJECTIVE_JDG: //player's second objective is to locate sydney mobius
 					{
 						Vector3 sydenysLocation (0.000f, 96.000f, -34.250f);
-						//Commands->Add_Objective( M11_SECOND_OBJECTIVE_JDG, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, IDS_Enc_ObjTitle_Primary_M11_01 );
+						//Commands->Add_Objective( M11_SECOND_OBJECTIVE_JDG, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, IDS_Enc_ObjTitle_Primary_M11_01 , "", 0);
 						Commands->Add_Objective( M11_SECOND_OBJECTIVE_JDG, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, IDS_Enc_ObjTitle_Primary_M11_01, NULL, IDS_Enc_Obj_Primary_M11_01 );
 						Commands->Set_Objective_HUD_Info_Position( M11_SECOND_OBJECTIVE_JDG, -1, "POG_M11_1_01.tga", IDS_POG_RESCUE, sydenysLocation );
 						

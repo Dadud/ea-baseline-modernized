@@ -80,9 +80,9 @@ DECLARE_SCRIPT(MDD_Objective_Controller, "")
 		// Turn on the first primary objective (Locate the Missing Scientists)
 		// Turn on the tertiary objectives (if any)
 
-		//DEMO Commands->Add_Objective(201, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, IDS_M02_OBJECTIVE_01);
-		//DEMO Commands->Add_Objective(222, OBJECTIVE_TYPE_TERTIARY, OBJECTIVE_STATUS_HIDDEN, IDS_M02_OBJECTIVE_22);
-		//DEMO Commands->Add_Objective(223, OBJECTIVE_TYPE_TERTIARY, OBJECTIVE_STATUS_HIDDEN, IDS_M02_OBJECTIVE_23);
+		//DEMO Commands->Add_Objective(201, OBJECTIVE_TYPE_PRIMARY, OBJECTIVE_STATUS_PENDING, IDS_M02_OBJECTIVE_01, "", 0);
+		//DEMO Commands->Add_Objective(222, OBJECTIVE_TYPE_TERTIARY, OBJECTIVE_STATUS_HIDDEN, IDS_M02_OBJECTIVE_22, "", 0);
+		//DEMO Commands->Add_Objective(223, OBJECTIVE_TYPE_TERTIARY, OBJECTIVE_STATUS_HIDDEN, IDS_M02_OBJECTIVE_23, "", 0);
 	}
 
 	// This custom receives requests to activate and deactivate objectives
