@@ -320,7 +320,7 @@ DECLARE_SCRIPT(M00_C130_Explosion, "")
 {
 	void Killed(GameObject * obj, GameObject * killer)
 	{
-		Commands->Create_Explosion_At_Bone("Explosion_Cargo_Plane", obj, "BODYMAIN");
+		Commands->Create_Explosion_At_Bone("Explosion_Cargo_Plane", obj, "BODYMAIN", nullptr);
 		//JDG updated this script due to explosion preset name change--07/27/2001
 	}
 };
@@ -832,19 +832,19 @@ DECLARE_SCRIPT (M00_Advanced_Guard_Tower, "")
 		{
 			if (gun_01)
 			{
-				Commands->Send_Custom_Event (obj, gun_01, 1, missile_id);
+				Commands->Send_Custom_Event (obj, gun_01, 1, missile_id, 0);
 			}
 			if (gun_02)
 			{
-				Commands->Send_Custom_Event (obj, gun_02, 1, missile_id);
+				Commands->Send_Custom_Event (obj, gun_02, 1, missile_id, 0);
 			}
 			if (gun_03)
 			{
-				Commands->Send_Custom_Event (obj, gun_03, 1, missile_id);
+				Commands->Send_Custom_Event (obj, gun_03, 1, missile_id, 0);
 			}
 			if (gun_04)
 			{
-				Commands->Send_Custom_Event (obj, gun_04, 1, missile_id);
+				Commands->Send_Custom_Event (obj, gun_04, 1, missile_id, 0);
 			}
 		}
 		else if (timer_id == 2)
@@ -855,38 +855,38 @@ DECLARE_SCRIPT (M00_Advanced_Guard_Tower, "")
 			{
 				if (gun_01)
 				{
-					Commands->Send_Custom_Event (obj, gun_01, 2, 0);
+					Commands->Send_Custom_Event (obj, gun_01, 2, 0, 0);
 				}
 				if (gun_02)
 				{
-					Commands->Send_Custom_Event (obj, gun_02, 2, 0);
+					Commands->Send_Custom_Event (obj, gun_02, 2, 0, 0);
 				}
 				if (gun_03)
 				{
-					Commands->Send_Custom_Event (obj, gun_03, 2, 0);
+					Commands->Send_Custom_Event (obj, gun_03, 2, 0, 0);
 				}
 				if (gun_04)
 				{
-					Commands->Send_Custom_Event (obj, gun_04, 2, 0);
+					Commands->Send_Custom_Event (obj, gun_04, 2, 0, 0);
 				}
 			}
 			else if ((power) && (can_fire))
 			{
 				if (gun_01)
 				{
-					Commands->Send_Custom_Event (obj, gun_01, 2, 1);
+					Commands->Send_Custom_Event (obj, gun_01, 2, 1, 0);
 				}
 				if (gun_02)
 				{
-					Commands->Send_Custom_Event (obj, gun_02, 2, 1);
+					Commands->Send_Custom_Event (obj, gun_02, 2, 1, 0);
 				}
 				if (gun_03)
 				{
-					Commands->Send_Custom_Event (obj, gun_03, 2, 1);
+					Commands->Send_Custom_Event (obj, gun_03, 2, 1, 0);
 				}
 				if (gun_04)
 				{
-					Commands->Send_Custom_Event (obj, gun_04, 2, 1);
+					Commands->Send_Custom_Event (obj, gun_04, 2, 1, 0);
 				}
 			}
 			Commands->Start_Timer (obj, this, 1.0f, 2);
@@ -904,19 +904,19 @@ DECLARE_SCRIPT (M00_Advanced_Guard_Tower, "")
 			can_fire = true;
 			if (gun_01)
 			{
-				Commands->Send_Custom_Event (obj, gun_01, 2, 1);
+				Commands->Send_Custom_Event (obj, gun_01, 2, 1, 0);
 			}
 			if (gun_02)
 			{
-				Commands->Send_Custom_Event (obj, gun_02, 2, 1);
+				Commands->Send_Custom_Event (obj, gun_02, 2, 1, 0);
 			}
 			if (gun_03)
 			{
-				Commands->Send_Custom_Event (obj, gun_03, 2, 1);
+				Commands->Send_Custom_Event (obj, gun_03, 2, 1, 0);
 			}
 			if (gun_04)
 			{
-				Commands->Send_Custom_Event (obj, gun_04, 2, 1);
+				Commands->Send_Custom_Event (obj, gun_04, 2, 1, 0);
 			}
 		}
 		else if (!type)
@@ -924,19 +924,19 @@ DECLARE_SCRIPT (M00_Advanced_Guard_Tower, "")
 			can_fire = false;
 			if (gun_01)
 			{
-				Commands->Send_Custom_Event (obj, gun_01, 2, 0);
+				Commands->Send_Custom_Event (obj, gun_01, 2, 0, 0);
 			}
 			if (gun_02)
 			{
-				Commands->Send_Custom_Event (obj, gun_02, 2, 0);
+				Commands->Send_Custom_Event (obj, gun_02, 2, 0, 0);
 			}
 			if (gun_03)
 			{
-				Commands->Send_Custom_Event (obj, gun_03, 2, 0);
+				Commands->Send_Custom_Event (obj, gun_03, 2, 0, 0);
 			}
 			if (gun_04)
 			{
-				Commands->Send_Custom_Event (obj, gun_04, 2, 0);
+				Commands->Send_Custom_Event (obj, gun_04, 2, 0, 0);
 			}
 		}
 	}
@@ -973,7 +973,7 @@ DECLARE_SCRIPT (M00_Advanced_Guard_Tower_Gun, "")
 			if (missile_obj)
 			{
 				int enemy_id = Commands->Get_ID (enemy);
-				Commands->Send_Custom_Event (obj, missile_obj, 1, enemy_id);
+				Commands->Send_Custom_Event (obj, missile_obj, 1, enemy_id, 0);
 			}
 			Vector3 my_loc = Commands->Get_Position (obj);
 			Vector3 enemy_loc = Commands->Get_Position (enemy);
@@ -1282,7 +1282,7 @@ DECLARE_SCRIPT(M00_Nod_Obelisk_CNC, "Controller_ID=0:int")
 				GameObject * obelisk = Commands->Find_Object (obelisk_id);
 				if (obelisk)
 				{
-					Commands->Send_Custom_Event (obj, obelisk, 1, 0);
+					Commands->Send_Custom_Event (obj, obelisk, 1, 0, 0);
 				}
 			}
 			else if (power)
@@ -1290,7 +1290,7 @@ DECLARE_SCRIPT(M00_Nod_Obelisk_CNC, "Controller_ID=0:int")
 				GameObject * obelisk = Commands->Find_Object (obelisk_id);
 				if (obelisk)
 				{
-					Commands->Send_Custom_Event (obj, obelisk, 1, 1);
+					Commands->Send_Custom_Event (obj, obelisk, 1, 1, 0);
 				}
 			}
 			Commands->Start_Timer (obj, this, 1.0f, 1);
@@ -1357,7 +1357,7 @@ DECLARE_SCRIPT (M00_Obelisk_Weapon_CNC, "")
 		if (obelisk_is_dead == false)//adding extra safety check here -- 02/12/2002 JDG
 		{
 			int enemy_id = Commands->Get_ID (enemy);
-			Commands->Send_Custom_Event (obj, obj, 2, enemy_id);
+			Commands->Send_Custom_Event (obj, obj, 2, enemy_id, 0);
 		}
 	}
 
@@ -1525,7 +1525,7 @@ DECLARE_SCRIPT(M00_Nod_Obelisk, "Controller_ID=0:int")
 				GameObject * obelisk = Commands->Find_Object (obelisk_id);
 				if (obelisk)
 				{
-					Commands->Send_Custom_Event (obj, obelisk, 1, 0);
+					Commands->Send_Custom_Event (obj, obelisk, 1, 0, 0);
 				}
 			}
 			else if (power)
@@ -1533,7 +1533,7 @@ DECLARE_SCRIPT(M00_Nod_Obelisk, "Controller_ID=0:int")
 				GameObject * obelisk = Commands->Find_Object (obelisk_id);
 				if (obelisk)
 				{
-					Commands->Send_Custom_Event (obj, obelisk, 1, 1);
+					Commands->Send_Custom_Event (obj, obelisk, 1, 1, 0);
 				}
 			}
 			Commands->Start_Timer (obj, this, 1.0f, 1);
@@ -1591,7 +1591,7 @@ DECLARE_SCRIPT (M00_Obelisk_Weapon, "")
 	void Enemy_Seen(GameObject * obj, GameObject *enemy )
 	{
 		int enemy_id = Commands->Get_ID (enemy);
-		Commands->Send_Custom_Event (obj, obj, 2, enemy_id);
+		Commands->Send_Custom_Event (obj, obj, 2, enemy_id, 0);
 	}
 
 	void Custom (GameObject * obj, int type, int param, GameObject * sender)

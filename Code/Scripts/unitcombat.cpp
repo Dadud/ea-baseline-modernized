@@ -89,7 +89,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 			GameObject *controller = Commands->Find_Object(controller_id);
 			if ( controller )
 			{
-				Commands->Send_Custom_Event( obj, controller, OV_ANIMCOMPLETE, 0);
+				Commands->Send_Custom_Event( obj, controller, OV_ANIMCOMPLETE, 0, 0);
 				return;
 			}
 		}
@@ -137,7 +137,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 			GameObject *controller = Commands->Find_Object(controller_id);
 			if ( controller )
 			{
-				Commands->Send_Custom_Event( obj, controller, OV_CREATED, 0);
+				Commands->Send_Custom_Event( obj, controller, OV_CREATED, 0, 0);
 			}
 		}
 		else
@@ -214,7 +214,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 				GameObject *controller = Commands->Find_Object(controller_id);
 				if ( controller )
 				{
-					Commands->Send_Custom_Event( obj, controller, OV_CONFIRM, 0);
+					Commands->Send_Custom_Event( obj, controller, OV_CONFIRM, 0, 0);
 				}
 			}
 			return;
@@ -227,7 +227,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 				{
 					Sound_Create_Defensive_Attack( obj );
 				}
-				Commands->Send_Custom_Event( obj, sender, CUSTOM_TARGET_INFO, enemy_id);
+				Commands->Send_Custom_Event( obj, sender, CUSTOM_TARGET_INFO, enemy_id, 0);
 			}
 		}
 		else if ( type == CUSTOM_TARGET_INFO )
@@ -276,7 +276,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 				GameObject *controller = Commands->Find_Object(controller_id);
 				if ( controller )
 				{
-					Commands->Send_Custom_Event( obj, controller, OV_DAMAGED, 0);
+					Commands->Send_Custom_Event( obj, controller, OV_DAMAGED, 0, 0);
 					return;
 				}
 			}
@@ -325,7 +325,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 			GameObject *controller = Commands->Find_Object(controller_id);
 			if ( controller )
 			{
-				Commands->Send_Custom_Event( obj, Commands->Find_Object(controller_id), OV_ENEMYSEEN, 0);
+				Commands->Send_Custom_Event( obj, Commands->Find_Object(controller_id), OV_ENEMYSEEN, 0, 0);
 			}
 			return;
 		}
@@ -389,7 +389,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 					GameObject *controller = Commands->Find_Object(controller_id);
 					if ( controller )
 					{
-						Commands->Send_Custom_Event( obj, controller, OV_ARRIVED, 0);
+						Commands->Send_Custom_Event( obj, controller, OV_ARRIVED, 0, 0);
 						return;
 					}
 				}
@@ -486,7 +486,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 		GameObject *scoreboard = Commands->Find_Object(scoreboard_id);
 		if ( scoreboard )
 		{
-			Commands->Send_Custom_Event(obj,scoreboard,TALLY,TALLY_KILL);
+			Commands->Send_Custom_Event(obj,scoreboard,TALLY,TALLY_KILL, 0);
 		}
 
 		Commands->Action_Movement_Stop( obj );
@@ -506,7 +506,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 		GameObject *controller = Commands->Find_Object(controller_id);
 		if (controller)
 		{
-			Commands->Send_Custom_Event( obj, controller, OV_KILLED, 0);
+			Commands->Send_Custom_Event( obj, controller, OV_KILLED, 0, 0);
 		}
 	}
 	
@@ -514,7 +514,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 	{
 		if ( script_override > 0 )
 		{
-//			Commands->Send_Custom_Event( obj, Commands->Find_Object(controller_id), OV_SOUNDHEARD, 0);
+//			Commands->Send_Custom_Event( obj, Commands->Find_Object(controller_id), OV_SOUNDHEARD, 0, 0);
 			return;
 		}
 
@@ -586,7 +586,7 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 			{
 				if ( sound.Creator )
 				{
-					Commands->Send_Custom_Event( obj, sound.Creator, CUSTOM_ALLY_INFO, self_id);
+					Commands->Send_Custom_Event( obj, sound.Creator, CUSTOM_ALLY_INFO, self_id, 0);
 				}
 			}
 		}
@@ -1037,56 +1037,56 @@ DECLARE_SCRIPT ( Unit_Combat,"Scoreboard_ID=0:int,Controller_ID=0:int,Script_Ove
 		{
 			if ( direction == false )
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, HITDIRECTION, HD_FRONTHIT );
+				Commands->Send_Custom_Event ( obj, scoreboard, HITDIRECTION, HD_FRONTHIT , 0);
 			}
 			else if ( direction == true )
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, HITDIRECTION, HD_BACKHIT );
+				Commands->Send_Custom_Event ( obj, scoreboard, HITDIRECTION, HD_BACKHIT , 0);
 			}
 			
 			if (!strcmp(damaged_bone,"CHEADD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_HEAD );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_HEAD , 0);
 			}
 			else if (!strcmp(damaged_bone,"CTHORAXD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_CHEST );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_CHEST , 0);
 			}
 			else if (!strcmp(damaged_bone,"CLHUMERUSD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_LEFTARM );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_LEFTARM , 0);
 			}
 			else if (!strcmp(damaged_bone,"CRHUMERUSD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_RIGHTARM );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_RIGHTARM , 0);
 			}
 			else if (!strcmp(damaged_bone,"CLRADIUSD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_LEFTARM );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_LEFTARM , 0);
 			}
 			else if (!strcmp(damaged_bone,"CRRADIUSD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_RIGHTARM );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_RIGHTARM , 0);
 			}
 			else if (!strcmp(damaged_bone,"CPELVISD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_GROIN );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_GROIN , 0);
 			}
 			else if (!strcmp(damaged_bone,"CLFEMURD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_LEFTLEG );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_LEFTLEG , 0);
 			}
 			else if (!strcmp(damaged_bone,"CRFEMURD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_RIGHTLEG );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_RIGHTLEG , 0);
 			}
 			else if (!strcmp(damaged_bone,"CLTIBIAD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_LEFTLEG );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_LEFTLEG , 0);
 			}
 			else if (!strcmp(damaged_bone,"CRTIBIAD"))
 			{
-				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_RIGHTLEG );
+				Commands->Send_Custom_Event ( obj, scoreboard, BODYLOCATION, BL_RIGHTLEG , 0);
 			}
 		}
 	}

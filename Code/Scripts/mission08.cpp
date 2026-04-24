@@ -2965,7 +2965,7 @@ DECLARE_SCRIPT(M08_Deactivate_Encounter, "Activate_Zone=0:int")
 		if (Commands->Is_A_Star(enterer))
 		{
 			int activate_zone = Get_Int_Parameter("Activate_Zone");
-			Commands->Send_Custom_Event(obj, Commands->Find_Object(activate_zone), M08_DEACTIVATE_ENCOUNTER, 1);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object(activate_zone), M08_DEACTIVATE_ENCOUNTER, 1, 0);
 
 		}
 	}
@@ -4907,7 +4907,7 @@ DECLARE_SCRIPT(M08_Activate_Cavern_Entrance_Truck, "")
 		{
 			already_entered = true;
 			
-			Commands->Send_Custom_Event(obj, Commands->Find_Object(100516), M08_CAVERN_ENTRANCE_TRUCK, 1);
+			Commands->Send_Custom_Event(obj, Commands->Find_Object(100516), M08_CAVERN_ENTRANCE_TRUCK, 1, 0);
 
 		}
 	}
@@ -6304,7 +6304,7 @@ DECLARE_SCRIPT(M08_Apache_Controller, "")
 		apache_id[1] = Commands->Get_ID(Commands->Create_Object("Nod_Apache", Vector3(-45.993f, -66.675f, 12.382f)));
 		GameObject * apache = Commands->Find_Object(apache_id[1]);
 		Commands->Attach_Script(apache, "M08_Apache", "1");
-		Commands->Send_Custom_Event(Owner(), apache, 400, 400);
+		Commands->Send_Custom_Event(Owner(), apache, 400, 400, 0);
 		
 	}
 
@@ -6320,7 +6320,7 @@ DECLARE_SCRIPT(M08_Apache_Controller, "")
 			destroyed[param] = true;
 			if (Commands->Find_Object(apache_id[param]))
 			{
-				Commands->Send_Custom_Event(obj, Commands->Find_Object(apache_id[param]), 300, 300);
+				Commands->Send_Custom_Event(obj, Commands->Find_Object(apache_id[param]), 300, 300, 0);
 			}
 		}
 		if (type == 2000)
@@ -6354,7 +6354,7 @@ DECLARE_SCRIPT(M08_Apache_Controller, "")
 		{
 			if (area == param)
 			{
-				Commands->Send_Custom_Event(obj, sender, 100, 100);
+				Commands->Send_Custom_Event(obj, sender, 100, 100, 0);
 				attacking_apache = area;
 			}
 		}
@@ -6370,7 +6370,7 @@ DECLARE_SCRIPT(M08_Apache_Controller, "")
 		GameObject * apache = Commands->Find_Object(apache_id[current_area]);
 		if (apache)
 		{
-			Commands->Send_Custom_Event(Owner(), apache, 200, 200);
+			Commands->Send_Custom_Event(Owner(), apache, 200, 200, 0);
 		}
 	}
 
@@ -6379,7 +6379,7 @@ DECLARE_SCRIPT(M08_Apache_Controller, "")
 		GameObject * apache = Commands->Find_Object(apache_id[current_area]);
 		if (apache)
 		{
-			Commands->Send_Custom_Event(Owner(), apache, 500, 500);
+			Commands->Send_Custom_Event(Owner(), apache, 500, 500, 0);
 		}
 	}
 
@@ -6388,7 +6388,7 @@ DECLARE_SCRIPT(M08_Apache_Controller, "")
 		GameObject * apache = Commands->Find_Object(apache_id[area]);
 		if (apache)
 		{
-			Commands->Send_Custom_Event(Owner(), apache, 100, 100);
+			Commands->Send_Custom_Event(Owner(), apache, 100, 100, 0);
 			attacking_apache = area;
 		}
 	}
@@ -6403,7 +6403,7 @@ DECLARE_SCRIPT(M08_Apache_Controller, "")
 		char param[10];
 		sprintf(param, "%d", current_area);
 		Commands->Attach_Script(apache, "M08_Apache", param);
-		Commands->Send_Custom_Event(Owner(), apache, 400, 400);
+		Commands->Send_Custom_Event(Owner(), apache, 400, 400, 0);
 		apache_id[current_area] = Commands->Get_ID(apache);
 	}
 	
@@ -6417,7 +6417,7 @@ DECLARE_SCRIPT(M08_Apache_Controller, "")
 				GameObject * apache = Commands->Find_Object(apache_id[area]);
 				if (apache)
 				{
-					Commands->Send_Custom_Event(Owner(), apache, 100, 100);
+					Commands->Send_Custom_Event(Owner(), apache, 100, 100, 0);
 					attacking_apache = area;
 				}
 			}
@@ -6548,7 +6548,7 @@ DECLARE_SCRIPT(M08_Apache, "Area:int")
 			GameObject * controller = Commands->Find_Object(106339);
 			if (controller)
 			{
-				Commands->Send_Custom_Event(obj, controller, 5000, Get_Int_Parameter("Area"));
+				Commands->Send_Custom_Event(obj, controller, 5000, Get_Int_Parameter("Area"), 0);
 			}
 		}
 		if (timer_id == 4)
@@ -6587,7 +6587,7 @@ DECLARE_SCRIPT(M08_Apache, "Area:int")
 			GameObject * controller = Commands->Find_Object(106339);
 			if (controller)
 			{
-				Commands->Send_Custom_Event(obj, controller, 4000, Get_Int_Parameter("Area"));
+				Commands->Send_Custom_Event(obj, controller, 4000, Get_Int_Parameter("Area"), 0);
 			}
 		}
 		if (action_id == 3)
@@ -6604,7 +6604,7 @@ DECLARE_SCRIPT(M08_Apache, "Area:int")
 		GameObject * controller = Commands->Find_Object(106339);
 		if (controller)
 		{
-			Commands->Send_Custom_Event(obj, controller, 2000, Get_Int_Parameter("Area"));
+			Commands->Send_Custom_Event(obj, controller, 2000, Get_Int_Parameter("Area"), 0);
 		}
 	}
 };

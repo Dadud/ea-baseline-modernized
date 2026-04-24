@@ -186,7 +186,7 @@ DECLARE_SCRIPT(RMV_Hostage_Rescue_Point, "")
 	{
 		if (!Commands->Is_A_Star(enterer))
 		{
-			Commands->Send_Custom_Event(obj, enterer, 999, 999);
+			Commands->Send_Custom_Event(obj, enterer, 999, 999, 0);
 		}
 	}
 };
@@ -200,7 +200,7 @@ DECLARE_SCRIPT(RMV_Trigger_Killed, "ID:int, Type:int, Param:int")
 			GameObject * target = Commands->Find_Object(Get_Int_Parameter("ID"));
 			int type = Get_Int_Parameter("Type");
 			int param = Get_Int_Parameter("Param");
-			Commands->Send_Custom_Event(obj, target, type, param);
+			Commands->Send_Custom_Event(obj, target, type, param, 0);
 		}
 	}
 };
@@ -327,7 +327,7 @@ DECLARE_SCRIPT(RMV_Camera_Behavior, "Angle:float, Alarm_ID=0:int, Is_Gun=0:int, 
 			GameObject * alarm = Commands->Find_Object(Get_Int_Parameter("Alarm_ID"));
 			if (alarm)
 			{
-				Commands->Send_Custom_Event(Owner(), alarm, M00_CUSTOM_CAMERA_ALARM, enemy_id);
+				Commands->Send_Custom_Event(Owner(), alarm, M00_CUSTOM_CAMERA_ALARM, enemy_id, 0);
 			}
 		}
 		
@@ -616,7 +616,7 @@ DECLARE_SCRIPT(RMV_Trigger_Poked_2, "Target:int, Type:int, Param:int")
 		GameObject * target = Commands->Find_Object(Get_Int_Parameter("Target"));
 		if (target)
 		{
-			Commands->Send_Custom_Event(obj, target, Get_Int_Parameter("Type"), Get_Int_Parameter("Param"));
+			Commands->Send_Custom_Event(obj, target, Get_Int_Parameter("Type"), Get_Int_Parameter("Param"), 0);
 		}
 		Commands->Destroy_Object(obj);
 	}

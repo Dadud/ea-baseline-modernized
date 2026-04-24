@@ -1153,7 +1153,7 @@ DECLARE_SCRIPT(M00_Reinforcement_C130, "Controller_ID:int")
 	void Killed(GameObject * obj, GameObject * killer)
 	{
 		GameObject * con = Commands->Find_Object(Get_Int_Parameter(0));
-		Commands->Send_Custom_Event(obj, con, 23000, 23000);
+		Commands->Send_Custom_Event(obj, con, 23000, 23000, 0);
 		Commands->Stop_Sound(sound_id, true);
 	}
 };

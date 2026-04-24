@@ -938,7 +938,7 @@ DECLARE_SCRIPT( BMG_Test_Priority_2, "" )
 	void Timer_Expired( GameObject * obj, int timer_id )
 	{
 		Commands->Debug_Message_2("BMG Test Priority 2 %d\n", timer_id);
-		Commands->Send_Custom_Event( obj, obj, 700, 800 );
+		Commands->Send_Custom_Event( obj, obj, 700, 800 , 0);
 
 //		Commands->Start_Timer( obj, this, 3, timer_id + 1 );
 

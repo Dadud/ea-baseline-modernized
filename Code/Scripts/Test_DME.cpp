@@ -330,7 +330,7 @@ DECLARE_SCRIPT (DME_Test_Worker_Wander, "Work_Area=3:int")
 	{																		//100 not occupied, 200 is occupied.
 		if (type == DME_OCCUPIED && param == 100)
 		{
-			Commands->Send_Custom_Event(obj, sender, 70, 70);				//if not occupied, sends custom to set status to occupied.
+			Commands->Send_Custom_Event(obj, sender, 70, 70, 0);				//if not occupied, sends custom to set status to occupied.
 		}
 
 		else if (type == 200 && param == 200)
@@ -476,7 +476,7 @@ DECLARE_SCRIPT (DME_Test_Worker_Wander, "Work_Area=3:int")
 			Commands->Set_Animation( obj, NULL, false );
 			
 			destination_object = Commands->Find_Object (loc_id [choice]);
-			Commands->Send_Custom_Event(obj, destination_object, 90, 90);
+			Commands->Send_Custom_Event(obj, destination_object, 90, 90, 0);
 
 			Worker_Loop (obj);
 						
@@ -519,7 +519,7 @@ DECLARE_SCRIPT (DME_Test_Worker_Wander, "Work_Area=3:int")
 			if (anim_playing == false)
 			{
 				destination_object = Commands->Find_Object (loc_id [choice]);
-				Commands->Send_Custom_Event(obj, destination_object, 90, 90);
+				Commands->Send_Custom_Event(obj, destination_object, 90, 90, 0);
 
 				star_seen = true;
 				Commands->Start_Timer (obj, this, 9.0f, 510);
@@ -547,7 +547,7 @@ DECLARE_SCRIPT (DME_Test_Worker_Wander, "Work_Area=3:int")
 			Commands->Set_Player_Type( obj, -2 );
 
 			destination_object = Commands->Find_Object (loc_id [choice]);
-			Commands->Send_Custom_Event(obj, destination_object, 90, 90);
+			Commands->Send_Custom_Event(obj, destination_object, 90, 90, 0);
 
 			poked = true;
 			
@@ -684,13 +684,13 @@ DECLARE_SCRIPT (DME_Test_Work_Area, "")		//this script needs to be placed on all
 			if (!occupied)
 			{
 				Commands->Debug_Message("Not occupied\n");
-				Commands->Send_Custom_Event(obj, sender, DME_OCCUPIED, 100);
+				Commands->Send_Custom_Event(obj, sender, DME_OCCUPIED, 100, 0);
 			}
 
 			else
 			{
 				Commands->Debug_Message("Occupied\n");
-				Commands->Send_Custom_Event(obj, sender, 200, 200);
+				Commands->Send_Custom_Event(obj, sender, 200, 200, 0);
 			}
 		}
 
@@ -839,7 +839,7 @@ DECLARE_SCRIPT (M05_Tech_Wander_DME, "Work_Area=1:int")
 	{																		//100 not occupied, 200 is occupied.
 		if (type == DME_OCCUPIED && param == 100)
 		{
-			Commands->Send_Custom_Event(obj, sender, 70, 70);				//if not occupied, sends custom to set status to occupied.
+			Commands->Send_Custom_Event(obj, sender, 70, 70, 0);				//if not occupied, sends custom to set status to occupied.
 		}
 
 		else if (type == 200 && param == 200)
@@ -953,7 +953,7 @@ DECLARE_SCRIPT (M05_Tech_Wander_DME, "Work_Area=1:int")
 			Commands->Set_Animation( obj, NULL, false );
 			
 			destination_object = Commands->Find_Object (loc_id [choice]);
-			Commands->Send_Custom_Event(obj, destination_object, 90, 90);
+			Commands->Send_Custom_Event(obj, destination_object, 90, 90, 0);
 
 			Worker_Loop (obj);
 						
@@ -980,7 +980,7 @@ DECLARE_SCRIPT (M05_Tech_Wander_DME, "Work_Area=1:int")
 			if (anim_playing == false)
 			{
 				destination_object = Commands->Find_Object (loc_id [choice]);
-				Commands->Send_Custom_Event(obj, destination_object, 90, 90);
+				Commands->Send_Custom_Event(obj, destination_object, 90, 90, 0);
 
 				star_seen = true;
 				Commands->Start_Timer (obj, this, 9.0f, 510);
@@ -1006,7 +1006,7 @@ DECLARE_SCRIPT (test_Ssm_Trigger, "")
 	{
 		if (damager == STAR)
 		{
-			Commands->Send_Custom_Event (obj, obj, M00_LAUNCH_SSM, 0);
+			Commands->Send_Custom_Event (obj, obj, M00_LAUNCH_SSM, 0, 0);
 		}
 	}
 };
