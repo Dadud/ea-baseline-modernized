@@ -77,7 +77,7 @@ typedef enum
 typedef TypedActionPtr<CompositionAction, IMEManager> CompositionEvent;
 
 class UnicodeType;
-typedef TypedEvent<UnicodeType, wchar_t> UnicodeChar;
+typedef WWTypedEvent<UnicodeType, wchar_t> UnicodeChar;
 
 class IMEManager :
 		public RefCountClass,

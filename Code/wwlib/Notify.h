@@ -185,8 +185,8 @@ template<typename Event> class Notifier
  * Events from types such as strings or integers.
  *---------------------------------------------------------------------------*/
 
-/* TypedEvent<T. V>
- * 
+/* WWTypedEvent<T. V>
+ *
  * The first type (T) must be a class or other unique type. This need not
  * be a "real" class. It could be a forward declared class, which is enough
  * to make the template class unique.
@@ -197,10 +197,10 @@ template<typename Event> class Notifier
  * Typedef'ing the template class is a good thing to do.
  */
 template<typename T, typename V>
-class TypedEvent
+class WWTypedEvent
 	{
 	public:
-		TypedEvent(V& value) :
+		WWTypedEvent(V& value) :
 				mValue(value)
 			{}
 
