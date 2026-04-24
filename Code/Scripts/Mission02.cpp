@@ -1340,7 +1340,7 @@ DECLARE_SCRIPT(M02_Objective_Zone, "")
 					
 					if (obelisk)
 					{
-						Commands->Send_Custom_Event (obj, obelisk, 1, 0);
+						Commands->Send_Custom_Event (obj, obelisk, 1, 0, 0);
 					}
 
 					destroy_zone = true;
@@ -3239,7 +3239,7 @@ DECLARE_SCRIPT (M02_Respawn_Controller, "")
 			{
 				// Complete this mission objective.
 
-				Commands->Send_Custom_Event (obj, obj, 222, 1);
+				Commands->Send_Custom_Event (obj, obj, 222, 1, 0);
 				Commands->Stop_All_Conversations ();
 				int id = Commands->Create_Conversation("M02_HIDDEN_02_FINISH", 100, 300, true);
 				Commands->Join_Conversation(NULL, id, true, true, false);
@@ -3774,7 +3774,7 @@ DECLARE_SCRIPT (M02_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 			{
 				// If a Medium Tank is needed for A03, drop it.
 					
-				Commands->Send_Custom_Event (obj, object, 111, 2);
+				Commands->Send_Custom_Event (obj, object, 111, 2, 0);
 			}
 		}
 	}
@@ -3902,7 +3902,7 @@ DECLARE_SCRIPT(M02_Obelisk, "")
 			{
 				// Tell the Engineer to repair the building.
 
-				Commands->Send_Custom_Event (obj, obj_engineer, 99, 202);
+				Commands->Send_Custom_Event (obj, obj_engineer, 99, 202, 0);
 
 				//Actually repair the building.
 
@@ -3976,7 +3976,7 @@ DECLARE_SCRIPT (M02_Power_Plant, "")
 		{
 			// Tell the Engineer to repair the building.
 
-			Commands->Send_Custom_Event (obj, obj_engineer, 99, 217);
+			Commands->Send_Custom_Event (obj, obj_engineer, 99, 217, 0);
 
 			//Actually repair the building.
 
@@ -4382,7 +4382,7 @@ DECLARE_SCRIPT (M02_GDI_Soldier, "Area_ID:int, Soldier_Type=0:int")
 			GameObject * controller = Commands->Find_Object (M02_OBJCONTROLLER);
 			if (controller)
 			{
-				Commands->Send_Custom_Event (obj, controller, 1000, 1000);
+				Commands->Send_Custom_Event (obj, controller, 1000, 1000, 0);
 			}
 		}
 		else if (area_id == 9)
@@ -4390,7 +4390,7 @@ DECLARE_SCRIPT (M02_GDI_Soldier, "Area_ID:int, Soldier_Type=0:int")
 			GameObject * controller = Commands->Find_Object (M02_OBJCONTROLLER);
 			if (controller)
 			{
-				Commands->Send_Custom_Event (obj, controller, 1000, 1001);
+				Commands->Send_Custom_Event (obj, controller, 1000, 1001, 0);
 			}
 		}
 	}

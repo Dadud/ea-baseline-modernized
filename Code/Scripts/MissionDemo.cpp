@@ -591,7 +591,7 @@ Commands->Debug_Message (">>>>>>>>>>>>>>>> UNIT COUNT = %i, UNIT MAX = %i.\n",ar
 			{
 				// Complete this mission objective.
 
-				Commands->Send_Custom_Event (obj, obj, 222, 1);
+				Commands->Send_Custom_Event (obj, obj, 222, 1, 0);
 			}
 		}
 		//DEMO
@@ -1062,7 +1062,7 @@ DECLARE_SCRIPT (MDD_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 			GameObject* starobj = Commands->Find_Object(403063);
 			if (starobj)
 			{
-				Commands->Send_Custom_Event (obj, starobj, 100, 0);
+				Commands->Send_Custom_Event (obj, starobj, 100, 0, 0);
 			}
 			Commands->Start_Timer(obj, this, 10.0f, 8);
 		}
@@ -1095,7 +1095,7 @@ DECLARE_SCRIPT (MDD_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 
 		if (object)
 		{
-			Commands->Send_Custom_Event (obj, object, 101, param);
+			Commands->Send_Custom_Event (obj, object, 101, param, 0);
 		}
 		if (param == 3)
 		{
@@ -1105,7 +1105,7 @@ DECLARE_SCRIPT (MDD_Nod_Soldier, "Area_Number:int,Area_Officer:int,Pre_Placed:in
 			{
 				// If a Medium Tank is needed for A03, drop it.
 					
-				Commands->Send_Custom_Event (obj, object, 111, 2);
+				Commands->Send_Custom_Event (obj, object, 111, 2, 0);
 			}
 		}
 	}

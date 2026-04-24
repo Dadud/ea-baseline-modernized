@@ -673,7 +673,7 @@ DECLARE_SCRIPT (M09_LabRoom_Zones, "Mutant_Num:int, Mutant_Goto:int")
 	
 	void Entered (GameObject * obj, GameObject * enterer)
 	{
-		Commands->Send_Custom_Event (obj, Commands->Find_Object(2000279), CONVERSATION, TRIGGERED);
+		Commands->Send_Custom_Event (obj, Commands->Find_Object(2000279), CONVERSATION, TRIGGERED, 0);
 		
 		Commands->Action_Reset ( Commands->Find_Object (mutant), 100.0f );
 	}
@@ -3137,7 +3137,7 @@ DECLARE_SCRIPT (M09_MrShuman_Zone, "")
 				GameObject *shuman = Commands->Find_Object (2000456);
 				GameObject *mobius = Commands->Find_Object (2000010);
 
-				Commands->Send_Custom_Event ( obj, shuman, CLARK_KENT, 0);
+				Commands->Send_Custom_Event ( obj, shuman, CLARK_KENT, 0, 0);
 
 				if (shuman)
 				{
@@ -3184,7 +3184,7 @@ DECLARE_SCRIPT (M09_MrShuman_Zone, "")
 			GameObject *shuman = Commands->Find_Object (2000456);
 			GameObject *mobius = Commands->Find_Object (2000010);
 
-			Commands->Send_Custom_Event ( obj, shuman, CLARK_KENT, 0);
+			Commands->Send_Custom_Event ( obj, shuman, CLARK_KENT, 0, 0);
 
 			const char *conv_name = ("IDS_M09_D14");
 			int conv_id = Commands->Create_Conversation (conv_name, 99, 200, false);
@@ -4192,7 +4192,7 @@ DECLARE_SCRIPT (M09_Lab_Powerup, "Target:int")
 			Commands->Grant_Key (Commands->Find_Object (Get_Int_Parameter("Target")), 10, true);
 			Commands->Debug_Message("Key granted to %d.\n", Get_Int_Parameter("Target"));
 
-			//Commands->Send_Custom_Event (obj, Commands->Find_Object (Get_Int_Parameter("Target")), 0, 0);
+			//Commands->Send_Custom_Event (obj, Commands->Find_Object (Get_Int_Parameter("Target")), 0, 0, 0);
 			Commands->Action_Reset ( Commands->Find_Object (Get_Int_Parameter("Target")), 100 );
 			Commands->Attach_Script( Commands->Find_Object (Get_Int_Parameter("Target")), "M03_Goto_Star", "");
 		}

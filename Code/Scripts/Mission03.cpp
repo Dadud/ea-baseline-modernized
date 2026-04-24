@@ -6458,8 +6458,8 @@ DECLARE_SCRIPT(M03_Killed_Sound, "Officer=0:int, Location=0:int")
 {
 	void Killed( GameObject * obj, GameObject * killer )
 	{
-		Commands->Send_Custom_Event (obj, Commands->Find_Object (2018061), LOCATION, Get_Int_Parameter("Location") );
-		Commands->Send_Custom_Event (obj, Commands->Find_Object (2018061), TROOP_KILLED, Get_Int_Parameter("Officer") );
+		Commands->Send_Custom_Event (obj, Commands->Find_Object (2018061), LOCATION, Get_Int_Parameter("Location") , 0);
+		Commands->Send_Custom_Event (obj, Commands->Find_Object (2018061), TROOP_KILLED, Get_Int_Parameter("Officer") , 0);
 	}
 };
 
@@ -6653,7 +6653,7 @@ DECLARE_SCRIPT(M03_Beach_Reinforce, "")
 			if (--counter <= 0)
 			{
 				counter = (5 - DIFFICULTY);
-				Commands->Send_Custom_Event (obj, Commands->Find_Object (1144444), UPDATE, 0);
+				Commands->Send_Custom_Event (obj, Commands->Find_Object (1144444), UPDATE, 0, 0);
 
 				//Reinforce_Beach ();
 				//counter = 2;
@@ -6671,7 +6671,7 @@ DECLARE_SCRIPT(M03_Past_Pillbox, "")
 {
 	void Entered( GameObject * obj, GameObject * enterer ) 
 	{
-		Commands->Send_Custom_Event (obj, Commands->Find_Object (2018061), PAST_PILLBOX, 0);
+		Commands->Send_Custom_Event (obj, Commands->Find_Object (2018061), PAST_PILLBOX, 0, 0);
 	}
 };
 
@@ -6825,8 +6825,8 @@ DECLARE_SCRIPT(M03_Radar_Scramble, "")
 		{
 			if (!already_entered)
 			{
-				Commands->Send_Custom_Event (obj, Commands->Find_Object (1147513), ENTERED, 0);
-				Commands->Send_Custom_Event (obj, Commands->Find_Object (1144628), ENTERED, 0);
+				Commands->Send_Custom_Event (obj, Commands->Find_Object (1147513), ENTERED, 0, 0);
+				Commands->Send_Custom_Event (obj, Commands->Find_Object (1144628), ENTERED, 0, 0);
 				already_entered = true;
 
 				int id = Commands->Create_Conversation("M03CON068", 99, 2000, false);

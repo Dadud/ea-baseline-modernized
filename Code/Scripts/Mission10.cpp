@@ -4293,7 +4293,7 @@ DECLARE_SCRIPT (M10_Ssm_Trigger, "")
 		{
 			already_entered = true;
 
-			Commands->Send_Custom_Event (obj, Commands->Find_Object (2009688), M00_LAUNCH_SSM, 0);
+			Commands->Send_Custom_Event (obj, Commands->Find_Object (2009688), M00_LAUNCH_SSM, 0, 0);
 		}
 	}
 };
@@ -4352,8 +4352,8 @@ DECLARE_SCRIPT(M10_Radar_Scramble, "")
 		{
 			if (!already_entered)
 			{
-				Commands->Send_Custom_Event (obj, Commands->Find_Object (1110022), ENTERED, 0);
-				Commands->Send_Custom_Event (obj, Commands->Find_Object (1100160), ENTERED, 0);
+				Commands->Send_Custom_Event (obj, Commands->Find_Object (1110022), ENTERED, 0, 0);
+				Commands->Send_Custom_Event (obj, Commands->Find_Object (1100160), ENTERED, 0, 0);
 				already_entered = true;
 
 				int id = Commands->Create_Conversation("M03CON068", 99, 2000, false);

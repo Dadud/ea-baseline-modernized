@@ -1828,7 +1828,7 @@ DECLARE_SCRIPT(M07_Evac_Site_APC, "")
 	void Killed (GameObject * obj, GameObject * killer)
 	{
 		// Custom to evac site controller to count when four vehicles in area destroyed
-		Commands->Send_Custom_Event (obj, Commands->Find_Object(100664), M07_EVAC_SITE_VEHICLE_KILLED, 1);
+		Commands->Send_Custom_Event (obj, Commands->Find_Object(100664), M07_EVAC_SITE_VEHICLE_KILLED, 1, 0);
 		Commands->Debug_Message("Evac Site Vehicle Killed = %d \n", Commands->Get_ID(obj));
 	}
 
@@ -6304,7 +6304,7 @@ DECLARE_SCRIPT(M07_Alley_Vehicle, "Waypath_ID=0:int")
 		if(!active)
 		{
 			active = true;
-			Commands->Send_Custom_Event (obj, obj, M07_CUSTOM_ACTIVATE, 0.0f);
+			Commands->Send_Custom_Event (obj, obj, M07_CUSTOM_ACTIVATE, 0.0f, 0);
 		}
 		if(!attacking)
 		{
@@ -6327,7 +6327,7 @@ DECLARE_SCRIPT(M07_Alley_Vehicle, "Waypath_ID=0:int")
 		if(!active)
 		{
 			active = true;
-			Commands->Send_Custom_Event (obj, obj, M07_CUSTOM_ACTIVATE, 0.0f);
+			Commands->Send_Custom_Event (obj, obj, M07_CUSTOM_ACTIVATE, 0.0f, 0);
 		}
 
 		if(!attacking && (Commands->Get_Player_Type(damager) != SCRIPT_PLAYERTYPE_NOD))
