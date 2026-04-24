@@ -37,6 +37,18 @@ cmake_minimum_required(VERSION 3.20)
 
 project(CnC_Renegade_EA_Baseline LANGUAGES CXX)
 
+# MSVC implicit include directories (UCRT headers, SDK paths).
+# CMake should set CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES automatically for MSVC,
+# but when using NMake Makefiles the UCRT path sometimes doesn't propagate to all
+# targets. This ensures the Windows SDK UCRT include path is available globally.
+if(MSVC AND CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES)
+  include_directories(SYSTEM ${CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES})
+elseif(MSVC)
+  # Fallback: add the Windows 10 SDK UCRT path explicitly for NMake builds.
+  # Version 10.0.19041.0 matches the Windows 10 20H2 SDK commonly installed.
+  include_directories(SYSTEM "C:/Program Files (x86)/Windows Kits/10/include/10.0.19041.0/ucrt")
+endif()
+
 option(RENEGADE_USE_SDL3 "Enable SDL3-backed platform seam pieces where implemented" OFF)
 
 if(RENEGADE_USE_SDL3)
