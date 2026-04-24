@@ -1049,10 +1049,10 @@ DECLARE_SCRIPT(BMG_Test_Orca_Attack_Cinematic, "")
 	void Timer_Expired (GameObject* obj, int timer_id)
 	{
 		if ( timer_id == SHOOT ) {
-			Commands->Trigger_Weapon( obj, true, Vector3(0,0,0) );
+			Commands->Trigger_Weapon( obj, true, Vector3(0,0,0) , true);
 		}
 		if ( timer_id == STOP ) {
-			Commands->Trigger_Weapon( obj, false, Vector3(0,0,0) );
+			Commands->Trigger_Weapon( obj, false, Vector3(0,0,0) , true);
 		}
 	}
 

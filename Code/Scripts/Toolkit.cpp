@@ -1815,7 +1815,7 @@ DECLARE_SCRIPT(M00_Generic_Conv_DME, "ConvName:string")
 	void Created (GameObject *obj)
 	{
 		int id = Commands->Create_Conversation(Get_Parameter( "ConvName" ), 99, 2000, false);
-		Commands->Join_Conversation(obj, id);
+		Commands->Join_Conversation(obj, id, false, false, false);
 		Commands->Start_Conversation(id, 100000);
 		Commands->Monitor_Conversation(obj, id);
 	}

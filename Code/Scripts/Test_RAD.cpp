@@ -1371,7 +1371,7 @@ DECLARE_SCRIPT (MX0_A02_ACTOR, "ActorID=0:int")
 					Commands->Action_Attack (obj, params);
 					can_damage = true;
 					Commands->Start_Timer (obj, this, 10.0f, MX0_A02_TIMER_DESTROY_FLAME);
-					Commands->Trigger_Weapon (obj, true, Vector3(-90.941f,-60.470f,0.069f));
+					Commands->Trigger_Weapon (obj, true, Vector3(-90.941f,-60.470f,0.069f), true);
 					GameObject * controller = Commands->Find_Object (MX0_A02_CONTROLLER_ID);
 					if (controller)
 					{
@@ -3214,8 +3214,8 @@ DECLARE_SCRIPT (M00_Test_Sound_RAD, "")
 	{
 		int id = Commands->Create_Conversation("M00_TEST_CONVERSATION", 100, 300, true);
 		Commands->Stop_All_Conversations (); /// <--- This cancels the following conversation!
-		Commands->Join_Conversation(NULL, id);
+		Commands->Join_Conversation(NULL, id, false, false, false);
 		Commands->Join_Conversation (STAR, id, true, false, false);
-		Commands->Start_Conversation(id);
+		Commands->Start_Conversation(id, 0);
 	}
 };
