@@ -259,6 +259,8 @@ ea_vc6_static_library(ww3d2
     ${WW3D2_SOURCES}
   INCLUDE_DIRS
     ../DirectX/Inc
+    ../DirectX/Inc/um
+    ../DirectX/Inc/shared
     ../DirectX/include
     ../miles6/include
     ../srsdk1x/include
@@ -275,6 +277,7 @@ ea_vc6_static_library(ww3d2
     WWDEBUG
     _DEBUG
     _USE_INTEL_COMPILER
+    _M_AMD64
   LINK_LIBRARIES
     wwdebug
     wwlib
