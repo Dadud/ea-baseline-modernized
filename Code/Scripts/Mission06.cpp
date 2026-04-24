@@ -892,7 +892,7 @@ DECLARE_SCRIPT(M06_GDI_Prisoner, "")
 			Commands->Send_Custom_Event(obj, Commands->Find_Object(100018), 607, 1, 0.5f);
 			Commands->Set_Innate_Is_Stationary(obj, false);
 			Commands->Set_Player_Type(obj, SCRIPT_PLAYERTYPE_GDI );
-			Commands->Give_PowerUp(obj, "POW_Chaingun_AI");
+			Commands->Give_PowerUp(obj, "POW_Chaingun_AI", true);
 			Commands->Select_Weapon(obj, "Weapon_Chaingun_Ai" );
 
 			Commands->Grant_Key (obj, 1, true);
@@ -3374,11 +3374,11 @@ DECLARE_SCRIPT(M06_Havoc_DLS, "")
 		// Give Havoc the key to the barracks
 		Commands->Grant_Key (STAR, 9, true);
 	
-		Commands->Give_PowerUp(obj, "POW_Chaingun_Player");
-		Commands->Give_PowerUp(obj, "POW_SniperRifle_Player");
-		Commands->Give_PowerUp(obj, "POW_MineRemote_Player");
-		Commands->Give_PowerUp(obj, "POW_MineRemote_Player");
-		Commands->Give_PowerUp(obj, "POW_GrenadeLauncher_Player");
+		Commands->Give_PowerUp(obj, "POW_Chaingun_Player", true);
+		Commands->Give_PowerUp(obj, "POW_SniperRifle_Player", true);
+		Commands->Give_PowerUp(obj, "POW_MineRemote_Player", true);
+		Commands->Give_PowerUp(obj, "POW_MineRemote_Player", true);
+		Commands->Give_PowerUp(obj, "POW_GrenadeLauncher_Player", true);
 		
 	}
 

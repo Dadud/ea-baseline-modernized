@@ -319,22 +319,22 @@ DECLARE_SCRIPT (M09_Havoc_Script, "")
 {
 	void Created (GameObject *obj)
 	{
-		/*Commands->Give_PowerUp(obj, "Shotgun Weapon 3 Clips PU");
-		Commands->Give_PowerUp(obj, "FlameThrower_Weapon_PowerUp");
-		Commands->Give_PowerUp(obj, "Flame_Weapon_1_Clip_PowerUp");
-		Commands->Give_PowerUp(obj, "Flame_Weapon_1_Clip_PowerUp");
-		Commands->Give_PowerUp(obj, "ChemSprayer_Weapon_PowerUp");
-		Commands->Give_PowerUp(obj, "Chem_Weapon_1_Clip_PowerUp");
-		Commands->Give_PowerUp(obj, "Grenade Launcher Weapon PowerUps");
-		Commands->Give_PowerUp(obj, "GL_Weapon_1_Clip_PowerUp");
-		Commands->Give_PowerUp(obj, "Mine Weapons PowerUps");
-		Commands->Give_PowerUp(obj, "Remote Mine Weapon 1 Clip PU");
-		Commands->Give_PowerUp(obj, "Sniper Weapon 1 Clip PU");
-		Commands->Give_PowerUp(obj, "Sniper Weapon 1 Clip PU");
-		Commands->Give_PowerUp(obj, "MG Weapon 1 Clip PowerUp");
-		Commands->Give_PowerUp(obj, "MiniGun 2 Clips PU");
-		Commands->Give_PowerUp(obj, "Armor 100 PowerUp");
-		Commands->Give_PowerUp(obj, "RL Weapon 1 Clip PowerUp");*/
+		/*Commands->Give_PowerUp(obj, "Shotgun Weapon 3 Clips PU", true);
+		Commands->Give_PowerUp(obj, "FlameThrower_Weapon_PowerUp", true);
+		Commands->Give_PowerUp(obj, "Flame_Weapon_1_Clip_PowerUp", true);
+		Commands->Give_PowerUp(obj, "Flame_Weapon_1_Clip_PowerUp", true);
+		Commands->Give_PowerUp(obj, "ChemSprayer_Weapon_PowerUp", true);
+		Commands->Give_PowerUp(obj, "Chem_Weapon_1_Clip_PowerUp", true);
+		Commands->Give_PowerUp(obj, "Grenade Launcher Weapon PowerUps", true);
+		Commands->Give_PowerUp(obj, "GL_Weapon_1_Clip_PowerUp", true);
+		Commands->Give_PowerUp(obj, "Mine Weapons PowerUps", true);
+		Commands->Give_PowerUp(obj, "Remote Mine Weapon 1 Clip PU", true);
+		Commands->Give_PowerUp(obj, "Sniper Weapon 1 Clip PU", true);
+		Commands->Give_PowerUp(obj, "Sniper Weapon 1 Clip PU", true);
+		Commands->Give_PowerUp(obj, "MG Weapon 1 Clip PowerUp", true);
+		Commands->Give_PowerUp(obj, "MiniGun 2 Clips PU", true);
+		Commands->Give_PowerUp(obj, "Armor 100 PowerUp", true);
+		Commands->Give_PowerUp(obj, "RL Weapon 1 Clip PowerUp", true);*/
 
 		Commands->Start_Timer(obj, this, 0.5f, ACTIVATE);
 		//Commands->Grant_Key ( STAR, 10, true);
@@ -416,7 +416,7 @@ DECLARE_SCRIPT (M09_Mobius_Suit_Objective, "")
 				Commands->Attach_Script(powermob, "Test_Cinematic", "X9C_MIDTRO.txt");
 				
 				Commands->Set_Model ( mobius, "c_ag_gdi_pmob" );
-				Commands->Give_PowerUp(mobius, "POW_LaserChaingun_AI");
+				Commands->Give_PowerUp(mobius, "POW_LaserChaingun_AI", true);
 				Commands->Select_Weapon (mobius, "Weapon_LaserChaingun_Ai" );
 
 				Commands->Send_Custom_Event (obj, Commands->Find_Object(2000071), 901, 1, 0.0f);
@@ -451,7 +451,7 @@ DECLARE_SCRIPT (M09_Mobius_Suit_Objective, "")
 		{			
 			/*GameObject *mobius = Commands->Find_Object (2000010);
 			Commands->Set_Model ( mobius, "c_ag_gdi_pmob" );
-			Commands->Give_PowerUp(mobius, "POW_LaserChaingun_AI");
+			Commands->Give_PowerUp(mobius, "POW_LaserChaingun_AI", true);
 			Commands->Select_Weapon (mobius, "Weapon_LaserChaingun_Ai" );*/
 			
 			//Commands->Set_Animation ( mobius, "h_a_a0a0_l26da", false, NULL, 0.0f, -1.0f, true);			
@@ -896,7 +896,7 @@ DECLARE_SCRIPT (M09_Mobius_Initial_Conversation, "")
 			Commands->Send_Custom_Event (obj, Commands->Find_Object(2000279), CONVERSATION, ENDED, 0.0f);
 			Commands->Send_Custom_Event( obj, Commands->Find_Object (2000010), FOLLOW, 2001012, 1.0f );
 
-			Commands->Give_PowerUp(obj, "POW_Pistol_AI");
+			Commands->Give_PowerUp(obj, "POW_Pistol_AI", true);
 			Commands->Select_Weapon (obj, "Weapon_Pistol_Ai" );
 		}
 	}

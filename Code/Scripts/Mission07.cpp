@@ -345,10 +345,10 @@ DECLARE_SCRIPT(M07_Havoc_DLS, "")
 	void Created(GameObject * obj)
 	{
 		nuke_blast = true;
-		Commands->Give_PowerUp(obj, "POW_Chaingun_Player");
-		Commands->Give_PowerUp(obj, "POW_SniperRifle_Player");
-		Commands->Give_PowerUp(obj, "POW_RocketLauncher_Player");
-		Commands->Give_PowerUp(obj, "POW_MineRemote_Player");
+		Commands->Give_PowerUp(obj, "POW_Chaingun_Player", true);
+		Commands->Give_PowerUp(obj, "POW_SniperRifle_Player", true);
+		Commands->Give_PowerUp(obj, "POW_RocketLauncher_Player", true);
+		Commands->Give_PowerUp(obj, "POW_MineRemote_Player", true);
 	}
 
 	void Custom( GameObject * obj, int type, int param, GameObject * sender ) 
@@ -1288,7 +1288,7 @@ DECLARE_SCRIPT(M07_Sydney, "")
 		health = Commands->Get_Max_Health(obj);
 		shield = Commands->Get_Max_Shield_Strength(obj);
 		// Give Sydney initial pistol
-		Commands->Give_PowerUp(obj, "POW_Pistol_AI");
+		Commands->Give_PowerUp(obj, "POW_Pistol_AI", true);
 		Commands->Select_Weapon(obj, "Weapon_Pistol_Ai" );
 	}
 
@@ -2906,7 +2906,7 @@ DECLARE_SCRIPT(M07_Captured_Civ_Resist, "")
 			freed = true;
 			Commands->Enable_HUD_Pokable_Indicator( obj, false );
 			Commands->Set_Innate_Is_Stationary(obj, false);
-			Commands->Give_PowerUp(obj, "POW_Chaingun_AI");
+			Commands->Give_PowerUp(obj, "POW_Chaingun_AI", true);
 			Commands->Select_Weapon(obj, "Weapon_Chaingun_Ai" );
 			Commands->Set_Player_Type(obj, SCRIPT_PLAYERTYPE_GDI );
 			Commands->Send_Custom_Event(obj, Commands->Find_Object(100657), 705, 1, 0.0f);

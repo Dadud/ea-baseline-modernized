@@ -397,8 +397,8 @@ DECLARE_SCRIPT(M05_Havoc_DLS, "")
 	void Created(GameObject * obj)
 	{
 	
-		Commands->Give_PowerUp(obj, "POW_Chaingun_Player");
-		Commands->Give_PowerUp(obj, "POW_SniperRifle_Player");
+		Commands->Give_PowerUp(obj, "POW_Chaingun_Player", true);
+		Commands->Give_PowerUp(obj, "POW_SniperRifle_Player", true);
 				
 	}
 
@@ -2349,7 +2349,7 @@ DECLARE_SCRIPT(M05_Escapee_Brother, "")
 		conversation = false;
 		complete = false;
 		Commands->Enable_HUD_Pokable_Indicator( obj, true );
-		Commands->Give_PowerUp(obj, "POW_Shotgun_AI");
+		Commands->Give_PowerUp(obj, "POW_Shotgun_AI", true);
 
 	}
 
@@ -2685,7 +2685,7 @@ DECLARE_SCRIPT(M05_Babushka, "")
 
 					Commands->Action_Reset(obj, 100);
 
-			//		Commands->Give_PowerUp(obj, "POW_Chaingun_AI");
+			//		Commands->Give_PowerUp(obj, "POW_Chaingun_AI", true);
 					Commands->Start_Timer (obj, this, 1.0f, ARM_SHOTGUN);
 					Commands->Set_Player_Type(obj, SCRIPT_PLAYERTYPE_GDI );
 					// You have my thanks, brave warrior. Our village is in debt to you.\n
@@ -2739,7 +2739,7 @@ DECLARE_SCRIPT(M05_Babushka, "")
 	{
 		if(Commands->Get_Health(obj) < 10.0f)
 		{
-		//	Commands->Give_PowerUp(obj, "POW_Chaingun_AI");
+		//	Commands->Give_PowerUp(obj, "POW_Chaingun_AI", true);
 			Commands->Start_Timer (obj, this, 1.0f, ARM_SHOTGUN);
 		//	Commands->Set_Health(obj, 10.0f);
 		}
@@ -3528,7 +3528,7 @@ DECLARE_SCRIPT(M05_Mendoza3, "")
 		exiting = false;
 		health = Commands->Get_Max_Health(obj);
 
-		Commands->Give_PowerUp(obj, "POW_LaserRifle_AI");
+		Commands->Give_PowerUp(obj, "POW_LaserRifle_AI", true);
 		Commands->Select_Weapon(obj, "Weapon_LaserRifle_AI" );
 	}
 
@@ -3796,7 +3796,7 @@ DECLARE_SCRIPT(M05_Mendoza4, "")
 		// Send custom to nuke to start countdown
 	//	Commands->Send_Custom_Event(obj, Commands->Find_Object(100096), 100, 100, 2.0f);
 
-		Commands->Give_PowerUp(obj, "POW_LaserRifle_AI");
+		Commands->Give_PowerUp(obj, "POW_LaserRifle_AI", true);
 		Commands->Select_Weapon(obj, "Weapon_LaserRifle_AI" );
 	}
 
@@ -3881,7 +3881,7 @@ DECLARE_SCRIPT(M05_Civ_Warn, "")
 	{
 		Commands->Start_Timer (obj, this, 5.5f, GO_STAR);
 		Commands->Enable_Hibernation( obj, false );
-		Commands->Give_PowerUp(obj, "POW_Shotgun_AI");
+		Commands->Give_PowerUp(obj, "POW_Shotgun_AI", true);
 	}
 
 	void Action_Complete(GameObject * obj, int action_id, ActionCompleteReason reason)
@@ -4661,7 +4661,7 @@ DECLARE_SCRIPT(M05_Overlook_Captives, "")
 		
 		if(action_id == GO_POWERUPS && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Give_PowerUp(obj, "POW_Chaingun_AI");
+			Commands->Give_PowerUp(obj, "POW_Chaingun_AI", true);
 			Commands->Start_Timer(obj, this, 1.0f, ARM_CHAINGUN);
 			
 		}
@@ -5081,7 +5081,7 @@ DECLARE_SCRIPT(M05_Dump_Captives, "")
 		
 		if(action_id == GO_POWERUPS && reason == ACTION_COMPLETE_NORMAL)
 		{
-			Commands->Give_PowerUp(obj, "POW_Chaingun_AI");
+			Commands->Give_PowerUp(obj, "POW_Chaingun_AI", true);
 
 			Commands->Start_Timer (obj, this, 1.0f, ARM_SHOTGUN);
 			

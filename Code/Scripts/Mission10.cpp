@@ -615,23 +615,23 @@ DECLARE_SCRIPT (M10_Havoc_Script, "")
 {
 	void Created (GameObject *obj)
 	{
-		/*Commands->Give_PowerUp(obj, "POW_LaserChaingun_Player");
-		Commands->Give_PowerUp(obj, "POW_LaserRifle_Player");
-		Commands->Give_PowerUp(obj, "POW_MineRemote_Player");
-		Commands->Give_PowerUp(obj, "POW_SniperRifle_Player");
-		Commands->Give_PowerUp(obj, "POW_TiberiumAutoRifle_Player");
-		Commands->Give_PowerUp(obj, "POW_GrenadeLauncher_Player");
-		Commands->Give_PowerUp(obj, "POW_FlameThrower_Player");
-		Commands->Give_PowerUp(obj, "POW_ChemSprayer_Player");
-		Commands->Give_PowerUp(obj, "POW_LaserChaingun_Player");
-		Commands->Give_PowerUp(obj, "POW_LaserRifle_Player");
-		Commands->Give_PowerUp(obj, "POW_MineRemote_Player");
-		Commands->Give_PowerUp(obj, "POW_RocketLauncher_Player");
-		Commands->Give_PowerUp(obj, "POW_RocketLauncher_Player");
-		Commands->Give_PowerUp(obj, "POW_TiberiumAutoRifle_Player");
-		Commands->Give_PowerUp(obj, "POW_PersonalIonCannon_Player");
-		Commands->Give_PowerUp(obj, "POW_FlameThrower_Player");
-		Commands->Give_PowerUp(obj, "POW_ChemSprayer_Player");*/
+		/*Commands->Give_PowerUp(obj, "POW_LaserChaingun_Player", true);
+		Commands->Give_PowerUp(obj, "POW_LaserRifle_Player", true);
+		Commands->Give_PowerUp(obj, "POW_MineRemote_Player", true);
+		Commands->Give_PowerUp(obj, "POW_SniperRifle_Player", true);
+		Commands->Give_PowerUp(obj, "POW_TiberiumAutoRifle_Player", true);
+		Commands->Give_PowerUp(obj, "POW_GrenadeLauncher_Player", true);
+		Commands->Give_PowerUp(obj, "POW_FlameThrower_Player", true);
+		Commands->Give_PowerUp(obj, "POW_ChemSprayer_Player", true);
+		Commands->Give_PowerUp(obj, "POW_LaserChaingun_Player", true);
+		Commands->Give_PowerUp(obj, "POW_LaserRifle_Player", true);
+		Commands->Give_PowerUp(obj, "POW_MineRemote_Player", true);
+		Commands->Give_PowerUp(obj, "POW_RocketLauncher_Player", true);
+		Commands->Give_PowerUp(obj, "POW_RocketLauncher_Player", true);
+		Commands->Give_PowerUp(obj, "POW_TiberiumAutoRifle_Player", true);
+		Commands->Give_PowerUp(obj, "POW_PersonalIonCannon_Player", true);
+		Commands->Give_PowerUp(obj, "POW_FlameThrower_Player", true);
+		Commands->Give_PowerUp(obj, "POW_ChemSprayer_Player", true);*/
 
 	}
 	
@@ -910,7 +910,7 @@ DECLARE_SCRIPT(M10_Comm_Center, "")
 		Commands->Start_Conversation(id, 100011);
 		Commands->Monitor_Conversation(obj, id);
 
-		//Commands->Give_PowerUp(STAR, "Ion Cannon Powerup");
+		//Commands->Give_PowerUp(STAR, "Ion Cannon Powerup", true);
 	}
 };
 

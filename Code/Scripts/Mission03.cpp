@@ -1130,7 +1130,7 @@ DECLARE_SCRIPT(M03_Gunboat_Controller_RMV, "Receive_Type:int, Receive_Param_For_
 
 	void Killed(GameObject * obj, GameObject * killer)
 	{
-		Commands->Create_Explosion_At_Bone("Ground Explosions Twiddler", obj, "TURRET");
+		Commands->Create_Explosion_At_Bone("Ground Explosions Twiddler", obj, "TURRET", nullptr);
 		
 		if (killer == Commands->Find_Object (1100002))
 		{
@@ -3036,9 +3036,9 @@ DECLARE_SCRIPT(M03_Initial_Powerups, "")
 			GameObject *star = Commands->Get_A_Star(Commands->Get_Position(obj));
 			if (star)
 			{
-				Commands->Give_PowerUp(star, "Shotgun Weapon 1 Clip PU");
-				Commands->Give_PowerUp(star, "Sniper Weapon 1 Clip PU");
-				Commands->Give_PowerUp(star, "Remote Mine Weapon 1 Clip PU");
+				Commands->Give_PowerUp(star, "Shotgun Weapon 1 Clip PU", true);
+				Commands->Give_PowerUp(star, "Sniper Weapon 1 Clip PU", true);
+				Commands->Give_PowerUp(star, "Remote Mine Weapon 1 Clip PU", true);
 				Commands->Grant_Key(star, 5, true);
 				//Commands->Grant_Key(star, 1, true);
 				char params[20];
@@ -5535,9 +5535,9 @@ DECLARE_SCRIPT(M03_Sakura_Explosion, "")
 {
 	void Destroyed(GameObject * obj)
 	{
-		Commands->Create_Explosion_At_Bone( "Air Explosions Twiddler", obj, "ROTOR00");
-		Commands->Create_Explosion_At_Bone( "Air Explosions Twiddler", obj, "TURRET");
-		Commands->Create_Explosion_At_Bone( "Air Explosions Twiddler", obj, "ROTOR01");	
+		Commands->Create_Explosion_At_Bone( "Air Explosions Twiddler", obj, "ROTOR00", nullptr);
+		Commands->Create_Explosion_At_Bone( "Air Explosions Twiddler", obj, "TURRET", nullptr);
+		Commands->Create_Explosion_At_Bone( "Air Explosions Twiddler", obj, "ROTOR01", nullptr);	
 	}
 };
 
