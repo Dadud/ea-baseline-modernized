@@ -168,6 +168,12 @@ static unsigned Calculate_Processor_Speed(__int64& ticks_per_second)
 	unsigned start=TIMEGETTIME();
 	unsigned elapsed;
 	while ((elapsed=TIMEGETTIME()-start)<200) {
+#if !defined(_M_X64)
+		__asm {
+			ASM_RDTSC;
+			mov Time.timer1_h,eax
+			mov Time.timer1_l,edx
+		}
 #else
 		unsigned __int64 _t1 = __rdtsc();
 		Time.timer1_l = (unsigned)(_t1 & 0xFFFFFFFF);
