@@ -26,6 +26,11 @@
 #include "always.h"
 #include "thread.h"
 
+#if defined(_MSC_VER)
+// MSVC doesn't provide GCC-style __sync_* builtins; use Windows Interlocked API
+#include <windows.h>
+#endif
+
 
 // Always use mutex or critical section when accessing the same data from multiple threads!
 
@@ -140,15 +145,23 @@ class FastCriticalSectionClass
 		__asm bts dword ptr [ebx], 0
 		__asm jc  The_Bit_Was_Previously_Set_So_Try_Again
 #else
+#if defined(_MSC_VER)
+		while (InterlockedExchange(&Flag, 1) != 0) {
+			ThreadClass::Switch_Thread();
+		}
+#else
 		while (__sync_lock_test_and_set(&Flag, 1) != 0) {
 			ThreadClass::Switch_Thread();
 		}
+#endif
 #endif
 	}
 
 	WWINLINE void Thread_Safe_Clear_Flag()
 	{
-#if defined(_MSC_VER) && defined(_M_IX86)
+#if defined(_MSC_VER)
+		InterlockedExchange(&Flag, 0);
+#elif defined(_M_IX86)
 		Flag = 0;
 #else
 		__sync_lock_release(&Flag);
