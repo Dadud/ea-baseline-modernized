@@ -1715,7 +1715,7 @@ DECLARE_SCRIPT (M00_Select_Empty_Hands, "On_Created=1:int")
 		bool on_created = (Get_Int_Parameter("On_Created") == 1) ? true : false;
 		if(on_created)
 		{
-			Commands->Select_Weapon(obj, NULL );
+			Commands->Select_Weapon(obj, NULL , false);
 		}
 	}
 
@@ -1723,7 +1723,7 @@ DECLARE_SCRIPT (M00_Select_Empty_Hands, "On_Created=1:int")
 	{
 		if(type == M00_SELECT_EMPTY_HANDS)
 		{
-			Commands->Select_Weapon(obj, NULL );
+			Commands->Select_Weapon(obj, NULL , false);
 		}
 	}
 };

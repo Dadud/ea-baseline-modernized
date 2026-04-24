@@ -2391,7 +2391,7 @@ DECLARE_SCRIPT(M05_Escapee_Brother, "")
 		if(action_id == 300509 && reason == ACTION_COMPLETE_CONVERSATION_ENDED)
 		{
 			
-			Commands->Select_Weapon(obj, "Weapon_Shotgun_Ai" );
+			Commands->Select_Weapon(obj, "Weapon_Shotgun_Ai" , false);
 
 			complete = true;
 			Commands->Set_Innate_Is_Stationary(obj, false);
@@ -2663,7 +2663,7 @@ DECLARE_SCRIPT(M05_Babushka, "")
 
 		if(timer_id == ARM_SHOTGUN)
 		{
-	//		Commands->Select_Weapon(obj, "Weapon_Chaingun_AI" );
+	//		Commands->Select_Weapon(obj, "Weapon_Chaingun_AI" , false);
 		}
 	}
 
@@ -3529,7 +3529,7 @@ DECLARE_SCRIPT(M05_Mendoza3, "")
 		health = Commands->Get_Max_Health(obj);
 
 		Commands->Give_PowerUp(obj, "POW_LaserRifle_AI", true);
-		Commands->Select_Weapon(obj, "Weapon_LaserRifle_AI" );
+		Commands->Select_Weapon(obj, "Weapon_LaserRifle_AI" , false);
 	}
 
 	void Timer_Expired(GameObject * obj, int timer_id )
@@ -3797,7 +3797,7 @@ DECLARE_SCRIPT(M05_Mendoza4, "")
 	//	Commands->Send_Custom_Event(obj, Commands->Find_Object(100096), 100, 100, 2.0f);
 
 		Commands->Give_PowerUp(obj, "POW_LaserRifle_AI", true);
-		Commands->Select_Weapon(obj, "Weapon_LaserRifle_AI" );
+		Commands->Select_Weapon(obj, "Weapon_LaserRifle_AI" , false);
 	}
 
 	void Timer_Expired(GameObject * obj, int timer_id )
@@ -3902,7 +3902,7 @@ DECLARE_SCRIPT(M05_Civ_Warn, "")
 		{
 			Commands->Start_Timer (obj, this, 0.5f, GO_CACHE);
 			
-			Commands->Select_Weapon(obj, "Weapon_Shotgun_Ai" );
+			Commands->Select_Weapon(obj, "Weapon_Shotgun_Ai" , false);
 		}
 		
 	}
@@ -4673,7 +4673,7 @@ DECLARE_SCRIPT(M05_Overlook_Captives, "")
 
 		if(timer_id == ARM_CHAINGUN)
 		{
-			Commands->Select_Weapon(obj, "Weapon_Chaingun_AI" );
+			Commands->Select_Weapon(obj, "Weapon_Chaingun_AI" , false);
 
 		}
 	}
@@ -5111,7 +5111,7 @@ DECLARE_SCRIPT(M05_Dump_Captives, "")
 
 		if(timer_id == ARM_SHOTGUN)
 		{
-			Commands->Select_Weapon(obj, "Weapon_Chaingun_AI" );
+			Commands->Select_Weapon(obj, "Weapon_Chaingun_AI" , false);
 
 			Vector3 curr_loc = Commands->Get_Position(obj);
 			Commands->Debug_Message("Current Location: %d", curr_loc);
