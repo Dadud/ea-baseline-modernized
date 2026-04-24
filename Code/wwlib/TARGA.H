@@ -1,3 +1,5 @@
+#ifndef TARGA_H
+#define TARGA_H
 /*
 **	Command & Conquer Renegade(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -317,4 +319,4 @@ class Targa
 	};
 
 #endif /* _TARGA_H_ */
-
+#endif
