@@ -143,9 +143,9 @@ bool DirectoryRead(DirectoryHandle dir, DirectoryEntry* out_entry);
 void DirectoryClose(DirectoryHandle dir);
 ```
 
-**Current implementation:** `Code/wwlib/rawfile.cpp` and `Code/wwtranslatedb/translatedb.cpp` have partial implementations. `Code/wwlib/mixfile.cpp` has MIX archive iteration.
+**Current implementation:** `Code/wwlib/rawfile.cpp` now has an opt-in SDL3-backed non-Windows file I/O path when `RENEGADE_USE_SDL3=ON`, while `Code/wwtranslatedb/translatedb.cpp` still uses its narrow local compatibility path. `Code/wwlib/mixfile.cpp` remains the compatibility-sensitive archive layer.
 
-**Deferred work:** Win32 FindFirstFile/FindNextFile is used throughout the codebase. A portable `DirectoryOpen/Read/Close` interface is needed. The MIX archive format is EA-specific and must be preserved for asset compatibility.
+**Deferred work:** Win32 FindFirstFile/FindNextFile is still used throughout the codebase. A portable `DirectoryOpen/Read/Close` interface is still needed. Resource-backed file access (`rcfile.*`) and MIX archive parity remain separate follow-on work.
 
 ---
 

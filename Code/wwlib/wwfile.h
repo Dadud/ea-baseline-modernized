@@ -61,6 +61,22 @@
 	#define	NULL	0
 #endif
 
+#if defined(OPENW3D_WIN32)
+#include <windows.h>
+#define	NULL_HANDLE		INVALID_HANDLE_VALUE
+#define	HANDLE_TYPE		HANDLE
+#elif defined(OPENW3D_SDL3)
+#define	NULL_HANDLE	 	NULL
+#define	HANDLE_TYPE		struct SDL_IOStream*
+#elif defined(_UNIX) || !defined(_WIN32)
+#include <stdio.h>
+#define	NULL_HANDLE	 	NULL
+#define	HANDLE_TYPE		FILE*
+#else
+#define	NULL_HANDLE		INVALID_HANDLE_VALUE
+#define	HANDLE_TYPE		HANDLE
+#endif
+
 
 class FileClass
 {

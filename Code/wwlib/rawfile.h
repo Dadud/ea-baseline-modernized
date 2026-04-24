@@ -48,15 +48,6 @@
 
 // #include	"win.h"
 
-#if defined(_UNIX) || !defined(_WIN32)
-#include <stdio.h>
-  #define	NULL_HANDLE	 	NULL	
-  #define	HANDLE_TYPE		FILE*	
-#else
-  #define	NULL_HANDLE		INVALID_HANDLE_VALUE
-  #define	HANDLE_TYPE		HANDLE
-#endif
-
 #include	"wwfile.h"
 #include "wwstring.h"
 
@@ -111,9 +102,9 @@ class RawFileClass : public FileClass
 		virtual bool Set_Date_Time(unsigned long datetime);
 		virtual void Error(int error, int canretry = false, char const * filename=NULL);
 		virtual void Bias(int start, int length=-1);
-		virtual void * Get_File_Handle(void) { return Handle; } 
+		virtual void * Get_File_Handle(void) { return reinterpret_cast<void*>(Handle); }
 
-		virtual void	Attach (void *handle, int rights=READ);
+		virtual void	Attach (HANDLE_TYPE handle, int rights=READ);
 		virtual void	Detach (void);		
 
 		/*
@@ -140,11 +131,7 @@ class RawFileClass : public FileClass
 		/*
 		**	This is the low level DOS handle. A -1 indicates an empty condition.
 		*/
-		#ifdef _UNIX
-			FILE*  Handle;
-		#else
-			void * Handle;
-		#endif
+		HANDLE_TYPE Handle;
 
 		StringClass Filename;
 

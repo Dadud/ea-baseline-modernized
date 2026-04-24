@@ -292,7 +292,6 @@ if(UNIX)
     ./mpu.cpp
     ./msgloop.cpp
     ./mutex.cpp
-    ./rawfile.cpp
     ./rcfile.cpp
     ./refcount.cpp
     ./regexpr.cpp
@@ -316,7 +315,6 @@ if(UNIX)
     ./msgloop.cpp
     ./mpu.cpp
     ./mutex.cpp
-    ./rawfile.cpp
     ./rcfile.cpp
     ./refcount.cpp
     ./regexpr.cpp
@@ -328,6 +326,13 @@ if(UNIX)
     ./win.cpp
     ./xsurface.cpp
   )
+
+  if(NOT RENEGADE_USE_SDL3)
+    list(REMOVE_ITEM WWLIB_SOURCES
+      ./rawfile.cpp
+      ./rawfile.cpp
+    )
+  endif()
 endif()
 
 ea_vc6_static_library(wwlib

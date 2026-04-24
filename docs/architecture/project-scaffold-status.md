@@ -96,7 +96,7 @@
 | `ww3d2` | Win32 (x86) Static Library | renderer | ❌ Blocked — d3d8.h DirectX 8 SDK missing | ❌ Blocked — d3d8.h DirectX 8 SDK missing |
 | `wwbitpack` | Win32 (x86) Static Library | foundation | ✅ Built — default scaffold | ✅ Built — default scaffold |
 | `wwdebug` | Win32 (x86) Static Library | foundation | ✅ Built — default scaffold | ✅ Built — default scaffold |
-| `wwlib` | Win32 (x86) Static Library | platform | ✅ Built (filtered) — portable islands only; SDL3 thread backend opt-in | ✅ Built (filtered) — portable islands only; SDL3 thread backend opt-in |
+| `wwlib` | Win32 (x86) Static Library | platform | ✅ Built (filtered) — portable islands only; SDL3 thread + rawfile opt-in | ✅ Built (filtered) — portable islands only; SDL3 thread + rawfile opt-in |
 | `wwnet` | Win32 (x86) Static Library | platform | ✅ Built (filtered) — packet helpers; WinSock deferred | ✅ Built (filtered) — packet helpers; WinSock deferred |
 | `wwphys` | Win32 (x86) Static Library | physics | ❌ Blocked — needs ww3d2 math types (same dir as DX8) | ❌ Blocked — needs ww3d2 math types (same dir as DX8) |
 | `wwsaveload` | Win32 (x86) Static Library | foundation | ✅ Built — default scaffold | ✅ Built — default scaffold |

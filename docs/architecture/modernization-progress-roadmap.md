@@ -124,7 +124,31 @@ Current non-Windows compatibility is intentionally narrow. Still needed:
 
 ## Updated plan
 
-### Latest batch completed: Batch 023 — opt-in SDL3 thread seam for `wwlib`
+### Latest batch completed: Batch 024 — opt-in SDL3 raw file seam for `wwlib`
+
+Batch 024 continues the SDL3 platform replay from the wider OpenW3D fork ecosystem, again using w3dhub PRs #105 and #107 as the donor reference. This batch implements the filesystem half of the first SDL3 platform seam: `Code/wwlib/wwfile.h`, `Code/wwlib/rawfile.h`, and `Code/wwlib/rawfile.cpp` now support an opt-in SDL3-backed non-Windows raw file path under `RENEGADE_USE_SDL3=ON`, while preserving the existing Windows path and the legacy non-SDL3 UNIX fallback code.
+
+CMake now also re-enables `rawfile.cpp` in the UNIX `wwlib` build only when `RENEGADE_USE_SDL3=ON`.
+
+Verified result:
+
+```bash
+cmake -S . -B build/cmake-scaffold-sdl3 \
+  -DRENEGADE_USE_SDL3=ON \
+  -DRENEGADE_BUILD_FOUNDATION_LIBS=ON \
+  -DRENEGADE_BUILD_PLATFORM_LIBS=ON
+cmake --build build/cmake-scaffold-sdl3 --target wwlib -j4
+```
+
+with final output including:
+
+```text
+[100%] Built target wwlib
+```
+
+This batch still does **not** claim full SDL3 resource embedding or `rcfile.*` replay. Resource-file handling remains deferred to a follow-on resource batch.
+
+### Previous batch completed: Batch 023 — opt-in SDL3 thread seam for `wwlib`
 
 Batch 023 starts the SDL3 platform replay using the SDL3 work found in the wider OpenW3D fork ecosystem, especially w3dhub PRs #105 and #107. This first bounded batch intentionally adopts only the highest-confidence seam: `Code/wwlib/thread.h` and `Code/wwlib/thread.cpp` now support an opt-in SDL3-backed non-Windows thread path under `RENEGADE_USE_SDL3=ON`, while preserving the original Windows path and the existing `ThreadClass` interface shape.
 
