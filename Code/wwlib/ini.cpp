@@ -1003,11 +1003,11 @@ const WideStringClass& INIClass::Get_Wide_String(WideStringClass& new_string, ch
 
 	int length = Get_String(section, entry, "", buffer, sizeof(buffer));
 	if (length == 0) {
-		new_string = defvalue;
+		new_string = reinterpret_cast<const unsigned short *>(defvalue);
 	} else {
 		int outcount = b64pipe.Put(buffer, length);
 		outcount += b64pipe.End();
-		new_string = out;
+		new_string = reinterpret_cast<const unsigned short *>(out);
 	}
 	return(new_string);
 }
@@ -1037,7 +1037,7 @@ bool INIClass::Put_Wide_String(char const * section, char const * entry, const u
 		return(false);
 	}
 
-	WideStringClass temp_string(string, true);
+	WideStringClass temp_string(reinterpret_cast<const unsigned short *>(string), true);
 	int len = temp_string.Get_Length();
 
 	if (len == 0) {
