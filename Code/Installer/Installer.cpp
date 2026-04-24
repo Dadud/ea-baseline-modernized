@@ -52,7 +52,7 @@
 #include "FolderDialog.h"
 #include "Ini.h"
 #include "LicenseDialog.h"
-#include "MixFile.h"
+#include "mixfile.h"
 #include "Msgloop.h"
 #include "Registry.h"
 #include "ReviewDialog.h"

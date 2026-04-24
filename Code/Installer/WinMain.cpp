@@ -42,7 +42,7 @@
 #include "ErrorHandler.h"
 #include "FFactory.h"
 #include "Installer.h"
-#include "MixFile.h"
+#include "mixfile.h"
 #include "Msgloop.h"
 #include "RAMFileFactory.h"
 #include "Resource.h"
