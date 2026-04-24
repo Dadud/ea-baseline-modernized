@@ -4,6 +4,14 @@
 #ifndef _BINK_H_
 #define _BINK_H_
 
+// Bink surface formats
+#define BINKSURFACE565 0x00000004L
+#define BINKSURFACE555 0x00000005L
+#define BINKSURFACE8888 0x00000008L
+
+// Bink copy flags
+#define BINKCOPYNOSCALING 0x00000001L
+
 // Basic Bink handle type
 typedef struct BINKSTRUCT* HBINK;
 
@@ -12,6 +20,10 @@ struct BINKSTRUCT {
     int Width;
     int Height;
     unsigned int Flags;
+    unsigned int FrameRate;       // frames per second * FrameRateDiv
+    unsigned int FrameRateDiv;    // divisor for FrameRate
+    unsigned int FrameNum;        // current frame number
+    unsigned int Frames;          // total number of frames
 };
 
 // Open a Bink video file
@@ -28,12 +40,29 @@ static inline void BinkClose(HBINK bink) {
 }
 
 // Copy a rectangle from the Bink video to a buffer
-static inline void BinkCopyToBuffer(HBINK bink, void* dest, int destwidth, int destheight, int destpitch, unsigned int flags) {
+static inline void BinkCopyToBuffer(HBINK bink, void* dest, int destwidth, int destheight, int destpitch, int destx, unsigned int flags) {
     (void)bink;
     (void)dest;
     (void)destwidth;
     (void)destheight;
     (void)destpitch;
+    (void)destx;
+    (void)flags;
+}
+
+// Copy a rectangle to another surface (stub)
+static inline void BinkCopyToBufferRect(HBINK bink, void* dest, int destwidth, int destheight, int destpitch, int destx, int desty, int srcw, int srch, int srcx, int srcy, unsigned int flags) {
+    (void)bink;
+    (void)dest;
+    (void)destwidth;
+    (void)destheight;
+    (void)destpitch;
+    (void)destx;
+    (void)desty;
+    (void)srcw;
+    (void)srch;
+    (void)srcx;
+    (void)srcy;
     (void)flags;
 }
 
@@ -60,7 +89,13 @@ static inline void BinkNextFrame(HBINK bink) {
 }
 
 // Wait for a specific frame
-static inline void BinkWait(HBINK bink) {
+static inline int BinkWait(HBINK bink) {
+    (void)bink;
+    return 0;
+}
+
+// Do frame decoding
+static inline void BinkDoFrame(HBINK bink) {
     (void)bink;
 }
 
@@ -74,6 +109,24 @@ static inline void BinkSetVolume(HBINK bink, int volume) {
 static inline void BinkSetPan(HBINK bink, int pan) {
     (void)bink;
     (void)pan;
+}
+
+// Get the number of frames
+static inline unsigned int BinkGetFrames(HBINK bink) {
+    (void)bink;
+    return 0;
+}
+
+// Check if Bink needs to redraw
+static inline int BinkNeedsToDraw(HBINK bink) {
+    (void)bink;
+    return 0;
+}
+
+// Set the frame rate divisor
+static inline void BinkSetFrameRateDiv(HBINK bink, unsigned int div) {
+    (void)bink;
+    (void)div;
 }
 
 #endif // _BINK_H_
