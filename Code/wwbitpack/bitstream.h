@@ -124,9 +124,7 @@ class BitStreamClass : public cBitPacker
 		void		Add(char val,int type = NO_ENCODER)							{ Internal_Add(val,type); }
 		void		Add(int val,int type = NO_ENCODER)							{ Internal_Add(val,type); }
 		void		Add(float val,int type = NO_ENCODER)						{ Internal_Add(val,type); }
-#if !defined(_WIN32)
 		void		Add(WCHAR val,int type = NO_ENCODER)						{ Internal_Add(static_cast<USHORT>(val),type); }
-#endif
 
 		BYTE		Get(BYTE & set_val,int type = NO_ENCODER)					{ return Internal_Get(set_val,type); }
 		USHORT	Get(USHORT & set_val,int type = NO_ENCODER)				{ return Internal_Get(set_val,type); }

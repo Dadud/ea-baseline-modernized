@@ -144,8 +144,7 @@ class FastCriticalSectionClass
 		__asm ts_lock
 		__asm bts dword ptr [ebx], 0
 		__asm jc  The_Bit_Was_Previously_Set_So_Try_Again
-#else
-#if defined(_MSC_VER)
+#elif defined(_MSC_VER) && (defined(_M_X64) || defined(_M_AMD64))
 		while (InterlockedExchange(&Flag, 1) != 0) {
 			ThreadClass::Switch_Thread();
 		}
@@ -153,7 +152,6 @@ class FastCriticalSectionClass
 		while (__sync_lock_test_and_set(&Flag, 1) != 0) {
 			ThreadClass::Switch_Thread();
 		}
-#endif
 #endif
 	}
 

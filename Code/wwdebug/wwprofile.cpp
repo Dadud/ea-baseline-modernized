@@ -93,10 +93,25 @@ unsigned WWProfile_Get_System_Time()
  *=============================================================================================*/
 inline void WWProfile_Get_Ticks(_int64 * ticks)
 {
-#if !defined(_WIN32)
-       *ticks = TIMEGETTIME();
-#elif defined(_MSC_VER) && defined(_M_X64)
+#if defined(_MSC_VER) && defined(_M_X64)
        *ticks = __rdtsc();
+#elif defined(_MSC_VER) && defined(_M_IX86)
+	__asm
+	{
+		push edx;
+		push ecx;
+		push eax;
+		mov ecx,ticks;
+		_emit 0Fh
+		_emit 31h
+		mov [ecx],eax;
+		mov [ecx+4],edx;
+		pop eax;
+		pop ecx;
+		pop edx;
+	}
+#elif !defined(_WIN32)
+       *ticks = TIMEGETTIME();
 #else
 	__asm
 	{
